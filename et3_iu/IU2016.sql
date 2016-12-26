@@ -131,7 +131,8 @@ INSERT INTO `FUNCIONALIDAD` (`FUNCIONALIDAD_ID`, `FUNCIONALIDAD_NOM`) VALUES
 (1, 'GESTION USUARIOS'),
 (2, 'GESTION ROLES'),
 (3, 'GESTION FUNCIONALIDADES'),
-(4, 'GESTION PAGINAS');
+(4, 'GESTION PAGINAS'),
+(100, 'GESTION RUBRICAS');
 
 -- --------------------------------------------------------
 
@@ -171,7 +172,12 @@ INSERT INTO `FUNCIONALIDAD_PAGINA` (`FUNCIONALIDAD_ID`, `PAGINA_ID`) VALUES
 (2, 20),
 (2, 21),
 (2, 22),
-(2, 23);
+(2, 23),
+(100, 100),
+(100, 101),
+(100, 102),
+(100, 103),
+(100, 104);
 
 -- --------------------------------------------------------
 
@@ -333,7 +339,12 @@ INSERT INTO `PAGINA` (`PAGINA_ID`, `PAGINA_LINK`, `PAGINA_NOM`) VALUES
 (20, '../Views/ROL_EDIT_Vista.php', 'ROL EDIT'),
 (21, '../Views/ROL_SHOWALL_Vista.php', 'ROL SHOWALL'),
 (22, '../Views/ROL_SHOW_FUNCIONES_Vista.php', 'ROL SHOW FUNCIONES'),
-(23, '../Views/ROL_SHOWCURRENT_Vista.php', 'ROL SHOWCURRENT');
+(23, '../Views/ROL_SHOWCURRENT_Vista.php', 'ROL SHOWCURRENT'),
+(100, '../Views/RUBRICA_ADD_Vista.php', 'RUBRICA ADD'),
+(101, '../Views/RUBRICA_DELETE_Vista.php', 'RUBRICA DELETE'),
+(102, '../Views/RUBRICA_EDIT_Vista.php', 'RUBRICA EDIT'),
+(103, '../Views/RUBRICA_SHOWALL_Vista.php', 'RUBRICA SHOWALL'),
+(104, '../Views/RUBRICA_SHOWCURRENT_Vista.php', 'RUBRICA SHOWCURRENT');
 
 -- --------------------------------------------------------
 
@@ -391,7 +402,9 @@ INSERT INTO `ROL_FUNCIONALIDAD` (`ROL_ID`, `FUNCIONALIDAD_ID`) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
-(1, 4);
+(1, 4),
+(1,100),
+(2, 100);
 
 -- --------------------------------------------------------
 
