@@ -520,7 +520,17 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('ADMIN', 20),
 ('ADMIN', 21),
 ('ADMIN', 22),
-('ADMIN', 23);
+('ADMIN', 23),
+('ADMIN', 100),
+('ADMIN', 101),
+('ADMIN', 102),
+('ADMIN', 103),
+('ADMIN', 104),
+('PROFESOR', 100),
+('PROFESOR', 101),
+('PROFESOR', 102),
+('PROFESOR', 103),
+('PROFESOR', 104);
 
 --
 -- Índices para tablas volcadas

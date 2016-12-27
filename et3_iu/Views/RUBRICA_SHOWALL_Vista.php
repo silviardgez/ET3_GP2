@@ -29,16 +29,7 @@ class RUBRICA_SHOWALL {
             <script type="text/javascript" src="../js/Myriad_Pro_300.font.js"></script>
             <script type="text/javascript" src="../js/Myriad_Pro_400.font.js"></script>
             <script type="text/javascript" src="../js/script.js"></script>
-            <!--[if lt IE 7]>
-            <link rel="stylesheet" href="../css/ie/ie6.css" type="text/css" media="screen">
-            <script type="text/javascript" src=../"js/ie_png.js"></script>
-            <script type="text/javascript">
-                    ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');
-            </script>
-            <![endif]-->
-            <!--[if lt IE 9]>
-            <script type="text/javascript" src="../js/html5.js"></script>
-            <![endif]-->
+   
         </head>
         <body id="page2">
             <div class="wrap">
@@ -48,8 +39,8 @@ class RUBRICA_SHOWALL {
                         <h1><a href="../Views/DEFAULT_Vista.php"></a></h1>
                         <nav>
                             <ul><li><?php echo '<a href=\'' . $this->volver . "' class='m5'>" . $strings['Volver'] . " </a>"; ?></li>
-                                <li><a href='./USUARIO_Controller.php?accion=<?php echo $strings['Consultar'] ?>'class="m4"><?php echo $strings['Consultar'] ?></a></li>
-                                <li><a href='./USUARIO_Controller.php?accion=<?php echo $strings['Insertar'] ?>' class="m3"><?php echo $strings['Insertar'] ?></a></li>
+                                <li><a href='./RUBRICA_Controller.php?accion=<?php echo $strings['Consultar'] ?>'class="m4"><?php echo $strings['Consultar'] ?></a></li>
+                                <li><a href='./RUBRICA_Controller.php?accion=<?php echo $strings['Insertar'] ?>' class="m3"><?php echo $strings['Insertar'] ?></a></li>
                                 <li><a href="../Functions/Desconectar.php" class="m2"><?php echo $strings['Cerrar Sesión']; ?></a></li>
                             </ul>
                         </nav>
@@ -59,9 +50,8 @@ class RUBRICA_SHOWALL {
                 </header>
                 <div class="container">
                     <?php
-                    //$gen_datos = new gen_form($arrayDefForm);
-                    //$lista = array('USUARIO_USER','USUARIO_NOMBRE', 'USUARIO_APELLIDO', 'USUARIO_DNI','USUARIO_FECH_NAC', 'USUARIO_EMAIL',  'USUARIO_TELEFONO', 'USUARIO_CUENTA', 'USUARIO_DIRECCION', 'USUARIO_COMENTARIOS', 'USUARIO_TIPO','USUARIO_FOTO');
-                    $lista = array('RUBRICA_NOMRE', 'RUBRICA_DESCRIPCION', 'RUBRICA_NIVELES');
+                    
+                    $lista = array('RUBRICA_ID', 'RUBRICA_NOMBRE', 'RUBRICA_DESCRIPCION', 'RUBRICA_NIVELES', 'RUBRICA_AUTOR');
                     ?>
 
 
@@ -69,9 +59,9 @@ class RUBRICA_SHOWALL {
                     <div id="centrado"><table class="table" id="btable" border = 1>
                             <tr>
                                 <?php
-                                foreach ($lista as $titulo) { //HAN SIDO BORRADAS COSAS COSAS DE ABRAHAM
+                                foreach ($lista as $titulo) {
                                     echo "<th>";
-                                    echo $strings[$titulo];
+                                    echo $stringsRubrica[$titulo];
                                     ?>
                                     </th>
                                     <?php
@@ -79,7 +69,7 @@ class RUBRICA_SHOWALL {
                                 ?>
                             </tr>
                             <?php
-                            for ($j = 0; $j < count($this->datos); $j++) { //ANTES HABIA UN SWITCH
+                            for ($j = 0; $j < count($this->datos); $j++) {
                                 echo "<tr>";
                                 foreach ($this->datos [$j] as $clave => $valor) {
                                     for ($i = 0; $i < count($lista); $i++) {
@@ -97,7 +87,7 @@ class RUBRICA_SHOWALL {
                                 <a href='USUARIO_Controller.php?USUARIO_USER=<?php echo $this->datos[$j]['USUARIO_USER'] . '&accion=' . $strings['Modificar']; ?>'><?php echo $strings['Modificar'] ?></a> <!-- BOTONES!! -->
                             </td>
                             <td>
-                                <a href='USUARIO_Controller.php?USUARIO_USER=<?php echo $this->datos[$j]['USUARIO_USER'] . '&accion=' . $strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a>
+                                <a href='USUARIO_Controller.php?USUARIO_USER=<?php echo $this->datos[$j]['USUARIO_USER'] . '&accion=' . $strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a> <!-- BOTONES!! -->
                             </td>
                             </tr>
 

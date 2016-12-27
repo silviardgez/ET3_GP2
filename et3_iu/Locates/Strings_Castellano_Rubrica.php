@@ -1,8 +1,12 @@
 <?php
-$strings = array(
-    'RUBRICA_NOMBRE'=> 'RUBRICA_NOMBRE',
-    'RUBRICA_DESCRIPCION'=>'RUBRICA_DESCRIPCION',
-    'RUBRICA_NIVELES'=>'RUBRICA_NIVELES',
+$stringsRubrica = array(
+    'RUBRICA_NOMBRE'=> 'Nombre de Rúbrica',
+    'RUBRICA_DESCRIPCION'=>'Descripción',
+    'RUBRICA_NIVELES'=>'Nº de Niveles',
+    'RUBRICA_ID'=> 'ID',
+    'RUBRICA_AUTOR'=>'Autor',
+    'Insertar Rubrica'=>'Insertar Rubrica',
+    'Rubrica creada correctamente'=>'Rubrica creada correctamente',
     'GESTION RUBRICAS'=>'GESTION RUBRICAS'
         )
 ?>

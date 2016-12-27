@@ -36,15 +36,16 @@ class RUBRICA_Model {
 //Inserción de nuevas Rúbricas
     function Insertar() { // ----- WORKING!! -----
         $this->ConectarBD();
-        if ($this->CLIENTE_ID === FALSE) {
-            return 'No existe ningún cliente con el DNI introducido';
+        if ($this->RUBRICA_ID === FALSE) {
+            return 'No existe ningún cliente con el DNI introducido';//Corregir String
         } else {
-            //$this->PAGO_ESTADO='PENDIENTE';
-            $sql = "INSERT INTO PAGO (CLIENTE_ID, PAGO_CONCEPTO, PAGO_METODO, PAGO_IMPORTE, PAGO_ESTADO) VALUES ('" . $this->CLIENTE_ID . "', '" . $this->PAGO_CONCEPTO . "', '" . $this->PAGO_METODO . "', '" . $this->PAGO_IMPORTE . "', '" . $this->PAGO_ESTADO . "')";
+
+         //   $sql = "INSERT INTO RUBRICA (RUBRICA_NOMBRE, RUBRICA_DESCRIPCION, RUBRICA_NIVELES, RUBRICA_AUTOR) VALUES ('" . $this->RUBRICA_NOMBRE . "', '" . $this->RUBRICA_DESCRIPCION . "', '" . $this->RUBRICA_NIVELES ."', '" .$this->RUBRICA_AUTOR. "')";
+              $sql = "INSERT INTO RUBRICA (RUBRICA_NOMBRE, RUBRICA_DESCRIPCION, RUBRICA_NIVELES, RUBRICA_AUTOR) VALUES ('" . $this->RUBRICA_NOMBRE . "', '" . $this->RUBRICA_DESCRIPCION . "', '" . $this->RUBRICA_NIVELES ."', '" .$_SESSION['login']. "')";
             if (!$result = $this->mysqli->query($sql)) {
-                return 'No existe ningún cliente con el DNI introducido';
+                return 'No existe ningún cliente con el DNI introducido';//Corregir String
             } else {
-                return 'Pago registrado correctamente';
+                return 'Rubrica creada correctamente';
             }
         }
     }

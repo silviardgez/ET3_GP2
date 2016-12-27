@@ -5,7 +5,7 @@
 $form = array(
     0 => array(
         'type' => 'text',
-        'name' => 'RUBRICA_NOMBRE',
+        'name' => 'RUBRICA_ID',
         'value' => '',
         'size' => 25, //Comprobar
         'required' => false,
@@ -15,6 +15,16 @@ $form = array(
     ),
     1 => array(
         'type' => 'text',
+        'name' => 'RUBRICA_NOMBRE',
+        'value' => '',
+        'size' => 25, //Comprobar
+        'required' => true,
+        'pattern' => '',
+        'validation' => '',
+        'readonly' => false
+    ),
+    2 => array(
+        'type' => 'text',
         'name' => 'RUBRICA_DESCRIPCION',
         'value' => '',
         'size' => 50, //Comprobar
@@ -23,10 +33,10 @@ $form = array(
         'validation' => '',
         'readonly' => false
     ),
-    2 => array(
+    3 => array(
         'type' => 'number',
         'name' => 'RUBRICA_NIVELES',
-        'value' => '',
+        'value' => '1',
         'min' => '1',
         'max' => '',
         'step' => '1',
@@ -37,6 +47,15 @@ $form = array(
         'validation' => '',
         'readonly' => false
     ),
+    4 => array(
+        'type' => 'text',
+        'name' => 'RUBRICA_AUTOR',
+        'value' => '',
+        'size' => 25, //Comprobar
+        'required' => false,
+        'pattern' => '',
+        'validation' => '',
+        'readonly' => false
+    )
 );
 $DefForm = AñadirTipos($form); //Comprobar
-?>

@@ -17,11 +17,16 @@ for ($z = 0; $z < count($pags); $z++) {
 
 //Recoge la información procendente de un formulario.
 function get_data_form() {
-    $RUBRICA_ID = $_REQUEST['RUBRICA_ID'];
+    if(isset($_REQUEST['RUBRICA_ID'])){
+          $RUBRICA_ID = $_REQUEST['RUBRICA_ID']; //Notice: Undefined index: RUBRICA_ID in /var/www/html/ET3_GP2/et3_iu/Controllers/RUBRICA_Controller.php on line 20
+    }
+    else {
+        $RUBRICA_ID ='';
+    }
     $RUBRICA_NOMBRE = $_REQUEST['RUBRICA_NOMBRE'];
     $RUBRICA_DESCRIPCION = $_REQUEST['RUBRICA_DESCRIPCION'];
     $RUBRICA_NIVELES = $_REQUEST['RUBRICA_NIVELES'];
-    $RUBRICA_AUTOR = $_REQUEST['RUBRICA_AUTOR'];
+    $RUBRICA_AUTOR=$_SESSION['IDIOMA']; //$RUBRICA_AUTOR = $_REQUEST['RUBRICA_AUTOR'];
     $rubrica = new RUBRICA_Model($RUBRICA_ID, $RUBRICA_NOMBRE, $RUBRICA_DESCRIPCION, $RUBRICA_NIVELES, $RUBRICA_AUTOR);
     return $rubrica;
 }
@@ -32,17 +37,16 @@ if (!isset($_REQUEST['accion'])) {
 Switch ($_REQUEST['accion']) {
 
     case $strings['Insertar']: //Inserción de pagos //----- WORKING!! -----
-        if (!isset($_REQUEST['PAGO_CONCEPTO'])) {
-            if (!tienePermisos('PAGO_Insertar')) {
-                new Mensaje('No tienes los permisos necesarios', 'PAGO_Controller.php');
+        if (!isset($_REQUEST['RUBRICA_NOMBRE'])) {
+            if (!tienePermisos('RUBRICA_ADD')) {
+                new Mensaje('No tienes los permisos necesarios', 'RUBRICA_Controller.php');
             } else {
-                new PAGO_Insertar();
+                new RUBRICA_ADD();
             }
         } else {
-            $pago = get_data_form();
-            $respuesta = $pago->Insertar();
-            // $pago->generarRecibo(); //GENERA EL RECIBO
-            new Mensaje($respuesta, 'PAGO_Controller.php');
+            $rubrica = get_data_form();
+            $respuesta = $rubrica->Insertar();
+            new Mensaje($respuesta, 'RUBRICA_Controller.php');
         }
         break;
 

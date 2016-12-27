@@ -10,7 +10,7 @@ class RUBRICA_ADD {
     function render() {
         ?>
 
-        ?><div class="wrap">
+        <div class="wrap">
 
             <head>
                 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
@@ -19,33 +19,35 @@ class RUBRICA_ADD {
 
             <?php
             include '../Locates/Strings_' . $_SESSION['IDIOMA'] . '.php';
-// ----- INCLUDE STRINGS PROPIAS -----???
+            include '../Locates/Strings_' . $_SESSION['IDIOMA'] . '_Rubrica.php';
             include '../Functions/RUBRICAShowAllDefForm.php';
+            
             //Array con los nombres de los campos a insertar
             $lista = array('RUBRICA_NOMBRE', 'RUBRICA_DESCRIPCION', 'RUBRICA_NIVELES');
             ?>
 
 
-            <form  id="form" name="form" action='USUARIO_Controller.php' method='post'   enctype="multipart/form-data">
+            <form  id="form" name="form" action='RUBRICA_Controller.php' method='post'   enctype="multipart/form-data">
                 <div id="centrado"><span class="form-title">
-                        <?php echo $strings['Insertar usuario'] ?><br></span></div>
+                        <?php echo $stringsRubrica['Insertar Rubrica'] ?><br></span></div>
 
                 <ul class="form-style-1">
                     <?php
                     //Generación automática del formulario
-                    createForm($lista, $DefForm, $strings, '', array('USUARIO_COMENTARIOS' => false, 'USUARIO_FOTO' => false), false);
+                    createForm($lista, $DefForm, $stringsRubrica, '', array('RUBRICA_DESCRIPCION' => false), false);
                     ?>
                     <input type='submit' onclick="return valida_envia_USUARIO()" name='accion'  value=<?php echo $strings['Insertar'] ?>
                            <ul>
                         </form>
-        <?php
-        echo '<a class="form-link" href=\'USUARIO_Controller.php\'>' . $strings['Volver'] . " </a>";
-        ?>
+                        <?php
+                        echo '<a class="form-link" href=\'RUBRICA_Controller.php\'>' . $strings['Volver'] . " </a>";
+                        ?>
 
 
                         </div>
 
-        <?php
-    }
+                        <?php
+                    }
 
-}
+                }
+                
