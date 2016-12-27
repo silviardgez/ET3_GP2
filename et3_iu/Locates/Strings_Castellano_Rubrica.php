@@ -6,6 +6,7 @@ $stringsRubrica = array(
     'RUBRICA_ID'=> 'ID',
     'RUBRICA_AUTOR'=>'Autor',
     'Insertar Rubrica'=>'Insertar Rubrica',
+    'Consultar Rubrica'=>'Consultar Rubrica',
     'Rubrica creada correctamente'=>'Rubrica creada correctamente',
     'GESTION RUBRICAS'=>'GESTION RUBRICAS'
         )

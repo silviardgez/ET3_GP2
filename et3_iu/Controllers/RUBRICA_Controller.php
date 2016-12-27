@@ -2,7 +2,6 @@
 
 include '../Models/RUBRICA_Model.php';
 include '../Views/MENSAJE_Vista.php';
-//include '../Views/RECIBO_Vista.php'; //Eliminar???
 
 if (!IsAuthenticated()) {
     header('Location:../index.php');
@@ -18,7 +17,7 @@ for ($z = 0; $z < count($pags); $z++) {
 //Recoge la información procendente de un formulario.
 function get_data_form() {
     if(isset($_REQUEST['RUBRICA_ID'])){
-          $RUBRICA_ID = $_REQUEST['RUBRICA_ID']; //Notice: Undefined index: RUBRICA_ID in /var/www/html/ET3_GP2/et3_iu/Controllers/RUBRICA_Controller.php on line 20
+          $RUBRICA_ID = $_REQUEST['RUBRICA_ID'];
     }
     else {
         $RUBRICA_ID ='';
@@ -26,7 +25,12 @@ function get_data_form() {
     $RUBRICA_NOMBRE = $_REQUEST['RUBRICA_NOMBRE'];
     $RUBRICA_DESCRIPCION = $_REQUEST['RUBRICA_DESCRIPCION'];
     $RUBRICA_NIVELES = $_REQUEST['RUBRICA_NIVELES'];
-    $RUBRICA_AUTOR=$_SESSION['IDIOMA']; //$RUBRICA_AUTOR = $_REQUEST['RUBRICA_AUTOR'];
+     if(isset($_REQUEST['RUBRICA_AUTOR'])){
+          $RUBRICA_AUTOR = $_REQUEST['RUBRICA_AUTOR'];
+    }
+    else {
+        $RUBRICA_AUTOR =$_SESSION['login'];
+    }
     $rubrica = new RUBRICA_Model($RUBRICA_ID, $RUBRICA_NOMBRE, $RUBRICA_DESCRIPCION, $RUBRICA_NIVELES, $RUBRICA_AUTOR);
     return $rubrica;
 }
@@ -36,7 +40,7 @@ if (!isset($_REQUEST['accion'])) {
 }
 Switch ($_REQUEST['accion']) {
 
-    case $strings['Insertar']: //Inserción de pagos //----- WORKING!! -----
+    case $strings['Insertar']:
         if (!isset($_REQUEST['RUBRICA_NOMBRE'])) {
             if (!tienePermisos('RUBRICA_ADD')) {
                 new Mensaje('No tienes los permisos necesarios', 'RUBRICA_Controller.php');
@@ -90,17 +94,17 @@ Switch ($_REQUEST['accion']) {
         break;
 
 
-    case $strings['Consultar']:  //Consulta de pagos
-        if (!isset($_REQUEST['PAGO_CONCEPTO'])) {
-            if (!tienePermisos('PAGO_Consultar')) {
-                new Mensaje('No tienes los permisos necesarios', 'PAGO_Controller.php');
+    case $strings['Consultar']:  //Consulta de Rúbricas
+        if (!isset($_REQUEST['RUBRICA_NOMBRE'])) {
+            if (!tienePermisos('RUBRICA_SHOWCURRENT')) {
+                new Mensaje('No tienes los permisos necesarios', 'RUBRICA_Controller.php');
             } else {
-                new PAGO_Consultar();
+                new RUBRICA_SHOWCURRENT();
             }
         } else {
-            $pago = get_data_form();
-            $datos = $pago->Consultar();
-            new PAGO_Show($datos, 'PAGO_Controller.php');
+            $rubrica = get_data_form();
+            $datos = $rubrica->Consultar();
+           new RUBRICA_SHOWALL($datos, 'RUBRICA_Controller.php');
             // }
         }
         break;

@@ -79,17 +79,18 @@ class RUBRICA_SHOWALL {
                                         }
                                         echo "</td>";
                                     }
-                                }
-                            }
-                            ?>
-
-                            <td>
-                                <a href='USUARIO_Controller.php?USUARIO_USER=<?php echo $this->datos[$j]['USUARIO_USER'] . '&accion=' . $strings['Modificar']; ?>'><?php echo $strings['Modificar'] ?></a> <!-- BOTONES!! -->
+                                }?>
+                                <td>
+                                <a href='USUARIO_Controller.php?USUARIO_USER=<?php echo $this->datos[$j]['RUBRICA_ID'] . '&accion=' . $strings['Modificar']; ?>'><?php echo $strings['Modificar'] ?></a>
                             </td>
                             <td>
-                                <a href='USUARIO_Controller.php?USUARIO_USER=<?php echo $this->datos[$j]['USUARIO_USER'] . '&accion=' . $strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a> <!-- BOTONES!! -->
+                                <a href='USUARIO_Controller.php?USUARIO_USER=<?php echo $this->datos[$j]['RUBRICA_ID'] . '&accion=' . $strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a>
                             </td>
                             </tr>
+                           <?php }
+                            ?>
+
+                            
 
                         </table></div>
 
@@ -112,3 +113,4 @@ class RUBRICA_SHOWALL {
 
 //fin metodo render
 }
+

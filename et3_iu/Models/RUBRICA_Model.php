@@ -73,32 +73,18 @@ class RUBRICA_Model {
 //Nos devuelve la información de los pagos realizados por un determinado cliente o id
     function Consultar() {
         $this->ConectarBD();
-        $sql = "SELECT * FROM PAGO WHERE CLIENTE_ID ='" . $this->CLIENTE_ID . "' OR PAGO_CONCEPTO LIKE'" . $this->PAGO_CONCEPTO . "' OR PAGO_IMPORTE = '" . $this->PAGO_IMPORTE . "' OR PAGO_METODO = '" . $this->PAGO_METODO . "' OR PAGO_ESTADO = '" . $this->PAGO_ESTADO . "' ORDER BY PAGO_FECHA DESC";
-        //$sql = "SELECT * FROM PAGO WHERE CLIENTE_ID ='" . $this->CLIENTE_ID . "' AND PAGO_CONCEPTO LIKE'" . $this->PAGO_CONCEPTO . "' AND PAGO_IMPORTE = '" . $this->PAGO_IMPORTE . "' AND PAGO_METODO = '" . $this->PAGO_METODO . "' AND PAGO_ESTADO = '" . $this->PAGO_ESTADO . "' ORDER BY PAGO_FECHA DESC";
+        $sql = "SELECT * FROM RUBRICA WHERE RUBRICA_ID ='" . $this->RUBRICA_ID . "' OR RUBRICA_NOMBRE LIKE'" . $this->RUBRICA_NOMBRE . "' OR RUBRICA_DESCRIPCION = '" . $this->RUBRICA_DESCRIPCION . "' OR RUBRICA_NIVELES = '" . $this->RUBRICA_NIVELES . "' OR RUBRICA_AUTOR = '" . $this->RUBRICA_AUTOR . "'";
 
-        if (!$resultado = $this->mysqli->query($sql)) { //----- LA CONSULTA DEVUELVE TRUE SIEMPRE -----
-            return FALSE; //CAMBIAR AVISO //Abraham tenía un echo
+        if (!$resultado = $this->mysqli->query($sql)) {
+            return FALSE;
         } else {
-            if ($this->CLIENTE_ID === FALSE) {
-                return FALSE;
-            }
             $toret = array();
             $i = 0;
             while ($fila = $resultado->fetch_array()) {
                 $toret[$i] = $fila;
-                if (CalcularDescuentoCliente($toret[$i]['CLIENTE_ID'])) {
-                    $toret[$i]['PAGO_DESCUENTO'] = 100 * (1 - CalcularDescuentoCliente($toret[$i]['CLIENTE_ID']));
-                    $toret[$i]['PAGO_IMPORTE_FINAL'] = round($toret[$i]['PAGO_IMPORTE'] * CalcularDescuentoCliente($toret[$i]['CLIENTE_ID']), 2);
-                } else {
-                    $toret[$i]['PAGO_DESCUENTO'] = '0';
-                    $toret[$i]['PAGO_IMPORTE_FINAL'] = $toret[$i]['PAGO_IMPORTE'];
-                }
                 $i++;
             }
             return $toret;
-            //$toret = array();
-            //$toret[0] = $resultado->fetch_array();
-            // return $toret;
         }
     }
 
