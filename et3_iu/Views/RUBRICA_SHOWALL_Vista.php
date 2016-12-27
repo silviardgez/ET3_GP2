@@ -81,10 +81,10 @@ class RUBRICA_SHOWALL {
                                     }
                                 }?>
                                 <td>
-                                <a href='USUARIO_Controller.php?USUARIO_USER=<?php echo $this->datos[$j]['RUBRICA_ID'] . '&accion=' . $strings['Modificar']; ?>'><?php echo $strings['Modificar'] ?></a>
+                                <a href='RUBRICA_Controller.php?RUBRICA_ID=<?php echo $this->datos[$j]['RUBRICA_ID'] . '&accion=' . $strings['Modificar']; ?>'><?php echo $strings['Modificar'] ?></a>
                             </td>
                             <td>
-                                <a href='USUARIO_Controller.php?USUARIO_USER=<?php echo $this->datos[$j]['RUBRICA_ID'] . '&accion=' . $strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a>
+                                <a href='RUBRICA_Controller.php?RUBRICA_ID=<?php echo $this->datos[$j]['RUBRICA_ID'] . '&accion=' . $strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a>
                             </td>
                             </tr>
                            <?php }

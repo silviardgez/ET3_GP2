@@ -75,22 +75,19 @@ Switch ($_REQUEST['accion']) {
 
 
     case $strings['Modificar']: //Modificación de pagos
-        if (!isset($_REQUEST['PAGO_CONCEPTO'])) {
-            $pago = new PAGO_MODEL($_REQUEST['PAGO_ID'], '', '', '', '', '', '', '');
-            $valores = $pago->RellenaDatos();
-            if (!tienePermisos('PAGO_Modificar')) {
-                new Mensaje('No tienes los permisos necesarios', 'PAGO_Controller.php');
+        if (!isset($_REQUEST['RUBRICA_NOMBRE'])) {
+        $rubrica = new RUBRICA_Model($_REQUEST['RUBRICA_ID'], '', '', '', '');
+            $valores = $rubrica->RellenaDatos();
+            if (!tienePermisos('RUBRICA_EDIT')) {
+                new Mensaje('No tienes los permisos necesarios', 'RUBRICA_Controller.php');
             } else {
-                new PAGO_Modificar($valores, 'PAGO_Controller.php');
+                new RUBRICA_EDIT($valores, 'RUBRICA_Controller.php');
             }
         } else {
-            $pago = get_data_form();
-            $respuesta = $pago->Modificar();
-            // $respuesta = $pago->Modificar($_REQUEST['ROL_ID'], $rol->rol_funcionalidades);
-            new Mensaje($respuesta, 'PAGO_Controller.php');
+            $rubrica = get_data_form();
+            $respuesta = $rubrica->Modificar();
+            new Mensaje($respuesta, 'RUBRICA_Controller.php');
         }
-
-
         break;
 
 

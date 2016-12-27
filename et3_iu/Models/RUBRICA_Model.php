@@ -14,16 +14,18 @@ class RUBRICA_Model {
 
 //Constructor de la clase pago
     function __construct($RUBRICA_ID, $RUBRICA_NOMBRE, $RUBRICA_DESCRIPCION, $RUBRICA_NIVELES, $RUBRICA_AUTOR) { // CONSTRUCTOR OK!
-        $this->RUBRICA_ID=$RUBRICA_ID;
-        $this->RUBRICA_NOMBRE=$RUBRICA_NOMBRE;
-        $this->RUBRICA_DESCRIPCION=$RUBRICA_DESCRIPCION;
-        $this->RUBRICA_NIVELES=$RUBRICA_NIVELES;
-        $this->RUBRICA_AUTOR=$RUBRICA_AUTOR;
+        $this->RUBRICA_ID = $RUBRICA_ID;
+        $this->RUBRICA_NOMBRE = $RUBRICA_NOMBRE;
+        $this->RUBRICA_DESCRIPCION = $RUBRICA_DESCRIPCION;
+        $this->RUBRICA_NIVELES = $RUBRICA_NIVELES;
+        $this->RUBRICA_AUTOR = $RUBRICA_AUTOR;
     }
+
 //Destructor del objeto
-    function __destruct() { 
+    function __destruct() {
+        
     }
-    
+
 //Función para la conexión a la base de datos
     function ConectarBD() {
         $this->mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
@@ -32,25 +34,20 @@ class RUBRICA_Model {
         }
     }
 
-    
 //Inserción de nuevas Rúbricas
     function Insertar() { // ----- WORKING!! -----
         $this->ConectarBD();
         if ($this->RUBRICA_ID === FALSE) {
-            return 'No existe ningún cliente con el DNI introducido';//Corregir String
+            return 'No existe ningún cliente con el DNI introducido'; //Corregir String
         } else {
-
-         //   $sql = "INSERT INTO RUBRICA (RUBRICA_NOMBRE, RUBRICA_DESCRIPCION, RUBRICA_NIVELES, RUBRICA_AUTOR) VALUES ('" . $this->RUBRICA_NOMBRE . "', '" . $this->RUBRICA_DESCRIPCION . "', '" . $this->RUBRICA_NIVELES ."', '" .$this->RUBRICA_AUTOR. "')";
-              $sql = "INSERT INTO RUBRICA (RUBRICA_NOMBRE, RUBRICA_DESCRIPCION, RUBRICA_NIVELES, RUBRICA_AUTOR) VALUES ('" . $this->RUBRICA_NOMBRE . "', '" . $this->RUBRICA_DESCRIPCION . "', '" . $this->RUBRICA_NIVELES ."', '" .$_SESSION['login']. "')";
+            $sql = "INSERT INTO RUBRICA (RUBRICA_NOMBRE, RUBRICA_DESCRIPCION, RUBRICA_NIVELES, RUBRICA_AUTOR) VALUES ('" . $this->RUBRICA_NOMBRE . "', '" . $this->RUBRICA_DESCRIPCION . "', '" . $this->RUBRICA_NIVELES . "', '" . $_SESSION['login'] . "')";
             if (!$result = $this->mysqli->query($sql)) {
-                return 'No existe ningún cliente con el DNI introducido';//Corregir String
+                return 'No existe ningún cliente con el DNI introducido'; //Corregir String
             } else {
                 return 'Rubrica creada correctamente';
             }
         }
     }
-
-
 
     //Borrado de un pago
     function Borrar() {
@@ -69,7 +66,7 @@ class RUBRICA_Model {
             return 'El pago ha sido borrado correctamente';
         }
     }
-    
+
 //Nos devuelve la información de los pagos realizados por un determinado cliente o id
     function Consultar() {
         $this->ConectarBD();
@@ -106,46 +103,32 @@ class RUBRICA_Model {
         }
     }
 
-//Modifica los datos del pago
-//function Modificar($ROL_ID, $rol_funcionalidades)
-    //function Modificar($PAGO_ID, $PAGO_IMPORTE, $PAGO_CONCEPTO, $PAGO_CLIENTE, $PAGO_FECHA)
+//Modifica los datos de una rubrica
     function Modificar() {
         $this->ConectarBD();
-        $sql = "SELECT * FROM CLIENTE WHERE CLIENTE_ID='" . $this->CLIENTE_ID . "'";
+        $sql = "SELECT * FROM RUBRICA WHERE RUBRICA_ID='" . $this->RUBRICA_ID . "'";
         if (!$resultado = $this->mysqli->query($sql)) {
-            return 'El DNI introducido no pertenece a ningun cliente';
+            return 'El DNI introducido no pertenece a ningun cliente'; //CorregirStrings
         } else {
-            $sql = "UPDATE PAGO SET PAGO_IMPORTE = '" . $this->PAGO_IMPORTE . "', PAGO_CONCEPTO ='" . $this->PAGO_CONCEPTO . "', PAGO_ESTADO ='" . $this->PAGO_ESTADO . "', PAGO_METODO ='" . $this->PAGO_METODO . "', CLIENTE_ID ='" . $this->CLIENTE_ID . "' WHERE PAGO_ID = '" . $this->PAGO_ID . "'";
+            $sql = "UPDATE RUBRICA SET RUBRICA_NOMBRE = '" . $this->RUBRICA_NOMBRE . "', RUBRICA_DESCRIPCION ='" . $this->RUBRICA_DESCRIPCION . "', RUBRICA_NIVELES ='" . $this->RUBRICA_NIVELES . "' WHERE RUBRICA_ID='".$this->RUBRICA_ID."'";
             if (!$resultado = $this->mysqli->query($sql)) {
                 return 'Error en la consulta sobre la base de datos';
             } else {
-                if (file_exists('../Recibos/Recibo_' . $this->PAGO_ID . '.txt')) {
-                    $this->borrarRecibo();
-                }
-
-                return 'El pago se ha modificado correctamente';
+                return 'Rubrica modificada correctamente';
             }
         }
     }
 
     function RellenaDatos() { //Completa el formulario visible con los datos del pago
         $this->ConectarBD();
-        $CLIENTE_ID = consultarIDClientePAGO("$this->PAGO_ID");
-        $CLIENTE_DNI = consultarDNICliente($CLIENTE_ID);
-        $sql = "SELECT * FROM PAGO WHERE PAGO_ID ='" . $this->PAGO_ID . "'";
-        if (!$resultado = $this->mysqli->query($sql)) {
+        $sql = "SELECT RUBRICA_ID, RUBRICA_NOMBRE, RUBRICA_DESCRIPCION, RUBRICA_NIVELES FROM RUBRICA WHERE RUBRICA_ID = '" . $this->RUBRICA_ID . "'";
+        if (!($resultado = $this->mysqli->query($sql))) {
             return 'Error en la consulta sobre la base de datos';
         } else {
             $result = $resultado->fetch_array();
-            $result['CLIENTE_DNI'] = $CLIENTE_DNI;
-
-
-
             return $result;
         }
     }
-
-
 
     function generarRecibo() { //Genera el recibo en formato .txt correspondiente a un pago.
         $this->ConectarBD();
@@ -165,7 +148,6 @@ class RUBRICA_Model {
     function borrarRecibo() {
         borrarRecibo($this->PAGO_ID);
     }
-
 
     function consultarPagosAtrasados() {
         $this->ConectarBD();

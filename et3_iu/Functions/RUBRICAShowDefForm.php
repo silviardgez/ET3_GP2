@@ -11,7 +11,8 @@ $form = array(
         'required' => false,
         'pattern' => '',
         'validation' => '',
-        'readonly' => false
+        'readonly' => true,
+        'hidden'=>true
     ),
     1 => array(
         'type' => 'text',
