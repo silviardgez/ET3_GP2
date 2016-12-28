@@ -257,7 +257,31 @@
 			return true;
 		}
 
-		
-
-
-
+		function valida_envia_RUBRICA() {
+    if (document.form.RUBRICA_NOMBRE.value.length > 25) {
+        alert("The maximum size for the name of a rubric is 25 characters");
+        document.form.RUBRICA_NOMBRE.focus();
+        return false;
+    }
+      if (document.form.RUBRICA_NOMBRE.value.length == 0) {
+        alert("It is necessary to give a name to the rubric");
+        document.form.RUBRICA_NOMBRE.focus();
+        return false;
+    }
+    if (document.form.RUBRICA_DESCRIPCION.value.length > 50) {
+        alert("The maximum size for the description of a rubric is 25 characters");
+        document.form.RUBRICA_DESCRIPCION.focus();
+        return false;
+    }
+     if (document.form.RUBRICA_NIVELES.value > 10) {
+        alert("The maximum size of levels for a rubric is 10");
+        document.form.RUBRICA_DESCRIPCION.focus();
+        return false;
+    }
+    if (document.form.RUBRICA_NIVELES.value < 2) {
+        alert("The minimum size of levels for a rubric is 2");
+        document.form.RUBRICA_DESCRIPCION.focus();
+        return false;
+    }
+    return true;
+}

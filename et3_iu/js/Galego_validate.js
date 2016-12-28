@@ -259,8 +259,32 @@
 
 			return true;
 		}
-
-		
-
-
-
+                
+                function valida_envia_RUBRICA() {
+    if (document.form.RUBRICA_NOMBRE.value.length > 25) {
+        alert("O tamaño máximo para o nome dunha rúbrica é 25 caracteres");
+        document.form.RUBRICA_NOMBRE.focus();
+        return false;
+    }
+      if (document.form.RUBRICA_NOMBRE.value.length == 0) {
+        alert("É necesario darlle un nome á rúbrica");
+        document.form.RUBRICA_NOMBRE.focus();
+        return false;
+    }
+    if (document.form.RUBRICA_DESCRIPCION.value.length > 50) {
+        alert("O tamaño máximo para a descripción dunha rúbrica é 25 caracteres");
+        document.form.RUBRICA_DESCRIPCION.focus();
+        return false;
+    }
+     if (document.form.RUBRICA_NIVELES.value > 10) {
+        alert("O tamaño máximo de niveles dunha rúbrica é 10");
+        document.form.RUBRICA_DESCRIPCION.focus();
+        return false;
+    }
+    if (document.form.RUBRICA_NIVELES.value < 2) {
+        alert("O tamaño minimo de niveles dunha rúbrica é 2");
+        document.form.RUBRICA_DESCRIPCION.focus();
+        return false;
+    }
+    return true;
+}

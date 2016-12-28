@@ -131,7 +131,8 @@ INSERT INTO `FUNCIONALIDAD` (`FUNCIONALIDAD_ID`, `FUNCIONALIDAD_NOM`) VALUES
 (1, 'GESTION USUARIOS'),
 (2, 'GESTION ROLES'),
 (3, 'GESTION FUNCIONALIDADES'),
-(4, 'GESTION PAGINAS');
+(4, 'GESTION PAGINAS'),
+(100, 'GESTION RUBRICAS');
 
 -- --------------------------------------------------------
 
@@ -171,7 +172,12 @@ INSERT INTO `FUNCIONALIDAD_PAGINA` (`FUNCIONALIDAD_ID`, `PAGINA_ID`) VALUES
 (2, 20),
 (2, 21),
 (2, 22),
-(2, 23);
+(2, 23),
+(100, 100),
+(100, 101),
+(100, 102),
+(100, 103),
+(100, 104);
 
 -- --------------------------------------------------------
 
@@ -333,7 +339,12 @@ INSERT INTO `PAGINA` (`PAGINA_ID`, `PAGINA_LINK`, `PAGINA_NOM`) VALUES
 (20, '../Views/ROL_EDIT_Vista.php', 'ROL EDIT'),
 (21, '../Views/ROL_SHOWALL_Vista.php', 'ROL SHOWALL'),
 (22, '../Views/ROL_SHOW_FUNCIONES_Vista.php', 'ROL SHOW FUNCIONES'),
-(23, '../Views/ROL_SHOWCURRENT_Vista.php', 'ROL SHOWCURRENT');
+(23, '../Views/ROL_SHOWCURRENT_Vista.php', 'ROL SHOWCURRENT'),
+(100, '../Views/RUBRICA_ADD_Vista.php', 'RUBRICA ADD'),
+(101, '../Views/RUBRICA_DELETE_Vista.php', 'RUBRICA DELETE'),
+(102, '../Views/RUBRICA_EDIT_Vista.php', 'RUBRICA EDIT'),
+(103, '../Views/RUBRICA_SHOWALL_Vista.php', 'RUBRICA SHOWALL'),
+(104, '../Views/RUBRICA_SHOWCURRENT_Vista.php', 'RUBRICA SHOWCURRENT');
 
 -- --------------------------------------------------------
 
@@ -391,7 +402,9 @@ INSERT INTO `ROL_FUNCIONALIDAD` (`ROL_ID`, `FUNCIONALIDAD_ID`) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
-(1, 4);
+(1, 4),
+(1, 100),
+(2, 100);
 
 -- --------------------------------------------------------
 
@@ -402,9 +415,9 @@ INSERT INTO `ROL_FUNCIONALIDAD` (`ROL_ID`, `FUNCIONALIDAD_ID`) VALUES
 CREATE TABLE IF NOT EXISTS `RUBRICA` (
 `RUBRICA_ID` int(10) NOT NULL,
   `RUBRICA_NOMBRE` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `RUBRICA_DESCRIPCION` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `RUBRICA_NIVELES` int(2) NOT NULL,
-  `RUBRICA_AUTOR` int(10) NOT NULL
+  `RUBRICA_DESCRIPCION` varchar(65) COLLATE utf8_spanish_ci NOT NULL,
+  `RUBRICA_NIVELES` int(5) NOT NULL,
+  `RUBRICA_AUTOR` varchar(15) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -412,7 +425,9 @@ CREATE TABLE IF NOT EXISTS `RUBRICA` (
 --
 
 INSERT INTO `RUBRICA` (`RUBRICA_ID`, `RUBRICA_NOMBRE`, `RUBRICA_DESCRIPCION`, `RUBRICA_NIVELES`, `RUBRICA_AUTOR`) VALUES
-(1, 'Rubrica ET3', 'Rubrica para la correccion de ', 4, 1);
+(1, 'Rubrica ET3', 'Rubrica para la correccion de ET3', 7, 'SANTOSJF'),
+(2, 'Correcion TFG 2017', 'Falta por insertar items', 5, 'JRODEIRO'),
+(3, 'Proyecto PI', 'Correction binaria', 2, 'UBALDOGP');
 
 -- --------------------------------------------------------
 
@@ -507,7 +522,17 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('ADMIN', 20),
 ('ADMIN', 21),
 ('ADMIN', 22),
-('ADMIN', 23);
+('ADMIN', 23),
+('ADMIN', 100),
+('ADMIN', 101),
+('ADMIN', 102),
+('ADMIN', 103),
+('ADMIN', 104),
+('PROFESOR', 100),
+('PROFESOR', 101),
+('PROFESOR', 102),
+('PROFESOR', 103),
+('PROFESOR', 104);
 
 --
 -- Índices para tablas volcadas

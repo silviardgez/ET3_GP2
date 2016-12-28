@@ -192,6 +192,10 @@ $strings = array(
 	'2016'=>'since 2016',
 	'Estudia'=>'Study',
 	'Con Nosotros'=>'With Us',
+     'Gestión de Rúbricas'=>'Rubrics Management',
+        'Rubrica creada correctamente'=>'Rubric created successfully',
+    'Rubrica modificada correctamente'=>'Rubric modificated successfully',
+    'La rúbrica ha sido borrada correctamente'=>'Rubric deleted successfully',
 	'texto'=>" is an initiative of User Interfaces subject, developed by Group 7,intended as a service to complement teaching, based on the Internet as a venue and is directed firstly towards teachers, students and administrative staff and services and, secondly, towards pre-university students who aim to study higher education at this university."
 
 
