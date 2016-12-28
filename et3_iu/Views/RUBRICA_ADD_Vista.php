@@ -1,6 +1,6 @@
 <?php
 
-//VISTA PARA INSERTAR PAGOS
+//VISTA PARA INSERTAR RUBRICAS
 class RUBRICA_ADD {
 
     function __construct() {
@@ -33,10 +33,11 @@ class RUBRICA_ADD {
 
                 <ul class="form-style-1">
                     <?php
+                    
                     //Generación automática del formulario
                     createForm($lista, $DefForm, $stringsRubrica, '', array('RUBRICA_DESCRIPCION' => false), false);
                     ?>
-                    <input type='submit' onclick="return valida_envia_USUARIO()" name='accion'  value=<?php echo $strings['Insertar'] ?>
+                    <input type='submit' onclick="return valida_envia_RUBRICA()" name='accion'  value=<?php echo $strings['Insertar'] ?>
                            <ul>
                         </form>
                         <?php

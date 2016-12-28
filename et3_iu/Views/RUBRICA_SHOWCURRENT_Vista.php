@@ -48,7 +48,7 @@ class RUBRICA_SHOWCURRENT{
 		</div>
 
 		<?php
-	} //fin metodo render
+	}
 
 }
 ?>

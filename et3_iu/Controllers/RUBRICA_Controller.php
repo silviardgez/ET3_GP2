@@ -38,9 +38,9 @@ function get_data_form() {
 if (!isset($_REQUEST['accion'])) {
     $_REQUEST['accion'] = '';
 }
-Switch ($_REQUEST['accion']) {
+Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, el controlador redirige el comportamiento del programa
 
-    case $strings['Insertar']:
+    case $strings['Insertar']: //Inserción de nuevas Rubricas
         if (!isset($_REQUEST['RUBRICA_NOMBRE'])) {
             if (!tienePermisos('RUBRICA_ADD')) {
                 new Mensaje('No tienes los permisos necesarios', 'RUBRICA_Controller.php');
@@ -55,7 +55,7 @@ Switch ($_REQUEST['accion']) {
         break;
 
 
-    case $strings['Borrar']: //Borrado de roles
+    case $strings['Borrar']: //Borrado de rubricas
         if (!isset($_REQUEST['RUBRICA_NOMBRE'])) {
             $rubrica = new RUBRICA_Model($_REQUEST['RUBRICA_ID'], '', '', '', '');
             $valores = $rubrica->RellenaDatos();
@@ -73,7 +73,7 @@ Switch ($_REQUEST['accion']) {
 
 
 
-    case $strings['Modificar']: //Modificación de pagos
+    case $strings['Modificar']: //Modificación de rubricas
         if (!isset($_REQUEST['RUBRICA_NOMBRE'])) {
         $rubrica = new RUBRICA_Model($_REQUEST['RUBRICA_ID'], '', '', '', '');
             $valores = $rubrica->RellenaDatos();

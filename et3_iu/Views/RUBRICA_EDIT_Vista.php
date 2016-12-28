@@ -40,7 +40,7 @@ class RUBRICA_EDIT {
                             createForm($lista, $DefForm, $stringsRubrica, $this->valores, '', array('RUBRICA_ID'=>true, 'RUBRICA_AUTOR'=>true));
                             ?>
 
-                            <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_USUARIO()" >
+                            <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_RUBRICA()" >
                             </form>
 
 
@@ -53,8 +53,7 @@ class RUBRICA_EDIT {
                             <?php
                         }
 
-// fin del metodo render
+
                     }
 
-                    // fin de la clase
                     ?>

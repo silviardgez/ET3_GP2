@@ -415,8 +415,8 @@ INSERT INTO `ROL_FUNCIONALIDAD` (`ROL_ID`, `FUNCIONALIDAD_ID`) VALUES
 CREATE TABLE IF NOT EXISTS `RUBRICA` (
 `RUBRICA_ID` int(10) NOT NULL,
   `RUBRICA_NOMBRE` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `RUBRICA_DESCRIPCION` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `RUBRICA_NIVELES` int(2) NOT NULL,
+  `RUBRICA_DESCRIPCION` varchar(65) COLLATE utf8_spanish_ci NOT NULL,
+  `RUBRICA_NIVELES` int(5) NOT NULL,
   `RUBRICA_AUTOR` varchar(15) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -425,7 +425,9 @@ CREATE TABLE IF NOT EXISTS `RUBRICA` (
 --
 
 INSERT INTO `RUBRICA` (`RUBRICA_ID`, `RUBRICA_NOMBRE`, `RUBRICA_DESCRIPCION`, `RUBRICA_NIVELES`, `RUBRICA_AUTOR`) VALUES
-(1, 'Rubrica ET3', 'Rubrica para la correccion de ET3', 4, 'MPEGEA');
+(1, 'Rubrica ET3', 'Rubrica para la correccion de ET3', 7, 'SANTOSJF'),
+(2, 'Correcion TFG 2017', 'Falta por insertar items', 5, 'JRODEIRO'),
+(3, 'Proyecto PI', 'Correction binaria', 2, 'UBALDOGP');
 
 -- --------------------------------------------------------
 

@@ -5,15 +5,15 @@ include '../Functions/LibraryFunctions.php';
 //Clase que maneja la informacion una rubrica 
 class RUBRICA_Model {
 
-    var $RUBRICA_ID;  //ATRIBUTOS OK!
+    var $RUBRICA_ID; 
     var $RUBRICA_NOMBRE;
     var $RUBRICA_DESCRIPCION;
     var $RUBRICA_NIVELES;
     var $RUBRICA_AUTOR;
     var $mysqli;
 
-//Constructor de la clase pago
-    function __construct($RUBRICA_ID, $RUBRICA_NOMBRE, $RUBRICA_DESCRIPCION, $RUBRICA_NIVELES, $RUBRICA_AUTOR) { // CONSTRUCTOR OK!
+//Constructor de la clase rubrica
+    function __construct($RUBRICA_ID, $RUBRICA_NOMBRE, $RUBRICA_DESCRIPCION, $RUBRICA_NIVELES, $RUBRICA_AUTOR) {
         $this->RUBRICA_ID = $RUBRICA_ID;
         $this->RUBRICA_NOMBRE = $RUBRICA_NOMBRE;
         $this->RUBRICA_DESCRIPCION = $RUBRICA_DESCRIPCION;
@@ -60,7 +60,7 @@ class RUBRICA_Model {
         }
     }
 
-//Nos devuelve la información de los pagos realizados por un determinado cliente o id
+//Permite la consulta de rubricas por todos sus atributos
     function Consultar() {
         $this->ConectarBD();
         $sql = "SELECT * FROM RUBRICA WHERE RUBRICA_ID ='" . $this->RUBRICA_ID . "' OR RUBRICA_NOMBRE LIKE'" . $this->RUBRICA_NOMBRE . "' OR RUBRICA_DESCRIPCION = '" . $this->RUBRICA_DESCRIPCION . "' OR RUBRICA_NIVELES = '" . $this->RUBRICA_NIVELES . "' OR RUBRICA_AUTOR = '" . $this->RUBRICA_AUTOR . "'";
@@ -78,7 +78,7 @@ class RUBRICA_Model {
         }
     }
 
-//Devuelve la lista de todos los pagos realizados
+//Devuelve la lista de todas las rubricas
     function ConsultarTodo() {
         $this->ConectarBD();
         $sql = "SELECT * FROM RUBRICA";
@@ -112,7 +112,7 @@ class RUBRICA_Model {
         }
     }
 
-    function RellenaDatos() { //Completa el formulario visible con los datos del pago
+    function RellenaDatos() { //Completa el formulario visible con los datos de una rubrica
         $this->ConectarBD();
         $sql = "SELECT RUBRICA_ID, RUBRICA_NOMBRE, RUBRICA_DESCRIPCION, RUBRICA_NIVELES, RUBRICA_AUTOR FROM RUBRICA WHERE RUBRICA_ID = '" . $this->RUBRICA_ID . "'";
         if (!($resultado = $this->mysqli->query($sql))) {

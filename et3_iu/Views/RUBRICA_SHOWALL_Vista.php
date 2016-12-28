@@ -110,7 +110,5 @@ class RUBRICA_SHOWALL {
         </body>
         <?php
     }
-
-//fin metodo render
 }
 

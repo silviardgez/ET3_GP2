@@ -186,6 +186,10 @@ $strings = array(
 	'2016'=>'dende 2016',
 	'Estudia'=>'Estuda',
 	'Con Nosotros'=>'Con Nós',
+     'Gestión de Rúbricas'=>'Xestión de Rúbricas',
+        'Rubrica creada correctamente'=>'Rubrica creada correctamente',
+    'Rubrica modificada correctamente'=>'Rubrica modificada correctamente',
+    'La rúbrica ha sido borrada correctamente'=>'A rúbrica borrouse correctamente',
 	'texto'=>" é unha iniciativa da materia Interfaces de Usuario, desenvolvida polo Grupo 7, que pretende ser un servizo de complemento á docencia, baseado en Internet como contorno e que se dirixe, por unha banda, ao profesorado, alumnado e persoal de administración e servizos e, por outra, ao alumnado preuniversitario que teña en mente cursar os seus estudos superiores nesta universidade."
 
 
