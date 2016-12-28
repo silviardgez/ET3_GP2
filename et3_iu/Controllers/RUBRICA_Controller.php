@@ -56,19 +56,18 @@ Switch ($_REQUEST['accion']) {
 
 
     case $strings['Borrar']: //Borrado de roles
-        if (!isset($_REQUEST['PAGO_CONCEPTO'])) {
-            $pago = new PAGO_MODEL($_REQUEST['PAGO_ID'], '', '', '', '', '', '', '');
-            $valores = $pago->RellenaDatos();
-            if (!tienePermisos('PAGO_Borrar')) {
-                new Mensaje('No tienes los permisos necesarios', 'PAGO_Controller.php');
+        if (!isset($_REQUEST['RUBRICA_NOMBRE'])) {
+            $rubrica = new RUBRICA_Model($_REQUEST['RUBRICA_ID'], '', '', '', '');
+            $valores = $rubrica->RellenaDatos();
+            if (!tienePermisos('RUBRICA_DELETE')) {
+                new Mensaje('No tienes los permisos necesarios', 'RUBRICA_Controller.php');
             } else {
-                new PAGO_Borrar($valores, 'PAGO_Controller.php');
+                new RUBRICA_DELETE($valores, 'RUBRICA_Controller.php');
             }
         } else {
-            $pago = get_data_form();
-            $respuesta = $pago->Borrar();
-//$pago->borrarRecibo();
-            new Mensaje($respuesta, 'PAGO_Controller.php');
+            $rubrica = get_data_form();
+            $respuesta = $rubrica->Borrar();
+            new Mensaje($respuesta, 'RUBRICA_Controller.php');
         }
         break;
 

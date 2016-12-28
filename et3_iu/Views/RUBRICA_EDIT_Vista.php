@@ -19,7 +19,7 @@ class RUBRICA_EDIT {
         include '../Functions/RUBRICAShowDefForm.php';
 
         //Array con los nombres de los campos a modificar
-            $lista = array('RUBRICA_ID', 'RUBRICA_NOMBRE', 'RUBRICA_DESCRIPCION', 'RUBRICA_NIVELES');
+            $lista = array('RUBRICA_ID', 'RUBRICA_NOMBRE', 'RUBRICA_DESCRIPCION', 'RUBRICA_NIVELES', 'RUBRICA_AUTOR');
       
         ?>
         <html>
@@ -37,7 +37,7 @@ class RUBRICA_EDIT {
                         <ul class="form-style-1">
                             <?php
 
-                            createForm($lista, $DefForm, $stringsRubrica, $this->valores, '', array('RUBRICA_ID'=>true));
+                            createForm($lista, $DefForm, $stringsRubrica, $this->valores, '', array('RUBRICA_ID'=>true, 'RUBRICA_AUTOR'=>true));
                             ?>
 
                             <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_USUARIO()" >

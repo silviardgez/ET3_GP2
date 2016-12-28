@@ -8,6 +8,7 @@ $stringsRubrica = array(
     'Insertar Rubrica'=>'Insertar Rubrica',
     'Consultar Rubrica'=>'Consultar Rubrica',
     'Modificar Rubrica'=>'Modificar Rubrica',
+    'Borrar Rubrica'=>'Borrar Rubrica',
     'Rubrica creada correctamente'=>'Rubrica creada correctamente',
     'GESTION RUBRICAS'=>'GESTION RUBRICAS'
         )

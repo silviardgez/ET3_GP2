@@ -1,62 +1,54 @@
 <?php
 
-class PAGO_Borrar {
+class RUBRICA_DELETE{
 
-//VISTA PARA BORRAR PAGOS
+private $valores;
+private $volver;
 
-    private $valores;
+//VISTA PARA EL BORRADO DE RUBRICAS
+function __construct($valores,$volver){
+	$this->valores = $valores;
+	$this->volver = $volver;
+	$this->render();
+}
 
-    function __construct($valores) {
-        $this->valores = $valores;
-        $this->render();
-    }
+function render(){
 
-    function render() {
-        ?>
-
-        <head><link rel="stylesheet" href="../Styles/styles.css" type="text/css" media="screen" /></head>
-        <p>
-        <h2>
-            <?php
-            include '../Locates/Strings_' . $_SESSION['IDIOMA'] . '.php';
-            include '../Functions/PAGOShowDefForm.php';
-
-            // $lista = array('CLIENTE_DNI', 'PAGO_CONCEPTO', 'PAGO_IMPORTE');
-            $lista = array('PAGO_ID', 'CLIENTE_ID', 'PAGO_FECHA', 'PAGO_CONCEPTO', 'PAGO_METODO', 'PAGO_IMPORTE', 'PAGO_ESTADO');
-            ?>
-        </h2>
-        </p>
-        <p>
-        <h1><span class="form-title">
-                <?php echo $strings['Borrar Pago'] ?><br>
-                </h1>
-                <h3>
-
-                    <form action='PAGO_Controller.php' method='post' >
-                        <ul class="form-style-1">
-                            <?php
-                            createForm($lista, $form, $strings, $this->valores, false, true); //$form2
-                            ?>
-
-                            <br><b><?php echo$strings['PAGO_METODO'] ?></b>
-                            <input type="text" name="PAGO_METODO" value='<?php echo $strings [$this->valores['PAGO_METODO']] ?>' readonly><br>
-                            <br><b><?php echo $strings['PAGO_ESTADO'] ?></b>
-                            <input type="text" name="PAGO_ESTADO" value='<?php echo $strings [$this->valores['PAGO_ESTADO']] ?>' readonly><br>
+	include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
+        include '../Locates/Strings_'.$_SESSION['IDIOMA'].'_Rubrica.php';
+        include '../Functions/RUBRICAShowDefForm.php';
 
 
-                            <input type='submit' name='accion' value=<?php echo $strings['Borrar'] ?>>
-                            </form>
-                            <?php
-                            echo '<a class="form-link" href=\'PAGO_Controller.php\'>' . $strings['Volver'] . " </a>";
-                            ?>
-                            </h3>
-                            </p>
+//Array con los nombres de los campos
+            $lista = array('RUBRICA_ID', 'RUBRICA_NOMBRE', 'RUBRICA_DESCRIPCION', 'RUBRICA_NIVELES', 'RUBRICA_AUTOR');
 
-                            </div>
+?>
+<html>
+	<head><link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
+		<link rel="stylesheet" href="../css/Styles/styles.css" type="text/css" media="screen" />
+		<meta charset="UTF-8">
+	</head> 
 
-                            <?php
-                        }
+		<div class="wrap">
 
-//fin metodo render
-                    }
-                    ?>
+
+
+			<form action = 'RUBRICA_Controller.php' method = 'get'><br>
+				<div id="centrado"><span class="form-title">
+			<?php echo $stringsRubrica['Borrar Rubrica']?><br></span></div>
+				<ul class="form-style-1">
+				<?php
+                                
+//Generación automática del array
+	createForm($lista,$DefForm,$stringsRubrica,$this->valores,true,true);
+?>
+				<input type = 'submit' name = 'accion' value =<?php echo $strings['Borrar'] ?> ></form> <a class="form-link" href='<?php echo $this->volver; ?> '><?php echo $strings['Volver']; ?> </a>
+			</p>
+
+		</div>
+
+</html>
+<?php
+} // fin del metodo render
+} // fin de la clase
+?>

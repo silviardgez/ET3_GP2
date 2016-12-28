@@ -183,6 +183,7 @@ $strings = array(
     'Gestión de Rúbricas'=>'Gestión de Rúbricas',
         'Rubrica creada correctamente'=>'Rubrica creada correctamente',
     'Rubrica modificada correctamente'=>'Rubrica modificada correctamente',
+    'La rúbrica ha sido borrada correctamente'=>'La rúbrica ha sido borrada correctamente',
 	'texto'=>'es una iniciativa de la asignatura Interfaces de Usuario, desarrollada por el Grupo 7, que pretende ser un servicio de complemento a la docencia, basado en Internet como entorno y que se dirige, por una parte, al profesorado, alumnado y personal de administración y servicios y, por otra, al alumnado preuniversitario que tenga en mente cursar  estudios superiores.'
 
 
