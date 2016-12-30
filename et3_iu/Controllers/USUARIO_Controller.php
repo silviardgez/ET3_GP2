@@ -124,7 +124,7 @@ if (!isset($_REQUEST['accion'])){
 				//Crea un usuario solo con el user para posteriormente rellenar el formulario con sus datos
 				$usuario = new USUARIO_Modelo($_REQUEST['USUARIO_USER'], '', '', '', '', '', '', '', '','','', '', '', '');
 				$valores = $usuario->RellenaDatos($_REQUEST['USUARIO_USER']);
-				if(!tienePermisos('USUARIO_Modificar')){
+				if(!tienePermisos('USUARIO_Modificar')|| (consultarRol($_SESSION['login'])=='4' && (!mismaMateria($_REQUEST['USUARIO_USER']) || (consultarRol($_REQUEST['USUARIO_USER'])=='4')))){
 					new Mensaje('No tienes los permisos necesarios','USUARIO_Controller.php');
 				}
 				else {
@@ -133,7 +133,7 @@ if (!isset($_REQUEST['accion'])){
 				}
 			}
 			else{
-				$_REQUEST['USUARIO_TIPO']='';
+
 
 				$usuario = get_data_form();
 				$carpetaFoto='../Documents/Empleados/'.$_REQUEST['USUARIO_DNI'].'/Foto/';
