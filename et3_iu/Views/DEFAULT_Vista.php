@@ -58,7 +58,7 @@ include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
             <ul class="categories">
                <?php echo añadirFuncionalidades($_SESSION);?>
 
-            </ul>
+                </ul>
 
         </aside>
         <!-- content -->
