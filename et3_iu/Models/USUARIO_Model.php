@@ -204,6 +204,26 @@ function Modificar()
 	 if($this->USUARIO_FOTO!=''){
 	 	$sql.=", USUARIO_FOTO='".$this->USUARIO_FOTO."'";
 	 }
+		if($this->USUARIO_TIPO!=''){
+			$sql1="DELETE FROM USUARIO_PAGINA WHERE USUARIO_USER='".$this->USUARIO_USER."'";
+			$this->mysqli->query($sql1);
+			//Cogemos las páginas que le corresponden por pertenecer a un determinado rol
+			$sql2 = "SELECT DISTINCT PAGINA.PAGINA_ID FROM  ROL_FUNCIONALIDAD, FUNCIONALIDAD_PAGINA, PAGINA  WHERE ROL_FUNCIONALIDAD.ROL_ID='".consultarRol($this->USUARIO_TIPO)."' AND ROL_FUNCIONALIDAD.FUNCIONALIDAD_ID=FUNCIONALIDAD_PAGINA.FUNCIONALIDAD_ID AND PAGINA.PAGINA_ID=FUNCIONALIDAD_PAGINA.PAGINA_ID";
+
+			if (!($resultado = $this->mysqli->query($sql2))) {
+				echo 'Error en la consulta sobre la base de datos';
+			} else {
+				while ($tupla=$resultado->fetch_array()){
+					//Insertamos esas páginas en la tabla USUARIO_PÁGINA de la que se van a recoger las acciones permitidas
+					$sql3="INSERT INTO USUARIO_PAGINA (USUARIO_USER, PAGINA_ID) VALUES('".$this->USUARIO_USER."',".$tupla['PAGINA_ID'].")";
+
+					$this->mysqli->query($sql3);
+				}
+
+			}
+
+			$sql.=", USUARIO_TIPO='".$this->USUARIO_TIPO."'";
+		}
 
 		$sql.=" WHERE USUARIO_USER='".$this->USUARIO_USER."'";
 

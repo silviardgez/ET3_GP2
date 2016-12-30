@@ -132,6 +132,7 @@ $strings = array(
 	'Consultar usuario'=>'Consultar Usuario',
 	'Consultar Rol'=>'Consultar Rol',
 	'Modificar Acciones'=>'Modificar Accións',
+    'USUARIO_TIPO2'=>'Tipo',
 	'Listar' => 'Listar',
 	'Insertar Pagina'=>'Inserir Páxina',
 	'Anadida con exito'=>'Páxina engadida con éxito',
@@ -173,6 +174,7 @@ $strings = array(
 	'SECRETARIO'=>'SECRETARIO',
 	'PROFESOR'=>'PROFESOR',
 	'ALUMNO'=>'ALUMNO',
+	'PROFESOR RESPONSABLE'=>'PROFESOR RESPONSABLE',
 	'Menu Principal'=>'Menú Principal',
 	'Centro deportivo'=>'Centro deportivo',
 	'Calendario'=>'Calendario',
@@ -190,7 +192,7 @@ $strings = array(
         'Rubrica creada correctamente'=>'Rubrica creada correctamente',
     'Rubrica modificada correctamente'=>'Rubrica modificada correctamente',
     'La rúbrica ha sido borrada correctamente'=>'A rúbrica borrouse correctamente',
-	'texto'=>" é unha iniciativa da materia Interfaces de Usuario, desenvolvida polo Grupo 7, que pretende ser un servizo de complemento á docencia, baseado en Internet como contorno e que se dirixe, por unha banda, ao profesorado, alumnado e persoal de administración e servizos e, por outra, ao alumnado preuniversitario que teña en mente cursar os seus estudos superiores nesta universidade."
+	'texto'=>" é unha iniciativa da materia Interfaces de Usuario, desenvolvida polo Grupo 2, que pretende ser un servizo de complemento á docencia, baseado en Internet como contorno e que se dirixe, por unha banda, ao profesorado, alumnado e persoal de administración e servizos e, por outra, ao alumnado preuniversitario que teña en mente cursar os seus estudos superiores nesta universidade."
 
 
 

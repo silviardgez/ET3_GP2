@@ -144,10 +144,11 @@ $strings = array(
 	'Gestión de Páginas'=>'Gestión de Páginas',
 	'PROFESOR'=>'PROFESOR',
 	'ALUMNO'=>'ALUMNO',
-
+	'PROFESOR RESPONSABLE'=>'PROFESOR RESPONSABLE',
 	'GESTION PAGINAS'=>'GESTIÓN PÁGINAS',
 	'GESTION ROLES'=>'GESTIÓN ROLES',
 	'GESTION FUNCIONALIDADES'=>'GESTIÓN FUNCIONALIDADES',
+	'USUARIO_TIPO2'=>'Tipo',
 	'No tienes los permisos necesarios'=>'No tienes los permisos necesarios',
 	'Consulta de usuarios'=>'Consulta de usuarios',
 	'Modificar acciones'=>'Acciones',
@@ -184,7 +185,33 @@ $strings = array(
         'Rubrica creada correctamente'=>'Rubrica creada correctamente',
     'Rubrica modificada correctamente'=>'Rubrica modificada correctamente',
     'La rúbrica ha sido borrada correctamente'=>'La rúbrica ha sido borrada correctamente',
-	'texto'=>'es una iniciativa de la asignatura Interfaces de Usuario, desarrollada por el Grupo 7, que pretende ser un servicio de complemento a la docencia, basado en Internet como entorno y que se dirige, por una parte, al profesorado, alumnado y personal de administración y servicios y, por otra, al alumnado preuniversitario que tenga en mente cursar  estudios superiores.'
+	'texto'=>'es una iniciativa de la asignatura Interfaces de Usuario, desarrollada por el Grupo 2, que pretende ser un servicio de complemento a la docencia, basado en Internet como entorno y que se dirige, por una parte, al profesorado, alumnado y personal de administración y servicios y, por otra, al alumnado preuniversitario que tenga en mente cursar  estudios superiores.',
+
+//Entregas
+'GESTION ENTREGAS'=>'GESTIÓN ENTREGAS',
+    'Gestión de Entregas'=>'Gestión de Entregas',
+    'ENTREGA_ID'=>'ID ENTREGA',
+	'ENTREGA_TRABAJO'=>'ID TRABAJO',
+	'ENTREGA_HORA'=>'HORA ENTREGA',
+	'ENTREGA_FECHA'=>'FECHA ENTREGA',
+	'ENTREGA_ALUMNO'=>'ID ALUMNO',
+	'ENTREGA_HORAS_DEDIC'=>'HORAS DEDICADAS',
+	'ENTREGA_NOMBRE'=>'NOMBRE ENTREGA',
+    'Borrar entrega'=>'Borrar entrega',
+	'Insertar entrega'=>'Insertar entrega',
+	'La entrega ya existe en la base de datos' => 'La entrega ya existe en la base de datos',
+	'La entrega se ha borrado correctamente' => 'La entrega se ha borrado correctamente',
+	'La entrega no existe' => 'La entrega no existe',
+	'Introduzca un valor para nombre entrega de la entrega' => 'Introduzca un valor para nombre entrega de la entrega',
+	'Modificar entrega' => 'Modificar entrega',
+	'Se ha producido un error en la modificación de la entrega' => 'Se ha producido un error en la modificación de la entrega',
+	'La entrega se ha modificado con éxito' => 'La entrega se ha modificado con éxito',
+	'La entrega no existe' => 'La entrega no existe',
+	'Consultar entrega' => 'Consultar entrega',
+	'ENTREGA_NOMBRE2' => 'Búsqueda por nombre',
+	'ENTREGA_ID2' => 'Búsqueda por ID de la entrega',
+	'ENTREGA_TRABAJO2' => 'Búsqueda por ID del trabajo',
+	'ENTREGA_ALUMNO2' => 'Búsqueda por ID del alumno'
 
 
 
