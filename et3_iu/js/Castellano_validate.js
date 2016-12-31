@@ -294,7 +294,68 @@ function valida_envia_RUBRICA() {
     }
     return true;
 }
+function valida_envia_ENTREGA(){
+    if (document.form.ENTREGA_NOMBRE.value.length==0){
+        alert("Introduzca un valor para el nombre de la entrega");
+        document.form.ENTREGA_NOMBRE.focus();
+        return false;
+    }
+    if (document.form.ENTREGA_NOMBRE.value.length<2){
+        alert("Nombre de la entrega demasiado corto (mínimo 2 caracteres)");
+        document.form.ENTREGA_NOMBRE.focus();
+        return false;
+    }
+    if (document.form.ENTREGA_NOMBRE.value.length>25){
+        alert("Nombre de la entrega demasiado largo (máximo 25 caracteres)");
+        document.form.ENTREGA_NOMBRE.focus();
+        return false;
+    }
 
+    if (document.form.ENTREGA_ID.value==false){
+        alert("Introduzca un valor para el id de la entrega");
+        document.form.ENTREGA_ID.focus();
+        return false;
+    }
+
+
+
+    if (document.form.ENTREGA_TRABAJO.value==false){
+        alert("Introduzca un valor para el id del trabajo");
+        document.form.ENTREGA_TRABAJO.focus();
+        return false;
+    }
+
+
+    if (document.form.ENTREGA_ALUMNO.value==false){
+        alert("Introduzca un valor para el id del alumno");
+        document.form.ENTREGA_ALUMNO.focus();
+        return false;
+    }
+
+
+    if(document.form.ENTREGA_FECHA.value==false){
+        alert("Introduzca un valor  para la fecha de entrega");
+        document.form.ENTREGA_FECHA.focus();
+        return false;
+    }
+
+    if(document.form.ENTREGA_HORA.value==false){
+        alert("Introduzca un valor  para la hora de entrega");
+        document.form.ENTREGA_HORA.focus();
+        return false;
+    }
+
+    if(document.form.ENTREGA_HORAS_DEDIC.value==false){
+        alert("Introduzca un valor  para las horas dedicadas a la realización de la entrega");
+        document.form.ENTREGA_HORAS_DEDIC.focus();
+        return false;
+    }
+
+
+
+
+    return true;
+}
 
 
 

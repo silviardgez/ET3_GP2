@@ -938,8 +938,55 @@ function createForm($listFields, $fieldsDef, $strings, $values, $required, $noed
                             echo $str;
                         }
                         break;
-                    case 'tel':
+                       case 'time':
+                        $str = "<li><label>" . $strings[$fieldsDef[$i]['name']]."</label>";
+                        $str .= "<input type = '" . $fieldsDef[$i]['type'] . "'";
+                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                        if (isset($values[$fieldsDef[$i]['name']])) {
+                            $str .= " value = '" . ($values[$fieldsDef[$i]['name']]) . "'";
+                        } else {
+                            $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
+
+                        }
+                        if ($fieldsDef[$i]['pattern'] <> '') {
+                            $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
+                        }
+                        if ($fieldsDef[$i]['validation'] <> '') {
+                            $str .= " " . $fieldsDef[$i]['validation'];
+                        }
+
+                        if (is_bool($required)) {
+                            if (!$required) {
+                                $str .= ' ';
+                            } else {
+                                $str .= ' required ';
+                            }
+                        } else {
+
+                            if (isset($required[$field])) {
+                                if (!$required[$field]) {
+                                    $str .= ' ';
+                                } else {
+                                    $str -= ' required ';
+                                }
+                            }
+                        }
+
+                        if (is_bool($noedit)) {
+                            if ($noedit) {
+                                $str .= ' readonly ';
+                            }
+                        } else {
+                            if (isset($noedit[$field])) {
+                                if ($noedit[$field]) {
+                                    $str .= ' readonly ';
+                                }
+                            }
+                        }
+                        $str .= "required"." ></li>";
+                        echo $str;
                         break;
+					
                     case 'password':
                         $str = "<li><label>" . $strings[$fieldsDef[$i]['name']] . "</label>";
                         $str .= "<input type = '" . $fieldsDef[$i]['type'] . "'";
@@ -1387,8 +1434,10 @@ function GenerarLinkControlador($CON_NOM) {
 //Añade los roles al desplegable de tipos
 function AñadirTipos($array) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-
-
+if(consultarRol($_SESSION['login'])=='4'){
+    $str=array('PROFESOR','PROFESOR RESPONSABLE');
+}
+else {
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1396,13 +1445,12 @@ function AñadirTipos($array) {
     $result = $mysqli->query($sql);
 
 
-
     $str = array();
     while ($tipo = $result->fetch_array()) {
         array_push($str, $tipo['ROL_NOM']);
     }
 
-
+}
     $añadido = array(
         'type' => 'select',
         'name' => 'USUARIO_TIPO',
@@ -1461,6 +1509,9 @@ function añadirFuncionalidades($NOM) {
                 case "GESTION USUARIOS":
                     ?><li><span><a style="font-size:20px;" href='../Controllers/USUARIO_Controller.php'><?php echo $strings['Gestión de usuarios'] ?></a></span></li> <?php
                     break;
+                case "GESTION USUARIOS2":
+                    ?><li><span><a style="font-size:20px;" href='../Controllers/USUARIO_Controller.php'><?php echo $strings['Gestión de usuarios'] ?></a></span></li> <?php
+                    break;
                 case "GESTION ROLES":
                     ?><li><span><a style="font-size:20px;" href='../Controllers/ROL_Controller.php'><?php echo $strings['Gestión de Roles'] ?></a></span></li> <?php
                     break;
@@ -1472,6 +1523,12 @@ function añadirFuncionalidades($NOM) {
                     break;
                 case "GESTION RUBRICAS":
                     ?><li><span><a style="font-size:20px;" href='../Controllers/RUBRICA_Controller.php'><?php echo $strings['Gestión de Rúbricas'] ?></a></span></li> <?php
+                    break;
+case "GESTION ENTREGAS":
+                    ?><li><span><a style="font-size:20px;" href='../Controllers/ENTREGAS_Controller.php'><?php echo $strings['Gestión de Entregas'] ?></a></span></li> <?php
+					break;
+                case "GESTION ENTREGAS2":
+                    ?><li><span><a style="font-size:20px;" href='../Controllers/ENTREGAS_Controller.php'><?php echo $strings['Gestión de Entregas'] ?></a></span></li> <?php
                     break;
                 default:
                     $link = str_replace(" ", "_", ConsultarNOMFuncionalidad($fila['FUNCIONALIDAD_ID'])) . "_Controller.php";
@@ -1957,6 +2014,22 @@ function createForm4($listFields, $fieldsDef, $strings, $values, $required, $noe
                 }
             }
         }
+    }
+}
+function mismaMateria($USUARIO_USER){
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+
+
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql="SELECT * FROM IMPARTE_MATERIA WHERE PROFESOR_USER='".$USUARIO_USER."' AND MATERIA_ID IN (SELECT MATERIA_ID FROM IMPARTE_MATERIA WHERE PROFESOR_USER='".$_SESSION['login']."')";
+    $result=$mysqli->query($sql);
+    if($result->num_rows>0){
+        return true;
+    }
+    else {
+        return false;
     }
 }
 ?>

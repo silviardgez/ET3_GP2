@@ -15,9 +15,10 @@ function render(){
 
 	include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
 	include '../Functions/USUARIOShowAllDefForm.php';
+
 	//include '../Functions/LibraryFunctions.php';
 	//Array con los nombres de los campos a modificar
-	$lista = array('USUARIO_USER', 'USUARIO_PASSWORD',  'USUARIO_NOMBRE', 'USUARIO_APELLIDO', 'USUARIO_DNI','USUARIO_FECH_NAC', 'USUARIO_EMAIL', 'USUARIO_TELEFONO', 'USUARIO_CUENTA', 'USUARIO_DIRECCION', 'USUARIO_COMENTARIOS', 'USUARIO_ESTADO','USUARIO_FOTO');
+	$lista = array('USUARIO_TIPO','USUARIO_USER', 'USUARIO_PASSWORD',  'USUARIO_NOMBRE', 'USUARIO_APELLIDO', 'USUARIO_DNI','USUARIO_FECH_NAC', 'USUARIO_EMAIL', 'USUARIO_TELEFONO', 'USUARIO_CUENTA', 'USUARIO_DIRECCION', 'USUARIO_COMENTARIOS', 'USUARIO_ESTADO','USUARIO_FOTO');
 
 ?>
 <html>
@@ -35,8 +36,12 @@ function render(){
 	<ul class="form-style-1">
 	<?php
 //Generación automática del formulario
-createForm($lista,$DefForm,$strings,$this->valores,array('USUARIO_COMENTARIOS'=>false,'USUARIO_FOTO'=>false),array('USUARIO_USER'=>true,'USUARIO_DNI'=>true));
-?>
+	if(consultarRol($_SESSION['login'])=='4'){
+		createForm($lista, $DefForm, $strings, $this->valores, array('USUARIO_COMENTARIOS' => false, 'USUARIO_FOTO' => false), array('USUARIO_USER'=>true, 'USUARIO_PASSWORD'=>true,  'USUARIO_NOMBRE'=>true, 'USUARIO_APELLIDO'=>true, 'USUARIO_DNI'=>true,'USUARIO_FECH_NAC'=>true, 'USUARIO_EMAIL'=>true, 'USUARIO_TELEFONO'=>true, 'USUARIO_CUENTA'=>true, 'USUARIO_DIRECCION'=>true, 'USUARIO_COMENTARIOS'=>true, 'USUARIO_ESTADO'=>true,'USUARIO_FOTO'=>true));
+	}
+	else {
+		createForm($lista, $DefForm, $strings, $this->valores, array('USUARIO_COMENTARIOS' => false, 'USUARIO_FOTO' => false), array('USUARIO_USER' => true, 'USUARIO_DNI' => true));
+	}?>
 
 <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_USUARIO()" >
 </form>

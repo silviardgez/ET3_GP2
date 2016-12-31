@@ -27,20 +27,6 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `ALUMNO`
---
-
-CREATE TABLE IF NOT EXISTS `ALUMNO` (
-  `ALUMNO_USER` varchar(25) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `ALUMNO`
---
-
-INSERT INTO `ALUMNO` (`ALUMNO_USER`) VALUES
-('ALUMNO');
 
 -- --------------------------------------------------------
 
@@ -132,7 +118,10 @@ INSERT INTO `FUNCIONALIDAD` (`FUNCIONALIDAD_ID`, `FUNCIONALIDAD_NOM`) VALUES
 (2, 'GESTION ROLES'),
 (3, 'GESTION FUNCIONALIDADES'),
 (4, 'GESTION PAGINAS'),
-(100, 'GESTION RUBRICAS');
+(5, 'GESTION USUARIOS2'),
+(100, 'GESTION RUBRICAS'),
+(300,'GESTION ENTREGAS'),
+(301,'GESTION ENTREGAS2');
 
 -- --------------------------------------------------------
 
@@ -173,11 +162,22 @@ INSERT INTO `FUNCIONALIDAD_PAGINA` (`FUNCIONALIDAD_ID`, `PAGINA_ID`) VALUES
 (2, 21),
 (2, 22),
 (2, 23),
+(5,3),
+(5,4),
+(5,5),
+(5,6),
 (100, 100),
 (100, 101),
 (100, 102),
 (100, 103),
-(100, 104);
+(100, 104),
+(300, 300),
+(300, 301),
+(300, 302),
+(300, 303),
+(300, 304),
+(301, 303),
+(301, 304);
 
 -- --------------------------------------------------------
 
@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `MATERIA` (
   `MATERIA_CREDITOS` int(3) NOT NULL,
   `MATERIA_DEPARTAMENTO` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `MATERIA_TITULACION` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `MATERIA_PROFESOR` int(10) NOT NULL,
+
   `MATERIA_DESCRIPCION` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -241,12 +241,16 @@ CREATE TABLE IF NOT EXISTS `MATERIA` (
 -- Volcado de datos para la tabla `MATERIA`
 --
 
-INSERT INTO `MATERIA` (`MATERIA_ID`, `MATERIA_NOM`, `MATERIA_CREDITOS`, `MATERIA_DEPARTAMENTO`, `MATERIA_TITULACION`, `MATERIA_PROFESOR`, `MATERIA_DESCRIPCION`) VALUES
-(1, 'Interfaces de Usuario', 6, 'Informatica', 'Ingenieria Informatica', 1, 'Diseño, construcción y evaluación de interfaces de'),
-(2, 'Centros de Datos', 6, 'Informatica', 'Ingenieria Informatica', 2, 'Integración de sistemas y redes');
+INSERT INTO `MATERIA` (`MATERIA_ID`, `MATERIA_NOM`, `MATERIA_CREDITOS`, `MATERIA_DEPARTAMENTO`, `MATERIA_TITULACION`, `MATERIA_DESCRIPCION`) VALUES
+(1, 'Interfaces de Usuario', 6, 'Informatica', 'Ingenieria Informatica',  'Diseño, construcción y evaluación de interfaces'),
+(2, 'Centros de Datos', 6, 'Informatica', 'Ingenieria Informatica',  'Integración de sistemas y redes');
 
 -- --------------------------------------------------------
-
+CREATE TABLE IF NOT EXISTS `IMPARTE_MATERIA` (
+`MATERIA_ID` int(10) NOT NULL,
+ `PROFESOR_USER` varchar(25) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+INSERT INTO `IMPARTE_MATERIA` (`MATERIA_ID`,`PROFESOR_USER`)VALUES (1,'RESPONSABLE'),(1,'PROFESOR');
 --
 -- Estructura de tabla para la tabla `MATRICULA`
 --
@@ -344,24 +348,13 @@ INSERT INTO `PAGINA` (`PAGINA_ID`, `PAGINA_LINK`, `PAGINA_NOM`) VALUES
 (101, '../Views/RUBRICA_DELETE_Vista.php', 'RUBRICA DELETE'),
 (102, '../Views/RUBRICA_EDIT_Vista.php', 'RUBRICA EDIT'),
 (103, '../Views/RUBRICA_SHOWALL_Vista.php', 'RUBRICA SHOWALL'),
-(104, '../Views/RUBRICA_SHOWCURRENT_Vista.php', 'RUBRICA SHOWCURRENT');
+(104, '../Views/RUBRICA_SHOWCURRENT_Vista.php', 'RUBRICA SHOWCURRENT'),
+(300, '../Views/ENTREGAS_ADD_Vista.php', 'ENTREGAS ADD'),
+(301, '../Views/ENTREGAS_DELETE_Vista.php', 'ENTREGAS DELETE'),
+(302, '../Views/ENTREGAS_EDIT_Vista.php', 'ENTREGAS EDIT'),
+(303, '../Views/ENTREGAS_SHOWALL_Vista.php', 'ENTREGAS SHOWALL'),
+(304, '../Views/ENTREGAS_SHOWCURRENT_Vista.php', 'ENTREGAS SHOWCURRENT');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `PROFESOR`
---
-
-CREATE TABLE IF NOT EXISTS `PROFESOR` (
-  `PROFESOR_USER` varchar(25) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `PROFESOR`
---
-
-INSERT INTO `PROFESOR` (`PROFESOR_USER`) VALUES
-('PROFESOR');
 
 -- --------------------------------------------------------
 
@@ -381,7 +374,8 @@ CREATE TABLE IF NOT EXISTS `ROL` (
 INSERT INTO `ROL` (`ROL_ID`, `ROL_NOM`) VALUES
 (1, 'ADMINISTRADOR'),
 (2, 'PROFESOR'),
-(3, 'ALUMNO');
+(3, 'ALUMNO'),
+(4,'PROFESOR RESPONSABLE');
 
 -- --------------------------------------------------------
 
@@ -404,7 +398,13 @@ INSERT INTO `ROL_FUNCIONALIDAD` (`ROL_ID`, `FUNCIONALIDAD_ID`) VALUES
 (1, 3),
 (1, 4),
 (1, 100),
-(2, 100);
+(2, 100),
+(4, 100),
+(4,5),
+(1,300),
+(4,300),
+(2,301),
+(3,301);
 
 -- --------------------------------------------------------
 
@@ -480,10 +480,10 @@ CREATE TABLE IF NOT EXISTS `USUARIO` (
 --
 
 INSERT INTO `USUARIO` (`USUARIO_USER`, `USUARIO_PASSWORD`, `USUARIO_NOMBRE`, `USUARIO_APELLIDO`, `USUARIO_DNI`, `USUARIO_FECH_NAC`, `USUARIO_EMAIL`, `USUARIO_TELEFONO`, `USUARIO_CUENTA`, `USUARIO_DIRECCION`, `USUARIO_COMENTARIOS`, `USUARIO_TIPO`, `USUARIO_ESTADO`, `USUARIO_FOTO`) VALUES
-('ADMIN', '73acd9a5972130b75066c82595a1fae3', 'Javier', 'Rodeiro', '65938568Y', NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Activo', NULL),
-('PROFESOR', '0ee43a0e0e2b00017eb657f549eadbe9', 'Pepe', 'Perez', '70561875Z', '1957-10-31', 'pepe.perez@gmail.com', 666666666, NULL, NULL, NULL, 2, 'Activo', NULL),
-('ALUMNO', '147b9f5076ae6340663353a96b87062e', 'Luis', 'Gomez', '44841787K', '1957-10-31', 'luis.gomez@gmail.com', 666656666, NULL, NULL, NULL, 3, 'Activo', NULL);
-
+('ADMIN', '73acd9a5972130b75066c82595a1fae3', 'Pedro', 'Rodriguez', '65938568Y', '1975-11-29', 'pedro.rodriguez@gmail.com', 676676676, '20770024003102575766', 'calle1', NULL, 1, 'Activo', NULL),
+('PROFESOR', '0ee43a0e0e2b00017eb657f549eadbe9', 'Pepe', 'Perez', '70561875Z', '1957-10-31', 'pepe.perez@gmail.com', 666666666, '20770024003102575766','calle 3', NULL, 2, 'Activo', NULL),
+('ALUMNO', '147b9f5076ae6340663353a96b87062e', 'Luis', 'Gomez', '44841787K', '1957-10-31', 'luis.gomez@gmail.com', 666656666,'20770024003102575766','calle 2', NULL, 3, 'Activo', NULL),
+('RESPONSABLE','6d53f6eeea6fb5325511b7408f259db7','Pablo', 'Fernandez', '86723680H','1965-10-29', 'pablo.fernandez@gmail.com',666666777,'20770024003102575766','calle falsa', NULL,4,'Activo',NULL);
 -- --------------------------------------------------------
 
 --
@@ -532,17 +532,36 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('PROFESOR', 101),
 ('PROFESOR', 102),
 ('PROFESOR', 103),
-('PROFESOR', 104);
+('PROFESOR', 104),
+('RESPONSABLE', 100),
+('RESPONSABLE', 101),
+('RESPONSABLE', 102),
+('RESPONSABLE', 103),
+('RESPONSABLE', 104),
+('RESPONSABLE',3),
+('RESPONSABLE',4),
+('RESPONSABLE',5),
+('RESPONSABLE',6),
+('ADMIN',300),
+('ADMIN',301),
+('ADMIN',302),
+('ADMIN',303),
+('ADMIN',304),
+('RESPONSABLE',300),
+('RESPONSABLE',301),
+('RESPONSABLE',302),
+('RESPONSABLE',303),
+('RESPONSABLE',304),
+('ALUMNO',303),
+('ALUMNO',304),
+('PROFESOR',303),
+('PRODESOR',304);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `ALUMNO`
---
-ALTER TABLE `ALUMNO`
- ADD PRIMARY KEY (`ALUMNO_USER`);
 
 --
 -- Indices de la tabla `CORRECCION`
@@ -599,10 +618,6 @@ ALTER TABLE `PAGINA`
  ADD PRIMARY KEY (`PAGINA_ID`);
 
 --
--- Indices de la tabla `PROFESOR`
---
-ALTER TABLE `PROFESOR`
- ADD PRIMARY KEY (`PROFESOR_USER`);
 
 --
 -- Indices de la tabla `ROL`

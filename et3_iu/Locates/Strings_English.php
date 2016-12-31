@@ -147,6 +147,7 @@ $strings = array(
 	'Borrar Funcionalidad'=>'Delete Funcionality',
 	'Modificar Acciones'=>'Modify Actions',
 	'Consultar Pagina'=>'Consult Page',
+	'USUARIO_TIPO2'=>'Type',
 	'La pagina ha sido borrada correctamente' => 'Page successfully deleted',
 	'La página no existe' => 'Page do not exists',
 	'La pagina se ha modificado con éxito' => 'Page successfully modified',
@@ -176,6 +177,7 @@ $strings = array(
 	'Introduzca dirección'=>'Enter address',
 	'ADMINISTRADOR'=>'ADMINISTRATOR',
 	'MONITOR'=>'INSTRUCTOR',
+	'PROFESOR RESPONSABLE'=>'RESPONSABLE TEACHER',
 	'SECRETARIO'=>'SECRETARY',
 	'PROFESOR'=>'TEACHER',
 	'ALUMNO'=>'STUDENT',
@@ -196,7 +198,7 @@ $strings = array(
         'Rubrica creada correctamente'=>'Rubric created successfully',
     'Rubrica modificada correctamente'=>'Rubric modificated successfully',
     'La rúbrica ha sido borrada correctamente'=>'Rubric deleted successfully',
-	'texto'=>" is an initiative of User Interfaces subject, developed by Group 7,intended as a service to complement teaching, based on the Internet as a venue and is directed firstly towards teachers, students and administrative staff and services and, secondly, towards pre-university students who aim to study higher education at this university."
+	'texto'=>" is an initiative of User Interfaces subject, developed by Group 2,intended as a service to complement teaching, based on the Internet as a venue and is directed firstly towards teachers, students and administrative staff and services and, secondly, towards pre-university students who aim to study higher education at this university."
 
 
 
