@@ -18,20 +18,23 @@ for ($z = 0; $z < count($pags); $z++) {
 
 //Recoge la información procendente de un formulario.
 function get_data_form() {
-    if(isset($_REQUEST['NIVEL_ID'])){
-          $NIVEL_ID = $_REQUEST['NIVEL_ID'];
-    }
-    else {
-        $NIVEL_ID ='';
+    if (isset($_REQUEST['NIVEL_ID'])) {
+        $NIVEL_ID = $_REQUEST['NIVEL_ID'];
+    } else {
+        $NIVEL_ID = '';
     }
     //Recogemos el dato del dato del formulario
-    $NIVEL_DESCRIPCION = $_REQUEST['NIVEL_DESCRIPCION'];   
+    $NIVEL_DESCRIPCION = $_REQUEST['NIVEL_DESCRIPCION'];
     $NIVEL_ITEM = $_REQUEST['NIVEL_ITEM'];
-    $NIVEL_RUBRICA = ConsultarIDRubrica($NIVEL_ITEM) ; //Como tenemos el ID del Item, realizamos una consulta que nos devuelva el ID de la Rubrica a la que esta asociado
-    $NIVEL_POSICION = $_REQUEST['NIVEL_POSICION'];
+    if (isset($_REQUEST['NIVEL_RUBRICA'])) {
+        $NIVEL_RUBRICA = $_REQUEST['NIVEL_RUBRICA'];
+    } else {
+        $NIVEL_RUBRICA = ConsultarIDRubrica($NIVEL_ITEM); //Como tenemos el ID del Item, realizamos una consulta que nos devuelva el ID de la Rubrica a la que esta asociado
+    }
+    $NIVEL_PORCENTAJE = $_REQUEST['NIVEL_PORCENTAJE'];
 
-    $nivel = new NIVEL_Model($NIVEL_ID, $NIVEL_DESCRIPCION, $NIVEL_ITEM, $NIVEL_RUBRICA, $NIVEL_POSICION);  //Instanciamos un nuevo nivel con los datos 
-    
+    $nivel = new NIVEL_Model($NIVEL_ID, $NIVEL_DESCRIPCION, $NIVEL_ITEM, $NIVEL_RUBRICA, $NIVEL_PORCENTAJE);  //Instanciamos un nuevo nivel con los datos 
+
     return $nivel;
 }
 
@@ -39,7 +42,6 @@ if (!isset($_REQUEST['accion'])) {
     $_REQUEST['accion'] = '';
 }
 Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, el controlador redirige el comportamiento del programa
-
     case $strings['Insertar']: //Inserción de un nuevo nivel para un item
         if (!isset($_REQUEST['NIVEL_DESCRIPCION'])) {
             if (!tienePermisos('NIVEL_ADD')) {
@@ -62,7 +64,7 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
             if (!tienePermisos('NIVEL_DELETE')) {
                 new Mensaje('No tienes los permisos necesarios', 'ITEM_Controller.php');
             } else {
-                new NIVEL_DELETE($valores, $_REQUEST['NIVEL_ITEM'] );
+                new NIVEL_DELETE($valores, $_REQUEST['NIVEL_ITEM']);
             }
         } else {
             $nivel = get_data_form();
@@ -91,17 +93,16 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
 
 
     case $strings['Consultar']:  //Consulta de Rúbricas
-        if (!isset($_REQUEST['RUBRICA_NOMBRE'])) {
-            if (!tienePermisos('RUBRICA_SHOWCURRENT')) {
+        if (!isset($_REQUEST['NIVEL_DESCRIPCION'])) {
+            if (!tienePermisos('NIVEL_SHOWCURRENT')) {
                 new Mensaje('No tienes los permisos necesarios', 'RUBRICA_Controller.php');
             } else {
-                new RUBRICA_SHOWCURRENT();
+                new NIVEL_SHOWCURRENT($_REQUEST['ITEM_ID']);
             }
         } else {
-            $rubrica = get_data_form();
-            $datos = $rubrica->Consultar();
-           new RUBRICA_SHOWALL($datos, 'RUBRICA_Controller.php');
-            // }
+            $nivel = get_data_form();
+            $datos = $nivel->Consultar();
+            new NIVEL_SHOWALL($datos, '../Controllers/NIVEL_Controller.php?ITEM_ID=', $_REQUEST['NIVEL_ITEM']);
         }
         break;
 

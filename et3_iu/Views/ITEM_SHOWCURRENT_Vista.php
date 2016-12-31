@@ -4,7 +4,7 @@ class ITEM_SHOWCURRENT {
 
     private $return;
 
-//VISTA PARA CONSULTAR RUBRICAS
+//VISTA PARA CONSULTAR ITEMS DE RUBRICA
     function __construct($return) {
         $this->return = $return;
         $this->render();
@@ -18,7 +18,6 @@ class ITEM_SHOWCURRENT {
             <div></div>
             <?php
             include '../Locates/Strings_' . $_SESSION['IDIOMA'] . '.php';
-            include '../Locates/Strings_' . $_SESSION['IDIOMA'] . '_Rubrica.php';
             $lista = array('ITEM_ID', 'ITEM_NOMBRE', 'ITEM_PORCENTAJE');
             ?>
 
@@ -41,7 +40,7 @@ class ITEM_SHOWCURRENT {
                 </ul>
             </form>
             <?php
-            echo '<a  class="form-link" href=\'RUBRICA_Controller.php?RUBRICA_ID=' . $this->return . '\'>' . $strings['Volver'] . '</a>';
+            echo '<a  class="form-link" href=\'ITEM_Controller.php?RUBRICA_ID=' . $this->return . '\'>' . $strings['Volver'] . '</a>';
             ?>
 
 

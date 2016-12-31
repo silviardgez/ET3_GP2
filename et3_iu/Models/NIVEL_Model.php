@@ -8,16 +8,16 @@ class NIVEL_Model {
     var $NIVEL_DESCRIPCION;
     var $NIVEL_ITEM;
     var $NIVEL_RUBRICA;
-    var $NIVEL_POSICION;
+    var $NIVEL_PORCENTAJE;
     var $mysqli;
 
 //Constructor de la clase nivel de item
-    function __construct($NIVEL_ID, $NIVEL_DESCRIPCION, $NIVEL_ITEM, $NIVEL_RUBRICA, $NIVEL_POSICION) {
+    function __construct($NIVEL_ID, $NIVEL_DESCRIPCION, $NIVEL_ITEM, $NIVEL_RUBRICA, $NIVEL_PORCENTAJE) {
         $this->NIVEL_ID = $NIVEL_ID;
         $this->NIVEL_DESCRIPCION = $NIVEL_DESCRIPCION;
         $this->NIVEL_ITEM = $NIVEL_ITEM;
         $this->NIVEL_RUBRICA = $NIVEL_RUBRICA;
-        $this->NIVEL_POSICION = $NIVEL_POSICION;
+        $this->NIVEL_PORCENTAJE = $NIVEL_PORCENTAJE;
     }
 
 //Destructor del objeto
@@ -36,7 +36,7 @@ class NIVEL_Model {
 //Inserción de nuevas Items
     function Insertar() { 
         $this->ConectarBD();        
-        $sql = "INSERT INTO NIVEL (NIVEL_DESCRIPCION, NIVEL_ITEM, NIVEL_RUBRICA, NIVEL_POSICION) VALUES ('" . $this->NIVEL_DESCRIPCION . "', '" . $this->NIVEL_ITEM . "', '" . $this->NIVEL_RUBRICA . "', '" . $this->NIVEL_POSICION. "')";
+        $sql = "INSERT INTO NIVEL (NIVEL_DESCRIPCION, NIVEL_ITEM, NIVEL_RUBRICA, NIVEL_PORCENTAJE) VALUES ('" . $this->NIVEL_DESCRIPCION . "', '" . $this->NIVEL_ITEM . "', '" . $this->NIVEL_RUBRICA . "', '" . $this->NIVEL_PORCENTAJE. "')";
             if (!$result = $this->mysqli->query($sql)) {
                 return 'Error en la consulta sobre la base de datos'; //Corregir String
             } else {
@@ -59,7 +59,32 @@ class NIVEL_Model {
 //Permite la consulta de rubricas por todos sus atributos
     function Consultar() {
         $this->ConectarBD();
-        $sql = "SELECT * FROM RUBRICA WHERE RUBRICA_ID ='" . $this->RUBRICA_ID . "' OR RUBRICA_NOMBRE LIKE'" . $this->RUBRICA_NOMBRE . "' OR RUBRICA_DESCRIPCION = '" . $this->RUBRICA_DESCRIPCION . "' OR RUBRICA_NIVELES = '" . $this->RUBRICA_NIVELES . "' OR RUBRICA_AUTOR = '" . $this->RUBRICA_AUTOR . "'";
+        if($this->NIVEL_ID == '' && $this->NIVEL_DESCRIPCION == '' && $this->NIVEL_PORCENTAJE == '' && $this->NIVEL_ITEM != '' && $this->NIVEL_RUBRICA != ''){  //000
+            echo $this->NIVEL_ITEM;
+            echo $this->NIVEL_RUBRICA;
+           $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM= '" .$this->NIVEL_ITEM. "'AND NIVEL_RUBRICA= '". $this->NIVEL_RUBRICA. "'";
+        }
+        elseif($this->NIVEL_ID == '' && $this->NIVEL_DESCRIPCION == '' && $this->NIVEL_PORCENTAJE != '' && $this->NIVEL_ITEM != '' && $this->NIVEL_RUBRICA != ''){  //001
+           $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM= '" .$this->NIVEL_ITEM. "'AND NIVEL_RUBRICA= '". $this->NIVEL_RUBRICA. "' AND NIVEL_PORCENTAJE= '".$this->NIVEL_PORCENTAJE. "'";
+        }
+        elseif($this->NIVEL_ID == '' && $this->NIVEL_DESCRIPCION != '' && $this->NIVEL_PORCENTAJE == '' && $this->NIVEL_ITEM != '' && $this->NIVEL_RUBRICA != ''){  //010
+           $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM= '" .$this->NIVEL_ITEM. "'AND NIVEL_RUBRICA= '". $this->NIVEL_RUBRICA. "' AND NIVEL_DESCRIPCION LIKE '%".$this->NIVEL_DESCRIPCION."%'";
+        }
+        elseif($this->NIVEL_ID == '' && $this->NIVEL_DESCRIPCION != '' && $this->NIVEL_PORCENTAJE != '' && $this->NIVEL_ITEM != '' && $this->NIVEL_RUBRICA != ''){  //011
+           $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM= '" .$this->NIVEL_ITEM. "'AND NIVEL_RUBRICA= '". $this->NIVEL_RUBRICA. "' AND NIVEL_DESCRIPCION LIKE '%".$this->NIVEL_DESCRIPCION."%' AND NIVEL_PORCENTAJE= '".$this->NIVEL_PORCENTAJE. "'";
+        }
+        elseif($this->NIVEL_ID != '' && $this->NIVEL_DESCRIPCION == '' && $this->NIVEL_PORCENTAJE == '' && $this->NIVEL_ITEM != '' && $this->NIVEL_RUBRICA != ''){  //100
+           $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM= '" .$this->NIVEL_ITEM. "'AND NIVEL_RUBRICA= '". $this->NIVEL_RUBRICA. "' AND NIVEL_ID= '" .$this->NIVEL_ID. "'";
+        }
+        elseif($this->NIVEL_ID != '' && $this->NIVEL_DESCRIPCION == '' && $this->NIVEL_PORCENTAJE != '' && $this->NIVEL_ITEM != '' && $this->NIVEL_RUBRICA != ''){  //101
+           $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM= '" .$this->NIVEL_ITEM. "'AND NIVEL_RUBRICA= '". $this->NIVEL_RUBRICA. "' AND NIVEL_ID= '" .$this->NIVEL_ID. "' AND NIVEL_PORCENTAJE= '" .$this->NIVEL_PORCENTAJE. "'";
+        }
+        elseif($this->NIVEL_ID != '' && $this->NIVEL_DESCRIPCION != '' && $this->NIVEL_PORCENTAJE == '' && $this->NIVEL_ITEM != '' && $this->NIVEL_RUBRICA != ''){  //110
+           $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM= '" .$this->NIVEL_ITEM. "'AND NIVEL_RUBRICA= '". $this->NIVEL_RUBRICA. "' AND NIVEL_ID= '" .$this->NIVEL_ID. "' AND NIVEL_DESCRIPCION LIKE '%" .$this->NIVEL_DESCRIPCION. "%'";
+        }
+        elseif($this->NIVEL_ID != '' && $this->NIVEL_DESCRIPCION != '' && $this->NIVEL_PORCENTAJE != '' && $this->NIVEL_ITEM != '' && $this->NIVEL_RUBRICA != ''){  //111
+           $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM= '" .$this->NIVEL_ITEM. "'AND NIVEL_RUBRICA= '". $this->NIVEL_RUBRICA. "' AND NIVEL_ID= '" .$this->NIVEL_ID. "' AND NIVEL_DESCRIPCION LIKE '%" .$this->NIVEL_DESCRIPCION. "%' AND NIVEL_PORCENTAJE= '" .$this->NIVEL_PORCENTAJE. "'";
+        }
 
         if (!$resultado = $this->mysqli->query($sql)) {
             return FALSE;
@@ -77,7 +102,7 @@ class NIVEL_Model {
 //Devuelve la lista de todas las rubricas
     function ConsultarTodo() {
         $this->ConectarBD();
-        $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM = '" . $this->NIVEL_ITEM . "' ORDER BY NIVEL_POSICION";
+        $sql = "SELECT * FROM NIVEL WHERE NIVEL_ITEM = '" . $this->NIVEL_ITEM . "'";
         if (!($resultado = $this->mysqli->query($sql))) {
             return 'Error en la consulta sobre la base de datos';
         } else {
@@ -98,7 +123,7 @@ class NIVEL_Model {
         if (!$resultado = $this->mysqli->query($sql)) {
           return 'Error en la consulta sobre la base de datos';
         } else {
-            $sql = "UPDATE NIVEL SET NIVEL_DESCRIPCION = '" . $this->NIVEL_DESCRIPCION . "', NIVEL_POSICION ='" . $this->NIVEL_POSICION . "' WHERE NIVEL_ID='".$this->NIVEL_ID."'";
+            $sql = "UPDATE NIVEL SET NIVEL_DESCRIPCION = '" . $this->NIVEL_DESCRIPCION . "', NIVEL_PORCENTAJE ='" . $this->NIVEL_PORCENTAJE . "' WHERE NIVEL_ID='".$this->NIVEL_ID."'";
             if (!$resultado = $this->mysqli->query($sql)) {
                 return 'Error en la consulta sobre la base de datos';
             } else {

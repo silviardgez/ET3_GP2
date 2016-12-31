@@ -19,7 +19,7 @@ class NIVEL_DELETE {
 
 
 //Array con los nombres de los campos
-        $lista = array('NIVEL_ID', 'NIVEL_DESCRIPCION', 'NIVEL_ITEM', 'NIVEL_RUBRICA', 'NIVEL_POSICION');
+        $lista = array('NIVEL_ID', 'NIVEL_DESCRIPCION', 'NIVEL_ITEM', 'NIVEL_RUBRICA', 'NIVEL_PORCENTAJE');
         ?>
         <html>
             <head><link rel="stylesheet" href="../css/style.css" type="text/css" media="all">

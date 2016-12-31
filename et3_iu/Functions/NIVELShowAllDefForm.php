@@ -45,7 +45,7 @@ $form = array(
     ),
     4 => array(
         'type' => 'text',
-        'name' => 'NIVEL_POSICION',
+        'name' => 'NIVEL_PORCENTAJE',
         'value' => '',
         'size' => 2, //Comprobar
         'required' => false,

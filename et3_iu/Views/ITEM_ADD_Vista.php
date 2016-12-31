@@ -22,13 +22,11 @@ class ITEM_ADD {
 
             <?php
             include '../Locates/Strings_' . $_SESSION['IDIOMA'] . '.php';
-           // include '../Locates/Strings_' . $_SESSION['IDIOMA'] . '_Rubrica.php';
             include '../Functions/ITEMShowAllDefForm.php';
             
             //Array con los nombres de los campos a insertar
             $lista = array('ITEM_NOMBRE', 'ITEM_PORCENTAJE');
             ?>
-
 
             <form  id="form" name="form" action='ITEM_Controller.php' method='post'   enctype="multipart/form-data">
                 <div id="centrado"><span class="form-title">
@@ -37,10 +35,11 @@ class ITEM_ADD {
                 <ul class="form-style-1">
                     
                     <input type='hidden' name='ITEM_RUBRICA' value="<?php echo $this->RUBRICA_ID ?>" readonly>
+                    <input type='hidden' name='ITEM_SUM' value="<?php echo sumarValorItem($this->RUBRICA_ID) ?>" readonly>
                     <?php
                     createForm($lista, $DefForm, $strings, '', false, false);
                     ?>
-                    <input type='submit' onclick="return valida_envia_RUBRICA()" name='accion'  value=<?php echo $strings['Insertar'] ?>
+                    <input type='submit' onclick="return valida_envia_ITEM()" name='accion'  value=<?php echo $strings['Insertar'] ?>
                            <ul>
                         </form>
                         <?php
