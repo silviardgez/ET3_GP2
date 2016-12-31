@@ -290,30 +290,34 @@ CREATE TABLE IF NOT EXISTS `NIVEL` (
   `NIVEL_DESCRIPCION` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `NIVEL_ITEM` int(10) NOT NULL,
   `NIVEL_RUBRICA` int(10) NOT NULL,
-  `NIVEL_POSICION` int(2) NOT NULL
+  `NIVEL_PORCENTAJE` int(2) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `NIVEL`
 --
 
-INSERT INTO `NIVEL` (`NIVEL_ID`, `NIVEL_DESCRIPCION`, `NIVEL_ITEM`, `NIVEL_RUBRICA`, `NIVEL_POSICION`) VALUES
-(1, 'Muy Mal', 1, 1, 1),
-(2, 'Mal', 1, 1, 2),
-(3, 'Bien', 1, 1, 3),
-(4, 'Muy Bien', 1, 1, 4),
-(5, 'Muy Mal', 2, 1, 1),
-(6, 'Mal', 2, 1, 2),
-(7, 'Bien', 2, 1, 3),
-(8, 'Muy Bien', 2, 1, 4),
-(9, 'Muy Mal', 3, 1, 1),
-(10, 'Mal', 3, 1, 2),
-(11, 'Bien', 3, 1, 3),
-(12, 'Muy Bien', 3, 1, 4),
-(13, 'Muy Mal', 4, 1, 1),
-(14, 'Mal', 4, 1, 2),
-(15, 'Bien', 4, 1, 3),
-(16, 'Muy Bien', 4, 1, 4);
+INSERT INTO `NIVEL` (`NIVEL_ID`, `NIVEL_DESCRIPCION`, `NIVEL_ITEM`, `NIVEL_RUBRICA`, `NIVEL_PORCENTAJE`) VALUES
+(1, 'Muy Mal', 1, 1, 0),
+(2, 'Mal', 1, 1, 25),
+(3, 'Bien', 1, 1, 50),
+(4, 'Muy Bien', 1, 1, 75),
+(5, 'Perfecto', 1, 1, 100),
+(6, 'Muy Mal', 2, 1, 0),
+(7, 'Mal', 2, 1, 25),
+(8, 'Bien', 2, 1, 50),
+(9, 'Muy Bien', 2, 1, 75),
+(10, 'Perfecto', 2, 1, 100),
+(11, 'Muy Mal', 3, 1, 0),
+(12, 'Mal', 3, 1, 25),
+(13, 'Bien', 3, 1, 50),
+(14, 'Muy Bien', 3, 1, 75),
+(15, 'Perfecto', 3, 1, 100),
+(16, 'Muy Mal', 4, 1, 0),
+(17, 'Mal', 4, 1, 25),
+(18, 'Bien', 4, 1, 50),
+(19, 'Muy Bien', 4, 1, 75),
+(20, 'Perfecto', 4, 1, 100);
 
 -- --------------------------------------------------------
 

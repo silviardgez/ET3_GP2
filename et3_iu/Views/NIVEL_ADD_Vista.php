@@ -25,7 +25,7 @@ class NIVEL_ADD {
             include '../Functions/NIVELShowAllDefForm.php';
             
             //Array con los nombres de los campos a insertar
-            $lista = array('NIVEL_DESCRIPCION', 'NIVEL_POSICION');
+            $lista = array('NIVEL_DESCRIPCION', 'NIVEL_PORCENTAJE');
             ?>
 
 
@@ -39,7 +39,7 @@ class NIVEL_ADD {
                     <?php
                     createForm($lista, $DefForm, $strings, '', false, false);
                     ?>
-                    <input type='submit' onclick="return valida_envia_RUBRICA()" name='accion'  value=<?php echo $strings['Insertar'] ?>
+                    <input type='submit' onclick="return valida_envia_NIVEL()" name='accion'  value=<?php echo $strings['Insertar'] ?>
                            <ul>
                         </form>
                         <?php

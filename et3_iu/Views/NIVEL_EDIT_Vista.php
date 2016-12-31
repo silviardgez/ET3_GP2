@@ -18,7 +18,7 @@ class NIVEL_EDIT {
         include '../Functions/NIVELShowAllDefForm.php';
 
         //Array con los nombres de los campos a modificar
-        $lista = array('NIVEL_ID', 'NIVEL_DESCRIPCION', 'NIVEL_ITEM' ,'NIVEL_RUBRICA', 'NIVEL_POSICION');
+        $lista = array('NIVEL_ID', 'NIVEL_DESCRIPCION', 'NIVEL_ITEM' ,'NIVEL_RUBRICA', 'NIVEL_PORCENTAJE');
         ?>
         <html>
             <head><link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
@@ -36,8 +36,7 @@ class NIVEL_EDIT {
                             <?php
                             createForm($lista, $DefForm, $strings, $this->valores, '', array('NIVEL_ID' => true, 'NIVEL_ITEM' => true ,'NIVEL_RUBRICA' => true));
                             ?>
-
-                            <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_RUBRICA()" >
+                            <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_NIVEL()" >
                             </form>
                             <?php
                              echo '<a class="form-link" href=\'NIVEL_Controller.php?ITEM_ID=' . $this->volver . '\'>' . $strings['Volver'] . " </a>";

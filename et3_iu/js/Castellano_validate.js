@@ -357,8 +357,82 @@ function valida_envia_ENTREGA(){
     return true;
 }
 
+function valida_envia_ITEM() {
+    if (document.form.ITEM_NOMBRE.value.length > 30) {
+        alert("El tamaño máximo para el nombre de un item es 30 caracteres");
+        document.form.ITEM_NOMBRE.focus();
+        return false;
+    }
+      if (document.form.ITEM_NOMBRE.value.length == 0) {
+        alert("Es necesario darle un nombre a al titulo del item");
+        document.form.ITEM_NOMBRE.focus();
+        return false;
+    }
+    if (document.form.ITEM_PORCENTAJE.value.length > 100) {
+        alert("El valor maximo del item es 100");
+        document.form.ITEM_PORCENTAJE.focus();
+        return false;
+    }
+     if (document.form.ITEM_PORCENTAJE.value == 0) {
+        alert("El item debe poseer algun valor");
+        document.form.ITEM_PORCENTAJE.focus();
+        return false;
+    }
+    
+        valor = document.form.ITEM_PORCENTAJE.value;
+    if (!/^([0-3])*$/.test(valor)) {
+        alert("Tiene que escribir un valor entre 0-100");
+        document.form.ITEM_PORCENTAJE.focus();
+        return false;
+    }
+    
+    if (parseInt(document.form.ITEM_PORCENTAJE.value) + parseInt(document.form.ITEM_SUM.value) > 100) {
+        alert("La suma de los items de la rubrica debe de ser 100 como máximo. ");
+        document.form.ITEM_PORCENTAJE.focus();
+        return false;
+    }
+    
+    return true;
+}
 
 
+function valida_envia_NIVEL() {
+    if (document.form.NIVEL_DESCRIPCION.value.length > 50) {
+        alert("El tamaño máximo para la descripcion de un nivel es 50 caracteres");
+        document.form.NIVEL_DESCRIPCION.focus();
+        return false;
+    }
+      if (document.form.NIVEL_DESCRIPCION.value.length == 0) {
+        alert("Es necesario darle una descripcion al item");
+        document.form.NIVEL_DESCRIPCION.focus();
+        return false;
+    }
+    if (document.form.NIVEL_PORCENTAJE.value.length > 100) {
+        alert("El valor maximo del item es 100");
+        document.form.NIVEL_PORCENTAJE.focus();
+        return false;
+    }
+     if (document.form.NIVEL_PORCENTAJE.value == 0) {
+        alert("El item debe poseer algun valor");
+        document.form.NIVEL_PORCENTAJE.focus();
+        return false;
+    }
+    
+    valor = document.form.NIVEL_PORCENTAJE.value;
+    if (!/^([0-3])*$/.test(valor)) {
+        alert("Tiene que escribir un valor entre 0-100");
+        document.form.NIVEL_PORCENTAJE.focus();
+        return false;
+    }
+    
+    if (parseInt(document.form.NIVEL_PORCENTAJE.value) > 100) {
+        alert("El maximo valor del nivel es 100");
+        document.form.NIVEL_PORCENTAJE.focus();
+        return false;
+    }
+    
+    return true;
+}
 
 
 

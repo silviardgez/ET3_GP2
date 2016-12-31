@@ -38,7 +38,7 @@ class ITEM_EDIT {
                             createForm($lista, $DefForm, $strings, $this->valores, '', array('ITEM_ID' => true, 'ITEM_RUBRICA' => true));
                             ?>
 
-                            <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_RUBRICA()" >
+                            <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_ITEM()" >
                             </form>
                             <?php
                              echo '<a class="form-link" href=\'ITEM_Controller.php?RUBRICA_ID=' . $this->volver . '\'>' . $strings['Volver'] . " </a>";

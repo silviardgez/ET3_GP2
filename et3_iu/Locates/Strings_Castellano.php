@@ -236,13 +236,14 @@ $strings = array(
     'NIVEL_DESCRIPCION'=>'Descripción',
     'NIVEL_RUBRICA'=>'Rúbrica',
     'NIVEL_ITEM'=>'Item',
-    'NIVEL_POSICION'=>'Posición',
+    'NIVEL_PORCENTAJE'=>'Valor (%)',
     'Insertar Nivel'=>'Insertar Nivel',
     'Nivel creado correctamente'=>'Nivel creado correctamente',
     'Borrar Nivel'=>'Borrar Nivel',
     'Nivel borrado correctamente'=>'Nivel borrado correctamente',
     'Modificar Nivel'=>'Modificar Nivel',
-    'Nivel modificado correctamente'=>'Nivel modificado correctamente'
+    'Nivel modificado correctamente'=>'Nivel modificado correctamente',
+    'Consultar Nivel'=>'Consultar Nivel'
     
     
     

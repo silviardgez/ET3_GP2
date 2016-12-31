@@ -1629,8 +1629,6 @@ function añadirFuncionalidades($NOM) {
                     $i = 0;
 
                     while ($fila = $resultado->fetch_array()) {
-
-
                         $toret[$i] = ConsultarNOMPagina($fila['PAGINA_ID']);
                         $i++;
                     }
@@ -2041,8 +2039,8 @@ function añadirFuncionalidades($NOM) {
                 $result = $mysqli->query($sql)->fetch_array();
                 return $result['RUBRICA_NOMBRE'];
             }
-            
-             function ConsultarNombreItem($ITEM_RUBRICA) {
+
+            function ConsultarNombreItem($ITEM_RUBRICA) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -2051,7 +2049,7 @@ function añadirFuncionalidades($NOM) {
                 $result = $mysqli->query($sql)->fetch_array();
                 return $result['ITEM_NOMBRE'];
             }
-            
+
             function ConsultarIDRubrica($ITEM_ID) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {
@@ -2061,6 +2059,23 @@ function añadirFuncionalidades($NOM) {
                 $result = $mysqli->query($sql)->fetch_array();
                 return $result['ITEM_RUBRICA'];
             }
+
+             function sumarValorItem($ITEM_RUBRICA) {
+
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT SUM(ITEM_PORCENTAJE) AS value_sum FROM ITEM WHERE ITEM_RUBRICA='" . $ITEM_RUBRICA . "'";
+                $result = $mysqli->query($sql);
+                $row = mysqli_fetch_assoc($result);
+                $sum = $row['value_sum'];
+                             
+                return $sum;
+
+             
+            }
+                
             ?>
 
 

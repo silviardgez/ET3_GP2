@@ -54,7 +54,7 @@ class NIVEL_SHOWALL {
                 </header>
                 <div class="container">
                     <?php
-                    $lista = array('NIVEL_ID', 'NIVEL_DESCRIPCION');
+                    $lista = array('NIVEL_ID', 'NIVEL_DESCRIPCION', 'NIVEL_PORCENTAJE');
                     ?>
                  <div id="centrado"><span class="form-title">
                         <?php echo $strings['NIVELES DEL ITEM'] .ConsultarNombreItem($this->return).$strings['DE LA RUBRICA'] . ConsultarNombreRubrica($this->return) ?><br></span></div>
