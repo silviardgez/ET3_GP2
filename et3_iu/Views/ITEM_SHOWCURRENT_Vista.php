@@ -3,8 +3,8 @@
 class ITEM_SHOWCURRENT {
 
     private $return;
-
 //VISTA PARA CONSULTAR ITEMS DE RUBRICA
+
     function __construct($return) {
         $this->return = $return;
         $this->render();
@@ -41,6 +41,7 @@ class ITEM_SHOWCURRENT {
             </form>
             <?php
             echo '<a  class="form-link" href=\'ITEM_Controller.php?RUBRICA_ID=' . $this->return . '\'>' . $strings['Volver'] . '</a>';
+
             ?>
 
 

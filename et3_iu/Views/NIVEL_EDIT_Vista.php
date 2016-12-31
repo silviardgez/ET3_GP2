@@ -36,7 +36,6 @@ class NIVEL_EDIT {
                             <?php
                             createForm($lista, $DefForm, $strings, $this->valores, '', array('NIVEL_ID' => true, 'NIVEL_ITEM' => true ,'NIVEL_RUBRICA' => true));
                             ?>
-
                             <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_NIVEL()" >
                             </form>
                             <?php

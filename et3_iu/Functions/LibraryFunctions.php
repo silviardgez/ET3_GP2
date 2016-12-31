@@ -1629,8 +1629,6 @@ function añadirFuncionalidades($NOM) {
                     $i = 0;
 
                     while ($fila = $resultado->fetch_array()) {
-
-
                         $toret[$i] = ConsultarNOMPagina($fila['PAGINA_ID']);
                         $i++;
                     }
@@ -2063,6 +2061,7 @@ function añadirFuncionalidades($NOM) {
             }
 
              function sumarValorItem($ITEM_RUBRICA) {
+
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -2076,7 +2075,7 @@ function añadirFuncionalidades($NOM) {
 
              
             }
-            
+                
             ?>
 
 

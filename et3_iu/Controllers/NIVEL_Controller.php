@@ -18,6 +18,7 @@ for ($z = 0; $z < count($pags); $z++) {
 
 //Recoge la información procendente de un formulario.
 function get_data_form() {
+
     if (isset($_REQUEST['NIVEL_ID'])) {
         $NIVEL_ID = $_REQUEST['NIVEL_ID'];
     } else {
@@ -93,6 +94,7 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
 
 
     case $strings['Consultar']:  //Consulta de Rúbricas
+
         if (!isset($_REQUEST['NIVEL_DESCRIPCION'])) {
             if (!tienePermisos('NIVEL_SHOWCURRENT')) {
                 new Mensaje('No tienes los permisos necesarios', 'RUBRICA_Controller.php');
@@ -103,6 +105,7 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
             $nivel = get_data_form();
             $datos = $nivel->Consultar();
             new NIVEL_SHOWALL($datos, '../Controllers/NIVEL_Controller.php?ITEM_ID=', $_REQUEST['NIVEL_ITEM']);
+
         }
         break;
 
