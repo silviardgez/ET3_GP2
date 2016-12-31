@@ -211,9 +211,41 @@ $strings = array(
 	'ENTREGA_NOMBRE2' => 'Búsqueda por nombre',
 	'ENTREGA_ID2' => 'Búsqueda por ID de la entrega',
 	'ENTREGA_TRABAJO2' => 'Búsqueda por ID del trabajo',
-	'ENTREGA_ALUMNO2' => 'Búsqueda por ID del alumno'
-
-
+	'ENTREGA_ALUMNO2' => 'Búsqueda por ID del alumno',
+	
+    // ITEM
+     'Items'=>'Items',
+     'Nivel'=>'Ver Nivel',
+    'ITEMS DE LA RUBRICA'=>'Items de ',
+    'ITEM_ID'=>'ID',
+    'ITEM_NOMBRE'=>'Titulo',
+    'ITEM_RUBRICA'=>'Rúbrica',
+    'ITEM_PORCENTAJE'=>'Valor(%)',
+    'Insertar Item'=>'Insertar Item',
+    'Item creada correctamente'=>'Item creado correctamente',
+    'Borrar Item'=>'Borrar Item',
+    'Item borrado correctamente'=>'Item borrado correctamente',
+    'Modificar Item'=>'Modificar Item',
+    'Item modificado correctamente'=>'Item modificado correctamente',
+    'Consultar Item'=>'Consultar Item',
+    
+    'NIVELES DEL ITEM'=>'Niveles del Item: ',
+    'DE LA RUBRICA'=>' de la Rubrica:  ',
+    'NIVEL_ID'=>'ID',
+    'NIVEL_ITEM'=>'Item',
+    'NIVEL_DESCRIPCION'=>'Descripción',
+    'NIVEL_RUBRICA'=>'Rúbrica',
+    'NIVEL_ITEM'=>'Item',
+    'NIVEL_POSICION'=>'Posición',
+    'Insertar Nivel'=>'Insertar Nivel',
+    'Nivel creado correctamente'=>'Nivel creado correctamente',
+    'Borrar Nivel'=>'Borrar Nivel',
+    'Nivel borrado correctamente'=>'Nivel borrado correctamente',
+    'Modificar Nivel'=>'Modificar Nivel',
+    'Nivel modificado correctamente'=>'Nivel modificado correctamente'
+    
+    
+    
 
 
 )
