@@ -86,6 +86,9 @@ class RUBRICA_SHOWALL {
                             <td>
                                 <a href='RUBRICA_Controller.php?RUBRICA_ID=<?php echo $this->datos[$j]['RUBRICA_ID'] . '&accion=' . $strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a>
                             </td>
+						<td>
+                            <a href='ITEM_Controller.php?RUBRICA_ID=<?php echo $this->datos[$j]['RUBRICA_ID'] . '&accion=' . $strings['Items']; ?>'><?php echo $strings['Items'] ?></a>
+                        </td>
                             </tr>
                            <?php }
                             ?>
