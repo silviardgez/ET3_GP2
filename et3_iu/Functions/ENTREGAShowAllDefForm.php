@@ -1,5 +1,5 @@
 <?php
-
+$p = new ENTREGAS_Model('','','','','','','','','');
 //Formulario para listar los roles
 $form = array(
     0 => array(
@@ -13,12 +13,11 @@ $form = array(
         'readonly' => false
     ),
     1 => array(
-        'type' => 'number',
+        'type' => 'select',
         'name' => 'ENTREGA_TRABAJO',
         'value' => '',
-        'size' => 50,
-        'min' => 0,
-        'max' => 4294967295,
+        'options' => $p->getIDTrab(),
+        'multiple' => $p->getIDTrab(),
         'required' => 'true',
         'pattern' => '',
         'validation' => '',
@@ -45,12 +44,10 @@ $form = array(
         'readonly' => false
     ),
     4 => array(
-        'type' => 'number',
+        'type' => 'text',
         'name' => 'ENTREGA_ALUMNO',
         'value' => '',
-        'size' => 80,
-        'min' => 0,
-        'max' => 4294967295,
+        'size' => '',
         'required' => 'true',
         'pattern' => '',
         'validation' => '',
@@ -76,6 +73,15 @@ $form = array(
         'min' => 0,
         'max' => 4294967295,
         'required' => 'true',
+        'pattern' => '',
+        'validation' => '',
+        'readonly' => false
+    ),
+    7 => array(
+        'type' => 'file',
+        'name' => 'ENTREGA_FOTO',
+        'value' => '',
+        'required' => true,
         'pattern' => '',
         'validation' => '',
         'readonly' => false

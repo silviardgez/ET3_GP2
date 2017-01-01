@@ -192,8 +192,34 @@ $strings = array(
         'Rubrica creada correctamente'=>'Rubrica creada correctamente',
     'Rubrica modificada correctamente'=>'Rubrica modificada correctamente',
     'La rúbrica ha sido borrada correctamente'=>'A rúbrica borrouse correctamente',
-	'texto'=>" é unha iniciativa da materia Interfaces de Usuario, desenvolvida polo Grupo 2, que pretende ser un servizo de complemento á docencia, baseado en Internet como contorno e que se dirixe, por unha banda, ao profesorado, alumnado e persoal de administración e servizos e, por outra, ao alumnado preuniversitario que teña en mente cursar os seus estudos superiores nesta universidade."
+	'texto'=>" é unha iniciativa da materia Interfaces de Usuario, desenvolvida polo Grupo 2, que pretende ser un servizo de complemento á docencia, baseado en Internet como contorno e que se dirixe, por unha banda, ao profesorado, alumnado e persoal de administración e servizos e, por outra, ao alumnado preuniversitario que teña en mente cursar os seus estudos superiores nesta universidade.",
 
+
+	//Entregas
+	'GESTION ENTREGAS'=>'XESTIÓN ENTREGAS',
+    'Gestión de Entregas'=>'Xestión de Entregas',
+    'ENTREGA_ID'=>'ID ENTREGA',
+	'ENTREGA_TRABAJO'=>'ID TRABALLO',
+	'ENTREGA_HORA'=>'HORA ENTREGA',
+	'ENTREGA_FOTO' => 'ENTREGA ARQUIVO',
+	'ENTREGA_FECHA'=>'FECHA ENTREGA',
+	'ENTREGA_ALUMNO'=>'ID ALUMNO',
+	'ENTREGA_HORAS_DEDIC'=>'HORAS DEDICADAS',
+	'ENTREGA_NOMBRE'=>'NOME ENTREGA',
+    'Borrar entrega'=>'Borrar entrega',
+	'Insertar entrega'=>'Inserir entrega',
+	'La entrega ya existe en la base de datos' => 'A entrega xa existe na base de datos',
+	'La entrega se ha borrado correctamente' => 'A entrega borrouse correctamente',
+	'La entrega no existe' => 'A entrega non existe',
+	'Introduzca un valor para nombre entrega de la entrega' => 'Introduzca un valor para nome entrega da entrega',
+	'Modificar entrega' => 'Modificar entrega',
+	'Se ha producido un error en la modificación de la entrega' => 'Prodúxose un erro ea modificación da entrega',
+	'La entrega se ha modificado con éxito' => 'A entrega modificouse con éxito',
+	'Consultar entrega' => 'Consultar entrega',
+	'ENTREGA_NOMBRE2' => 'Búsqueda por nome',
+	'ENTREGA_ID2' => 'Búsqueda por ID da entrega',
+	'ENTREGA_TRABAJO2' => 'Búsqueda por ID do traballo',
+	'ENTREGA_ALUMNO2' => 'Búsqueda por ID do alumno'
 
 
 

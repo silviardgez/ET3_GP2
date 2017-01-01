@@ -188,7 +188,7 @@ $strings = array(
 	'texto'=>'es una iniciativa de la asignatura Interfaces de Usuario, desarrollada por el Grupo 2, que pretende ser un servicio de complemento a la docencia, basado en Internet como entorno y que se dirige, por una parte, al profesorado, alumnado y personal de administración y servicios y, por otra, al alumnado preuniversitario que tenga en mente cursar  estudios superiores.',
 
 //Entregas
-'GESTION ENTREGAS'=>'GESTIÓN ENTREGAS',
+	'GESTION ENTREGAS'=>'GESTIÓN ENTREGAS',
     'Gestión de Entregas'=>'Gestión de Entregas',
     'ENTREGA_ID'=>'ID ENTREGA',
 	'ENTREGA_TRABAJO'=>'ID TRABAJO',
@@ -197,6 +197,7 @@ $strings = array(
 	'ENTREGA_ALUMNO'=>'ID ALUMNO',
 	'ENTREGA_HORAS_DEDIC'=>'HORAS DEDICADAS',
 	'ENTREGA_NOMBRE'=>'NOMBRE ENTREGA',
+    'ENTREGA_FOTO' => 'ENTREGA ARCHIVO',
     'Borrar entrega'=>'Borrar entrega',
 	'Insertar entrega'=>'Insertar entrega',
 	'La entrega ya existe en la base de datos' => 'La entrega ya existe en la base de datos',
@@ -206,7 +207,6 @@ $strings = array(
 	'Modificar entrega' => 'Modificar entrega',
 	'Se ha producido un error en la modificación de la entrega' => 'Se ha producido un error en la modificación de la entrega',
 	'La entrega se ha modificado con éxito' => 'La entrega se ha modificado con éxito',
-	'La entrega no existe' => 'La entrega no existe',
 	'Consultar entrega' => 'Consultar entrega',
 	'ENTREGA_NOMBRE2' => 'Búsqueda por nombre',
 	'ENTREGA_ID2' => 'Búsqueda por ID de la entrega',

@@ -14,10 +14,10 @@ class Entrega_Edit{
     function render(){
 
         include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
-        include '../Functions/ENTREGAShowAllDefForm.php';
+        include '../Functions/ENTREGAEditDefForm.php';
         //include '../Functions/LibraryFunctions.php';
         //Array con los nombres de los campos a modificar
-        $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORA', 'ENTREGA_FECHA', 'ENTREGA_ALUMNO', 'ENTREGA_HORAS_DEDIC');
+        $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORAS_DEDIC', 'ENTREGA_FOTO');
 
         ?>
         <html>
@@ -35,7 +35,7 @@ class Entrega_Edit{
                 <ul class="form-style-1">
                     <?php
                     //Generación automática del formulario
-                    createForm($lista,$DefForm,$strings,$this->valores,false,array('ENTREGA_ID'=>true,'ENTREGA_TRABAJO'=>true,'ENTREGA_ALUMNO'=>true));
+                    createForm($lista,$DefForm,$strings,$this->valores,false,array('ENTREGA_ID'=>true,'ENTREGA_ALUMNO'=>true,'ENTREGA_TRABAJO'=>true));
                     ?>
 
                     <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_ENTREGA()" >

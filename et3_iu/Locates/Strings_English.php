@@ -198,7 +198,35 @@ $strings = array(
         'Rubrica creada correctamente'=>'Rubric created successfully',
     'Rubrica modificada correctamente'=>'Rubric modificated successfully',
     'La rúbrica ha sido borrada correctamente'=>'Rubric deleted successfully',
-	'texto'=>" is an initiative of User Interfaces subject, developed by Group 2,intended as a service to complement teaching, based on the Internet as a venue and is directed firstly towards teachers, students and administrative staff and services and, secondly, towards pre-university students who aim to study higher education at this university."
+	'texto'=>" is an initiative of User Interfaces subject, developed by Group 2,intended as a service to complement teaching, based on the Internet as a venue and is directed firstly towards teachers, students and administrative staff and services and, secondly, towards pre-university students who aim to study higher education at this university.",
+
+
+
+    //Entregas
+    'GESTION ENTREGAS'=>'DELIVERY MANAGEMENT',
+    'Gestión de Entregas'=>'Delivery Management',
+    'ENTREGA_ID'=>'Delivey ID',
+    'ENTREGA_TRABAJO'=>'JOB ID',
+    'ENTREGA_HORA'=>'DELIVERY TIME',
+    'ENTREGA_FECHA'=>'DELIVERY DATE',
+    'ENTREGA_ALUMNO'=>'STUDENT DELIVERY',
+    'ENTREGA_HORAS_DEDIC'=>'HOURS SPENTS',
+    'ENTREGA_NOMBRE'=>'DELIVERY NAME',
+    'ENTREGA_FOTO' => 'DELIVERY FILE',
+    'Borrar entrega'=>'Delete Delivery',
+    'Insertar entrega'=>'Delivery Add',
+    'La entrega ya existe en la base de datos' => 'Delivery exists in database',
+    'La entrega se ha borrado correctamente' => 'Delivery successfully deleted',
+    'La entrega no existe' => 'Delivery doesn´t exists',
+    'Introduzca un valor para nombre entrega de la entrega' => 'Enter a value for delivery delivery name',
+    'Modificar entrega' => 'Edit Delivery',
+    'Se ha producido un error en la modificación de la entrega' => 'An error occurred while modifying delivery',
+    'La entrega se ha modificado con éxito' => 'Delivery successfully modified',
+    'Consultar entrega' => 'Check delivery',
+    'ENTREGA_NOMBRE2' => 'Search by name',
+    'ENTREGA_ID2' => 'Search by delivery ID',
+    'ENTREGA_TRABAJO2' => 'Search by Job ID',
+    'ENTREGA_ALUMNO2' => 'Search by Student ID'
 
 
 

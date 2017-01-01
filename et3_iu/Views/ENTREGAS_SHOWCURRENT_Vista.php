@@ -16,7 +16,7 @@ class Entrega_show{
             <?php
 
 
-            $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_ALUMNO');
+            $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_ALUMNO', 'ENTREGA_TRABAJO');
 
             ?>
 
