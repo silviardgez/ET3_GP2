@@ -20,16 +20,27 @@
     //Método que recoge la información del formulario
     function get_data_form(){
 
-        $ENTREGA_ID = $_REQUEST['ENTREGA_ID'];
+        $ENTREGA_ID = '';
         $ENTREGA_NOM = $_REQUEST['ENTREGA_NOMBRE'];
         $ENTREGA_TRABAJO = $_REQUEST['ENTREGA_TRABAJO'];
-        $ENTREGA_HORA = $_REQUEST['ENTREGA_HORA'];
-        $ENTREGA_FECHA = $_REQUEST['ENTREGA_FECHA'];
-        $ENTREGA_ALUM = $_REQUEST['ENTREGA_ALUMNO'];
+        $ENTREGA_HORA = '';
+        $ENTREGA_ALUM = '';
+        $ENTREGA_FECHA = '';
         $ENTREGA_HORAS_DEDIC = $_REQUEST['ENTREGA_HORAS_DEDIC'];
 
+        //Si no se ha introducido un nuevo archivo se deja el que había
+        if (isset($_FILES['ENTREGA_FOTO']['name']) && ($_FILES['ENTREGA_FOTO']['name']!=='')) {
+
+            $ENTREGA_FOTO = '../Documents/Archivos/' . $_REQUEST['ENTREGA_NOMBRE'] . '/Foto/' . $_FILES['ENTREGA_FOTO']['name'];
+
+        }
+        else {
+
+            $ENTREGA_FOTO='';
+
+        }
         //Crea la entrega con  los datos anteriores.
-        $entrega = new ENTREGAS_Model($ENTREGA_ID, $ENTREGA_NOM, $ENTREGA_TRABAJO, $ENTREGA_HORA, $ENTREGA_FECHA, $ENTREGA_ALUM, $ENTREGA_HORAS_DEDIC);
+        $entrega = new ENTREGAS_Model($ENTREGA_ID, $ENTREGA_NOM, $ENTREGA_TRABAJO, $ENTREGA_HORA, $ENTREGA_FECHA, $ENTREGA_ALUM,$ENTREGA_HORAS_DEDIC,$ENTREGA_FOTO);
         return $entrega;
     }
 
@@ -49,6 +60,19 @@
                 }
             } else {
 
+                $entrega = get_data_form();
+                //Creamos las carpetas para guardar los archivos
+                $carpetaFoto='../Documents/Archivos/'.$_REQUEST['ENTREGA_NOMBRE'].'/Foto/';
+
+
+                if($_FILES['ENTREGA_FOTO']['name']!=='') {
+                    if (!file_exists($carpetaFoto)) {
+                        mkdir($carpetaFoto, 0777, true);
+                    }
+
+                    move_uploaded_file($_FILES['ENTREGA_FOTO']['tmp_name'], $carpetaFoto . $_FILES['ENTREGA_FOTO']['name']);
+                }
+
                 //Insertamos la entrega
                 $entrega = get_data_form();
                 $respuesta = $entrega->Insertar();
@@ -58,7 +82,7 @@
             break;
         case $strings['Borrar']: //Borrado de entregas
             if (!isset($_REQUEST['ENTREGA_ID'])) {
-                $entrega = new ENTREGAS_Model('', $_REQUEST['ENTREGA_NOMBRE'], '', '', '', '', '');
+                $entrega = new ENTREGAS_Model('', $_REQUEST['ENTREGA_NOMBRE'], '', '', '', '','','');
                 $valores = $entrega->RellenaDatos();
 
                 if (!tienePermisos('Entrega_Delete')) {
@@ -68,7 +92,7 @@
                 }
             } else {
                 $entrega = get_data_form();
-                $respuesta = $entrega->Borrar();
+                $respuesta = $entrega->Borrar($_REQUEST['ENTREGA_ID']);
                 new Mensaje($respuesta, 'ENTREGAS_Controller.php');
             }
             break;
@@ -76,7 +100,7 @@
 
             if (!isset($_REQUEST['ENTREGA_ID'])) {
 
-                $entrega = new ENTREGAS_Model('', $_REQUEST['ENTREGA_NOMBRE'], '', '', '', '', '');
+                $entrega = new ENTREGAS_Model('', $_REQUEST['ENTREGA_NOMBRE'], '', '', '', '','','');
                 $valores = $entrega->RellenaDatos();
 
 
@@ -89,6 +113,18 @@
             } else {
 
                 $entrega = get_data_form();
+                $carpetaFoto='../Documents/Archivos/'.$_REQUEST['ENTREGA_NOMBRE'].'/Foto/';
+
+
+                //Se realizan las modificaciones también en las carpetas de documentos
+                if($_FILES['ENTREGA_FOTO']['name']!=='') {
+                    if (!file_exists($carpetaFoto)) {
+                        mkdir($carpetaFoto, 0777, true);
+                    }
+
+                    move_uploaded_file($_FILES['ENTREGA_FOTO']['tmp_name'], $carpetaFoto . $_FILES['ENTREGA_FOTO']['name']);
+                }
+
 
                 $respuesta = $entrega->Modificar($_REQUEST['ENTREGA_ID']);
                 new Mensaje($respuesta, 'ENTREGAS_Controller.php');
@@ -116,7 +152,7 @@
                 $_REQUEST['ENTREGA_FECHA']='';
 
                 $entrega = get_data_form();
-                $datos = $entrega->Consultar();
+                $datos = $entrega->Consultar($_REQUEST['ENTREGA_ID']);
 
 
                 new ENTREGAS_Show($datos, 'ENTREGAS_Controller.php');
@@ -126,7 +162,7 @@
         default:
             //La vista por defecto lista todas las entregas
             if (!isset($_REQUEST['ENTREGA_NOMBRE'])) {
-                $entrega = new ENTREGAS_Model('', '', '', '', '', '', '');
+                $entrega = new ENTREGAS_Model('', '', '', '', '', '','','');
             } else {
                 $entrega = get_data_form();
             }

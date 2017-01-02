@@ -20,7 +20,7 @@ class ENTREGAS_Insertar{
         include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
         include '../Functions/ENTREGAShowAllDefForm.php';
         //Array con los nombres de los campos a insertar
-        $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORA', 'ENTREGA_FECHA', 'ENTREGA_ALUMNO', 'ENTREGA_HORAS_DEDIC');
+        $lista = array('ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORAS_DEDIC', 'ENTREGA_FOTO');
 
         ?>
 

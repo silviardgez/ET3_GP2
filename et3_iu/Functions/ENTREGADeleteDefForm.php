@@ -44,13 +44,11 @@ $DefForm3 = array(
         'readonly' => false
     ),
     4 => array(
-        'type' => 'number',
+        'type' => 'text',
         'name' => 'ENTREGA_ALUMNO',
         'value' => '',
-        'size' => 80,
-        'min' => 0,
-        'max' => 4294967295,
-        'required' => true,
+        'size' => '',
+        'required' => 'true',
         'pattern' => '',
         'validation' => '',
         'readonly' => false
@@ -74,6 +72,16 @@ $DefForm3 = array(
         'size' => 25,
         'min' => 0,
         'max' => 4294967295,
+        'required' => true,
+        'pattern' => '',
+        'validation' => '',
+        'readonly' => false
+    ),
+    7 => array(
+        'type' => 'url',
+        'name' => 'ENTREGA_FOTO',
+        'value' => '',
+
         'required' => true,
         'pattern' => '',
         'validation' => '',

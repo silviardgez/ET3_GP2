@@ -18,7 +18,7 @@ class Entrega_Delete{
         include '../Functions/ENTREGADeleteDefForm.php';
 
         //Array con los nombres de los campos
-        $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORA', 'ENTREGA_FECHA', 'ENTREGA_ALUMNO', 'ENTREGA_HORAS_DEDIC');
+        $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORA', 'ENTREGA_FECHA', 'ENTREGA_ALUMNO', 'ENTREGA_HORAS_DEDIC', 'ENTREGA_FOTO');
 
 
         ?>

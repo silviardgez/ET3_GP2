@@ -62,7 +62,7 @@ class ENTREGAS_Show{
             <div class="container">
                 <?php
                 //$gen_datos = new gen_form($arrayDefForm);
-                $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORA', 'ENTREGA_FECHA', 'ENTREGA_ALUMNO', 'ENTREGA_HORAS_DEDIC');
+                $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORA', 'ENTREGA_FECHA', 'ENTREGA_ALUMNO', 'ENTREGA_HORAS_DEDIC', 'ENTREGA_FOTO');
 
 
                 ?>
