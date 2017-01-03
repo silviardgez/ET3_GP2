@@ -151,6 +151,7 @@ $strings = array(
 	'Gestión de Funcionalidades'=>'Xestión de Funcionalidades',
 	'Gestión de Roles'=>'Xestión de Roles',
 	'Gestión de Páginas'=>'Xestión de Páxinas',
+    'Gestión de Trabajos'=>'Xestión de Traballos',
 	'Volver'=>'Voltar',
 	'GESTION usuarios'=>'XESTIÓN UsuarioS',
 	'GESTION PAGINAS'=>'XESTIÓN PÁXINAS',
@@ -247,7 +248,17 @@ $strings = array(
     'NIVEL_PORCENTAJE'=>'Valor (%)',
     'Modificar Nivel'=>'Modificar Nivel',
     'Nivel modificado correctamente'=>'Nivel modificado correctamente',
-    'Consultar Nivel'=>'Consultar Nivel'
+    'Consultar Nivel'=>'Consultar Nivel',
+
+    //TRABALLOS
+    'TRABAJO_ID'=>'ID',
+    'TRABAJO_NOMBRE'=>'NOME',
+    'TRABAJO_DESCRIPCION'=>'DESCRIPCION',
+    'TRABAJO_MATERIA'=>'MATERIA',
+    'TRABAJO_PROFESOR'=>'PROFESOR',
+    'TRABAJO_FECHA_INCIO'=>'INICIO',
+    'TRABAJO_FECHA_FIN'=>'FIN',
+    'TRABAJO_FECHA_CREACION'=>'CREACION'
     
     
 

@@ -177,6 +177,7 @@ $strings = array(
  'Estudia' => 'Study',
  'Con Nosotros' => 'With Us',
  'Gestión de Rúbricas' => 'Rubrics Management',
+    'Gestión de Trabajos'=>'Homework Management',
  'Rubrica creada correctamente' => 'Rubric created successfully',
  'Rubrica modificada correctamente' => 'Rubric modificated successfully',
  'La rúbrica ha sido borrada correctamente' => 'Rubric deleted successfully',
@@ -232,7 +233,17 @@ $strings = array(
  'NIVEL_PORCENTAJE' => 'Value (%)',
  'Modificar Nivel' => 'Edit Level',
  'Nivel modificado correctamente' => 'Level successfully modified',
- 'Consultar Nivel' => 'Check Level'
+ 'Consultar Nivel' => 'Check Level',
+
+    //TRABAJOS
+    'TRABAJO_ID'=>'ID',
+    'TRABAJO_NOMBRE'=>'NAME',
+    'TRABAJO_DESCRIPCION'=>'DESCRIPTION',
+    'TRABAJO_MATERIA'=>'SUBJECT',
+    'TRABAJO_PROFESOR'=>'TEACHER',
+    'TRABAJO_FECHA_INCIO'=>'START',
+    'TRABAJO_FECHA_FIN'=>'END',
+    'TRABAJO_FECHA_CREACION'=>'CREATION'
 
 
 )
