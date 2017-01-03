@@ -50,8 +50,8 @@ class TRABAJO_SHOWALL {
             <div class="container">
                 <?php
 
-                $titulos = array('TRABAJO_ID', 'TRABAJO_NOMBRE', 'TRABAJO_DESCRIPCION', 'TRABAJO_MATERIA', 'TRABAJO_PROFESOR',
-                    'TRABAJO_FECHA_INICIO','TRABAJO_FECHA_FIN','TRABAJO_FECHA_CREACION');
+                $titulos = array('TRABAJO_ID', 'TRABAJO_NOM', 'TRABAJO_DESCRIPCION', 'TRABAJO_MATERIA', 'TRABAJO_PROFESOR',
+                    'TRABAJO_FECHA_INICIO','TRABAJO_FECHA_FIN','TRABAJO_FECHA_CREACION','Modificar','Borrar');
                 ?>
 
 
