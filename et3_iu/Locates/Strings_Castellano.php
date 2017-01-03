@@ -173,6 +173,7 @@ $strings = array(
 	'Estudia'=>'Estudia',
 	'Con Nosotros'=>'Con Nosotros',
     'Gestión de Rúbricas'=>'Gestión de Rúbricas',
+    'Gestión de Trabajos'=>'Gestión de Trabajos',
         'Rubrica creada correctamente'=>'Rubrica creada correctamente',
     'Rubrica modificada correctamente'=>'Rubrica modificada correctamente',
     'La rúbrica ha sido borrada correctamente'=>'La rúbrica ha sido borrada correctamente',
@@ -243,9 +244,17 @@ $strings = array(
     'NIVEL_PORCENTAJE'=>'Valor (%)',
     'Modificar Nivel'=>'Modificar Nivel',
     'Nivel modificado correctamente'=>'Nivel modificado correctamente',
-    'Consultar Nivel'=>'Consultar Nivel'
+    'Consultar Nivel'=>'Consultar Nivel',
     
-    
+    //TRABAJOS
+    'TRABAJO_ID'=>'ID',
+    'TRABAJO_NOMBRE'=>'NOMBRE',
+    'TRABAJO_DESCRIPCION'=>'DESCRIPCION',
+    'TRABAJO_MATERIA'=>'MATERIA',
+    'TRABAJO_PROFESOR'=>'PROFESOR',
+    'TRABAJO_FECHA_INCIO'=>'INICIO',
+    'TRABAJO_FECHA_FIN'=>'FIN',
+    'TRABAJO_FECHA_CREACION'=>'CREACION'
     
 )
 ?>

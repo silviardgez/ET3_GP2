@@ -1487,6 +1487,9 @@ function añadirFuncionalidades($NOM) {
                             case "GESTION ENTREGAS2":
                                 ?><li><span><a style="font-size:20px;" href='../Controllers/ENTREGAS_Controller.php'><?php echo $strings['Gestión de Entregas'] ?></a></span></li> <?php
                                 break;
+                            case "GESTION TRABAJOS":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/TRABAJO_Controller.php'><?php echo $strings['Gestión de Trabajos'] ?></a></span></li> <?php
+                                break;
                             case "GESTION DE ITEMS DE RUBRICAS":
                                 break;
                             default:
