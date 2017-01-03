@@ -30,6 +30,16 @@ class ITEM_Model {
         }
     }
 
+    function InsertarNivel($ITEM_ID) { //Esta funcion se ocupa de insertar en el registro el EMP_USER(PK de EMPLEADO) y la fecha y hora a la que un empleado consulto las lesiones de algun usuario. (Cumplir la LOPD)
+        $this->ConectarBD();
+        $sql = "INSERT INTO NIVEL (NIVEL_DESCRIPCION, NIVEL_ITEM, NIVEL_RUBRICA, NIVEL_PORCENTAJE) VALUES ('" .'Vacío'. "' ,'" . $ITEM_ID . "', '" . $this->ITEM_RUBRICA . "', '" .'Vacio'. "')";
+        if (!$resultado = $this->mysqli->query($sql)) {
+            return 'No se ha podido conectar con la base de datos';
+        }
+
+        return $resultado;
+    }
+
 //Inserción un nuevo item
     function Insertar() {
         $this->ConectarBD();
@@ -37,6 +47,13 @@ class ITEM_Model {
         if (!$result = $this->mysqli->query($sql)) {
             return 'Error en la consulta sobre la base de datos'; //Corregir String
         } else {
+
+            $niveles = ConsultarNivelRubrica($this->ITEM_RUBRICA);  //Obtenemos los niveles que marca la Rubrica
+            $itemid = ConsultarIDItem($this->ITEM_NOMBRE, $this->ITEM_RUBRICA, $this->ITEM_PORCENTAJE); //Obtenemos el ID del Item que acabamos de crear para dar de alta los niveles asociados a dicho item
+            
+            for ($i = 1; $i <= $niveles; $i++) { //Realizamos tantas iteracciones como marque los niveles de la rubrica
+                $this->InsertarNivel($itemid);  //Para cada iteracción, insertamos un nuevo Nivel para el item
+            }
             return 'Item creada correctamente';
         }
     }
@@ -48,7 +65,7 @@ class ITEM_Model {
         if (!$resultado = $this->mysqli->query($sql)) {
             return 'Error en la consulta sobre la base de datos';
         } else {
-            
+
             return 'Item borrado correctamente';
         }
     }

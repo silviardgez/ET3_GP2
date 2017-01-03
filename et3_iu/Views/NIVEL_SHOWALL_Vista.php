@@ -42,9 +42,8 @@ class NIVEL_SHOWALL {
                     <div class="container">
                         <h1><a href="../Views/DEFAULT_Vista.php"></a></h1>
                         <nav>
-                            <ul><li><?php echo '<a href=\'' . $this->volver . $this->return ."' class='m5'>" . $strings['Volver'] . " </a>"; ?></li>
+                            <ul><li><?php echo '<a href=\'' . $this->volver . ConsultarIDRubrica($this->return) ."' class='m5'>" . $strings['Volver'] . " </a>"; ?></li>
                                 <li><a href='./NIVEL_Controller.php?ITEM_ID=<?php echo $this->return ?>&accion=<?php echo $strings['Consultar']?>'class="m4"><?php echo $strings['Consultar'] ?></a></li>
-                                <li><a href='./NIVEL_Controller.php?ITEM_ID=<?php echo $this->return ?>&accion=<?php echo $strings['Insertar']?>'class="m4"><?php echo $strings['Insertar'] ?></a></li>
                                 <li><a href="../Functions/Desconectar.php" class="m2"><?php echo $strings['Cerrar Sesión']; ?></a></li>
                             </ul>
                         </nav>
@@ -57,7 +56,7 @@ class NIVEL_SHOWALL {
                     $lista = array('NIVEL_ID', 'NIVEL_DESCRIPCION', 'NIVEL_PORCENTAJE');
                     ?>
                  <div id="centrado"><span class="form-title">
-                        <?php echo $strings['NIVELES DEL ITEM'] .ConsultarNombreItem($this->return).$strings['DE LA RUBRICA'] . ConsultarNombreRubrica($this->return) ?><br></span></div>
+                        <?php echo $strings['RUBRICA']?> <strong> <?php echo ConsultarNombreRubrica(ConsultarIDRubrica($this->return)) ?> </strong> <?php echo $strings['ITEM'] ?><strong><?php echo ConsultarNombreItem($this->return)?> </strong><br></span></div>
                     
                     
                     <br><br>
@@ -90,9 +89,6 @@ class NIVEL_SHOWALL {
                                     ?>
                                     <td>
                                         <a href='NIVEL_Controller.php?NIVEL_ID=<?php echo $this->datos[$j]['NIVEL_ID'] .'&NIVEL_ITEM=' . $this->return. '&accion=' . $strings['Modificar']; ?>'><?php echo $strings['Modificar'] ?></a>
-                                    </td>
-                                    <td>
-                                        <a href='NIVEL_Controller.php?NIVEL_ID=<?php echo $this->datos[$j]['NIVEL_ID'] .'&NIVEL_ITEM=' . $this->return.'&accion=' . $strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a>
                                     </td>
                                     </tr>
                                 <?php }

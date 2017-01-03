@@ -57,7 +57,7 @@ class ITEM_SHOWALL {
                     $lista = array('ITEM_ID', 'ITEM_NOMBRE', 'ITEM_PORCENTAJE');
                     ?>
                  <div id="centrado"><span class="form-title">
-                        <?php echo $strings['ITEMS DE LA RUBRICA'] . ConsultarNombreRubrica($this->return) ?><br></span></div>
+                        <?php echo $strings['RUBRICA'] ?>  <strong> <?php echo ConsultarNombreRubrica($this->return) ?> </strong><br></span></div>
                     
                     
                     <br><br>
