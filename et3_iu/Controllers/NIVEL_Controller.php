@@ -43,38 +43,6 @@ if (!isset($_REQUEST['accion'])) {
     $_REQUEST['accion'] = '';
 }
 Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, el controlador redirige el comportamiento del programa
-    case $strings['Insertar']: //Inserción de un nuevo nivel para un item
-        if (!isset($_REQUEST['NIVEL_DESCRIPCION'])) {
-            if (!tienePermisos('NIVEL_ADD')) {
-                new Mensaje('No tienes los permisos necesarios', 'ITEM_Controller.php');
-            } else {
-                new NIVEL_ADD($_REQUEST['ITEM_ID']);
-            }
-        } else {
-            $nivel = get_data_form();
-            $respuesta = $nivel->Insertar();
-            new Mensaje_ALT($respuesta, 'NIVEL_Controller.php?ITEM_ID=', $_REQUEST['NIVEL_ITEM']);
-        }
-        break;
-
-
-    case $strings['Borrar']: //Borrar un nivel de un item
-        if (!isset($_REQUEST['NIVEL_DESCRIPCION'])) {
-            $nivel = new NIVEL_Model($_REQUEST['NIVEL_ID'], '', $_REQUEST['NIVEL_ITEM'], '', '');
-            $valores = $nivel->RellenaDatos();
-            if (!tienePermisos('NIVEL_DELETE')) {
-                new Mensaje('No tienes los permisos necesarios', 'ITEM_Controller.php');
-            } else {
-                new NIVEL_DELETE($valores, $_REQUEST['NIVEL_ITEM']);
-            }
-        } else {
-            $nivel = get_data_form();
-            $respuesta = $nivel->Borrar();
-            new Mensaje_ALT($respuesta, 'NIVEL_Controller.php?ITEM_ID=', $_REQUEST['NIVEL_ITEM']);
-        }
-        break;
-
-
 
     case $strings['Modificar']: //Modificación de rubricas
         if (!isset($_REQUEST['NIVEL_DESCRIPCION'])) {
