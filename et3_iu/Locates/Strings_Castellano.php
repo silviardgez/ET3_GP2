@@ -14,17 +14,13 @@ $strings = array(
 	'El usuario no existe' => 'El usuario no existe',
 'El usuario se ha modificado con éxito' => 'El usuario se ha modificado con éxito',
 	'El usuario se ha modificado con éxito' => 'El usuario se ha modificado con éxito',
-
 	'Se ha producido un error en la modificación del usuario' => 'Se ha producido un error en la modificación del usuario',
 	'Se ha producido un error en la modificación del usuario' => 'Se ha producido un error en la modificación del usuario',
-
 	'La contraseña para este usuario es erronea'=>'La contraseña para este usuario es erronea',
 	'El usuario ya no se encuentra contratado'=>'El usuario ya no se encuentra contratado',
 	'Insertar usuario'=>'Insertar usuario',
 	'Modificar usuario'=>'Modificar usuario',
 	"La contraseña para este usuario es errónea"=>"La contraseña para este usuario es errónea",
-
-
 	'USUARIO_USER'=>'Usuario',
 	'USUARIO_PASSWORD'=>'Contraseña',
 	'USUARIO_FECH_NAC'=>'Fecha de Nacimiento',
@@ -44,7 +40,6 @@ $strings = array(
 	'USUARIO_DNI2'=>'Búsqueda por DNI:',
 	'USUARIO_NOMBRE2'=>'Búsqueda por Nombre',
 	'USUARIO_APELLIDO2'=>'y Apellido:',
-
 'Insertar' => 'Insertar',
 'Modificar' => 'Modificar',
 'Borrar' => 'Borrar',
@@ -52,7 +47,6 @@ $strings = array(
 'Update' => 'Update',
 'Delete' => 'Delete',
 'Cerrar Sesión' => 'Cerrar Sesión',
-
 	'La pagina ya existe en la base de datos' => 'La página ya existe en la base de datos',
 	'Introduzca un valor para la clave de la pagina' => 'Introduzca un valor para la clave de la página',
 	'La pagina ha sido borrada correctamente' => 'La página ha sido borrada correctamente',
@@ -68,14 +62,12 @@ $strings = array(
 	'Páginas' => 'Páginas',
 	'Paginas' => 'Páginas',
 	'(Los campos "Link de la pagina" y "Nombre de la pagina" NO son necesarios)' => '(Los campos "Link de la página" y "Nombre de la página" NO son necesarios)',
-
 	'La funcionalidad ya existe en la base de datos' => 'La funcionalidad ya existe en la base de datos',
 	'Introduzca un valor para la clave de la funcionalidad' => 'Introduzca un valor para la clave de la funcionalidad',
 	'La funcionalidad ha sido borrada correctamente' => 'La funcionalidad ha sido borrada correctamente',
 	'La funcionalidad no existe' => 'La funcionalidad no existe',
 	'La funcionalidad se ha modificado con exito' => 'La funcionalidad se ha modificado con áxito',
 	'Se ha producido un error en la modificacion de la funcionalidad' => 'Se ha producido un error en la modificación de la funcionalidad',
-
 	'Funcionalidad' => 'Funcionalidad',
 	'Funcionalidades' => 'Funcionalidades',
 	'(Los campos "Link de la funcionalidad" y "Nombre de la funcionalidad" NO son necesarios)' => '(Los campos "Link de la funcionalidad" y "Nombre de la funcionalidad" NO son necesarios)',
@@ -95,7 +87,6 @@ $strings = array(
 	'El rol ha sido borrado correctamente'=>'El rol ha sido borrado correctamente',
 	'El rol no existe'=>'El rol no existe',
 	'Páginas' => 'Páginas',
-
 	'Insertar Funcionalidad'=>'Insertar Funcionalidad',
 	'FUNCIONALIDAD_ID' => 'ID del la funcionalidad',
 	'FUNCIONALIDAD_NOM' => 'Nombre de la funcionalidad',
@@ -186,7 +177,21 @@ $strings = array(
     'Rubrica modificada correctamente'=>'Rubrica modificada correctamente',
     'La rúbrica ha sido borrada correctamente'=>'La rúbrica ha sido borrada correctamente',
 	'texto'=>'es una iniciativa de la asignatura Interfaces de Usuario, desarrollada por el Grupo 2, que pretende ser un servicio de complemento a la docencia, basado en Internet como entorno y que se dirige, por una parte, al profesorado, alumnado y personal de administración y servicios y, por otra, al alumnado preuniversitario que tenga en mente cursar  estudios superiores.',
-
+	'Gestión de Documentación' => 'Gestión de Documentación',
+	'DOCUMENTACION_ID' => 'ID',
+	'DOCUMENTACION_NOM' => 'Nombre', 
+	'DOCUMENTACION_PROFESOR' => 'Profesor', 
+	'DOCUMENTACION_MATERIA' => 'Materia', 
+	'DOCUMENTACION_FECHA' => 'Fecha', 
+	'DOCUMENTACION_ENLACE' => 'Enlace',
+	'DOCUMENTACION_CATEGORIA' => 'Categoría',
+	'Borrar documentación' => 'Borrar documentación',
+	'El documento ha sido borrado correctamente'=>'El documento ha sido borrado correctamente',
+	'Modificar Documentación' => 'Modificar Documentación',
+	'Se ha producido un error en la modificación del documento' => 'Se ha producido un error en la modificación del documento',
+	'El documento se ha modificado con éxito' => 'El documento se ha modificado con éxito',
+	'El documento no existe' => 'El documento no existe',
+	'Consultar Documentación' => 'Consultar Documentación',
 //Entregas
 	'GESTION ENTREGAS'=>'GESTIÓN ENTREGAS',
     'Gestión de Entregas'=>'Gestión de Entregas',
@@ -247,7 +252,5 @@ $strings = array(
     
     
     
-
-
 )
 ?>
