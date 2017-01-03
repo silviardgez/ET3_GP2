@@ -294,6 +294,35 @@ function valida_envia_RUBRICA() {
     }
     return true;
 }
+
+function valida_envia_DOCUMENTACION() {
+    if (document.form.DOCUMENTACION_NOM.value.length==0){
+        alert("Introduzca un valor para el nombre del documento");
+        document.form.DOCUMENTACION_NOM.focus();
+        return false;
+    }
+    if (document.form.DOCUMENTACION_NOM.value.length<2){
+        alert("Nombre del documento demasiado corto (mínimo 2 caracteres)");
+        document.form.DOCUMENTACION_NOM.focus();
+        return false;
+    }
+    if (document.form.DOCUMENTACION_NOM.value.length > 25) {
+        alert("El tamaño máximo para el nombre de un documento es de 25 caracteres");
+        document.form.DOCUMENTACION_NOM.focus();
+        return false;
+    }
+   
+   
+    if (document.form.DOCUMENTACION_CATEGORIA.value.length > 25) {
+        alert("El tamaño máximo para el nombre de una categoría es de 25 caracteres");
+        document.form.DOCUMENTACION_CATEGORIA.focus();
+        return false;
+    }
+    
+    return true;
+}
+
+
 function valida_envia_ENTREGA(){
     if (document.form.ENTREGA_NOMBRE.value.length==0){
         alert("Introduzca un valor para el nombre de la entrega");

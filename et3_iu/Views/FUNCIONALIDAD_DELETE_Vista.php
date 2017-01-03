@@ -29,8 +29,6 @@ class FUNCIONALIDAD_Borrar{
 
 				?>
 
-		r>
-
 
 				<form action='FUNCIONALIDAD_Controller.php' method='post' >
 					<div id="centrado"><span class="form-title">
