@@ -32,17 +32,6 @@ class NIVEL_Model {
             echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
         }
     }
-
-//Inserción de nuevas Items
-    function Insertar() { 
-        $this->ConectarBD();        
-        $sql = "INSERT INTO NIVEL (NIVEL_DESCRIPCION, NIVEL_ITEM, NIVEL_RUBRICA, NIVEL_PORCENTAJE) VALUES ('" . $this->NIVEL_DESCRIPCION . "', '" . $this->NIVEL_ITEM . "', '" . $this->NIVEL_RUBRICA . "', '" . $this->NIVEL_PORCENTAJE. "')";
-            if (!$result = $this->mysqli->query($sql)) {
-                return 'Error en la consulta sobre la base de datos'; //Corregir String
-            } else {
-                return 'Nivel creado correctamente';
-            }
-        }
     
 
     //Borrado de una rubrica

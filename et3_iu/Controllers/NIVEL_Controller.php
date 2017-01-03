@@ -113,8 +113,6 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
     default: //Al entrar en la funcionalidad, se muestran todos los niveles de dicho item
         $nivel = new NIVEL_Model('', '', $_REQUEST['ITEM_ID'], '', '');
         $datos = $nivel->ConsultarTodo();
-//        $nivel = new NIVEL_Model('', '', '', $_REQUEST['RUBRICA_ID'], '');
-//        $datos2 = $nivel->ConsultarTodo();
         if (!tienePermisos('NIVEL_SHOWALL')) {
             new Mensaje('No tienes los permisos necesarios', '../Views/DEFAULT_Vista.php');
         } else {

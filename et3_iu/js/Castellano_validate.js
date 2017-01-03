@@ -409,7 +409,7 @@ function valida_envia_ITEM() {
     }
     
         valor = document.form.ITEM_PORCENTAJE.value;
-    if (!/^([0-3])*$/.test(valor)) {
+    if (!/^([0-9])*$/.test(valor)) {
         alert("Tiene que escribir un valor entre 0-100");
         document.form.ITEM_PORCENTAJE.focus();
         return false;

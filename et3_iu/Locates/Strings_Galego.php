@@ -219,7 +219,37 @@ $strings = array(
 	'ENTREGA_NOMBRE2' => 'Búsqueda por nome',
 	'ENTREGA_ID2' => 'Búsqueda por ID da entrega',
 	'ENTREGA_TRABAJO2' => 'Búsqueda por ID do traballo',
-	'ENTREGA_ALUMNO2' => 'Búsqueda por ID do alumno'
+	'ENTREGA_ALUMNO2' => 'Búsqueda por ID do alumno',
+    
+    
+        // ITEM
+     'Items'=>'Items',
+     'Nivel'=>'Ver Nivel',
+    'ITEM_ID'=>'ID',
+    'ITEM_NOMBRE'=>'Titulo',
+    'ITEM_RUBRICA'=>'Rúbrica',
+    'ITEM_PORCENTAJE'=>'Valor(%)',
+    'Insertar Item'=>'Insertar Item',
+    'Item creada correctamente'=>'Item creado correctamente',
+    'Borrar Item'=>'Borrar Item',
+    'Item borrado correctamente'=>'Item borrado correctamente',
+    'Modificar Item'=>'Modificar Item',
+    'Item modificado correctamente'=>'Item modificado correctamente',
+    'Consultar Item'=>'Consultar Item',
+    
+    'ITEM'=>'Item: ',
+    'RUBRICA'=>'Rúbrica:  ',
+    'NIVEL_ID'=>'ID',
+    'NIVEL_ITEM'=>'Item',
+    'NIVEL_DESCRIPCION'=>'Descrición',
+    'NIVEL_RUBRICA'=>'Rúbrica',
+    'NIVEL_ITEM'=>'Item',
+    'NIVEL_PORCENTAJE'=>'Valor (%)',
+    'Modificar Nivel'=>'Modificar Nivel',
+    'Nivel modificado correctamente'=>'Nivel modificado correctamente',
+    'Consultar Nivel'=>'Consultar Nivel'
+    
+    
 
 
 
