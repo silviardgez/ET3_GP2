@@ -37,7 +37,7 @@ class RUBRICA_EDIT {
                         <ul class="form-style-1">
                             <?php
 
-                            createForm($lista, $DefForm, $stringsRubrica, $this->valores, '', array('RUBRICA_ID'=>true, 'RUBRICA_AUTOR'=>true));
+                            createForm($lista, $DefForm, $stringsRubrica, $this->valores, array('RUBRICA_DESCRIPCION'=>false), array('RUBRICA_ID'=>true, 'RUBRICA_AUTOR'=>true));
                             ?>
 
                             <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_RUBRICA()" >
