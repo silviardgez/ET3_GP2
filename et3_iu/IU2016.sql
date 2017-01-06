@@ -194,8 +194,6 @@ INSERT INTO `FUNCIONALIDAD_PAGINA` (`FUNCIONALIDAD_ID`, `PAGINA_ID`) VALUES
 (600, 602),
 (600, 603),
 (600, 604),
-(600, 605),
-(600, 606),
 (600, 607),
 (600, 608),
 (600, 609);
@@ -237,10 +235,21 @@ CREATE TABLE IF NOT EXISTS `ITEM` (
 --
 
 INSERT INTO `ITEM` (`ITEM_ID`, `ITEM_NOMBRE`, `ITEM_RUBRICA`, `ITEM_PORCENTAJE`) VALUES
-(1, 'Documentacion Gestion', 1, 25),
-(2, 'Documentacion Proyecto', 1, 25),
-(3, 'Codificacion', 1, 25),
-(4, 'Apariencia', 1, 25);
+(1, 'Calidad general del proyecto', 1, 25),
+(2, 'Enunciado y analisis textual', 1, 25),
+(3, 'Clases candidatas', 1, 25),
+(4, 'Modelo de dominio', 1, 25),
+(5, 'Calidad general del proyecto', 2, 10),
+(6, 'Enunciado y analisis textual', 2, 20),
+(7, 'Modelo de dominio', 2, 20),
+(8, 'Modelo de casos de uso', 2, 20),
+(9, 'Descripciones casos de uso y diagramas de secuencia', 2, 20),
+(10, 'Presentacion y defensa', 2, 10),
+(11, 'Calidad de la construccion', 3, 20),
+(12, 'Atencion al tema', 3, 20),
+(13, 'Creatividad', 3, 20),
+(14, 'Tiempo y esfuerzo', 3, 20),
+(15, 'Estructura', 3, 20);
 
 -- --------------------------------------------------------
 
@@ -263,8 +272,8 @@ CREATE TABLE IF NOT EXISTS `MATERIA` (
 --
 
 INSERT INTO `MATERIA` (`MATERIA_ID`, `MATERIA_NOM`, `MATERIA_CREDITOS`, `MATERIA_DEPARTAMENTO`, `MATERIA_TITULACION`, `MATERIA_DESCRIPCION`) VALUES
-(1, 'Interfaces de Usuario', 6, 'Informatica', 'Ingenieria Informatica',  'Diseño, construcción y evaluación de interfaces'),
-(2, 'Centros de Datos', 6, 'Informatica', 'Ingenieria Informatica',  'Integración de sistemas y redes');
+(1, 'Interfaces de Usuario', 6, 'Informatica', 'Ingenieria Informatica',  'Diseño, construccion y evaluacion de interfaces'),
+(2, 'Centros de Datos', 6, 'Informatica', 'Ingenieria Informatica',  'Integracion de sistemas y redes');
 
 -- --------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `IMPARTE_MATERIA` (
@@ -297,7 +306,7 @@ INSERT INTO `MATRICULA` (`MATRICULA_ALUMNO`, `MATRICULA_MATERIA`) VALUES
 
 CREATE TABLE IF NOT EXISTS `NIVEL` (
 `NIVEL_ID` int(10) NOT NULL,
-  `NIVEL_DESCRIPCION` varchar(50) COLLATE utf8_spanish_ci,
+  `NIVEL_DESCRIPCION` varchar(1000) COLLATE utf8_spanish_ci,
   `NIVEL_ITEM` int(10) NOT NULL,
   `NIVEL_RUBRICA` int(10) NOT NULL,
   `NIVEL_PORCENTAJE` int(2)
@@ -308,27 +317,71 @@ CREATE TABLE IF NOT EXISTS `NIVEL` (
 --
 
 INSERT INTO `NIVEL` (`NIVEL_ID`, `NIVEL_DESCRIPCION`, `NIVEL_ITEM`, `NIVEL_RUBRICA`, `NIVEL_PORCENTAJE`) VALUES
-(1, 'Muy Mal', 1, 1, 0),
-(2, 'Mal', 1, 1, 25),
-(3, 'Bien', 1, 1, 50),
-(4, 'Muy Bien', 1, 1, 75),
-(5, 'Perfecto', 1, 1, 100),
-(6, 'Muy Mal', 2, 1, 0),
-(7, 'Mal', 2, 1, 25),
-(8, 'Bien', 2, 1, 50),
-(9, 'Muy Bien', 2, 1, 75),
-(10, 'Perfecto', 2, 1, 100),
-(11, 'Muy Mal', 3, 1, 0),
-(12, 'Mal', 3, 1, 25),
-(13, 'Bien', 3, 1, 50),
-(14, 'Muy Bien', 3, 1, 75),
-(15, 'Perfecto', 3, 1, 100),
-(16, 'Muy Mal', 4, 1, 0),
-(17, 'Mal', 4, 1, 25),
-(18, 'Bien', 4, 1, 50),
-(19, 'Muy Bien', 4, 1, 75),
-(20, 'Perfecto', 4, 1, 100);
-
+(1, 'El informe del proyecto(pdf) contiene toda la informacion necesaria, expresada de modo adecuado. No se aportan contenidos vacios ni innecesarios.', 1, 1, 100),
+(2, 'El informe del proyecto (pdf) contiene la mayoria de la informacion necesaria, expresada de modo aceptable. No se aportan en general contenidos vacios ni innecesarios, pero hay algunos fallos.', 1, 1, 75),
+(3, 'El informe del proyecto (pdf) no contiene una parte importante de la informacion necesaria, ni esta expresada de modo adecuado. Se aportan varios contenidos vacios e innecesarios.', 1, 1, 50),
+(4, 'El informe del proyecto (pdf) carece de gran parte de la informacion necesaria, y la que hay esta pobremente reflejada. Se aporta una gran cantidad de contenidos vacios e innecesarios.', 1, 1, 25),
+(5, 'La redaccion del enunciado del problema, asi como el analisis textual y de requerimientos son muy buenos, claros y concisos, y sin faltas de ortografias.', 2, 1, 100),
+(6, 'La redaccion del enunciado del problema, asi como el analisis textual y de requerimientos son aceptables, y bastante claros, aunque hay algunas faltas de ortografia y/o algunos aspectos mejorables.', 2, 1, 75),
+(7, 'La redaccion del enunciado del problema, asi como el analisis textual y de requerimientos son mediocres, con faltas de ortografia y falta de precision y definicion de contenidos.', 2, 1, 50),
+(8, 'La redaccion del enunciado del problema, asi como el analisis textual y de requerimientos, son muy basicos, carentes de claridad, y llenos de faltas de ortografia. Ademas, no se presentan los requerimientos basicos del sistema', 2, 1, 25),
+(9, 'La seleccion de clases candidatas es muy acertada. Las definiciones de las mismas son perfectas y no se confunden con atributos de otras clases', 3, 1, 100),
+(10, 'La seleccion de clases candidatas es medianamente correcta. Las definiciones de las mismas son bastante adecuadas, aunque hay algunos fallos y/o se confunden algunas clases con atributos.', 3, 1, 75),
+(11, 'La seleccion de clases candidatas no es muy acertada. Las definiciones de las mismas son, en ocasiones, incorrectas, y falta un numero considerable de clases y atributos', 3, 1, 50),
+(12, 'La seleccion de clases candidatas es mala. No existen definiciones o son incorrectas, se confunden clases con atributos, y faltan una gran cantidad de clases basicas.', 3, 1, 25),
+(13, 'El modelo de dominio esta bien organizado, es elegante, las relaciones son adecuadas y las multiplicidades son correctas. La notacion es correcta. Se entiende perfectamente.', 4, 1, 100),
+(14, 'El modelo de dominio esta bien organizado, aunque es mejorable. Las relaciones y multiplicidades estan bastante bien, aunque hay algunos fallos, y eso lleva a que no se entienda por completo.', 4, 1, 75),
+(15, 'El modelo de dominio es muy mejorable. Faltan relaciones y multiplicidades, o las que hay no son adecuadas, lo cual dificulta la comprension del modelo. Aparecen elementos incorrectos.', 4, 1, 50),
+(16, 'El modelo de dominio es de muy baja calidad. En su mayoria, las relaciones no son adecuadas y las multiplicidades son incorrectas. No se entiende', 4, 1, 25),
+(17, 'El informe del proyecto (pdf) contiene toda la informacion necesaria, expresada de modo adecuado. No se aportan contenidos vacios ni innecesarios.', 5, 2, 100),
+(18, 'El informe del proyecto (pdf) contiene la mayoria de la informacion necesaria, expresada de modo aceptable. No se aportan en general contenidos vacios ni innecesarios, pero hay algunos fallos.', 5, 2, 75),
+(19, 'El informe del proyecto (pdf) no contiene una parte importante de la informacion necesaria, ni esta expresada de modo adecuado. Se aportan varios contenidos vacios e innecesarios.', 5, 2, 50),
+(20, 'El informe del proyecto (pdf) carece de gran parte de la informacion necesaria, y la que hay esta pobremente reflejada. Se aporta una gran cantidad de contenidos vacios e innecesarios.', 5, 2, 25),
+(21, 'La redaccion del enunciado del problema, asi como el analisis textual y de requerimientos son muy buenos, claros y concisos, y sin faltas de ortografias.', 6, 2, 100),
+(22, 'La redaccion del enunciado del problema, asi como el analisis textual y de requerimientos son aceptables, y bastante claros, aunque hay algunas faltas de ortografia y/o algunos aspectos mejorables.', 6, 2, 75),
+(23, 'La redaccion del enunciado del problema, asi como el analisis textual y de requerimientos son mediocres, con faltas de ortografia y falta de precision y definicion de contenidos.', 6, 2, 50),
+(24, 'La redaccion del enunciado del problema, asi como el analisis textual y de requerimientos, son muy basicos, carentes de claridad, y llenos de faltas de ortografia. Ademas, no se presentan los requerimientos basicos del sistema', 6, 2, 25),
+(25, 'El modelo de dominio esta bien organizado, es elegante, las relaciones son adecuadas y las multiplicidades son correctas. La notacion es correcta. Se entiende perfectamente.', 7, 2, 100),
+(26, 'El modelo de dominio esta bien organizado, aunque es mejorable. Las relaciones y multiplicidades estan bastante bien, aunque hay algunos fallos, y eso lleva a que no se entienda por completo.', 7, 2, 75),
+(27, 'El modelo de dominio es muy mejorable. Faltan relaciones y multiplicidades, o las que hay no son adecuadas, lo cual dificulta la comprension del modelo. Aparecen elementos incorrectos.', 7, 2, 50),
+(28, 'El modelo de dominio es de muy baja calidad. En su mayoria, las relaciones no son adecuadas y las multiplicidades son incorrectas. No se entiende', 7, 2, 25),
+(29, 'El modelo de casos de uso esta bien organizado, es elegante. Se reflejan todos los actores y los casos de uso principales, asi como las relaciones de extension e inclusion. Se entiende perfectamente.', 8, 2, 100),
+(30, 'El modelo de casos de uso esta bien organizado, aunque hay algunos fallos y eso lleva a que no se entienda por completo (por ejemplo, los nombres de los casos de uso, falta algun actor, algun caso de uso, alguna relacion…).', 8, 2, 75),
+(31, 'El modelo de casos de uso es muy mejorable. Faltan actores y casos de uso, las relaciones de inclusion y/o extension no son correctas, o los nombres de los casos de uso no son correctos, lo que dificulta la comprension del modelo.', 8, 2, 50),
+(32, 'El modelo de casos de uso es de muy baja calidad. En su mayoria, los casos de uso no son correctos, faltan actores, y las relaciones de inclusion y extension son incorrectas. No se entiende. ', 8, 2, 25),
+(33, 'Las descripciones y los diagramas de secuencia estan correctos, organizados y bien escritos. Se entienden perfectamente. Las descripciones y diagramas son coherentes entre si.', 9, 2, 100),
+(34, 'Las descripciones y diagramas de secuencia son correctos, si bien hay algunos errores, faltan algunos pasos, o hay algun problema de incoherencia entre descripciones y diagramas.', 9, 2, 75),
+(35, 'Las descripciones y diagramas de secuencia son muy mejorables. Faltan pasos importantes, hay errores y/o hay incoherencias entre descripciones y diagramas', 9, 2, 50),
+(36, 'Las descripciones y diagramas de secuencia son de muy baja calidad. Faltan muchos pasos importantes y/o hay graves errores y/o hay importantes incoherencias entre descripciones y diagramas', 9, 2, 25),
+(37, 'Los alumnos se expresan brillantemente y transmiten perfectamente en que consistio su trabajo. Responden correctamente y con seguridad a las cuestiones planteadas', 10, 2, 100),
+(38, 'Los alumnos se expresan con correccion y consiguen transmitir las principales caracteristicas de su trabajo. La presentacion genera interes hasta el final. Responden correctamente a las cuestiones planteadas.', 10, 2, 75),
+(39, 'Los alumnos no se expresan con correccion. No transmiten claramente en que consistio el trabajo. La presentacion genera poco interes. No responden correctamente ni con seguridad a algunas de las cuestiones planteadas', 10, 2, 50),
+(40, 'Los alumnos no se expresan con correccion. No se comprende bien en que consistio el trabajo. La presentacion transmite aburrimiento y no genera interes. No se ajusta al tiempo establecido.', 10, 2, 25),
+(41, 'La maqueta muestra una considerable atencion en su construccion. Todos los elementos estan cuidadosamente y seguramente pegados al fondo. Sus componentes estan nitidamente presentados con muchos detalles. No hay marcas, rayones o manchas de pegamento. Nada cuelga de los bordes', 11, 3, 100),
+(42, 'La maqueta muestra atencion en su construccion. Todos los elementos estan cuidadosamente y seguramente pegados al fondo. Sus componentes estan nitidamente presentados con algunos detalles. Tiene algunas marcas notables, rayones o manchas de pegamento presentes. Nada cuelga de los bordes.', 11, 3, 90),
+(43, 'La maqueta muestra algo de atencion en su construccion. Todos los elementos estan seguramente pegados al fondo. Hay unas pocas marcas notables, rayones o manchas de pegamento presentes. Nada cuelga de los bordes.', 11, 3, 80),
+(44, 'La maqueta muestra poca atencion en su construccion. Ausencia de elementos. Algunos los elementos no estan seguramente pegados al fondo. Hay marcas notables, rayones o manchas de pegamento presentes. Existen elementos que cuelgan de los bordes', 11, 3, 50),
+(45, 'La maqueta fue construida descuidadamente, los elementos parecen estar "puestos al azar". Hay piezas sueltas sobre los bordes. Rayones, manchas, rupturas, bordes no nivelados y /o las marcas son evidentes', 11, 3, 25),
+(46, 'El estudiante da una explicacion razonable de como cada elemento en la maqueta esta relacionado al tema asignado. Para la mayoria de los elementos, la relacion es clara sin ninguna explicacion', 12, 3, 100),
+(47, 'El estudiante da una explicacion razonable de como la mayoria de los elementos en la maqueta estan relacionados con el tema asignado. Para la mayoria de los elementos, la relacion esta clara sin ninguna explicacion', 12, 3, 90),
+(48, 'El estudiante da una explicacion bastante clara de como los elementos en la maqueta estan relacionados al tema asignado.', 12, 3, 80),
+(59, 'El estudiante da una explicacion breve e insegura de como los elementos en la maqueta estan relacionados al tema asignado', 12, 3, 50),
+(50, 'Las explicaciones del estudiante son vagas e ilustran su dificultad en entender como los elementos estan relacionados con el tema asignado', 12, 3, 25),
+(51, 'Todos de los objetos usados en la maqueta reflejan un excepcional grado de creatividad del estudiante en su creacion y/o exhibicion', 13, 3, 100),
+(52, 'Varios de los objetos usados en la maqueta reflejan la creatividad del estudiante en su creacion y/o', 13, 3, 90),
+(53, 'Uno u dos objetos fue hecho o personalizado por el estudiante, pero las ideas eran tipicas mas que creativas.', 13, 3, 80),
+(54, 'Un objeto fue hecho o personalizado por el estudiante, pero las ideas poco creativas.', 13, 3, 50),
+(55, 'El estudiante no hizo o personalizo ninguno de los elementos en la maqueta.', 13, 3, 25),
+(56, 'El tiempo de la clase fue usado sabiamente. Mucho del tiempo y esfuerzo estuvo en la planeacion y diseño de la maqueta. Es claro que el estudiante trabajo en su hogar asi como en la escuela', 14, 3, 100),
+(57, 'El tiempo de la clase fue usado sabiamente. El estudiante pudo haber puesto mas tiempo y esfuerzo de trabajo en su hogar.', 14, 3, 90),
+(58, 'El tiempo de la clase no fue usado sabiamente. El estudiante pudo haber puesto mas tiempo y esfuerzo de trabajo en su hogar', 14, 3, 80),
+(59, 'El tiempo de clase ocasionalmente fue usado sabiamente, pero el estudiante no realizo trabajo adicional en su hogar.', 14, 3, 50),
+(60, 'El tiempo de clase no fue usado sabiamente y el estudiante no puso esfuerzo adicional.', 14, 3, 25),
+(41, 'Todos los componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta esta muy bien organizado', 15, 3, 100),
+(42, 'La mayoría de los componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta esta bien organizado.', 15, 3, 90),
+(43, 'Algunos de los componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta esta bastante bien organizado.', 15, 3, 80),
+(44, 'Pocos componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta esta bien organizado.', 15, 3, 50),
+(45, 'Ninguno de los componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta no tiene orde', 15, 3, 25);
 -- --------------------------------------------------------
 
 --
@@ -389,8 +442,6 @@ INSERT INTO `PAGINA` (`PAGINA_ID`, `PAGINA_LINK`, `PAGINA_NOM`) VALUES
 (602, '../Views/ITEM_EDIT_Vista.php', 'ITEM EDIT'),
 (603, '../Views/ITEM_SHOWALL_Vista.php', 'ITEM SHOWALL'),
 (604, '../Views/ITEM_SHOWCURRENT_Vista.php', 'ITEM SHOWCURRENT'),
-(605, '../Views/NIVEL_ADD_Vista.php', 'NIVEL ADD'),
-(606, '../Views/NIVEL_DELETE_Vista.php', 'NIVEL DELETE'),
 (607, '../Views/NIVEL_EDIT_Vista.php', 'NIVEL EDIT'),
 (608, '../Views/NIVEL_SHOWALL_Vista.php', 'NIVEL SHOWALL'),
 (609, '../Views/NIVEL_SHOWCURRENT_Vista.php', 'NIVEL SHOWCURRENT');
@@ -471,9 +522,9 @@ CREATE TABLE IF NOT EXISTS `RUBRICA` (
 --
 
 INSERT INTO `RUBRICA` (`RUBRICA_ID`, `RUBRICA_NOMBRE`, `RUBRICA_DESCRIPCION`, `RUBRICA_NIVELES`, `RUBRICA_AUTOR`) VALUES
-(1, 'Rubrica ET3', 'Rubrica para la correccion de ET3', 7, '70561875Z'),
-(2, 'Correcion TFG 2017', 'Falta por insertar items', 5, '86723680H'),
-(3, 'Proyecto PI', 'Correction binaria', 2, '70561875Z');
+(1, 'Rubrica Trabajo ISI ET1', 'Primera entrega ISI 2016/2017 ', 4, '70561875Z'),
+(2, 'Rubrica Trabajo ISI ET2', 'Segunda entrega ISI 2016/2017', 6, '86723680H'),
+(3, 'Rubrica Proyecto Maqueta', 'Proyecto de construccion y exposicion', 5, '70561875Z');
 
 -- --------------------------------------------------------
 
@@ -634,18 +685,12 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('RESPONSABLE', 602),
 ('RESPONSABLE', 603),
 ('RESPONSABLE', 604),
-('ADMIN', 605),
-('ADMIN', 606),
 ('ADMIN', 607),
 ('ADMIN', 608),
 ('ADMIN', 609),
-('PROFESOR', 605),
-('PROFESOR', 606),
 ('PROFESOR', 607),
 ('PROFESOR', 608),
 ('PROFESOR', 609),
-('RESPONSABLE', 605),
-('RESPONSABLE', 606),
 ('RESPONSABLE', 607),
 ('RESPONSABLE', 608),
 ('RESPONSABLE', 609);
