@@ -224,7 +224,7 @@ $strings = array(
     
         // ITEM
      'Items'=>'Items',
-     'Nivel'=>'Ver Nivel',
+     'Nivel'=>'Ver Niveis',
     'ITEM_ID'=>'ID',
     'ITEM_NOMBRE'=>'Titulo',
     'ITEM_RUBRICA'=>'Rúbrica',

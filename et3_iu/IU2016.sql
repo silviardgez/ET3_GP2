@@ -372,16 +372,16 @@ INSERT INTO `NIVEL` (`NIVEL_ID`, `NIVEL_DESCRIPCION`, `NIVEL_ITEM`, `NIVEL_RUBRI
 (53, 'Uno u dos objetos fue hecho o personalizado por el estudiante, pero las ideas eran tipicas mas que creativas.', 13, 3, 80),
 (54, 'Un objeto fue hecho o personalizado por el estudiante, pero las ideas poco creativas.', 13, 3, 50),
 (55, 'El estudiante no hizo o personalizo ninguno de los elementos en la maqueta.', 13, 3, 25),
-(56, 'El tiempo de la clase fue usado sabiamente. Mucho del tiempo y esfuerzo estuvo en la planeacion y diseño de la maqueta. Es claro que el estudiante trabajo en su hogar asi como en la escuela', 14, 3, 100),
+(56, 'El tiempo de la clase fue usado sabiamente. Mucho del tiempo y esfuerzo estuvo en la planeacion y arquitectura de la maqueta. Es claro que el estudiante trabajo en su hogar asi como en la escuela', 14, 3, 100),
 (57, 'El tiempo de la clase fue usado sabiamente. El estudiante pudo haber puesto mas tiempo y esfuerzo de trabajo en su hogar.', 14, 3, 90),
 (58, 'El tiempo de la clase no fue usado sabiamente. El estudiante pudo haber puesto mas tiempo y esfuerzo de trabajo en su hogar', 14, 3, 80),
 (59, 'El tiempo de clase ocasionalmente fue usado sabiamente, pero el estudiante no realizo trabajo adicional en su hogar.', 14, 3, 50),
 (60, 'El tiempo de clase no fue usado sabiamente y el estudiante no puso esfuerzo adicional.', 14, 3, 25),
-(41, 'Todos los componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta esta muy bien organizado', 15, 3, 100),
-(42, 'La mayoría de los componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta esta bien organizado.', 15, 3, 90),
-(43, 'Algunos de los componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta esta bastante bien organizado.', 15, 3, 80),
-(44, 'Pocos componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta esta bien organizado.', 15, 3, 50),
-(45, 'Ninguno de los componentes reflejan una representacion autentica del tema asignado. El diseño de la maqueta no tiene orde', 15, 3, 25);
+(41, 'Todos los componentes reflejan una representacion autentica del tema asignado. La arquitectura de la maqueta esta muy bien organizada', 15, 3, 100),
+(42, 'La mayoría de los componentes reflejan una representacion autentica del tema asignado. La arquitectura de la maqueta esta bien organizada.', 15, 3, 90),
+(43, 'Algunos de los componentes reflejan una representacion autentica del tema asignado. La arquitectura de la maqueta esta bastante bien organizada.', 15, 3, 80),
+(44, 'Pocos componentes reflejan una representacion autentica del tema asignado. La arquitectura de la maqueta esta bien organizado.', 15, 3, 50),
+(45, 'Ninguno de los componentes reflejan una representacion autentica del tema asignado. La arquitectura de la maqueta no tiene orden.', 15, 3, 25);
 -- --------------------------------------------------------
 
 --
