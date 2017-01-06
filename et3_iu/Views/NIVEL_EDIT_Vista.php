@@ -5,7 +5,7 @@ class NIVEL_EDIT {
     private $valores;
     private $volver;
 
-//VISTA PARA LA MODIFICACIÓN DE UN ITEM DE UNA RUBRICA
+//VISTA PARA LA MODIFICACIÓN DE UN NIVEL DE UNITEM DE UNA RUBRICA
     function __construct($valores, $volver) {
         $this->valores = $valores;
         $this->volver = $volver;

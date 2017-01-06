@@ -1111,6 +1111,22 @@ function createForm($listFields, $fieldsDef, $strings, $values, $required, $noed
                         echo $str;
                         break;
                     case 'textarea':
+                         if (isset($fieldsDef[$i]['texto'])) {
+                            $str = "<li><label>" . $strings[$fieldsDef[$i]['name']] . "</label>";
+                        } else {
+                            $str = "<li><label>" . $strings[$fieldsDef[$i]['name']] . "</label>";
+                        }
+                        $str .= "<" . $fieldsDef[$i]['type'] . "";
+                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                        $str .= " rows = '" . $fieldsDef[$i]['rows'] . "'";
+                        $str .= " cols = '" . $fieldsDef[$i]['cols'] . "'";
+                        if (isset($values[$fieldsDef[$i]['name']])) {
+                            $str .= " >" . $values[$fieldsDef[$i]['name']] . "";
+                        }else {
+                             $str .= " >";
+                        }
+                        $str .= " </textarea>";
+                        echo $str;
                         break;
                     default:
                 }
@@ -2008,5 +2024,4 @@ function añadirFuncionalidades($NOM) {
 
                 return $sum;
             }
-            ?>
-
+?>
