@@ -2,12 +2,12 @@
 
 include '../Functions/LibraryFunctions.php';
 
-//Clase que maneja la informacion una rubrica 
+//Clase que maneja la informacion una trabajo 
 class TRABAJO_Model
 {
 
     var $TRABAJO_ID;
-    var $TRABAJO_NOMBRE;
+    var $TRABAJO_NOM;
     var $TRABAJO_DESCRIPCION;
     var $TRABAJO_MATERIA;
     var $TRABAJO_PROFESOR;
@@ -16,12 +16,12 @@ class TRABAJO_Model
     var $TRABAJO_FECHA_CREACION;
     var $mysqli;
 
-//Constructor de la clase rubrica
-    function __construct($TRABAJO_ID, $TRABAJO_NOMBRE, $TRABAJO_DESCRIPCION, $TRABAJO_MATERIA, $TRABAJO_PROFESOR,
+//Constructor de la clase trabajo
+    function __construct($TRABAJO_ID, $TRABAJO_NOM, $TRABAJO_DESCRIPCION, $TRABAJO_MATERIA, $TRABAJO_PROFESOR,
                          $TRABAJO_FECHA_INICIO, $TRABAJO_FECHA_FIN, $TRABAJO_FECHA_CREACION)
     {
         $this->TRABAJO_ID = $TRABAJO_ID;
-        $this->TRABAJO_NOMBRE = $TRABAJO_NOMBRE;
+        $this->TRABAJO_NOM = $TRABAJO_NOM;
         $this->TRABAJO_DESCRIPCION = $TRABAJO_DESCRIPCION;
         $this->TRABAJO_MATERIA = $TRABAJO_MATERIA;
         $this->TRABAJO_PROFESOR = $TRABAJO_PROFESOR;
@@ -47,27 +47,26 @@ class TRABAJO_Model
         }
     }
 
-//Inserción de nuevas Rúbricas
+//Inserción de nuevos Trabajos
     function Insertar()
     {
         $this->ConectarBD();
-        if ($this->TRABAJO_ID === FALSE) {
-            return 'No existe ningún cliente con el DNI introducido'; //Corregir String
-        } else {
-            $sql = "INSERT INTO TRABAJO (TRABAJO_NOMBRE, TRABAJO_DESCRIPCION, TRABAJO_MATERIA, TRABAJO_PROFESOR,
-                    TRABAJO_FECHA_INICIO,TRABAJO_FECHA_FIN,TRABAJO_FECHA_CREACION) VALUES ('" . $this->TRABAJO_NOMBRE .
-                "', '" . $this->TRABAJO_DESCRIPCION . "', '" . $this->TRABAJO_MATERIA . "', '" . $this->TRABAJO_FECHA_INICIO .
-                "', '" . $this->TRABAJO_FECHA_FIN . "', '" . $this->TRABAJO_FECHA_CREACION . "', '" . $_SESSION['login'] . "')";
 
-            if (!$result = $this->mysqli->query($sql)) {
-                return 'No existe ningún cliente con el DNI introducido'; //Corregir String
-            } else {
-                return 'Trabajo creado correctamente';
-            }
+        $sql = "INSERT INTO TRABAJO (TRABAJO_NOM, TRABAJO_DESCRIPCION, TRABAJO_MATERIA, TRABAJO_PROFESOR,
+                    TRABAJO_FECHA_INICIO,TRABAJO_FECHA_FIN,TRABAJO_FECHA_CREACION) VALUES ('" . $this->TRABAJO_NOM .
+            "', '" . $this->TRABAJO_DESCRIPCION . "', '" . $this->TRABAJO_MATERIA . "', '" . $this->TRABAJO_PROFESOR .
+            "', '" . $this->TRABAJO_FECHA_INICIO . "', '" . $this->TRABAJO_FECHA_FIN . "', '" .
+            $this->TRABAJO_FECHA_CREACION . "')";
+
+        if (!$result = $this->mysqli->query($sql)) {
+            return 'No se ha podido introducir el trabajo';
+        } else {
+            return 'Trabajo creado correctamente';
         }
+
     }
 
-    //Borrado de una rubrica
+    //Borrado de un trabajo
     function Borrar()
     {
         $this->ConectarBD();
@@ -80,12 +79,12 @@ class TRABAJO_Model
         }
     }
 
-//Permite la consulta de rubricas por todos sus atributos
+//Permite la consulta de trabajos por todos sus atributos
     function Consultar()
     {
         $this->ConectarBD();
-        $sql = "SELECT * FROM TRABAJO WHERE TRABAJO_ID ='" . $this->TRABAJO_ID . "' OR TRABAJO_NOMBRE LIKE'" .
-            $this->TRABAJO_NOMBRE . "' OR TRABAJO_DESCRIPCION = '" . $this->TRABAJO_DESCRIPCION .
+        $sql = "SELECT * FROM TRABAJO WHERE TRABAJO_ID ='" . $this->TRABAJO_ID . "' OR TRABAJO_NOM LIKE'" .
+            $this->TRABAJO_NOM . "' OR TRABAJO_DESCRIPCION = '" . $this->TRABAJO_DESCRIPCION .
             "' OR TRABAJO_MATERIA = '" . $this->TRABAJO_MATERIA . "' OR TRABAJO_PROFESOR = '" .
             $this->TRABAJO_PROFESOR . "'";
 
@@ -102,7 +101,7 @@ class TRABAJO_Model
         }
     }
 
-//Devuelve la lista de todas las rubricas
+//Devuelve la lista de todos los trabajos
     function ConsultarTodo()
     {
         $this->ConectarBD();
@@ -122,15 +121,16 @@ class TRABAJO_Model
         }
     }
 
-//Modifica los datos de una rubrica
+//Modifica los datos de un trabajo
     function Modificar()
     {
         $this->ConectarBD();
         $sql = "SELECT * FROM TRABAJO WHERE TRABAJO_ID='" . $this->TRABAJO_ID . "'";
+
         if (!$resultado = $this->mysqli->query($sql)) {
             return 'El DNI introducido no pertenece a ningun cliente'; //CorregirStrings
         } else {
-            $sql = "UPDATE TRABAJO SET TRABAJO_NOMBRE = '" . $this->TRABAJO_NOMBRE . "', TRABAJO_DESCRIPCION ='" .
+            $sql = "UPDATE TRABAJO SET TRABAJO_NOM = '" . $this->TRABAJO_NOM . "', TRABAJO_DESCRIPCION ='" .
                 $this->TRABAJO_DESCRIPCION . "', TRABAJO_MATERIA ='" . $this->TRABAJO_MATERIA . "', TRABAJO_FECHA_INICIO ='" .
                 $this->TRABAJO_FECHA_INICIO . "', TRABAJO_FECHA_FIN ='" . $this->TRABAJO_FECHA_FIN . "', TRABAJO_FECHA_CREACION ='" .
                 $this->TRABAJO_FECHA_CREACION . "' WHERE TRABAJO_ID='" . $this->TRABAJO_ID . "'";
@@ -144,9 +144,9 @@ class TRABAJO_Model
     }
 
     function RellenaDatos()
-    { //Completa el formulario visible con los datos de una rubrica
+    { //Completa el formulario visible con los datos de un trabajo
         $this->ConectarBD();
-        $sql = "SELECT TRABAJO_ID, TRABAJO_NOMBRE, TRABAJO_DESCRIPCION, TRABAJO_MATERIA, TRABAJO_PROFESOR,
+        $sql = "SELECT TRABAJO_ID, TRABAJO_NOM, TRABAJO_DESCRIPCION, TRABAJO_MATERIA, TRABAJO_PROFESOR,
             TRABAJO_FECHA_INICIO,TRABAJO_FECHA_FIN,TRABAJO_FECHA_CREACION FROM TRABAJO WHERE TRABAJO_ID = '" .
             $this->TRABAJO_ID . "'";
 
@@ -158,4 +158,5 @@ class TRABAJO_Model
         }
     }
 }
+
 ?>

@@ -18,8 +18,8 @@ class TRABAJO_SHOWCURRENT{
             <?php
 
             include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
-            include '../Locates/Strings_'.$_SESSION['IDIOMA'].'_Trabajo.php';
-            $lista = array('TRABAJO_ID', 'TRABAJO_NOMBRE', 'TRABAJO_DESCRIPCION', 'TRABAJO_NIVELES', 'TRABAJO_AUTOR');
+            $lista = array('TRABAJO_ID','TRABAJO_NOM', 'TRABAJO_DESCRIPCION', 'TRABAJO_MATERIA', 'TRABAJO_PROFESOR',
+                'TRABAJO_FECHA_INICIO', 'TRABAJO_FECHA_FIN');
 
             ?>
 
@@ -27,14 +27,14 @@ class TRABAJO_SHOWCURRENT{
 
             <form action='TRABAJO_Controller.php' method='post'>
                 <div id="centrado"><span class="form-title">
-			<?php echo $stringsTrabajo['Consultar Trabajo']?><br></span></div>
+			<?php echo $strings['CONSULTAR TRABAJO']?><br></span></div>
                 <ul class="form-style-1">
                     <?php
 
                     include '../Functions/TRABAJOShowDefForm.php';
 
 
-                    createForm($lista,$form,$stringsTrabajo,$values='',false,false);
+                    createForm($lista,$form,$strings,$values='',false,false);
                     ?>
                     <input type='submit' name='accion' value=<?php echo $strings['Consultar'] ?>
                     </ul>

@@ -463,5 +463,22 @@ function valida_envia_NIVEL() {
     return true;
 }
 
-
+/*function valida_envia_TRABAJO() {
+    if (document.form.TRABAJO_NOMBRE.value.length > 25) {
+        alert("El tamaño máximo para el nombre de un trabajo es 25 caracteres");
+        document.form.TRABAJO_NOMBRE.focus();
+        return false;
+    }
+    if (document.form.TRABAJO_NOMBRE.value.length == 0) {
+        alert("Es necesario darle un nombre al trabajo");
+        document.form.TRABAJO_NOMBRE.focus();
+        return false;
+    }
+    if (document.form.TRABAJO_DESCRIPCION.value.length > 50) {
+        alert("El tamaño máximo para la descripción de un trabajo es 25 caracteres");
+        document.form.TRABAJO_DESCRIPCION.focus();
+        return false;
+    }
+    return true;
+}*/
 

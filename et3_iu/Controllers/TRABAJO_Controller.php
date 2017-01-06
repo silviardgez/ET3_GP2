@@ -25,7 +25,7 @@ function get_data_form()
         $TRABAJO_ID = '';
     }
 
-    $TRABAJO_NOMBRE = $_REQUEST['TRABAJO_NOMBRE'];
+    $TRABAJO_NOM = $_REQUEST['TRABAJO_NOM'];
     $TRABAJO_DESCRIPCION = $_REQUEST['TRABAJO_DESCRIPCION'];
     $TRABAJO_MATERIA = $_REQUEST['TRABAJO_MATERIA'];
 
@@ -35,11 +35,15 @@ function get_data_form()
         $TRABAJO_PROFESOR = $_SESSION['login'];
     }
 
-    $TRABAJO_FECHA_INICIO = $_REQUEST['TRABAJO_FECHA_INCIO'];
+    $TRABAJO_FECHA_INICIO = $_REQUEST['TRABAJO_FECHA_INICIO'];
     $TRABAJO_FECHA_FIN = $_REQUEST['TRABAJO_FECHA_FIN'];
-    $TRABAJO_FECHA_CREACION = $_REQUEST['TRABAJO_FECHA_CREACION'];
 
-    $trabajo = new TRABAJO_Model($TRABAJO_ID, $TRABAJO_NOMBRE, $TRABAJO_DESCRIPCION, $TRABAJO_MATERIA, $TRABAJO_PROFESOR,
+    date_default_timezone_set("Europe/Madrid");
+    $date1 = date("Y-m-d");
+    $date2 = date("h:i");
+    $TRABAJO_FECHA_CREACION = $date1 . "T" . $date2;
+
+    $trabajo = new TRABAJO_Model($TRABAJO_ID, $TRABAJO_NOM, $TRABAJO_DESCRIPCION, $TRABAJO_MATERIA, $TRABAJO_PROFESOR,
         $TRABAJO_FECHA_INICIO, $TRABAJO_FECHA_FIN, $TRABAJO_FECHA_CREACION);
 
     return $trabajo;
@@ -51,7 +55,7 @@ if (!isset($_REQUEST['accion'])) {
 
 Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, el controlador redirige el comportamiento del programa
     case $strings['Insertar']: //Inserción de nuevas Trabajos
-        if (!isset($_REQUEST['TRABAJO_NOMBRE'])) {
+        if (!isset($_REQUEST['TRABAJO_NOM'])) {
             if (!tienePermisos('TRABAJO_ADD')) {
                 new Mensaje('No tienes los permisos necesarios', 'TRABAJO_Controller.php');
             } else {
@@ -66,8 +70,8 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
         break;
 
     case $strings['Borrar']: //Borrado de trabajos
-        if (!isset($_REQUEST['TRABAJO_NOMBRE'])) {
-            $trabajo = new TRABAJO_Model($_REQUEST['TRABAJO_ID'], '', '', '', '','','','');
+        if (!isset($_REQUEST['TRABAJO_NOM'])) {
+            $trabajo = new TRABAJO_Model($_REQUEST['TRABAJO_ID'], '', '', '', '', '', '', '');
             $valores = $trabajo->RellenaDatos();
             if (!tienePermisos('TRABAJO_DELETE')) {
                 new Mensaje('No tienes los permisos necesarios', 'TRABAJO_Controller.php');
@@ -83,8 +87,8 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
         break;
 
     case $strings['Modificar']: //Modificación de trabajos
-        if (!isset($_REQUEST['TRABAJO_NOMBRE'])) {
-            $trabajo = new TRABAJO_Model($_REQUEST['TRABAJO_ID'], '', '', '', '','','','');
+        if (!isset($_REQUEST['TRABAJO_NOM'])) {
+            $trabajo = new TRABAJO_Model($_REQUEST['TRABAJO_ID'], '', '', '', '', '', '', '');
             $valores = $trabajo->RellenaDatos();
             if (!tienePermisos('TRABAJO_EDIT')) {
                 new Mensaje('No tienes los permisos necesarios', 'TRABAJO_Controller.php');
@@ -93,6 +97,7 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
             }
         } else {
             $trabajo = get_data_form();
+
             $respuesta = $trabajo->Modificar();
 
             new Mensaje($respuesta, 'TRABAJO_Controller.php');
@@ -101,7 +106,7 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
 
 
     case $strings['Consultar']:  //Consulta de Rúbricas
-        if (!isset($_REQUEST['TRABAJO_NOMBRE'])) {
+        if (!isset($_REQUEST['TRABAJO_NOM'])) {
             if (!tienePermisos('TRABAJO_SHOWCURRENT')) {
                 new Mensaje('No tienes los permisos necesarios', 'TRABAJO_Controller.php');
             } else {
@@ -118,7 +123,7 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
 
 
     default: //Al entrar en la funcionalidad, se muestran todas las rúbricas 
-        $trabajo = new TRABAJO_Model('', '', '', '', '','','','');
+        $trabajo = new TRABAJO_Model('', '', '', '', '', '', '', '');
         $datos = $trabajo->ConsultarTodo();
         if (!tienePermisos('TRABAJO_SHOWALL')) {
             new Mensaje('No tienes los permisos necesarios', '../Views/DEFAULT_Vista.php');
