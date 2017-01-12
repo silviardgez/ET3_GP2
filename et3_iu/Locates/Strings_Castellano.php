@@ -258,7 +258,11 @@ $strings = array(
     'INSERTAR TRABAJO' => 'Insertar Trabajo',
     'BORRAR TRABAJO' => 'Borrar Trabajo',
     'MODIFICAR TRABAJO' => 'Editar Trabajo',
-    'CONSULTAR TRABAJO' => 'Consultar Trabajo'
+    'CONSULTAR TRABAJO' => 'Consultar Trabajo',
+    'Trabajo creado correctamente' => 'Trabajo creado correctamente',
+    'El trabajo ha sido borrado correctamente'=>'Trabajo borrado correctamente',
+    'Trabajo modificado correctamente'=>'Trabajo modificado correctamente'
+
 
 )
 ?>

@@ -247,7 +247,10 @@ $strings = array(
     'INSERTAR TRABAJO' => 'Add Homework',
     'BORRAR TRABAJO' => 'Homework Delete',
     'EDITAR TRABAJO' => 'Homework Edit',
-    'CONSULTAR TRABAJO' => 'Homework Consult'
+    'CONSULTAR TRABAJO' => 'Homework Consult',
+    'Trabajo creado correctamente' => 'Homework successfully created',
+    'El trabajo ha sido borrado correctamente'=>'Homework successfully deleted',
+    'Trabajo modificado correctamente'=>'Homework successfully modified'
 
 
 )
