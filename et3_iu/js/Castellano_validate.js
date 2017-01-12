@@ -426,8 +426,8 @@ function valida_envia_ITEM() {
 
 
 function valida_envia_NIVEL() {
-    if (document.form.NIVEL_DESCRIPCION.value.length > 50) {
-        alert("El tamaño máximo para la descripcion de un nivel es 50 caracteres");
+    if (document.form.NIVEL_DESCRIPCION.value.length > 1000) {
+        alert("El tamaño máximo para la descripcion de un nivel es 1000 caracteres");
         document.form.NIVEL_DESCRIPCION.focus();
         return false;
     }

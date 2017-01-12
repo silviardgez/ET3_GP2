@@ -55,6 +55,7 @@ Switch ($_REQUEST['accion']) { //Según la acción que envíen los formularios, 
             }
         } else {
             $nivel = get_data_form();
+
             $respuesta = $nivel->Modificar();
             new Mensaje_ALT($respuesta, 'NIVEL_Controller.php?ITEM_ID=', $_REQUEST['NIVEL_ITEM']);
         }

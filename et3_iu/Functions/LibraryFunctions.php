@@ -1,8 +1,7 @@
 <?php
 
 //Funciones para la creación automática de formulario a partir de array
-function createForm2($listFields, $fieldsDef, $strings, $values, $required, $noedit, $rol)
-{
+function createForm2($listFields, $fieldsDef, $strings, $values, $required, $noedit, $rol) {
     foreach ($listFields as $field) { //miro todos los campos que me piden en su orden
         for ($i = 0; $i < count($fieldsDef); $i++) { //recorro todos los campos de la definición de formulario para encontrarlo
             //echo $field . ':' . $fieldsDef[$i]['required'] . '<br>';
@@ -328,7 +327,8 @@ function createForm2($listFields, $fieldsDef, $strings, $values, $required, $noe
                         }
                         $str .= " ><br>\n";
                         echo $str;
-                        break;;
+                        break;
+                        ;
                     case 'select':
                         $str = "\t" . $strings[$fieldsDef[$i]['name']] . ": <select name='" . $fieldsDef[$i]['name'] . "'";
                         if ($noedit || $noedit[$field]) {
@@ -360,8 +360,7 @@ function createForm2($listFields, $fieldsDef, $strings, $values, $required, $noe
     }
 }
 
-function createForm3($listFields, $fieldsDef, $strings, $values, $required, $noedit, $pags)
-{
+function createForm3($listFields, $fieldsDef, $strings, $values, $required, $noedit, $pags) {
     foreach ($listFields as $field) { //miro todos los campos que me piden en su orden
         for ($i = 0; $i < count($fieldsDef); $i++) { //recorro todos los campos de la definición de formulario para encontrarlo
             //echo $field . ':' . $fieldsDef[$i]['required'] . '<br>';
@@ -685,7 +684,8 @@ function createForm3($listFields, $fieldsDef, $strings, $values, $required, $noe
                         }
                         $str .= " ></li>";
                         echo $str;
-                        break;;
+                        break;
+                        ;
                     case 'select':
                         $str = "\t" . $strings[$fieldsDef[$i]['name']] . ": <select name='" . $fieldsDef[$i]['name'] . "'";
                         if ($noedit || $noedit[$field]) {
@@ -717,8 +717,7 @@ function createForm3($listFields, $fieldsDef, $strings, $values, $required, $noe
     }
 }
 
-function createForm($listFields, $fieldsDef, $strings, $values, $required, $noedit)
-{
+function createForm($listFields, $fieldsDef, $strings, $values, $required, $noedit) {
     foreach ($listFields as $field) { //miro todos los campos que me piden en su orden
         for ($i = 0; $i < count($fieldsDef); $i++) { //recorro todos los campos de la definición de formulario para encontrarlo
             //echo $field . ':' . $fieldsDef[$i]['required'] . '<br>';
@@ -1128,7 +1127,8 @@ function createForm($listFields, $fieldsDef, $strings, $values, $required, $noed
                         }
                         $str .= " ></li>";
                         echo $str;
-                        break;;
+                        break;
+                        ;
                     case 'select':
                         $str = "<li><label>" . $strings[$fieldsDef[$i]['name']] . "</label>" . "<select name='" . $fieldsDef[$i]['name'] . "'";
                         if ($noedit || $noedit[$field]) {
@@ -1152,6 +1152,22 @@ function createForm($listFields, $fieldsDef, $strings, $values, $required, $noed
                         echo $str;
                         break;
                     case 'textarea':
+                         if (isset($fieldsDef[$i]['texto'])) {
+                            $str = "<li><label>" . $strings[$fieldsDef[$i]['name']] . "</label>";
+                        } else {
+                            $str = "<li><label>" . $strings[$fieldsDef[$i]['name']] . "</label>";
+                        }
+                        $str .= "<" . $fieldsDef[$i]['type'] . "";
+                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                        $str .= " rows = '" . $fieldsDef[$i]['rows'] . "'";
+                        $str .= " cols = '" . $fieldsDef[$i]['cols'] . "'";
+                        if (isset($values[$fieldsDef[$i]['name']])) {
+                            $str .= " >" . $values[$fieldsDef[$i]['name']] . "";
+                        }else {
+                             $str .= " >";
+                        }
+                        $str .= " </textarea>";
+                        echo $str;
                         break;
                     default:
                 }
@@ -1160,8 +1176,7 @@ function createForm($listFields, $fieldsDef, $strings, $values, $required, $noed
     }
 }
 
-function IsAuthenticated()
-{
+function IsAuthenticated() {
     session_start();
     if (!isset($_SESSION['login'])) {
         return false;
@@ -1171,8 +1186,7 @@ function IsAuthenticated()
 }
 
 //Elimina la carpeta que se le pasa como argumento
-function eliminarDir($carpeta)
-{
+function eliminarDir($carpeta) {
     foreach (glob($carpeta . "/*") as $archivos_carpeta) {
         if (is_dir($archivos_carpeta)) {
             eliminarDir($archivos_carpeta);
@@ -1184,8 +1198,7 @@ function eliminarDir($carpeta)
 }
 
 //Completa la lista de titulos con las funcionalidades disponibles
-function AñadirFuncionesTitulos($array)
-{
+function AñadirFuncionesTitulos($array) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1199,8 +1212,7 @@ function AñadirFuncionesTitulos($array)
 }
 
 //Añade al array de definición de formulario las entradas correspondientes a las funcionalidades añadidas
-function AñadirFunciones($array)
-{
+function AñadirFunciones($array) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1222,8 +1234,7 @@ function AñadirFunciones($array)
 }
 
 //Devuelve el ID de rol a partir del nombre
-function ConsultarIDRol($ROL_NOM)
-{
+function ConsultarIDRol($ROL_NOM) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1234,8 +1245,7 @@ function ConsultarIDRol($ROL_NOM)
 }
 
 //Devuelve el nombre de rol a partir del id de rol
-function ConsultarNOMRol($ROL_ID)
-{
+function ConsultarNOMRol($ROL_ID) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1246,8 +1256,7 @@ function ConsultarNOMRol($ROL_ID)
 }
 
 //Devuelve el id de una funcionalidad a partir del nombre
-function ConsultarIDFuncionalidad($FUNCIONALIDAD_NOM)
-{
+function ConsultarIDFuncionalidad($FUNCIONALIDAD_NOM) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1258,8 +1267,7 @@ function ConsultarIDFuncionalidad($FUNCIONALIDAD_NOM)
 }
 
 //Devuelve el nombre de una funcionalidad a partir de su id
-function ConsultarNOMFuncionalidad($FUNCIONALIDAD_ID)
-{
+function ConsultarNOMFuncionalidad($FUNCIONALIDAD_ID) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1270,8 +1278,7 @@ function ConsultarNOMFuncionalidad($FUNCIONALIDAD_ID)
 }
 
 //Devuelve el id de una página a partir de su nombre
-function ConsultarIDPagina($PAGINA_NOM)
-{
+function ConsultarIDPagina($PAGINA_NOM) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1282,8 +1289,7 @@ function ConsultarIDPagina($PAGINA_NOM)
 }
 
 //Devuelve el nombre de una pagina a partir de su id
-function ConsultarNOMPagina($PAGINA_ID)
-{
+function ConsultarNOMPagina($PAGINA_ID) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1294,8 +1300,7 @@ function ConsultarNOMPagina($PAGINA_ID)
 }
 
 //Añade al array los nombre de las paginas disponibles
-function AñadirPaginasTitulos($array)
-{
+function AñadirPaginasTitulos($array) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1309,8 +1314,7 @@ function AñadirPaginasTitulos($array)
 }
 
 //Añade al formulario de definicion las entradas correspondientes a las paginas disponibles
-function AñadirPaginas($array)
-{
+function AñadirPaginas($array) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1332,8 +1336,7 @@ function AñadirPaginas($array)
 }
 
 //Genera un link para la página a partir de un nombre
-function GenerarLinkPagina($PAGINA_NOM)
-{
+function GenerarLinkPagina($PAGINA_NOM) {
     $link = str_replace(" ", "_", $PAGINA_NOM);
     $s = '../Views/';
     $s .= $link;
@@ -1342,8 +1345,7 @@ function GenerarLinkPagina($PAGINA_NOM)
 }
 
 //Genera el link de un controlador a partir del nombre de la funcionalidad
-function GenerarLinkControlador($CON_NOM)
-{
+function GenerarLinkControlador($CON_NOM) {
     $link = str_replace(" ", "_", $CON_NOM);
     $s = '../Controllers/';
     $s .= $link;
@@ -1352,8 +1354,7 @@ function GenerarLinkControlador($CON_NOM)
 }
 
 //Devuelve el ID de una materia a partir de su nombre
-function ConsultarIDMateria($MATERIA_NOM)
-{
+function ConsultarIDMateria($MATERIA_NOM) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
 
     if ($mysqli->connect_errno) {
@@ -1365,8 +1366,7 @@ function ConsultarIDMateria($MATERIA_NOM)
 }
 
 //Devuelve el nombre de una materia a partir de su ID
-function ConsultarNomMateria($MATERIA_ID)
-{
+function ConsultarNomMateria($MATERIA_ID) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
 
     if ($mysqli->connect_errno) {
@@ -1378,8 +1378,7 @@ function ConsultarNomMateria($MATERIA_ID)
 }
 
 //Devuelve el nombre y apellidos de un profesor a partir de su DNI
-function ConsultarNomProfesor($USUARIO_DNI)
-{
+function ConsultarNomProfesor($USUARIO_DNI) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
 
     if ($mysqli->connect_errno) {
@@ -1391,8 +1390,7 @@ function ConsultarNomProfesor($USUARIO_DNI)
 }
 
 //Añade los roles al desplegable de tipos
-function AñadirTipos($array)
-{
+function AñadirTipos($array) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if (consultarRol($_SESSION['login']) == '4') {
         $str = array('PROFESOR', 'PROFESOR RESPONSABLE');
@@ -1421,8 +1419,7 @@ function AñadirTipos($array)
 }
 
 //Añade los profesores al desplegable
-function AñadirProfesores($array)
-{
+function AñadirProfesores($array) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if (consultarRol($_SESSION['login']) == '4') {
         $str = array('PROFESOR', 'PROFESOR RESPONSABLE');
@@ -1455,8 +1452,7 @@ function AñadirProfesores($array)
 }
 
 //Añade las materias al desplegable
-function AñadirMaterias($array)
-{
+function AñadirMaterias($array) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if (consultarRol($_SESSION['login']) == '4') {
         $str = array('PROFESOR', 'PROFESOR RESPONSABLE');
@@ -1489,8 +1485,7 @@ function AñadirMaterias($array)
 }
 
 //crea un archivo en la direccion especificada
-function crearArchivo($direccion)
-{
+function crearArchivo($direccion) {
     $fp = fopen($direccion, "w+");
     $string = "<h1>En construcción</h1><br><a href='../Views/DEFAULT_Vista.php'>Back</a>";
     fputs($fp, $string);
@@ -1498,20 +1493,17 @@ function crearArchivo($direccion)
 }
 
 //Modifica el nombre de un archivo
-function cambiarNombreArchivo($antiguo, $nuevo)
-{
+function cambiarNombreArchivo($antiguo, $nuevo) {
     rename($antiguo, $nuevo);
 }
 
 //Borra el archivo en la direccion especificada
-function borrarArchivo($direccion)
-{
+function borrarArchivo($direccion) {
     unlink($direccion);
 }
 
 //añade a la pagina default los enlaces correspondientes a las funcionalidades
-function añadirFuncionalidades($NOM)
-{
+function añadirFuncionalidades($NOM) {
     include '../Locates/Strings_' . $NOM['IDIOMA'] . '.php';
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
     if ($mysqli->connect_errno) {
@@ -1526,599 +1518,552 @@ function añadirFuncionalidades($NOM)
             $funcionalidad = ConsultarNOMFuncionalidad($fila['FUNCIONALIDAD_ID']);
             switch ($funcionalidad) {
                 case "GESTION USUARIOS":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/USUARIO_Controller.php'><?php echo $strings['Gestión de usuarios'] ?></a></span>
-                    </li> <?php
-                    break;
-                case "GESTION USUARIOS2":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/USUARIO_Controller.php'><?php echo $strings['Gestión de usuarios'] ?></a></span>
-                    </li> <?php
-                    break;
-                case "GESTION ROLES":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/ROL_Controller.php'><?php echo $strings['Gestión de Roles'] ?></a></span>
-                    </li> <?php
-                    break;
-                case "GESTION FUNCIONALIDADES":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/FUNCIONALIDAD_Controller.php'><?php echo $strings['Gestión de Funcionalidades'] ?></a></span>
-                    </li><?php
-                    break;
-                case "GESTION PAGINAS":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/PAGINA_Controller.php'><?php echo $strings['Gestión de Páginas'] ?></a></span>
-                    </li> <?php
-                    break;
-                case "GESTION RUBRICAS":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/RUBRICA_Controller.php'><?php echo $strings['Gestión de Rúbricas'] ?></a></span>
-                    </li> <?php
-                    break;
-                case "GESTION DOCUMENTACION":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/DOCUMENTACION_Controller.php'><?php echo $strings['Gestión de Documentación'] ?></a></span>
-                    </li> <?php
-                    break;
-                case "GESTION ENTREGAS":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/ENTREGAS_Controller.php'><?php echo $strings['Gestión de Entregas'] ?></a></span>
-                    </li> <?php
-                    break;
-                case "GESTION ENTREGAS2":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/ENTREGAS_Controller.php'><?php echo $strings['Gestión de Entregas'] ?></a></span>
-                    </li> <?php
-                    break;
-                case "GESTION TRABAJOS":
-                    ?>
-                    <li><span><a style="font-size:20px;"
-                                 href='../Controllers/TRABAJO_Controller.php'><?php echo $strings['Gestión de Trabajos'] ?></a></span>
-                    </li> <?php
-                    break;
-                case "GESTION DE ITEMS DE RUBRICAS":
-                    break;
-                default:
-                    $link = str_replace(" ", "_", ConsultarNOMFuncionalidad($fila['FUNCIONALIDAD_ID'])) . "_Controller.php";
-                    echo "<a style='font-size:20px;'href='../Controllers/" . $link . "'>" . ConsultarNOMFuncionalidad($fila['FUNCIONALIDAD_ID']) . " </a><br><br>";
-                    break;
-            }
-        }
-    }
-}
-
-//Genera los includes correspondientes a las paginas a las que se tiene acceso
-function generarIncludes()
-{
-    $toret = array();
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT DISTINCT PAGINA.PAGINA_LINK FROM USUARIO_PAGINA, PAGINA  WHERE PAGINA.PAGINA_ID=USUARIO_PAGINA.PAGINA_ID AND USUARIO_PAGINA.USUARIO_USER='" . $_SESSION['login'] . "'";
-    if (!($resultado = $mysqli->query($sql))) {
-        echo 'Error en la consulta sobre la base de datos';
-    } else {
-        while ($tupla = $resultado->fetch_array()) {
-            array_push($toret, $tupla['PAGINA_LINK']);
-        }
-    }
-    return $toret;
-}
-
-//Revisa si tiene permiso al comprobar si se ha incluido la clase a la que se quiere acceder
-function tienePermisos($string)
-{
-    return class_exists($string);
-}
-
-//Devuelve el rol de un usuario
-function consultarRol($USUARIO_USER)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT USUARIO_TIPO FROM USUARIO  WHERE USUARIO_USER='" . $USUARIO_USER . "'";
-    $result = $mysqli->query($sql)->fetch_array();
-    return $result['USUARIO_TIPO'];
-}
-
-//Devuelve las funcionalidades asignadas a un rol
-function consultarFuncionalidadesRol($rol)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    $toret = array();
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT FUNCIONALIDAD_NOM FROM FUNCIONALIDAD, ROL_FUNCIONALIDAD WHERE FUNCIONALIDAD.FUNCIONALIDAD_ID=ROL_FUNCIONALIDAD.FUNCIONALIDAD_ID AND ROL_FUNCIONALIDAD.ROL_ID=" . $rol;
-    $result = $mysqli->query($sql);
-    while ($tupla = $result->fetch_array()) {
-        array_push($toret, $tupla['FUNCIONALIDAD_NOM']);
-    }
-    return $toret;
-}
-
-function consultarPaginasFuncionalidad($funcionalidad)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    $toret = array();
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT PAGINA_NOM FROM PAGINA, FUNCIONALIDAD_PAGINA WHERE PAGINA.PAGINA_ID=FUNCIONALIDAD_PAGINA.PAGINA_ID AND FUNCIONALIDAD_PAGINA.FUNCIONALIDAD_ID=" . $funcionalidad;
-    $result = $mysqli->query($sql);
-    while ($tupla = $result->fetch_array()) {
-        array_push($toret, $tupla['PAGINA_NOM']);
-    }
-    return $toret;
-}
-
-//Consulta las paginas asignadas a un usuario
-function consultarPaginasEmp($user)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    $sql = "select PAGINA_ID from USUARIO_PAGINA WHERE USUARIO_USER='" . $user . "'";
-    if (!($resultado = $mysqli->query($sql))) {
-        return 'Error en la consulta sobre la base de datos';
-    } else {
-        $toret = array();
-        $i = 0;
-        while ($fila = $resultado->fetch_array()) {
-            $toret[$i] = ConsultarNOMPagina($fila['PAGINA_ID']);
-            $i++;
-        }
-        return $toret;
-    }
-}
-
-function ConsultarNombreRubrica($RUBRICA_ID)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT RUBRICA_NOMBRE FROM RUBRICA WHERE RUBRICA_ID='" . $RUBRICA_ID . "'";
-    $result = $mysqli->query($sql)->fetch_array();
-    return $result['RUBRICA_NOMBRE'];
-}
-
-function ConsultarNombreItem($ITEM_ID)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT ITEM_NOMBRE FROM ITEM WHERE ITEM_ID='" . $ITEM_ID . "'";
-    $result = $mysqli->query($sql)->fetch_array();
-    return $result['ITEM_NOMBRE'];
-}
-
-function ConsultarIDRubrica($ITEM_ID)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT ITEM_RUBRICA FROM ITEM WHERE ITEM_ID='" . $ITEM_ID . "'";
-    $result = $mysqli->query($sql)->fetch_array();
-    return $result['ITEM_RUBRICA'];
-}
-
-function ConsultarNivelRubrica($ITEM_RUBRICA)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT RUBRICA_NIVELES FROM RUBRICA WHERE RUBRICA_ID='" . $ITEM_RUBRICA . "'";
-    $result = $mysqli->query($sql)->fetch_array();
-    return $result['RUBRICA_NIVELES'];
-}
-
-function ConsultarIDItem($ITEM_NOMBRE, $ITEM_RUBRICA, $ITEM_PORCENTAJE)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT ITEM_ID FROM ITEM WHERE ITEM_RUBRICA='" . $ITEM_RUBRICA . "' AND ITEM_NOMBRE= '" . $ITEM_NOMBRE . "' AND ITEM_PORCENTAJE = '" . $ITEM_PORCENTAJE . "' ";
-    $result = $mysqli->query($sql)->fetch_array();
-    return $result['ITEM_ID'];
-}
-
-function createForm4($listFields, $fieldsDef, $strings, $values, $required, $noedit)
-{
-    foreach ($listFields as $field) { //miro todos los campos que me piden en su orden
-        for ($i = 0; $i < count($fieldsDef); $i++) { //recorro todos los campos de la definición de formulario para encontrarlo
-            //echo $field . ':' . $fieldsDef[$i]['required'] . '<br>';
-            if ($field == $fieldsDef[$i]['name'] || $field == $fieldsDef[$i]['value']) { //si es el que busco
-                switch ($fieldsDef[$i]['type']) {
-                    case 'text':
-                        if (isset($fieldsDef[$i]['texto'])) {
-                            $str = "<li>" . $strings[$fieldsDef[$i]['texto']];
-                        } else {
-                            $str = "\t" . $strings[$fieldsDef[$i]['name']];
+                    ?><li><span><a style="font-size:20px;" href='../Controllers/USUARIO_Controller.php'><?php echo $strings['Gestión de usuarios'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION USUARIOS2":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/USUARIO_Controller.php'><?php echo $strings['Gestión de usuarios'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION ROLES":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/ROL_Controller.php'><?php echo $strings['Gestión de Roles'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION FUNCIONALIDADES":
+                                ?> <li><span><a  style="font-size:20px;"href='../Controllers/FUNCIONALIDAD_Controller.php'><?php echo $strings['Gestión de Funcionalidades'] ?></a></span></li><?php
+                                break;
+                            case "GESTION PAGINAS":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/PAGINA_Controller.php'><?php echo $strings['Gestión de Páginas'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION RUBRICAS":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/RUBRICA_Controller.php'><?php echo $strings['Gestión de Rúbricas'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION DOCUMENTACION":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/DOCUMENTACION_Controller.php'><?php echo $strings['Gestión de Documentación'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION ENTREGAS":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/ENTREGAS_Controller.php'><?php echo $strings['Gestión de Entregas'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION ENTREGAS2":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/ENTREGAS_Controller.php'><?php echo $strings['Gestión de Entregas'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION DE ITEMS DE RUBRICAS":
+                                break;
+                            default:
+                                $link = str_replace(" ", "_", ConsultarNOMFuncionalidad($fila['FUNCIONALIDAD_ID'])) . "_Controller.php";
+                                echo "<a style='font-size:20px;'href='../Controllers/" . $link . "'>" . ConsultarNOMFuncionalidad($fila['FUNCIONALIDAD_ID']) . " </a><br><br>";
+                                break;
                         }
-                        $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
-                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
-                        $str .= " id = '" . $fieldsDef[$i]['name'] . "'";
-                        $str .= " size = '" . $fieldsDef[$i]['size'] . "'";
-                        if (isset($values[$fieldsDef[$i]['name']])) {
-                            $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
-                        } else {
-                            $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
-                        }
-                        if ($fieldsDef[$i]['pattern'] <> '') {
-                            $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
-                        }
-                        if ($fieldsDef[$i]['validation'] <> '') {
-                            $str .= " " . $fieldsDef[$i]['validation'];
-                        }
-                        if (is_bool($required)) {
-                            if (!$required) {
-                                $str .= ' ';
-                            } else {
-                                $str .= ' required ';
-                            }
-                        } else {
-                            if (isset($required[$field])) {
-                                $str .= 'required';
-                            } else {
-                                $str .= '';
-                            }
-                        }
-                        if (is_bool($noedit)) {
-                            if ($noedit) {
-                                $str .= ' readonly ';
-                            }
-                        } else {
-                            if (isset($noedit[$field])) {
-                                if ($noedit[$field]) {
-                                    $str .= ' readonly ';
-                                }
-                            }
-                        }
-                        $str .= " ></li>";
-                        echo $str;
-                        break;
-                    case 'date':
-                        $str = "<li>" . $strings[$fieldsDef[$i]['name']];
-                        $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
-                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
-                        $str .= " min = '" . $fieldsDef[$i]['min'] . "'";
-                        $str .= " max = '" . $fieldsDef[$i]['max'] . "'";
-                        if (isset($values[$fieldsDef[$i]['name']])) {
-                            $str .= " value = '" . ($values[$fieldsDef[$i]['name']]) . "'";
-                        } else {
-                            $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
-                        }
-                        if ($fieldsDef[$i]['pattern'] <> '') {
-                            $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
-                        }
-                        if ($fieldsDef[$i]['validation'] <> '') {
-                            $str .= " " . $fieldsDef[$i]['validation'];
-                        }
-                        if (is_bool($required)) {
-                            if (!$required) {
-                                $str .= ' ';
-                            } else {
-                                $str .= ' required ';
-                            }
-                        } else {
-                            if (isset($required[$field])) {
-                                if (!$required[$field]) {
-                                    $str .= ' ';
-                                } else {
-                                    $str -= ' required ';
-                                }
-                            }
-                        }
-                        if (is_bool($noedit)) {
-                            if ($noedit) {
-                                $str .= ' readonly ';
-                            }
-                        } else {
-                            if (isset($noedit[$field])) {
-                                if ($noedit[$field]) {
-                                    $str .= ' readonly ';
-                                }
-                            }
-                        }
-                        $str .= "required" . " ></li>";
-                        echo $str;
-                        break;
-                    case 'email':
-                        $str = "<li>" . $strings[$fieldsDef[$i]['name']];
-                        $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
-                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
-                        $str .= " size = '" . $fieldsDef[$i]['size'] . "'";
-                        if (isset($values[$fieldsDef[$i]['name']])) {
-                            $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
-                        } else {
-                            $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
-                        }
-                        if ($fieldsDef[$i]['pattern'] <> '') {
-                            $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
-                        }
-                        if ($fieldsDef[$i]['validation'] <> '') {
-                            $str .= " " . $fieldsDef[$i]['validation'];
-                        }
-                        if (is_bool($required)) {
-                            if (!$required) {
-                                $str .= ' ';
-                            } else {
-                                $str .= ' required ';
-                            }
-                        } else {
-                            if (isset($required[$field])) {
-                                if (!$required[$field]) {
-                                    $str .= ' ';
-                                } else {
-                                    $str -= ' required ';
-                                }
-                            }
-                        }
-                        if (is_bool($noedit)) {
-                            if ($noedit) {
-                                $str .= ' readonly ';
-                            }
-                        } else {
-                            if (isset($noedit[$field])) {
-                                if ($noedit[$field]) {
-                                    $str .= ' readonly ';
-                                }
-                            }
-                        }
-                        $str .= "required" . " ></li>";
-                        echo $str;
-                        break;
-                    case 'search':
-                        break;
-                    case 'url':
-                        $str = "<li>" . $strings[$fieldsDef[$i]['name']];
-                        $str .= " : <a target='_blank' href='" . $values[$fieldsDef[$i]['name']] . "'>Ver</a>";
-                        $str .= " </li>";
-                        echo $str;
-                        break;
-                    case 'tel':
-                        break;
-                    case 'password':
-                        $str = "<li>" . $strings[$fieldsDef[$i]['name']];
-                        $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
-                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
-                        $str .= " size = '" . $fieldsDef[$i]['size'] . "'";
-                        if (isset($values[$fieldsDef[$i]['name']])) {
-                            $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
-                        } else {
-                            $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
-                        }
-                        if ($fieldsDef[$i]['pattern'] <> '') {
-                            $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
-                        }
-                        if ($fieldsDef[$i]['validation'] <> '') {
-                            $str .= " " . $fieldsDef[$i]['validation'];
-                        }
-                        if (is_bool($required)) {
-                            if (!$required) {
-                                $str .= ' ';
-                            } else {
-                                $str .= ' required ';
-                            }
-                        } else {
-                            if (isset($required[$field])) {
-                                if (!$required[$field]) {
-                                    $str .= ' ';
-                                } else {
-                                    $str -= ' required ';
-                                }
-                            }
-                        }
-                        if (is_bool($noedit)) {
-                            if ($noedit) {
-                                $str .= ' readonly ';
-                            }
-                        } else {
-                            if (isset($noedit[$field])) {
-                                if ($noedit[$field]) {
-                                    $str .= ' readonly ';
-                                }
-                            }
-                        }
-                        $str .= " ></li>";
-                        echo $str;
-                        break;
-                    case 'number':
-                        $str = "<li>" . $strings[$fieldsDef[$i]['name']];
-                        $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
-                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
-                        $str .= " min = '" . $fieldsDef[$i]['min'] . "'";
-                        $str .= " max = '" . $fieldsDef[$i]['max'] . "'";
-                        if (isset($values[$fieldsDef[$i]['name']])) {
-                            $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
-                        } else {
-                            $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
-                        }
-                        if ($fieldsDef[$i]['pattern'] <> '') {
-                            $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
-                        }
-                        if ($fieldsDef[$i]['validation'] <> '') {
-                            $str .= " " . $fieldsDef[$i]['validation'];
-                        }
-                        if (is_bool($required)) {
-                            if (!$required) {
-                                $str .= ' ';
-                            } else {
-                                $str .= ' required ';
-                            }
-                        } else {
-                            if (isset($required[$field])) {
-                                if (!$required[$field]) {
-                                    $str .= ' ';
-                                } else {
-                                    $str -= ' required ';
-                                }
-                            }
-                        }
-                        if (is_bool($noedit)) {
-                            if ($noedit) {
-                                $str .= ' readonly ';
-                            }
-                        } else {
-                            if (isset($noedit[$field])) {
-                                if ($noedit[$field]) {
-                                    $str .= ' readonly ';
-                                }
-                            }
-                        }
-                        $str .= " ></li>";
-                        echo $str;
-                        break;
-                    case 'checkbox':
-                        $str = "<li>" . $fieldsDef[$i]['value'];
-                        $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
-                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
-                        $str .= " size = '" . $fieldsDef[$i]['size'] . "'";
-                        if (isset($values[$fieldsDef[$i]['name']])) {
-                            $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
-                        } else {
-                            $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
-                        }
-                        if ($fieldsDef[$i]['pattern'] <> '') {
-                            $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
-                        }
-                        if ($fieldsDef[$i]['validation'] <> '') {
-                            $str .= " " . $fieldsDef[$i]['validation'];
-                        }
-                        if (is_bool($noedit)) {
-                            if ($noedit) {
-                                $str .= ' readonly ';
-                            }
-                        } else {
-                            if (isset($noedit[$field])) {
-                                if ($noedit[$field]) {
-                                    $str .= ' readonly ';
-                                }
-                            }
-                        }
-                        $str .= " ><br>\n";
-                        echo $str;
-                        break;
-                    case 'radio':
-                        break;
-                    case 'file':
-                        $str = "<li>" . $strings[$fieldsDef[$i]['name']];
-                        $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
-                        $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
-                        if (isset($values[$fieldsDef[$i]['name']])) {
-                            $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
-                        } else {
-                            $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
-                        }
-                        if ($fieldsDef[$i]['pattern'] <> '') {
-                            $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
-                        }
-                        if ($fieldsDef[$i]['validation'] <> '') {
-                            $str .= " " . $fieldsDef[$i]['validation'];
-                        }
-                        if (is_bool($required)) {
-                            if (!$required) {
-                                $str .= ' ';
-                            } else {
-                                $str .= ' required ';
-                            }
-                        } else {
-                            if (isset($required[$field])) {
-                                if (!$required[$field]) {
-                                    $str .= ' ';
-                                } else {
-                                    $str -= ' required ';
-                                }
-                            }
-                        }
-                        if (is_bool($noedit)) {
-                            if ($noedit) {
-                                $str .= ' readonly ';
-                            }
-                        } else {
-                            if (isset($noedit[$field])) {
-                                if ($noedit[$field]) {
-                                    $str .= ' readonly ';
-                                }
-                            }
-                        }
-                        $str .= " ></li>";
-                        echo $str;
-                        break;;
-                    case 'select':
-                        $str = "<li>" . $strings[$fieldsDef[$i]['name']] . ": <select name='" . $fieldsDef[$i]['name'] . "'";
-                        if ($noedit || $noedit[$field]) {
-                            $str .= ' readonly ';
-                        }
-                        if ($fieldsDef[$i]['multiple'] == 'true') {
-                            $str = $str . " multiple ";
-                        }
-                        $str = $str . " >";
-                        foreach ($fieldsDef[$i]['options'] as $value) {
-                            $str1 = "<option value = '" . $value . "'";
-                            if (isset($values[$fieldsDef[$i]['name']])) {
-                                if ($values[$fieldsDef[$i]['name']] == $value) {
-                                    $str1 .= " selected ";
-                                }
-                            }
-                            $str1 .= ">" . $value . "</option>";
-                            $str = $str . $str1;
-                        }
-                        $str = $str . "</select></li>";
-                        echo $str;
-                        break;
-                    case 'textarea':
-                        break;
-                    default:
+                    }
                 }
             }
-        }
-    }
-}
 
-function mismaMateria($USUARIO_USER)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT * FROM IMPARTE_MATERIA WHERE PROFESOR_USER='" . $USUARIO_USER . "' AND MATERIA_ID IN (SELECT MATERIA_ID FROM IMPARTE_MATERIA WHERE PROFESOR_USER='" . $_SESSION['login'] . "')";
-    $result = $mysqli->query($sql);
-    if ($result->num_rows > 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
+//Genera los includes correspondientes a las paginas a las que se tiene acceso
+            function generarIncludes() {
+                $toret = array();
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT DISTINCT PAGINA.PAGINA_LINK FROM USUARIO_PAGINA, PAGINA  WHERE PAGINA.PAGINA_ID=USUARIO_PAGINA.PAGINA_ID AND USUARIO_PAGINA.USUARIO_USER='" . $_SESSION['login'] . "'";
+                if (!($resultado = $mysqli->query($sql))) {
+                    echo 'Error en la consulta sobre la base de datos';
+                } else {
+                    while ($tupla = $resultado->fetch_array()) {
+                        array_push($toret, $tupla['PAGINA_LINK']);
+                    }
+                }
+                return $toret;
+            }
 
-function sumarValorItem($ITEM_RUBRICA)
-{
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
-    if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $sql = "SELECT SUM(ITEM_PORCENTAJE) AS value_sum FROM ITEM WHERE ITEM_RUBRICA='" . $ITEM_RUBRICA . "'";
-    $result = $mysqli->query($sql);
-    $row = mysqli_fetch_assoc($result);
-    $sum = $row['value_sum'];
+//Revisa si tiene permiso al comprobar si se ha incluido la clase a la que se quiere acceder
+            function tienePermisos($string) {
+                return class_exists($string);
+            }
 
-    return $sum;
-}
+//Devuelve el rol de un usuario
+            function consultarRol($USUARIO_USER) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT USUARIO_TIPO FROM USUARIO  WHERE USUARIO_USER='" . $USUARIO_USER . "'";
+                $result = $mysqli->query($sql)->fetch_array();
+                return $result['USUARIO_TIPO'];
+            }
 
-?>
+//Devuelve las funcionalidades asignadas a un rol
+            function consultarFuncionalidadesRol($rol) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $toret = array();
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT FUNCIONALIDAD_NOM FROM FUNCIONALIDAD, ROL_FUNCIONALIDAD WHERE FUNCIONALIDAD.FUNCIONALIDAD_ID=ROL_FUNCIONALIDAD.FUNCIONALIDAD_ID AND ROL_FUNCIONALIDAD.ROL_ID=" . $rol;
+                $result = $mysqli->query($sql);
+                while ($tupla = $result->fetch_array()) {
+                    array_push($toret, $tupla['FUNCIONALIDAD_NOM']);
+                }
+                return $toret;
+            }
+
+            function consultarPaginasFuncionalidad($funcionalidad) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $toret = array();
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT PAGINA_NOM FROM PAGINA, FUNCIONALIDAD_PAGINA WHERE PAGINA.PAGINA_ID=FUNCIONALIDAD_PAGINA.PAGINA_ID AND FUNCIONALIDAD_PAGINA.FUNCIONALIDAD_ID=" . $funcionalidad;
+                $result = $mysqli->query($sql);
+                while ($tupla = $result->fetch_array()) {
+                    array_push($toret, $tupla['PAGINA_NOM']);
+                }
+                return $toret;
+            }
+
+//Consulta las paginas asignadas a un usuario
+            function consultarPaginasEmp($user) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $sql = "select PAGINA_ID from USUARIO_PAGINA WHERE USUARIO_USER='" . $user . "'";
+                if (!($resultado = $mysqli->query($sql))) {
+                    return 'Error en la consulta sobre la base de datos';
+                } else {
+                    $toret = array();
+                    $i = 0;
+                    while ($fila = $resultado->fetch_array()) {
+                        $toret[$i] = ConsultarNOMPagina($fila['PAGINA_ID']);
+                        $i++;
+                    }
+                    return $toret;
+                }
+            }
+
+            function ConsultarNombreRubrica($RUBRICA_ID) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT RUBRICA_NOMBRE FROM RUBRICA WHERE RUBRICA_ID='" . $RUBRICA_ID . "'";
+                $result = $mysqli->query($sql)->fetch_array();
+                return $result['RUBRICA_NOMBRE'];
+            }
+
+            function ConsultarNombreItem($ITEM_ID) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT ITEM_NOMBRE FROM ITEM WHERE ITEM_ID='" . $ITEM_ID . "'";
+                $result = $mysqli->query($sql)->fetch_array();
+                return $result['ITEM_NOMBRE'];
+            }
+
+            function ConsultarIDRubrica($ITEM_ID) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT ITEM_RUBRICA FROM ITEM WHERE ITEM_ID='" . $ITEM_ID . "'";
+                $result = $mysqli->query($sql)->fetch_array();
+                return $result['ITEM_RUBRICA'];
+            }
+
+            function ConsultarNivelRubrica($ITEM_RUBRICA) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT RUBRICA_NIVELES FROM RUBRICA WHERE RUBRICA_ID='" . $ITEM_RUBRICA . "'";
+                $result = $mysqli->query($sql)->fetch_array();
+                return $result['RUBRICA_NIVELES'];
+            }
+
+            function ConsultarIDItem($ITEM_NOMBRE, $ITEM_RUBRICA, $ITEM_PORCENTAJE) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT ITEM_ID FROM ITEM WHERE ITEM_RUBRICA='" . $ITEM_RUBRICA . "' AND ITEM_NOMBRE= '" . $ITEM_NOMBRE . "' AND ITEM_PORCENTAJE = '" . $ITEM_PORCENTAJE . "' ";
+                $result = $mysqli->query($sql)->fetch_array();
+                return $result['ITEM_ID'];
+            }
+
+            function createForm4($listFields, $fieldsDef, $strings, $values, $required, $noedit) {
+                foreach ($listFields as $field) { //miro todos los campos que me piden en su orden
+                    for ($i = 0; $i < count($fieldsDef); $i++) { //recorro todos los campos de la definición de formulario para encontrarlo
+                        //echo $field . ':' . $fieldsDef[$i]['required'] . '<br>';
+                        if ($field == $fieldsDef[$i]['name'] || $field == $fieldsDef[$i]['value']) { //si es el que busco
+                            switch ($fieldsDef[$i]['type']) {
+                                case 'text':
+                                    if (isset($fieldsDef[$i]['texto'])) {
+                                        $str = "<li>" . $strings[$fieldsDef[$i]['texto']];
+                                    } else {
+                                        $str = "\t" . $strings[$fieldsDef[$i]['name']];
+                                    }
+                                    $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
+                                    $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                                    $str .= " id = '" . $fieldsDef[$i]['name'] . "'";
+                                    $str .= " size = '" . $fieldsDef[$i]['size'] . "'";
+                                    if (isset($values[$fieldsDef[$i]['name']])) {
+                                        $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
+                                    } else {
+                                        $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['pattern'] <> '') {
+                                        $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['validation'] <> '') {
+                                        $str .= " " . $fieldsDef[$i]['validation'];
+                                    }
+                                    if (is_bool($required)) {
+                                        if (!$required) {
+                                            $str .= ' ';
+                                        } else {
+                                            $str .= ' required ';
+                                        }
+                                    } else {
+                                        if (isset($required[$field])) {
+                                            $str .= 'required';
+                                        } else {
+                                            $str .= '';
+                                        }
+                                    }
+                                    if (is_bool($noedit)) {
+                                        if ($noedit) {
+                                            $str .= ' readonly ';
+                                        }
+                                    } else {
+                                        if (isset($noedit[$field])) {
+                                            if ($noedit[$field]) {
+                                                $str .= ' readonly ';
+                                            }
+                                        }
+                                    }
+                                    $str .= " ></li>";
+                                    echo $str;
+                                    break;
+                                case 'date':
+                                    $str = "<li>" . $strings[$fieldsDef[$i]['name']];
+                                    $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
+                                    $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                                    $str .= " min = '" . $fieldsDef[$i]['min'] . "'";
+                                    $str .= " max = '" . $fieldsDef[$i]['max'] . "'";
+                                    if (isset($values[$fieldsDef[$i]['name']])) {
+                                        $str .= " value = '" . ($values[$fieldsDef[$i]['name']]) . "'";
+                                    } else {
+                                        $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['pattern'] <> '') {
+                                        $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['validation'] <> '') {
+                                        $str .= " " . $fieldsDef[$i]['validation'];
+                                    }
+                                    if (is_bool($required)) {
+                                        if (!$required) {
+                                            $str .= ' ';
+                                        } else {
+                                            $str .= ' required ';
+                                        }
+                                    } else {
+                                        if (isset($required[$field])) {
+                                            if (!$required[$field]) {
+                                                $str .= ' ';
+                                            } else {
+                                                $str -= ' required ';
+                                            }
+                                        }
+                                    }
+                                    if (is_bool($noedit)) {
+                                        if ($noedit) {
+                                            $str .= ' readonly ';
+                                        }
+                                    } else {
+                                        if (isset($noedit[$field])) {
+                                            if ($noedit[$field]) {
+                                                $str .= ' readonly ';
+                                            }
+                                        }
+                                    }
+                                    $str .= "required" . " ></li>";
+                                    echo $str;
+                                    break;
+                                case 'email':
+                                    $str = "<li>" . $strings[$fieldsDef[$i]['name']];
+                                    $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
+                                    $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                                    $str .= " size = '" . $fieldsDef[$i]['size'] . "'";
+                                    if (isset($values[$fieldsDef[$i]['name']])) {
+                                        $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
+                                    } else {
+                                        $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['pattern'] <> '') {
+                                        $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['validation'] <> '') {
+                                        $str .= " " . $fieldsDef[$i]['validation'];
+                                    }
+                                    if (is_bool($required)) {
+                                        if (!$required) {
+                                            $str .= ' ';
+                                        } else {
+                                            $str .= ' required ';
+                                        }
+                                    } else {
+                                        if (isset($required[$field])) {
+                                            if (!$required[$field]) {
+                                                $str .= ' ';
+                                            } else {
+                                                $str -= ' required ';
+                                            }
+                                        }
+                                    }
+                                    if (is_bool($noedit)) {
+                                        if ($noedit) {
+                                            $str .= ' readonly ';
+                                        }
+                                    } else {
+                                        if (isset($noedit[$field])) {
+                                            if ($noedit[$field]) {
+                                                $str .= ' readonly ';
+                                            }
+                                        }
+                                    }
+                                    $str .= "required" . " ></li>";
+                                    echo $str;
+                                    break;
+                                case 'search':
+                                    break;
+                                case 'url':
+                                    $str = "<li>" . $strings[$fieldsDef[$i]['name']];
+                                    $str .= " : <a target='_blank' href='" . $values[$fieldsDef[$i]['name']] . "'>Ver</a>";
+                                    $str .= " </li>";
+                                    echo $str;
+                                    break;
+                                case 'tel':
+                                    break;
+                                case 'password':
+                                    $str = "<li>" . $strings[$fieldsDef[$i]['name']];
+                                    $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
+                                    $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                                    $str .= " size = '" . $fieldsDef[$i]['size'] . "'";
+                                    if (isset($values[$fieldsDef[$i]['name']])) {
+                                        $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
+                                    } else {
+                                        $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['pattern'] <> '') {
+                                        $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['validation'] <> '') {
+                                        $str .= " " . $fieldsDef[$i]['validation'];
+                                    }
+                                    if (is_bool($required)) {
+                                        if (!$required) {
+                                            $str .= ' ';
+                                        } else {
+                                            $str .= ' required ';
+                                        }
+                                    } else {
+                                        if (isset($required[$field])) {
+                                            if (!$required[$field]) {
+                                                $str .= ' ';
+                                            } else {
+                                                $str -= ' required ';
+                                            }
+                                        }
+                                    }
+                                    if (is_bool($noedit)) {
+                                        if ($noedit) {
+                                            $str .= ' readonly ';
+                                        }
+                                    } else {
+                                        if (isset($noedit[$field])) {
+                                            if ($noedit[$field]) {
+                                                $str .= ' readonly ';
+                                            }
+                                        }
+                                    }
+                                    $str .= " ></li>";
+                                    echo $str;
+                                    break;
+                                case 'number':
+                                    $str = "<li>" . $strings[$fieldsDef[$i]['name']];
+                                    $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
+                                    $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                                    $str .= " min = '" . $fieldsDef[$i]['min'] . "'";
+                                    $str .= " max = '" . $fieldsDef[$i]['max'] . "'";
+                                    if (isset($values[$fieldsDef[$i]['name']])) {
+                                        $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
+                                    } else {
+                                        $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['pattern'] <> '') {
+                                        $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['validation'] <> '') {
+                                        $str .= " " . $fieldsDef[$i]['validation'];
+                                    }
+                                    if (is_bool($required)) {
+                                        if (!$required) {
+                                            $str .= ' ';
+                                        } else {
+                                            $str .= ' required ';
+                                        }
+                                    } else {
+                                        if (isset($required[$field])) {
+                                            if (!$required[$field]) {
+                                                $str .= ' ';
+                                            } else {
+                                                $str -= ' required ';
+                                            }
+                                        }
+                                    }
+                                    if (is_bool($noedit)) {
+                                        if ($noedit) {
+                                            $str .= ' readonly ';
+                                        }
+                                    } else {
+                                        if (isset($noedit[$field])) {
+                                            if ($noedit[$field]) {
+                                                $str .= ' readonly ';
+                                            }
+                                        }
+                                    }
+                                    $str .= " ></li>";
+                                    echo $str;
+                                    break;
+                                case 'checkbox':
+                                    $str = "<li>" . $fieldsDef[$i]['value'];
+                                    $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
+                                    $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                                    $str .= " size = '" . $fieldsDef[$i]['size'] . "'";
+                                    if (isset($values[$fieldsDef[$i]['name']])) {
+                                        $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
+                                    } else {
+                                        $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['pattern'] <> '') {
+                                        $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['validation'] <> '') {
+                                        $str .= " " . $fieldsDef[$i]['validation'];
+                                    }
+                                    if (is_bool($noedit)) {
+                                        if ($noedit) {
+                                            $str .= ' readonly ';
+                                        }
+                                    } else {
+                                        if (isset($noedit[$field])) {
+                                            if ($noedit[$field]) {
+                                                $str .= ' readonly ';
+                                            }
+                                        }
+                                    }
+                                    $str .= " ><br>\n";
+                                    echo $str;
+                                    break;
+                                case 'radio':
+                                    break;
+                                case 'file':
+                                    $str = "<li>" . $strings[$fieldsDef[$i]['name']];
+                                    $str .= " : <input type = '" . $fieldsDef[$i]['type'] . "'";
+                                    $str .= " name = '" . $fieldsDef[$i]['name'] . "'";
+                                    if (isset($values[$fieldsDef[$i]['name']])) {
+                                        $str .= " value = '" . $values[$fieldsDef[$i]['name']] . "'";
+                                    } else {
+                                        $str .= " value = '" . $fieldsDef[$i]['value'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['pattern'] <> '') {
+                                        $str .= " pattern = '" . $fieldsDef[$i]['pattern'] . "'";
+                                    }
+                                    if ($fieldsDef[$i]['validation'] <> '') {
+                                        $str .= " " . $fieldsDef[$i]['validation'];
+                                    }
+                                    if (is_bool($required)) {
+                                        if (!$required) {
+                                            $str .= ' ';
+                                        } else {
+                                            $str .= ' required ';
+                                        }
+                                    } else {
+                                        if (isset($required[$field])) {
+                                            if (!$required[$field]) {
+                                                $str .= ' ';
+                                            } else {
+                                                $str -= ' required ';
+                                            }
+                                        }
+                                    }
+                                    if (is_bool($noedit)) {
+                                        if ($noedit) {
+                                            $str .= ' readonly ';
+                                        }
+                                    } else {
+                                        if (isset($noedit[$field])) {
+                                            if ($noedit[$field]) {
+                                                $str .= ' readonly ';
+                                            }
+                                        }
+                                    }
+                                    $str .= " ></li>";
+                                    echo $str;
+                                    break;
+                                    ;
+                                case 'select':
+                                    $str = "<li>" . $strings[$fieldsDef[$i]['name']] . ": <select name='" . $fieldsDef[$i]['name'] . "'";
+                                    if ($noedit || $noedit[$field]) {
+                                        $str .= ' readonly ';
+                                    }
+                                    if ($fieldsDef[$i]['multiple'] == 'true') {
+                                        $str = $str . " multiple ";
+                                    }
+                                    $str = $str . " >";
+                                    foreach ($fieldsDef[$i]['options'] as $value) {
+                                        $str1 = "<option value = '" . $value . "'";
+                                        if (isset($values[$fieldsDef[$i]['name']])) {
+                                            if ($values[$fieldsDef[$i]['name']] == $value) {
+                                                $str1 .= " selected ";
+                                            }
+                                        }
+                                        $str1 .= ">" . $value . "</option>";
+                                        $str = $str . $str1;
+                                    }
+                                    $str = $str . "</select></li>";
+                                    echo $str;
+                                    break;
+                                case 'textarea':
+                                    break;
+                                default:
+                            }
+                        }
+                    }
+                }
+            }
+
+            function mismaMateria($USUARIO_USER) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT * FROM IMPARTE_MATERIA WHERE PROFESOR_USER='" . $USUARIO_USER . "' AND MATERIA_ID IN (SELECT MATERIA_ID FROM IMPARTE_MATERIA WHERE PROFESOR_USER='" . $_SESSION['login'] . "')";
+                $result = $mysqli->query($sql);
+                if ($result->num_rows > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function sumarValorItem($ITEM_RUBRICA) {
+                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                if ($mysqli->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                }
+                $sql = "SELECT SUM(ITEM_PORCENTAJE) AS value_sum FROM ITEM WHERE ITEM_RUBRICA='" . $ITEM_RUBRICA . "'";
+                $result = $mysqli->query($sql);
+                $row = mysqli_fetch_assoc($result);
+                $sum = $row['value_sum'];
+
+                return $sum;
+            }
+            ?>
 

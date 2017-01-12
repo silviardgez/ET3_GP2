@@ -25,10 +25,7 @@ class NIVEL_SHOWCURRENT {
                 <div id="centrado"><span class="form-title">
                         <?php echo $strings['Consultar Nivel'] ?><br></span></div>
                 <ul class="form-style-1">
-                    <?php
-                    include '../Functions/NIVELShowAllDefForm.php';
-                    createForm($lista, $form, $strings, $values = '', false, false);
-                    ?>
+
                     <p>
                         <br><b> <?php echo $strings['NIVEL_ITEM'] ?> </b><br>           
                         <input type='text' name='NIVEL_ITEM' value="<?php echo $this->return ?>" readonly>
@@ -37,8 +34,13 @@ class NIVEL_SHOWCURRENT {
                         <br><b> <?php echo $strings['NIVEL_RUBRICA'] ?> </b><br>           
                         <input type='text' name='NIVEL_RUBRICA' value="<?php echo ConsultarIDRubrica($this->return) ?>" readonly>
                     </p>
-                    
-                        <input type='submit' name='accion' value=<?php echo $strings['Consultar'] ?>
+                    <?php
+                    include '../Functions/NIVELShowAllDefForm.php';
+                    createForm($lista, $form, $strings, $values = '', false, false);
+                    ?>
+
+
+                    <input type='submit' name='accion' value=<?php echo $strings['Consultar'] ?>
                 </ul>
             </form>
             <?php
