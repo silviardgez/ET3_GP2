@@ -243,7 +243,7 @@ $strings = array(
     'NIVEL_PORCENTAJE'=>'Valor (%)',
     'Modificar Nivel'=>'Modificar Nivel',
     'Nivel modificado correctamente'=>'Nivel modificado correctamente',
-    'Consultar Nivel'=>'Consultar Nivel'
+    'Consultar Nivel'=>'Consultar Nivel',
     
     
     
