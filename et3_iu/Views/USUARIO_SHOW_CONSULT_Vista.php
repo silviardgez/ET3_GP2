@@ -1,8 +1,8 @@
 <?php
-
+//VISTA PARA LISTAR TODOS LOS USUARIOS ACTIVOS E INACTIVOS
 
 class USUARIO_ShowConsulta{
-//VISTA PARA LISTAR TODOS LOS USUARIOS
+
 	private $datos;
 	private $volver;
 

@@ -1,6 +1,6 @@
 
 <?php
-
+//VISTA PARA EL REGISTRO DE ALUMNOS
 class USUARIO_Registrar
 {
 
@@ -23,7 +23,7 @@ class USUARIO_Registrar
 				<script type="text/javascript" src="../js/Castellano_validate.js"></script>
 			</head>
 
-			<?php //VISTA PARA LA INSERCIÓN DE USUARIOS
+			<?php
 			include '../Locates/Strings_Castellano.php';
 			include '../Functions/USUARIOSRegisterForm.php';
 

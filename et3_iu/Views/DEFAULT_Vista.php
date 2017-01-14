@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+    <!--VISTA PRINCIPAL-->
 <?php
 include '../Functions/LibraryFunctions.php';
  if (!IsAuthenticated()){

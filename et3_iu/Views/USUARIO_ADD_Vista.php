@@ -1,5 +1,5 @@
 <?php
-
+//VISTA PARA LA INSERCIÓN DE USUARIOS
 class USUARIO_Insertar{
 
 
@@ -16,7 +16,7 @@ function render(){
 	<link rel="stylesheet" href="../css/Styles/styles.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="../js/<?php echo $_SESSION['IDIOMA']?>_validate.js"></script></head>
 
-<?php //VISTA PARA LA INSERCIÓN DE USUARIOS
+<?php
 include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
 				include '../Functions/USUARIOShowAllDefForm.php';
 				//Array con los nombres de los campos a insertar
