@@ -1,5 +1,5 @@
 <?php
-
+//Controlador de la gestión de páginas
 include '../Models/PAGINA_Model.php';
 include '../Locates/Strings_Castellano.php';
 include '../Functions/LibraryFunctions.php';

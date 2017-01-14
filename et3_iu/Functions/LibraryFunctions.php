@@ -1,6 +1,10 @@
 <?php
+//LIBRERIA DE FUNCIONES
+
 
 //Funciones para la creación automática de formulario a partir de array
+
+  //Versión que tiene en cuenta el rol
 function createForm2($listFields, $fieldsDef, $strings, $values, $required, $noedit, $rol) {
     foreach ($listFields as $field) { //miro todos los campos que me piden en su orden
         for ($i = 0; $i < count($fieldsDef); $i++) { //recorro todos los campos de la definición de formulario para encontrarlo
@@ -359,7 +363,7 @@ function createForm2($listFields, $fieldsDef, $strings, $values, $required, $noe
         }
     }
 }
-
+    //version que tiene en cuenta las paginas
 function createForm3($listFields, $fieldsDef, $strings, $values, $required, $noedit, $pags) {
     foreach ($listFields as $field) { //miro todos los campos que me piden en su orden
         for ($i = 0; $i < count($fieldsDef); $i++) { //recorro todos los campos de la definición de formulario para encontrarlo
@@ -716,7 +720,7 @@ function createForm3($listFields, $fieldsDef, $strings, $values, $required, $noe
         }
     }
 }
-
+  //versión genérca
 function createForm($listFields, $fieldsDef, $strings, $values, $required, $noedit) {
     foreach ($listFields as $field) { //miro todos los campos que me piden en su orden
         for ($i = 0; $i < count($fieldsDef); $i++) { //recorro todos los campos de la definición de formulario para encontrarlo
@@ -1176,7 +1180,7 @@ function createForm($listFields, $fieldsDef, $strings, $values, $required, $noed
         }
     }
 }
-
+ //Evalúa si el usuario se ha autenticado
 function IsAuthenticated() {
     session_start();
     if (!isset($_SESSION['login'])) {
@@ -1604,7 +1608,7 @@ function añadirFuncionalidades($NOM) {
                 }
                 return $toret;
             }
-
+//Devuelve las paginas asignadas a una funcionalidad
             function consultarPaginasFuncionalidad($funcionalidad) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 $toret = array();
@@ -1635,7 +1639,7 @@ function añadirFuncionalidades($NOM) {
                     return $toret;
                 }
             }
-
+//Devuelve el nombre de una rubrica a partir de su id
             function ConsultarNombreRubrica($RUBRICA_ID) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {
@@ -1645,7 +1649,7 @@ function añadirFuncionalidades($NOM) {
                 $result = $mysqli->query($sql)->fetch_array();
                 return $result['RUBRICA_NOMBRE'];
             }
-
+//Devuelve el nombre de un item de rubrica a partir de su id
             function ConsultarNombreItem($ITEM_ID) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {
@@ -1655,7 +1659,7 @@ function añadirFuncionalidades($NOM) {
                 $result = $mysqli->query($sql)->fetch_array();
                 return $result['ITEM_NOMBRE'];
             }
-
+//Devuelve la rubrica a la que pertenece un item
             function ConsultarIDRubrica($ITEM_ID) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {
@@ -1665,7 +1669,7 @@ function añadirFuncionalidades($NOM) {
                 $result = $mysqli->query($sql)->fetch_array();
                 return $result['ITEM_RUBRICA'];
             }
-
+//Devuelve el numero de niveles de la rubrica
             function ConsultarNivelRubrica($ITEM_RUBRICA) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {
@@ -1675,7 +1679,7 @@ function añadirFuncionalidades($NOM) {
                 $result = $mysqli->query($sql)->fetch_array();
                 return $result['RUBRICA_NIVELES'];
             }
-
+//Devuelve el item id a partir de su nombre, rubrica y porcentaje
             function ConsultarIDItem($ITEM_NOMBRE, $ITEM_RUBRICA, $ITEM_PORCENTAJE) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {
@@ -1685,7 +1689,7 @@ function añadirFuncionalidades($NOM) {
                 $result = $mysqli->query($sql)->fetch_array();
                 return $result['ITEM_ID'];
             }
-
+//incluye select
             function createForm4($listFields, $fieldsDef, $strings, $values, $required, $noedit) {
                 foreach ($listFields as $field) { //miro todos los campos que me piden en su orden
                     for ($i = 0; $i < count($fieldsDef); $i++) { //recorro todos los campos de la definición de formulario para encontrarlo
@@ -2039,7 +2043,7 @@ function añadirFuncionalidades($NOM) {
                     }
                 }
             }
-
+//Devuelve cierto si el usuario logeado imparte la misma materia que el que se le pasa como argumento
             function mismaMateria($USUARIO_USER) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {
@@ -2053,7 +2057,7 @@ function añadirFuncionalidades($NOM) {
                     return false;
                 }
             }
-
+//Devuelve la suma de porcentajes de un item
             function sumarValorItem($ITEM_RUBRICA) {
                 $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
                 if ($mysqli->connect_errno) {

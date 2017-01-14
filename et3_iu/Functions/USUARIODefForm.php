@@ -1,5 +1,5 @@
 <?php
-//Formulario para la gestión de roles
+//Formulario para la gestión de usuarios
 $form = array(
 	0 => array(
 	'type' => 'text',

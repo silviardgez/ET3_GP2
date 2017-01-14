@@ -1,5 +1,5 @@
 <?php
-//Formulario para mostrar la consulta de roles
+//Formulario para mostrar la consulta de usuarios
 $DefForm2 = array(
 	0 => array(
 		'type' => 'text',

@@ -1,6 +1,6 @@
 <?php
 
-
+//Controlador para la gestión de roles
 include '../Models/ROL_Model.php';
 
 include '../Views/MENSAJE_Vista.php';
@@ -43,7 +43,7 @@ if (!isset($_REQUEST['accion'])){
 					new ROL_Insertar();
 				}
 			} else {
-				if (!isset($_REQUEST['rol_funcionalidades'])) { //Si no se selecciona ninguna funcionalidad muestra mensaje de rror
+				if (!isset($_REQUEST['rol_funcionalidades'])) { //Si no se selecciona ninguna funcionalidad muestra mensaje de error
 					new Mensaje('No funcionalidad', 'ROL_Controller.php?accion='.$strings['Insertar']."'");
 				} else {
 					$rol = get_data_form();

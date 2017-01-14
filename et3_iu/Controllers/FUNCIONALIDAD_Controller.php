@@ -1,5 +1,5 @@
 <?php
-
+//Controlador para la gestión de funcionalidades
 
 include '../Models/FUNCIONALIDAD_Model.php';
 include '../Views/MENSAJE_Vista.php';
