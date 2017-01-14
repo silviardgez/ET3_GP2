@@ -40,6 +40,11 @@ class DOCUMENTACION_Model
 	
 	//Destrucción del objeto
 	function __destruct(){}
+
+	//Get del atributo materia
+	function getMateria(){
+		return $this->DOCUMENTACION_MATERIA;
+	}
 	
 	
 	/*//Devuelve la información de todos los documentos de unha materia
@@ -70,7 +75,7 @@ class DOCUMENTACION_Model
 	function ConsultarTodo()
 	{
 		$this->ConectarBD();
-		$sql = "select * from DOCUMENTACION";
+		$sql = "SELECT * FROM DOCUMENTACION WHERE DOCUMENTACION_MATERIA = '" . $this->DOCUMENTACION_MATERIA . "' AND DOCUMENTACION_CATEGORIA='" . $this->DOCUMENTACION_CATEGORIA . "'";
 		if (!($resultado = $this->mysqli->query($sql))){
 			return 'Error en la consulta sobre la base de datos';
 		}
@@ -175,6 +180,26 @@ class DOCUMENTACION_Model
 			}
 		} else {
 			return "El documento no existe";
+		}
+	}
+
+	function ConsultarCategorias(){
+		$this->ConectarBD();
+		$sql = "SELECT DISTINCT DOCUMENTACION_CATEGORIA FROM DOCUMENTACION WHERE DOCUMENTACION_MATERIA= '" . $this->DOCUMENTACION_MATERIA . "'";
+		
+
+		if (!($resultado = $this->mysqli->query($sql))){
+			return 'Error en la consulta sobre la base de datos';
+		}
+		else{
+			$toret=array();
+			$i=0;
+			while ($fila= $resultado->fetch_array()) {
+
+				$toret[$i]=$fila;
+				$i++;
+			}
+			return $toret;
 		}
 	}
 

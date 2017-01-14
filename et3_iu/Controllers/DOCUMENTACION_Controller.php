@@ -1,6 +1,7 @@
 <?php
 
 include '../Models/DOCUMENTACION_Model.php';
+include '../Views/DOCUMENTACION_SHOW_CATEGORIA_Vista.php';
 include '../Views/MENSAJE_Vista.php';
 include '../Views/LOGIN_Vista.php';
 
@@ -165,22 +166,46 @@ Switch ($_REQUEST['accion']){
 		
 		break;
 
-	default:
+	case $strings['Ver']:
 		//Por defecto se realiza el show all
 
 		if (!isset($_REQUEST['DOCUMENTACION_NOM'])){
-			$documentacion = new DOCUMENTACION_Model('','', '', '', '', '', '');
+			$documentacion = new DOCUMENTACION_Model('','',$_REQUEST['DOCUMENTACION_MATERIA'], '', '', $_REQUEST['DOCUMENTACION_CATEGORIA']);
 		}
 		else{
 			$documentacion = get_data_form();
 		}
+
+		$materia = $documentacion->getMateria();
 		$datos = $documentacion->ConsultarTodo();
 
 		if(!tienePermisos('DOCUMENTACION_SHOWALL')){
 			new Mensaje('No tienes los permisos necesarios','../Views/DEFAULT_Vista.php');
 		}
 		else {
-			new DOCUMENTACION_SHOWALL($datos, '../Views/DEFAULT_Vista.php');
+			new DOCUMENTACION_SHOWALL($datos, '../Controllers/DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . $materia);
+		}
+
+		break;
+
+	default:
+		//Por defecto se ven las categorías
+
+		if (!isset($_REQUEST['DOCUMENTACION_NOM'])){
+			$documentacion = new DOCUMENTACION_Model('','',$_REQUEST['DOCUMENTACION_MATERIA'], '', '', '');
+		}
+		else{
+			$documentacion = get_data_form();
+		}
+		
+		$nombre=$documentacion->getMateria();
+		$datos = $documentacion->ConsultarCategorias();
+
+		if(!tienePermisos('DOCUMENTACION_SHOWALL')){
+			new Mensaje('No tienes los permisos necesarios','../Views/DEFAULT_Vista.php');
+		}
+		else {
+			new DOCUMENTACION_SHOW_CATEGORIA($datos, $nombre, '../Controllers/MATERIA_Controller.php');
 		}
 
 }

@@ -89,6 +89,11 @@ border-right: 4px #1F4677 solid;
     text-align: center;
 }
 
+#izquierda{
+    text-align: right;
+    margin-left: : 380px;
+}
+
 footer {
 width: 1140px;
 margin: 0 auto;
@@ -115,7 +120,9 @@ text-decoration: underline;
 }
 
 p {
+margin-left: 150px;
 margin-bottom: 18px;
+margin-left: 40px;
 }
 
 li {

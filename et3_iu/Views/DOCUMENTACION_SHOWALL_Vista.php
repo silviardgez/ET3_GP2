@@ -53,9 +53,13 @@ class DOCUMENTACION_SHOWALL {
 		</header>
 		<div class="container">
 		<?php
-			$lista = array ('DOCUMENTACION_NOM', 'DOCUMENTACION_PROFESOR', 'DOCUMENTACION_MATERIA', 'DOCUMENTACION_FECHA', 'DOCUMENTACION_ENLACE');
+			$lista = array ('DOCUMENTACION_NOM', 'DOCUMENTACION_PROFESOR', 'DOCUMENTACION_FECHA', 'DOCUMENTACION_ENLACE');
+			for($i = 0; $i < count ( $this->datos ); $i++) {
 		?>
-
+		<h2 class="materia2"><?php echo ConsultarNomMateria($this->datos[$i]['DOCUMENTACION_MATERIA']) ?></h2>
+		<?php
+			}
+		?>
 			<div id="centrado">
 				<table class="table" id="btable" border=1>
 					<tr>
@@ -77,13 +81,7 @@ class DOCUMENTACION_SHOWALL {
 							for($i = 0; $i < count ( $lista ); $i++) {
 								if ($clave === $lista [$i]) {
 									echo "<td>";
-									if($clave==='DOCUMENTACION_MATERIA') {
-										if(isset($strings[ConsultarNomMateria($valor)])){
-											echo $strings[ConsultarNomMateria($valor)];}
-										else{
-											echo ConsultarNomMateria($valor);
-										}
-									} elseif ($clave==='DOCUMENTACION_PROFESOR') {
+									if ($clave==='DOCUMENTACION_PROFESOR') {
 										if(isset($strings[ConsultarNomProfesor($valor)])){
 											echo $strings[ConsultarNomProfesor($valor)];}
 										else{

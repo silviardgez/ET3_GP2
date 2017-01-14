@@ -128,7 +128,8 @@ INSERT INTO `FUNCIONALIDAD` (`FUNCIONALIDAD_ID`, `FUNCIONALIDAD_NOM`) VALUES
 (300,'GESTION ENTREGAS'),
 (301,'GESTION ENTREGAS2'),
 (400,'GESTION TRABAJOS'),
-(600, 'GESTION DE ITEMS DE RUBRICAS');
+(600, 'GESTION DE ITEMS DE RUBRICAS'),
+(900, 'GESTION MATERIA');
 
 -- --------------------------------------------------------
 
@@ -202,7 +203,12 @@ INSERT INTO `FUNCIONALIDAD_PAGINA` (`FUNCIONALIDAD_ID`, `PAGINA_ID`) VALUES
 (600, 604),
 (600, 607),
 (600, 608),
-(600, 609);
+(600, 609),
+(900, 900),
+(900, 901),
+(900, 902),
+(900, 903),
+(900, 904);
 
 -- --------------------------------------------------------
 
@@ -455,7 +461,12 @@ INSERT INTO `PAGINA` (`PAGINA_ID`, `PAGINA_LINK`, `PAGINA_NOM`) VALUES
 (604, '../Views/ITEM_SHOWCURRENT_Vista.php', 'ITEM SHOWCURRENT'),
 (607, '../Views/NIVEL_EDIT_Vista.php', 'NIVEL EDIT'),
 (608, '../Views/NIVEL_SHOWALL_Vista.php', 'NIVEL SHOWALL'),
-(609, '../Views/NIVEL_SHOWCURRENT_Vista.php', 'NIVEL SHOWCURRENT');
+(609, '../Views/NIVEL_SHOWCURRENT_Vista.php', 'NIVEL SHOWCURRENT'),
+(900, '../Views/MATERIA_ADD_Vista.php', 'MATERIA ADD'),
+(901, '../Views/MATERIA_DELETE_Vista.php', 'MATERIA DELETE'),
+(902, '../Views/MATERIA_EDIT_Vista.php', 'MATERIA EDIT'),
+(903, '../Views/MATERIA_SHOWALL_Vista.php', 'MATERIA SHOWALL'),
+(904, '../Views/MATERIA_SHOWCURRENT_Vista.php', 'MATERIA SHOWCURRENT');
 
 
 -- --------------------------------------------------------
@@ -514,7 +525,8 @@ INSERT INTO `ROL_FUNCIONALIDAD` (`ROL_ID`, `FUNCIONALIDAD_ID`) VALUES
 (4,400),
 (1, 600),
 (2, 600),
-(4, 600);
+(4, 600),
+(1,900);
 
 -- --------------------------------------------------------
 
@@ -644,6 +656,11 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('ADMIN', 202),
 ('ADMIN', 203),
 ('ADMIN', 204),
+('ADMIN', 900),
+('ADMIN', 901),
+('ADMIN', 902),
+('ADMIN', 903),
+('ADMIN', 904),
 ('PROFESOR', 100),
 ('PROFESOR', 101),
 ('PROFESOR', 102),
