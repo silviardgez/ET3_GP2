@@ -63,7 +63,7 @@ class RUBRICA_Model {
 //Permite la consulta de rubricas por todos sus atributos
     function Consultar() {
         $this->ConectarBD();
-        $sql = "SELECT * FROM RUBRICA WHERE RUBRICA_ID ='" . $this->RUBRICA_ID . "' OR RUBRICA_NOMBRE LIKE'" . $this->RUBRICA_NOMBRE . "' OR RUBRICA_DESCRIPCION = '" . $this->RUBRICA_DESCRIPCION . "' OR RUBRICA_NIVELES = '" . $this->RUBRICA_NIVELES . "' OR RUBRICA_AUTOR = '" . $this->RUBRICA_AUTOR . "'";
+        $sql = "SELECT * FROM RUBRICA WHERE RUBRICA_ID ='" . $this->RUBRICA_ID . "' OR RUBRICA_NOMBRE LIKE'%" . $this->RUBRICA_NOMBRE . "%' OR RUBRICA_DESCRIPCION = '" . $this->RUBRICA_DESCRIPCION . "' OR RUBRICA_NIVELES = '" . $this->RUBRICA_NIVELES . "' OR RUBRICA_AUTOR = '" . $this->RUBRICA_AUTOR . "'";
 
         if (!$resultado = $this->mysqli->query($sql)) {
             return FALSE;

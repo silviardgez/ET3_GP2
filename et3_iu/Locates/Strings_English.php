@@ -61,6 +61,7 @@ $strings = array(
     'Update' => 'Update',
     'Delete' => 'Delete',
     'Cerrar Sesión' => 'Sign off',
+    'Registro'=>'SignUp',
     'La pagina ya existe en la base de datos' => 'Page already exists',
     'La pagina ha sido borrada correctamente' => 'Page deleted successfully',
     'La pagina no existe' => 'Page do not exists',
