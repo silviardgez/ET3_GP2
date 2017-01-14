@@ -77,7 +77,8 @@ INSERT INTO `DOCUMENTACION` (`DOCUMENTACION_ID`, `DOCUMENTACION_NOM`, `DOCUMENTA
 (1, 'Definicion ET3', '65938568Y', 1, '2016-12-10', '../Documents/Documentacion/Definicion_ET3','Teoria'),
 (2, 'Proyecto', '70561875Z', 2, '2016-12-13', '../Documents/Documentacion/Proyecto','Practica'),
 (3, 'Entregable Enero', '65938568Y', 2, '2016-12-16', '../Documents/Documentacion/Entregable_Enero','Teoria'),
-(4, 'Guia Docente', '70561875Z', 1, '2016-12-16', '../Documents/Documentacion/Guia_Docente',NULL);
+(4, 'Guia Docente IU', '70561875Z', 1, '2016-12-16', '../Documents/Documentacion/Guia_Docente_IU',NULL),
+(5, 'Guia Docente CDA', '65938568Y', 2, '2016-12-21', '../Documents/Documentacion/Guia_Docente_CDA',NULL);
 
 -- --------------------------------------------------------
 

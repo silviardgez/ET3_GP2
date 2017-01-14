@@ -74,11 +74,12 @@ class DOCUMENTACION_SHOW_CATEGORIA {
 									<table class="table" id="btable" border=1>
 										<tr>
 											<?php
-											$lista = array ('DOCUMENTACION_NOM', 'DOCUMENTACION_PROFESOR', 'DOCUMENTACION_FECHA', 'DOCUMENTACION_ENLACE');
-											foreach ( $lista as $titulo ) {
-												echo "<th>";
-												echo $strings [$titulo];
-												?>
+											if(!empty($this->datosMateria)){
+												$lista = array ('DOCUMENTACION_NOM', 'DOCUMENTACION_PROFESOR', 'DOCUMENTACION_FECHA', 'DOCUMENTACION_ENLACE');
+												foreach ( $lista as $titulo ) {
+													echo "<th>";
+													echo $strings [$titulo];
+												}?>
 											</th>
 											<?php
 										}
