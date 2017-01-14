@@ -1,5 +1,5 @@
 <?php
-
+//Controlador para la gestión de usuarios
 include '../Models/USUARIO_Model.php';
 include '../Views/USUARIO_EDIT_ACCIONES_Vista.php';
 
@@ -51,7 +51,7 @@ function get_data_form(){
 	}
 
 	$accion = $_REQUEST['accion'];
-//crea el empleado con los datos anteriores
+//crea el usuario con los datos anteriores
 	$usuario = new USUARIO_Modelo($USUARIO_USER, $USUARIO_PASSWORD, $USUARIO_FECH_NAC, $USUARIO_EMAIL, $USUARIO_NOMBRE, $USUARIO_APELLIDO, $USUARIO_DNI, $USUARIO_TELEFONO, $USUARIO_CUENTA, $USUARIO_DIRECCION, $USUARIO_COMENTARIOS, $USUARIO_TIPO, $USUARIO_ESTADO,$USUARIO_FOTO);
 
 	return $usuario;
@@ -94,7 +94,7 @@ if (!isset($_REQUEST['accion'])){
 				new Mensaje($respuesta, 'USUARIO_Controller.php');
 			}
 			break;
-		case  $strings['Registro']:
+		case  $strings['Registro']: //Registro de usuarios
 			if (!isset($_REQUEST['USUARIO_USER'])){ //Si aún no se ha establecido el usuario
 				if(!tienePermisos('USUARIO_Insertar')){//Siempre que no tenga los permisos mostrará un mensaje de aviso
 					new Mensaje('No tienes los permisos necesarios','USUARIO_Controller.php');
@@ -107,7 +107,7 @@ if (!isset($_REQUEST['accion'])){
 
 
 				$_REQUEST['USUARIO_ESTADO']='Activo'; //Siempre que se inserta estará activo en un principio
-				$_REQUEST['USUARIO_TIPO']='3';
+				$_REQUEST['USUARIO_TIPO']='3'; //Los usuarios registrados son del rol alumnos
 				$_REQUEST['USUARIO_COMENTARIOS']='';
 				$usuario = get_data_form();
 				//Creamos las carpetas para guardar los archivos
@@ -186,7 +186,7 @@ if (!isset($_REQUEST['accion'])){
 				new Mensaje($respuesta, 'USUARIO_Controller.php');
 			}
 			break;
-		case  $strings['Consultar']:
+		case  $strings['Consultar']: //Consultar los usuarios que cumplan unas ciertas condiciones
 			if (!isset($_REQUEST['USUARIO_USER'])){
 				if(!tienePermisos('USUARIO_Consultar')){
 					new Mensaje('No tienes los permisos necesarios','USUARIO_Controller.php');

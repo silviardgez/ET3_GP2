@@ -1,6 +1,6 @@
 <?php
 
-//Formulario para listar los roles
+//Formulario para el registro de nuevos usuarios
 $form = array(
 	0 => array(
 	'type' => 'text',

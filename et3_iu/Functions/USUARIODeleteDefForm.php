@@ -1,5 +1,5 @@
 <?php
-//Formulario para el borrado de empleados
+//Formulario para el borrado de usuarios
 $DefForm3 = array(
 	0 => array(
 	'type' => 'text',

@@ -1,5 +1,5 @@
 <?php
-
+//Controlador para la gestión del registro de nuevos alumnos
 include '../Models/USUARIO_Model.php';
 
 include '../Views/MENSAJE_REG_Vista.php';
@@ -44,7 +44,7 @@ function get_data_form(){
     }
 
     $accion = $_REQUEST['accion'];
-//crea el empleado con los datos anteriores
+//crea el usuario con los datos anteriores
     $usuario = new USUARIO_Modelo($USUARIO_USER, $USUARIO_PASSWORD, $USUARIO_FECH_NAC, $USUARIO_EMAIL, $USUARIO_NOMBRE, $USUARIO_APELLIDO, $USUARIO_DNI, $USUARIO_TELEFONO, $USUARIO_CUENTA, $USUARIO_DIRECCION, $USUARIO_COMENTARIOS, $USUARIO_TIPO, $USUARIO_ESTADO,$USUARIO_FOTO);
 
     return $usuario;
@@ -66,8 +66,8 @@ Switch ($_REQUEST['accion']){
 
 
             $_REQUEST['USUARIO_ESTADO']='Activo'; //Siempre que se inserta estará activo en un principio
-            $_REQUEST['USUARIO_TIPO']='3';
-            $_REQUEST['USUARIO_COMENTARIOS']='';
+            $_REQUEST['USUARIO_TIPO']='3'; //Los usuarios que e insertan por registro son alumnos
+            $_REQUEST['USUARIO_COMENTARIOS']=''; //Este campo no se toma del formulario
             $usuario = get_data_form();
             //Creamos las carpetas para guardar los archivos
             $carpetaFoto='../Documents/Empleados/'.$_REQUEST['USUARIO_DNI'].'/Foto/';
@@ -89,7 +89,7 @@ Switch ($_REQUEST['accion']){
         break;
 
     default:
-//Por defecto se realiza el show all
+//Por defecto se muestra el login
 
 
             new Login();
