@@ -1,4 +1,4 @@
-
+//COMPROBACIONES JS EN GALLEGO
 		function nif(dni) {
 			var numero
 			var letr

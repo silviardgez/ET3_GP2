@@ -1,4 +1,5 @@
 <?php
+//CADENAS UTILIZADAS POR LA GESTIÓN DE RÚBRICAS EN INGÉS
 $stringsRubrica = array(
     'RUBRICA_NOMBRE'=> 'Rubric Name',
     'RUBRICA_DESCRIPCION'=>'Description',

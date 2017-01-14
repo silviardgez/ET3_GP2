@@ -1,4 +1,5 @@
 <?php
+//CADENAS EN CASTELLANO UTILIZADAS POR LA GESTION DE RUBRICAS
 $stringsRubrica = array(
     'RUBRICA_NOMBRE'=> 'Nombre de Rúbrica',
     'RUBRICA_DESCRIPCION'=>'Descripción',

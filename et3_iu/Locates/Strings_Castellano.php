@@ -1,4 +1,5 @@
 <?php
+//CADENAS UTILIZADAS EN CASTELLANO
 $strings = array(
 'Inserción realizada con éxito' => 'Inserción realizada con éxito',
 'El usuario ya existe en la base de datos' => 'El usuario ya existe en la base de datos',

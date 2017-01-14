@@ -1,4 +1,4 @@
-
+//COMPROBACIONES JS EN CASTELLANO
 function nif(dni) {
     var numero
     var letr
