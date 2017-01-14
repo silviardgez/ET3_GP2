@@ -183,6 +183,24 @@ $strings = array(
     'Rubrica modificada correctamente' => 'Rubric modificated successfully',
     'La rúbrica ha sido borrada correctamente' => 'Rubric deleted successfully',
     'texto' => " is an initiative of User Interfaces subject, developed by Group 2,intended as a service to complement teaching, based on the Internet as a venue and is directed firstly towards teachers, students and administrative staff and services and, secondly, towards pre-university students who aim to study higher education at this university.",
+
+    'Gestión de Documentación' => 'Documentation Management',
+    'DOCUMENTACION_ID' => 'ID',
+    'DOCUMENTACION_NOM' => 'Name', 
+    'DOCUMENTACION_PROFESOR' => 'Teacher', 
+    'DOCUMENTACION_MATERIA' => 'Subject', 
+    'DOCUMENTACION_FECHA' => 'Date', 
+    'DOCUMENTACION_ENLACE' => 'Link',
+    'DOCUMENTACION_CATEGORIA' => 'Category',
+    'Borrar documentación' => 'Delete documentation',
+    'El documento ha sido borrado correctamente'=>'The document has been deleted successfully',
+    'Modificar Documentación' => 'Edit Documentation',
+    'Se ha producido un error en la modificación del documento' => 'An error occurred while editing the document.',
+    'El documento se ha modificado con éxito' => 'The document has been successfully modified',
+    'El documento no existe' => 'The document doesn´t exist',
+    'Consultar Documentación' => 'Check Documentation',
+    'Ver Documentación' => 'See Documentation',
+
     //Entregas
     'GESTION ENTREGAS' => 'DELIVERY MANAGEMENT',
     'Gestión de Entregas' => 'Delivery Management',
@@ -252,8 +270,16 @@ $strings = array(
     'Trabajo creado correctamente' => 'Homework successfully created',
     'El trabajo ha sido borrado correctamente'=>'Homework successfully deleted',
     'Trabajo modificado correctamente'=>'Homework successfully modified',
-    'Gestion de trabajos'=>'Homework Management'
+    'Gestion de trabajos'=>'Homework Management',
 
+
+    'MATERIA_ID' => 'ID',
+    'MATERIA_NOM' => 'Name',
+    'MATERIA_CREDITOS' => 'Credits',
+    'MATERIA_DEPARTAMENTO' => 'Department',
+    'MATERIA_TITULACION' => 'Degree',
+    'MATERIA_DESCRIPCION' => 'Description',
+    'Gestión de Materias' => 'Subject Management'
 
 )
 ?>

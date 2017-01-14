@@ -194,6 +194,7 @@ $strings = array(
 	'El documento se ha modificado con éxito' => 'El documento se ha modificado con éxito',
 	'El documento no existe' => 'El documento no existe',
 	'Consultar Documentación' => 'Consultar Documentación',
+	'Ver Documentación' => 'Ver Documentación',
 //Entregas
 	'GESTION ENTREGAS'=>'GESTIÓN ENTREGAS',
     'Gestión de Entregas'=>'Gestión de Entregas',
@@ -291,6 +292,15 @@ $strings = array(
     'Trabajo creado correctamente' => 'Trabajo creado correctamente',
     'El trabajo ha sido borrado correctamente'=>'Trabajo borrado correctamente',
     'Trabajo modificado correctamente'=>'Trabajo modificado correctamente',
-    'Gestion de trabajos'=>'Gestión de Trabajos'
+    'Gestion de trabajos'=>'Gestión de Trabajos',
+
+
+    'MATERIA_ID' => 'ID',
+    'MATERIA_NOM' => 'Nombre',
+    'MATERIA_CREDITOS' => 'Créditos',
+    'MATERIA_DEPARTAMENTO' => 'Departamento',
+    'MATERIA_TITULACION' => 'Titulación',
+    'MATERIA_DESCRIPCION' => 'Descripción',
+    'Gestión de Materias' => 'Gestión de Materias'
 )
 ?>

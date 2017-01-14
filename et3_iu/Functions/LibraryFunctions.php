@@ -1540,14 +1540,19 @@ function añadirFuncionalidades($NOM) {
                             case "GESTION RUBRICAS":
                                 ?><li><span><a style="font-size:20px;" href='../Controllers/RUBRICA_Controller.php'><?php echo $strings['Gestión de Rúbricas'] ?></a></span></li> <?php
                                 break;
-                            case "GESTION DOCUMENTACION":
-                                ?><li><span><a style="font-size:20px;" href='../Controllers/DOCUMENTACION_Controller.php'><?php echo $strings['Gestión de Documentación'] ?></a></span></li> <?php
-                                break;
                             case "GESTION ENTREGAS":
                                 ?><li><span><a style="font-size:20px;" href='../Controllers/ENTREGAS_Controller.php'><?php echo $strings['Gestión de Entregas'] ?></a></span></li> <?php
                                 break;
                             case "GESTION ENTREGAS2":
                                 ?><li><span><a style="font-size:20px;" href='../Controllers/ENTREGAS_Controller.php'><?php echo $strings['Gestión de Entregas'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION MATERIA":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/MATERIA_Controller.php'><?php echo $strings['Gestión de Materias'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION TRABAJOS":
+                                ?><li><span><a style="font-size:20px;" href='../Controllers/TRABAJO_Controller.php'><?php echo $strings['Gestion de trabajos'] ?></a></span></li> <?php
+                                break;
+                            case "GESTION DOCUMENTACION":
                                 break;
                             case "GESTION DE ITEMS DE RUBRICAS":
                                 break;

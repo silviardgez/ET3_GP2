@@ -196,6 +196,22 @@ $strings = array(
     'La rúbrica ha sido borrada correctamente'=>'A rúbrica borrouse correctamente',
 	'texto'=>" é unha iniciativa da materia Interfaces de Usuario, desenvolvida polo Grupo 2, que pretende ser un servizo de complemento á docencia, baseado en Internet como contorno e que se dirixe, por unha banda, ao profesorado, alumnado e persoal de administración e servizos e, por outra, ao alumnado preuniversitario que teña en mente cursar os seus estudos superiores nesta universidade.",
 
+	'Gestión de Documentación' => 'Xestión de Documentación',
+    'DOCUMENTACION_ID' => 'ID',
+    'DOCUMENTACION_NOM' => 'Nome', 
+    'DOCUMENTACION_PROFESOR' => 'Profesor', 
+    'DOCUMENTACION_MATERIA' => 'Materia', 
+    'DOCUMENTACION_FECHA' => 'Data', 
+    'DOCUMENTACION_ENLACE' => 'Enlace',
+    'DOCUMENTACION_CATEGORIA' => 'Categoría',
+    'Borrar documentación' => 'Borrar Documentación',
+    'El documento ha sido borrado correctamente'=>'O documento foi borrado correctamente',
+    'Modificar Documentación' => 'Modificar Documentación',
+    'Se ha producido un error en la modificación del documento' => 'Produciuse un erro na modificación do documento',
+    'El documento se ha modificado con éxito' => 'O documento modificouse con éxito',
+    'El documento no existe' => 'O documento non existe',
+    'Consultar Documentación' => 'Consultar Documentación',
+    'Ver Documentación' => 'Ver Documentación',
 
 	//Entregas
 	'GESTION ENTREGAS'=>'XESTIÓN ENTREGAS',
@@ -269,9 +285,16 @@ $strings = array(
     'Trabajo creado correctamente' => 'Traballo creado correctamente',
     'El trabajo ha sido borrado correctamente'=>'Traballo borrado correctamente',
     'Trabajo modificado correctamente'=>'Traballo modificado correctamente',
-    'Gestion de trabajos'=>'Xestión de Traballos'
+    'Gestion de trabajos'=>'Xestión de Traballos',
 
 
+    'MATERIA_ID' => 'ID',
+    'MATERIA_NOM' => 'Nome',
+    'MATERIA_CREDITOS' => 'Créditos',
+    'MATERIA_DEPARTAMENTO' => 'Departamento',
+    'MATERIA_TITULACION' => 'Titulación',
+    'MATERIA_DESCRIPCION' => 'Descripción',
+    'Gestión de Materias' => 'Xestión de Materias'
 
 )
 ?>
