@@ -158,8 +158,7 @@ $form = array(
 		'readonly' => false
 	)
 
-);
- $DefForm=AñadirTipos($form);
+)
 
 
 ?>
