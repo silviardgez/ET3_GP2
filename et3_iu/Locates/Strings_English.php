@@ -251,7 +251,8 @@ $strings = array(
     'CONSULTAR TRABAJO' => 'Homework Consult',
     'Trabajo creado correctamente' => 'Homework successfully created',
     'El trabajo ha sido borrado correctamente'=>'Homework successfully deleted',
-    'Trabajo modificado correctamente'=>'Homework successfully modified'
+    'Trabajo modificado correctamente'=>'Homework successfully modified',
+    'Gestion de trabajos'=>'Homework Management'
 
 
 )

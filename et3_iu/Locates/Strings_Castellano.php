@@ -289,8 +289,7 @@ $strings = array(
     'CONSULTAR TRABAJO' => 'Consultar Trabajo',
     'Trabajo creado correctamente' => 'Trabajo creado correctamente',
     'El trabajo ha sido borrado correctamente'=>'Trabajo borrado correctamente',
-    'Trabajo modificado correctamente'=>'Trabajo modificado correctamente'
-
-
+    'Trabajo modificado correctamente'=>'Trabajo modificado correctamente',
+    'Gestion de trabajos'=>'Gestión de Trabajos'
 )
 ?>

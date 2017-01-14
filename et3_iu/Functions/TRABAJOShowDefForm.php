@@ -8,6 +8,7 @@ $form = array(
         'name' => 'TRABAJO_ID',
         'value' => '',
         'size' => 5, //Comprobar
+        'maxlength'=>30,
         'required' => false,
         'pattern' => '',
         'validation' => '',
@@ -18,7 +19,8 @@ $form = array(
         'type' => 'text',
         'name' => 'TRABAJO_NOM',
         'value' => '',
-        'size' => 35, //Comprobar
+        'size' => 30, //Comprobar
+        'maxlength'=>30,
         'required' => true,
         'pattern' => '',
         'validation' => '',
@@ -38,9 +40,9 @@ $form = array(
         'type' => 'number',
         'name' => 'TRABAJO_MATERIA',
         'value' => '',
-        'size' => 25,
-        'min' => 0,
-        'max' => 4294967295,
+        'size' => 10,
+        'min' => 1,
+        'max' => 99,
         'required' => 'true',
         'pattern' => '',
         'validation' => '',
@@ -50,9 +52,9 @@ $form = array(
         'type' => 'number',
         'name' => 'TRABAJO_PROFESOR',
         'value' => '',
-        'size' => 25,
-        'min' => 0,
-        'max' => 4294967295,
+        'size' => 10,
+        'min' => 1,
+        'max' => 99,
         'required' => 'true',
         'pattern' => '',
         'validation' => '',
@@ -62,13 +64,11 @@ $form = array(
         'type' => 'datetime-local',
         'name' => 'TRABAJO_FECHA_INICIO',
         'value' => '',
-
     ),
     6 => array(
         'type' => 'datetime-local',
         'name' => 'TRABAJO_FECHA_FIN',
         'value' => '',
-
     )
 );
 $DefForm = AñadirTipos($form); //Comprobar
