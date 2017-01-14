@@ -189,7 +189,7 @@ Switch ($_REQUEST['accion']){
 		break;
 
 	default:
-		//Por defecto se ven las categorías
+		//Por defecto se ven las categorías y los documentos que no tienen categoría
 
 		if (!isset($_REQUEST['DOCUMENTACION_NOM'])){
 			$documentacion = new DOCUMENTACION_Model('','',$_REQUEST['DOCUMENTACION_MATERIA'], '', '', '');
@@ -200,12 +200,13 @@ Switch ($_REQUEST['accion']){
 		
 		$nombre=$documentacion->getMateria();
 		$datos = $documentacion->ConsultarCategorias();
+		$datosMateria = $documentacion->MateriaSinCategoria();
 
 		if(!tienePermisos('DOCUMENTACION_SHOWALL')){
 			new Mensaje('No tienes los permisos necesarios','../Views/DEFAULT_Vista.php');
 		}
 		else {
-			new DOCUMENTACION_SHOW_CATEGORIA($datos, $nombre, '../Controllers/MATERIA_Controller.php');
+			new DOCUMENTACION_SHOW_CATEGORIA($datos, $datosMateria, $nombre, '../Controllers/MATERIA_Controller.php');
 		}
 
 }

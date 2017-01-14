@@ -93,6 +93,29 @@ class DOCUMENTACION_Model
 			return $toret;
 		}
 	}
+
+	//Devuelve todas los documentos de una materia que no tienen categoría
+	function MateriaSinCategoria()
+	{
+		$this->ConectarBD();
+		$sql = "SELECT * FROM DOCUMENTACION WHERE DOCUMENTACION_MATERIA = '" . $this->DOCUMENTACION_MATERIA . "' AND DOCUMENTACION_CATEGORIA IS NULL";
+		if (!($resultado = $this->mysqli->query($sql))){
+			return 'Error en la consulta sobre la base de datos';
+		}
+		else{
+
+			$toret=array();
+			$i=0;
+
+			while ($fila= $resultado->fetch_array()) {
+
+				$toret[$i]=$fila;
+				$i++;
+
+			}
+			return $toret;
+		}
+	}
 	
 	
 	//Insertar documentación

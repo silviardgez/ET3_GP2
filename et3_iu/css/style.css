@@ -279,6 +279,11 @@ fieldset {
     margin-left: 40px;
 }
 
+.separado {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
 p {
 	margin-bottom:16px;
 	line-height:1.429em;

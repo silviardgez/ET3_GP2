@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTACION` (
   `DOCUMENTACION_MATERIA` int(10) NOT NULL,
   `DOCUMENTACION_FECHA` date NOT NULL,
   `DOCUMENTACION_ENLACE` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `DOCUMENTACION_CATEGORIA` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+  `DOCUMENTACION_CATEGORIA` varchar(30) COLLATE utf8_spanish_ci
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -76,7 +76,8 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTACION` (
 INSERT INTO `DOCUMENTACION` (`DOCUMENTACION_ID`, `DOCUMENTACION_NOM`, `DOCUMENTACION_PROFESOR`, `DOCUMENTACION_MATERIA`, `DOCUMENTACION_FECHA`, `DOCUMENTACION_ENLACE`, `DOCUMENTACION_CATEGORIA`) VALUES
 (1, 'Definicion ET3', '65938568Y', 1, '2016-12-10', '../Documents/Documentacion/Definicion_ET3','Teoria'),
 (2, 'Proyecto', '70561875Z', 2, '2016-12-13', '../Documents/Documentacion/Proyecto','Practica'),
-(3, 'Entregable Enero', '65938568Y', 2, '2016-12-16', '../Documents/Documentacion/Entregable_Enero','Teoria');
+(3, 'Entregable Enero', '65938568Y', 2, '2016-12-16', '../Documents/Documentacion/Entregable_Enero','Teoria'),
+(4, 'Guia Docente', '70561875Z', 1, '2016-12-16', '../Documents/Documentacion/Guia_Docente',NULL);
 
 -- --------------------------------------------------------
 
