@@ -814,7 +814,7 @@ function createForm($listFields, $fieldsDef, $strings, $values, $required, $noed
                                 }
                             }
                         }
-                        $str .= "required" . " ></li>";
+
                         echo $str;
                         break;
                     case 'email':
@@ -842,9 +842,9 @@ function createForm($listFields, $fieldsDef, $strings, $values, $required, $noed
                         } else {
                             if (isset($required[$field])) {
                                 if (!$required[$field]) {
-                                    $str .= ' ';
+                                    $str .= '';
                                 } else {
-                                    $str -= ' required ';
+                                    $str -= ' required  ';
                                 }
                             }
                         }
@@ -859,7 +859,8 @@ function createForm($listFields, $fieldsDef, $strings, $values, $required, $noed
                                 }
                             }
                         }
-                        $str .= "required" . " ></li>";
+
+
                         echo $str;
                         break;
                     case 'search':

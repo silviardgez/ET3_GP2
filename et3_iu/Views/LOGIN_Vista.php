@@ -3,6 +3,8 @@
 
 class Login
 {
+
+
 //VISTA REALIZAR EL LOGIN
 	function __construct()
 	{
@@ -10,7 +12,7 @@ class Login
 	}
 
 	function render()
-	{
+	{ include './Locates/Strings_Castellano.php';
 		?>
 		<!DOCTYPE html>
 		<html>
@@ -37,15 +39,24 @@ class Login
 						<input type="password" name="USUARIO_PASSWORD" placeholder="Contraseña" required=""
 							   id="password"/>
 					</div>
+
 					<div>
 						<p><select name="IDIOMA">
 								<option value="Castellano">Castellano</option>
 								<option value="Galego">Galego</option>
 								<option value="English">English</option>
 							</select></p>
+
 						<input type="submit" name = 'accion' value="Login"/>
+
 					</div>
-				</form><!-- form -->
+
+
+				</form>
+				<div>
+				<h1><a style="color: #1e4477;" href="./Controllers/REGISTRO_Controller.php?accion=<?php echo $strings['Registro']?>"><?php echo $strings['Registro']?></a></h1>
+				</div>
+					<!-- form -->
 
 			</section><!-- content -->
 		</div><!-- container -->

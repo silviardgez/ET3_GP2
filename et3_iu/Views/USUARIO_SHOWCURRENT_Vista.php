@@ -16,7 +16,7 @@ function render(){
 <?php
 
 
-	$lista = array('USUARIO_USER', 'USUARIO_NOMBRE', 'USUARIO_APELLIDO', 'USUARIO_DNI');
+	$lista = array('USUARIO_USER', 'USUARIO_NOMBRE', 'USUARIO_APELLIDO', 'USUARIO_DNI','USUARIO_EMAIL','USUARIO_FECH_NAC','USUARIO_TELEFONO','USUARIO_DIRECCION','USUARIO_CUENTA');
 
 ?>
 
@@ -32,7 +32,8 @@ include '../Functions/USUARIOShowDefForm.php';?>
 
 
 
-		createForm($lista,$DefForm2,$strings,$values='',false,false);
+		createForm($lista,$DefForm,$strings,$values='',array('USUARIO_USER'=>false, 'USUARIO_NOMBRE'=>false, 'USUARIO_APELLIDO'=>false, 'USUARIO_DNI'=>false,'USUARIO_EMAIL'=>false,'USUARIO_TELEFONO'=>false,'USUARIO_FECH_NAC'=>false,'USUARIO_DIRECCION'=>false,'USUARIO_CUENTA'=>false)
+			,false);
 ?>
 	<input type='submit' name='accion' value='<?php echo $strings['Consultar'] ?>'
 			<ul>

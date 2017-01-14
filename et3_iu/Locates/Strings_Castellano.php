@@ -44,6 +44,7 @@ $strings = array(
 'Modificar' => 'Modificar',
 'Borrar' => 'Borrar',
 'Consultar' => 'Consultar',
+    'Registro'=>'Registro',
 'Update' => 'Update',
 'Delete' => 'Delete',
 'Cerrar Sesión' => 'Cerrar Sesión',

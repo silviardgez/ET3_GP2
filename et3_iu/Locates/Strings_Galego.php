@@ -64,6 +64,7 @@ $strings = array(
 'Borrar' => 'Borrar',
 'Consultar' => 'Consultar',
 'Update' => 'Update',
+	'Registro'=>'Registro',
 'Delete' => 'Delete',
 'Cerrar Sesión' => 'Pechar Sesión',
 	'La pagina ya existe en la base de datos' => 'A páxina xa existe na base de datos',

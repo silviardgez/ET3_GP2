@@ -8,7 +8,7 @@ include '../Views/LOGIN_Vista.php';
 
 
 
-if (!IsAuthenticated()){
+if (!IsAuthenticated()  ){
 	header('Location:../index.php');
 }
 
@@ -94,6 +94,40 @@ if (!isset($_REQUEST['accion'])){
 				new Mensaje($respuesta, 'USUARIO_Controller.php');
 			}
 			break;
+		case  $strings['Registro']:
+			if (!isset($_REQUEST['USUARIO_USER'])){ //Si aún no se ha establecido el usuario
+				if(!tienePermisos('USUARIO_Insertar')){//Siempre que no tenga los permisos mostrará un mensaje de aviso
+					new Mensaje('No tienes los permisos necesarios','USUARIO_Controller.php');
+				}
+				else {//Muestra el formulario para insertar
+					new USUARIO_Registrar();
+				}
+			}
+			else{
+
+
+				$_REQUEST['USUARIO_ESTADO']='Activo'; //Siempre que se inserta estará activo en un principio
+				$_REQUEST['USUARIO_TIPO']='3';
+				$_REQUEST['USUARIO_COMENTARIOS']='';
+				$usuario = get_data_form();
+				//Creamos las carpetas para guardar los archivos
+				$carpetaFoto='../Documents/Empleados/'.$_REQUEST['USUARIO_DNI'].'/Foto/';
+
+
+				if($_FILES['USUARIO_FOTO']['name']!=='') {
+					if (!file_exists($carpetaFoto)) {
+						mkdir($carpetaFoto, 0777, true);
+					}
+
+					move_uploaded_file($_FILES['USUARIO_FOTO']['tmp_name'], $carpetaFoto . $_FILES['USUARIO_FOTO']['name']);
+				}
+
+
+				//Insertamos el usuario
+				$respuesta = $usuario->Insertar();
+				new Mensaje($respuesta, 'USUARIO_Controller.php');
+			}
+			break;
 		case  $strings['Borrar']:
 			if (!isset($_REQUEST['USUARIO_NOMBRE'])){
 				//Crea un usuario solo con el user para rellenar posteriormente sus datos y mostrarlos en el formulario
@@ -164,19 +198,14 @@ if (!isset($_REQUEST['accion'])){
 			else{
 
 //Establecemos a cadena vacía la información que no se obtiene del formulario
-			$_REQUEST['USUARIO_CUENTA']='';
+
 				$_REQUEST['USUARIO_TIPO']='';
 			$_REQUEST['USUARIO_ESTADO']='';
 
-		$_REQUEST['USUARIO_EMAIL']='';
-				$_REQUEST['USUARIO_FECH_NAC']='';
-				$_REQUEST['USUARIO_DIRECCION']='';
 
-
-			$_REQUEST['USUARIO_TELEFONO']='';
 				$_REQUEST['USUARIO_PASSWORD']='';
 		$_REQUEST['USUARIO_COMENTARIOS']='';
-			;
+
 				$_REQUEST['USUARIO_FOTO']='';
 
 
