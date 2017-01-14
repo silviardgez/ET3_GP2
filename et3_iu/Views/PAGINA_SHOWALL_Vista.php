@@ -2,7 +2,7 @@
 
 
 class Pagina_default{
-//VISTA PARA LISTAR TODOS LOS USUARIOS
+//VISTA PARA LISTAR TODAS LAS PAGINAS
 	private $datos;
 	private $volver;
 

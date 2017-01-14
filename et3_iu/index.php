@@ -1,4 +1,5 @@
 <?php
+//ÍNDICE
 include './Functions/LibraryFunctions.php';
 
 if (IsAuthenticated()){ //Si no está autenticado envía al login y si lo está a la vista por defecto

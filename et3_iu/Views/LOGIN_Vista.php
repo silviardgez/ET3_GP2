@@ -40,7 +40,7 @@ class Login
 							   id="password"/>
 					</div>
 
-					<div>
+					<div><!--SELECCION DE IDIOMA-->
 						<p><select name="IDIOMA">
 								<option value="Castellano">Castellano</option>
 								<option value="Galego">Galego</option>
@@ -54,6 +54,7 @@ class Login
 
 				</form>
 				<div>
+					<!--BOTON REGISTRARSE-->
 				<h1><a style="color: #1e4477;" href="./Controllers/REGISTRO_Controller.php?accion=<?php echo $strings['Registro']?>"><?php echo $strings['Registro']?></a></h1>
 				</div>
 					<!-- form -->

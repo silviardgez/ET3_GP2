@@ -1,5 +1,5 @@
 <?php
-
+//CADENAS UTILIZADAS EN INGÉS
 $strings = array(
     'Inserción realizada con éxito' => 'Successful insertion',
     'El usuario ya existe en la base de datos' => 'User already exists',

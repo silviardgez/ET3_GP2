@@ -4,9 +4,9 @@ include '../Functions/LibraryFunctions.php';
 //Clase que define un rol
 class ROL_MODEL
 {
-	var $ROL_ID;
-	var $ROL_NOM;
-	var $rol_funcionalidades;
+	var $ROL_ID; //Identificador del rol
+	var $ROL_NOM; //Nombre del rol
+	var $rol_funcionalidades; //Funcionalidades asociadas al rol
 	var $mysqli;
 
 //Constructor de la clase rol
@@ -91,6 +91,7 @@ function Consultar()
 	return $toret;
 	}
 }
+//Nos devuelve informacion de todos los roles
 	function ConsultarTodo()
 	{
 		$this->ConectarBD();
@@ -146,7 +147,7 @@ function Consultar()
 		}
 	}
 
-//Borrado de la funcionalidad
+//Borrado del rol
 function Borrar()
 {
     $this->ConectarBD();
@@ -164,6 +165,7 @@ function Borrar()
         return "El rol no existe";
 }
 
+//Devuelve toda la información del rol a partir de su nombre
 function RellenaDatos()
 {
     $this->ConectarBD();

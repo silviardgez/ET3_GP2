@@ -1,4 +1,5 @@
 <?php
+//CADENAS UTILIZADAS POR LA GESTIÓN DE RUBRICAS EN GALLEGO
 $stringsRubrica = array(
     'RUBRICA_NOMBRE'=> 'Nome da Rúbrica',
     'RUBRICA_DESCRIPCION'=>'Descripción',

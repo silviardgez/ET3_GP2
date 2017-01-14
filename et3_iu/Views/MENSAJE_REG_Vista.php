@@ -1,7 +1,7 @@
 <?php
 
 class Mensaje{
-//VISTA PARA MOSTRAR AVISOS Y MENSAJES
+//VISTA PARA MOSTRAR AVISOS Y MENSAJES DEL REGISTRO
 private $string; 
 private $volver;
 

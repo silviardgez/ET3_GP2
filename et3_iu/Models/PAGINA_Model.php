@@ -1,11 +1,11 @@
 <?php
-
+//Clase que define una pagina
 class Pagina
 {
 
-	var $PAGINA_ID;
-	var $PAGINA_LINK;
-	var $PAGINA_NOM;
+	var $PAGINA_ID; //Identificador de la página
+	var $PAGINA_LINK; //Enlace que va a tener
+	var $PAGINA_NOM; //Nombre de la pagina
 	
 	function __construct( $PAGINA_LINK, $PAGINA_NOM)
 	{
@@ -81,7 +81,7 @@ class Pagina
 
 	}
 
-	//Borrarado de la pagina
+	//Borrado de la pagina
 	function delete_pagina()
 	{
 		$this->ConectarBD();
@@ -124,6 +124,7 @@ class Pagina
 		{
             $sql ="SELECT PAGINA_LINK FROM PAGINA WHERE PAGINA_ID=".$PAGINA_ID;
             $result = $this->mysqli->query($sql)->fetch_array();
+            //Necesitamos actualizar tambien el nombre del archivo
             cambiarNombreArchivo($result['PAGINA_LINK'],$this->PAGINA_LINK);
 			$sql = "UPDATE PAGINA SET PAGINA_LINK ='".$this->PAGINA_LINK."', PAGINA_NOM ='".$this->PAGINA_NOM."' WHERE PAGINA_ID ='".$PAGINA_ID."'";
 			if (!($resultado = $this->mysqli->query($sql))){

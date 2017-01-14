@@ -37,7 +37,7 @@ function __construct($USUARIO_USER, $USUARIO_PASSWORD, $USUARIO_FECH_NAC, $USUAR
 	$this->USUARIO_CUENTA =$USUARIO_CUENTA;//número de cuenta
 	$this->USUARIO_DIRECCION =$USUARIO_DIRECCION;//dirección postal
 	$this->USUARIO_COMENTARIOS =$USUARIO_COMENTARIOS;//comentarios
-	$this->USUARIO_TIPO =$USUARIO_TIPO;//tipo de usuario:1->ADMIN, 2->PROFESOR, 3->ALUMNO
+	$this->USUARIO_TIPO =$USUARIO_TIPO;//tipo de usuario:1->ADMIN, 2->PROFESOR, 3->ALUMNO, 4->PROFESOR RESPONSABLE
 	$this->USUARIO_ESTADO =$USUARIO_ESTADO;//Activo o Inactivo
 	$this->USUARIO_FOTO=$USUARIO_FOTO; //Foto de perfil
 
@@ -107,7 +107,7 @@ function __destruct()
 
 }
 
-//Consulta por nombre y apellido, o por dni o por nombre de usuario devolviendo todos los usuarios que cumplan la condición
+//Consulta por todos los campos
 function Consultar()
 {
     $this->ConectarBD();
