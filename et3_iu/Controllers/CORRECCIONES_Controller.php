@@ -139,9 +139,6 @@ Switch($_REQUEST['accion'])
 			new Mensaje($respuesta,"CORRECCIONES_Controller.php");
 
 		}
-		
-			
-		//COMPLETAR ESTA PARTE.
 		break;
 			case  $strings['Consultar']:
 			if (!isset($_REQUEST['CORRECCION_NOM'])){
@@ -195,7 +192,8 @@ Switch($_REQUEST['accion'])
 			}
 			else{ //Estos campos no se muestran en el formulario de borrado por lo que se ponen vacíos
 				$correccion = get_data_form();
-				$respuesta = $correccion->Modificar();
+				$correccion->setNota($_REQUEST['CORRECCION_NOTA']);
+				$respuesta = $correccion->modificar($_REQUEST['CORRECCION_NOM']);
 				new Mensaje($respuesta, 'CORRECCIONES_Controller.php');
 			}
 			break;
