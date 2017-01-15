@@ -216,16 +216,16 @@ $strings = array(
 
 	//Entregas
 	'GESTION ENTREGAS'=>'XESTIÓN ENTREGAS',
-    'Gestión de Entregas'=>'Xestión de Entregas',
-    'ENTREGA_ID'=>'ID ENTREGA',
+	'Gestión de Entregas'=>'Xestión de Entregas',
+	'ENTREGA_ID'=>'ID ENTREGA',
 	'ENTREGA_TRABAJO'=>'ID TRABALLO',
 	'ENTREGA_HORA'=>'HORA ENTREGA',
-	'ENTREGA_FOTO' => 'ENTREGA ARQUIVO',
+	'DOCUMENTO' => 'ENTREGA ARQUIVO',
 	'ENTREGA_FECHA'=>'FECHA ENTREGA',
 	'ENTREGA_ALUMNO'=>'ID ALUMNO',
-	'ENTREGA_HORAS_DEDIC'=>'HORAS DEDICADAS',
+	'HORAS_DEDIC'=>'HORAS DEDICADAS',
 	'ENTREGA_NOMBRE'=>'NOME ENTREGA',
-    'Borrar entrega'=>'Borrar entrega',
+	'Borrar entrega'=>'Borrar entrega',
 	'Insertar entrega'=>'Inserir entrega',
 	'La entrega ya existe en la base de datos' => 'A entrega xa existe na base de datos',
 	'La entrega se ha borrado correctamente' => 'A entrega borrouse correctamente',
@@ -239,6 +239,10 @@ $strings = array(
 	'ENTREGA_ID2' => 'Búsqueda por ID da entrega',
 	'ENTREGA_TRABAJO2' => 'Búsqueda por ID do traballo',
 	'ENTREGA_ALUMNO2' => 'Búsqueda por ID do alumno',
+	'Descargar'=>'Descargar',
+	'Ver'=>'Ver',
+	'Añadir'=>'Engadir',
+',
     
     
         // ITEM
