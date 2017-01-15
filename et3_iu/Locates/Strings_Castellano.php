@@ -313,6 +313,9 @@ $strings = array(
 	'CORRECCION_PROFESOR' => 'ID del profesor',
 	'CORRECCION_NOTA' => 'Nota',
 	'CORRECCION_COMENTARIOS' => 'Comentarios de la correccion',
+	'RUBRICA_ID' => 'ID de la rubrica',
+	'RUBRICA_AUTOR' => 'Autor de la rubrica',
+	'RUBRICA_NOMBRE' => 'Nombre de la rubrica',
 	
 	'Borrar correccion' => 'Borrar corrección',
 	'Consultar correccion' => 'Consultar corrección',
