@@ -42,7 +42,7 @@ function render(){
 	<h3><?php echo $strings['CORRECCION_NOTA']?></h3>
 	<input type = 'number' name = "CORRECCION_NOTA" value = '<?php echo $this->valores['CORRECCION_NOTA']?>'  min='0' max='10' required = 'true' ><br>
 <h3><?php echo $strings['CORRECCION_COMENTARIOS']?></h3>
-	<input type = 'textarea' name= "CORRECCION_COMENTARIOS" value = "<?php echo $this->valores['CORRECCION_COMENTARIOS']?>" size= "355" ><br>
+	<input type = 'textarea' name= "CORRECCION_COMENTARIOS" value = "<?php echo $this->valores['CORRECCION_COMENTARIOS']?>" size= "355" rows='20' cols='52' ><br>
 
 <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_USUARIO()" >
 </form>
