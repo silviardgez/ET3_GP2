@@ -1,21 +1,25 @@
 <?php
-//Formulario para la gestiÃ³n de materias
+$p = new MATERIA_Model('','','','','','','');
+//Formulario para la gestión de materias
+
 $DefForm = array(
+
     0 => array(
         'type' => 'text',
         'name' => 'MATERIA_NOM',
         'value' => '',
-        'size' => 35,
+        'size' => 25,
         'required' => true,
         'pattern' => '',
         'validation' => '',
         'readonly' => false
     ),
+
     1=>array(
         'type' => 'text',
         'name' => 'MATERIA_TITULACION',
         'value' => '',
-        'size' => 100,
+        'size' => 50,
         'required' => false,
         'pattern' => '',
         'validation' => '',
@@ -26,7 +30,7 @@ $DefForm = array(
         'type' => 'text',
         'name' => 'MATERIA_DEPARTAMENTO',
         'value' => '',
-        'size' => 100,
+        'size' => 50,
         'required' => false,
         'pattern' => '',
         'validation' => '',
@@ -34,17 +38,29 @@ $DefForm = array(
     ),
 	
     3 => array(
-        'type' => 'number',
+        'type' => 'text',
         'name' => 'MATERIA_CREDITOS',
         'value' => '',
-        'size' => 2,
+        'size' => 3,
         'required' => false,
-        'pattern' => '',
+        'pattern' => '[0-9]',
         'validation' => '',
         'readonly' => false
     ),
 	
 	4 => array(
+        'type' => 'select',
+        'name' => 'MATERIA_RESPONSABLE',
+        'value' => '',
+        'options' => $p->getIDResp(),
+        'multiple' => $p->getIDResp(),
+        'required' => 'true',
+        'pattern' => '',
+        'validation' => '',
+        'readonly' => false
+    ),
+	
+	5 => array(
         'type' => 'text',
         'name' => 'MATERIA_DESCRIPCION',
         'value' => '',
@@ -55,3 +71,5 @@ $DefForm = array(
         'readonly' => false
     )
 );
+
+

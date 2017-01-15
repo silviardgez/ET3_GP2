@@ -1612,6 +1612,13 @@ function añadirFuncionalidades($NOM) {
                             case "GESTION CORRECCIONES":
 				                    ?><li><span><a style="font-size:20px;" href='../Controllers/CORRECCIONES_Controller.php'><?php echo $strings['Gestión de correcciones'] ?></a></span></li><?php
 				                    break;
+                case "GESTION MATERIAS":
+                    ?><li><span><a style="font-size:20px;" href='../Controllers/MATERIA_Controller.php'><?php echo $strings['Gestión de Materias'] ?></a></span></li> <?php
+                    break;
+
+                case "GESTION INSCRIPCIONES":
+                    ?><li><span><a style="font-size:20px;" href='../../../bb/et3_iu/Controllers/INSCRIPCION_Controller.php'><?php echo $strings['Gestión de Inscripciones'] ?></a></span></li> <?php
+                    break;
                             case "GESTION DOCUMENTACION":
                                 break;
                             case "GESTION DE ITEMS DE RUBRICAS":
@@ -2180,6 +2187,41 @@ function AñadirTrabajos($array) {
     $array[count($array)] = $añadido;
     return $array;
 }
+function AñadirProfesoresTitulos($array) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = "SELECT USUARIO_USER from USUARIO WHERE USUARIO_TIPO='2' ";
+    $result = $mysqli->query($sql);
+    while ($tipo = $result->fetch_array()) {
+        array_push($array, $tipo['USUARIO_USER']);
+    }
+    return $array;
+}
+
+function AñadirProfes($array) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = 'SELECT USUARIO_USER from USUARIO WHERE USUARIO_TIPO=2';
+    $result = $mysqli->query($sql);
+    while ($tipo = $result->fetch_array()) {
+        $array[count($array)] = array(
+            'type' => 'checkbox',
+            'name' => 'materia_profesores[]',
+            'value' => $tipo['USUARIO_USER'],
+            'size' => 20,
+            'required' => true,
+            'pattern' => '',
+            'validation' => '',
+            'readonly' => false);
+    }
+
+    return $array;
+}
+
 
             ?>
 

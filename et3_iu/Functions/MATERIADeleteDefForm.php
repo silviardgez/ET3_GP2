@@ -1,5 +1,5 @@
 <?php
-$p = new MATERIA_Model('','','','','','','');
+
 //Formulario para la gestión de materias
 
 $DefForm = array(
@@ -56,12 +56,11 @@ $DefForm = array(
     ),
 	
 	5 => array(
-        'type' => 'select',
+        'type' => 'text',
         'name' => 'MATERIA_RESPONSABLE',
         'value' => '',
-        'options' => $p->getIDResp(),
-        'multiple' => $p->getIDResp(),
-        'required' => 'true',
+        'size' => 25,
+        'required' => true,
         'pattern' => '',
         'validation' => '',
         'readonly' => false
