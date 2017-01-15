@@ -290,12 +290,16 @@ $strings = array(
 	'CORRECCION_RUBRICA' => 'Rubric',
 	'CORRECCION_PROFESOR' => 'Teacher',
 	'CORRECCION_NOTA' => 'Note',
+	'RUBRICA_ID' => 'Rubric ID',
+	'RUBRICA_AUTOR' => 'Rubric author',
+	'RUBRICA_NOMBRE' => 'Name of the rubric',
 	'Borrar correccion' => 'Delete correction',
 	'Consultar correccion' => 'Consult correction',
 	'La correccion ha sido borrada correctamente' => 'Correction deleted',
 	'inserción realizada con éxito' => 'Correction inserted',
 	'La correccion no existe' => 'Correction doesnt exists',
 	'Consultar correcciones' => 'Consult corrections'
+	
 
 )
 ?>
