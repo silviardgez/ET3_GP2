@@ -36,7 +36,7 @@ class Correccion_Insertar
 		include '../Functions/CORRECCION_DefForm.php';
 
 
-		$lista = array('CORRECCION_ID','CORRECCION_NOM','CORRECCION_COMENTARIOS');
+		$lista = array('CORRECCION_NOM','CORRECCION_COMENTARIOS');
 		?>
 
 		<form  id="form" name="form" action='CORRECCIONES_Controller.php?accion=<?php echo $strings['Insertar'].'&NUMNIV='.$this->numNiveles.'&NUMFILAS='.$this->numFilas.'&ENTREGA_ID='.$this->ENTREGA_ID.'&RUBRICA_ID='.$this->RUBRICA_ID ?>'  method='post'>
