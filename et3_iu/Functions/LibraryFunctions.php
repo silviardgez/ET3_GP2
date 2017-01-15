@@ -1304,6 +1304,28 @@ function ConsultarNOMPagina($PAGINA_ID) {
     return $result['PAGINA_NOM'];
 }
 
+//Devuelve el nombre de la rubrica a partir del id de rubrica
+function ConsultarNOMRubrica($RUBRICA_ID) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = "SELECT RUBRICA_NOMBRE FROM RUBRICA WHERE RUBRICA_ID='" . $RUBRICA_ID . "'";
+    $result = $mysqli->query($sql)->fetch_array();
+    return $result['RUBRICA_NOMBRE'];
+}
+
+//Devuelve el nombre de la entrega a partir del id de entrega
+function ConsultarNOMEntrega($ENTREGA_ID) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = "SELECT ENTREGA_NOMBRE FROM ENTREGA WHERE ENTREGA_ID='" . $ENTREGA_ID . "'";
+    $result = $mysqli->query($sql)->fetch_array();
+    return $result['ENTREGA_NOMBRE'];
+}
+
 //Añade al array los nombre de las paginas disponibles
 function AñadirPaginasTitulos($array) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
