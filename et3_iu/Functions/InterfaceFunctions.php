@@ -16,7 +16,7 @@ function descartar_empleados ($empleados)
 //FUNCION PARA CONSEGUIR SOLO LOS MONITORES
 function getMonitores(){
     $toret=array();
-    $mysqli= new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli= new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     $sql="SELECT EMP_NOMBRE, EMP_APELLIDO FROM EMPLEADOS WHERE EMP_TIPO=3 ORDER BY EMP_NOMBRE";
 
     $resultado=$mysqli->query($sql);
