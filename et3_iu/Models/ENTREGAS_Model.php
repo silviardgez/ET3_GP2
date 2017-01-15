@@ -83,7 +83,7 @@ function Consultar($ENTREGA_ID)
     if($this->ENTREGA_NOM == '' && $this->ENTREGA_ID == '' && $this->ENTREGA_TRABAJO != ''){
         $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO from ENTREGA where (ENTREGA_TRABAJO="."'$this->ENTREGA_TRABAJO'"."))";
     }else if($this->ENTREGA_NOM != '' && $this->ENTREGA_ID == '' && $this->ENTREGA_TRABAJO == ''){
-        $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO from ENTREGA where ((ENTREGA_NOMBRE ="."'$this->ENTREGA_NOM'"."))";
+        $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO from ENTREGA where ((ENTREGA_NOMBRE LIKE "."'%$this->ENTREGA_NOM%'"."))";
     } else{
         $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO from ENTREGA where ((ENTREGA_ID ="."'$ENTREGA_ID'"."))";
     }
@@ -146,6 +146,8 @@ function Borrar($ENTREGA_ID)
 
         $sql = "delete from ENTREGA where ENTREGA_NOMBRE = '".$this->ENTREGA_NOM."'";
         $this->mysqli->query($sql);
+        $sql1 = "delete from ALUMNO_ENTREGA where ENTREGA_NOMBRE = '".$this->ENTREGA_NOM."'";
+        $this->mysqli->query($sql1);
         return "La entrega se ha borrado correctamente";
 
     }
@@ -176,7 +178,7 @@ function Modificar($ENTREGA_ID)
     $result = $this->mysqli->query($sql);
     if ($result->num_rows == 1)
     {
-        $sql = "UPDATE ENTREGA SET ENTREGA_ID = '".$ENTREGA_ID."',ENTREGA_NOMBRE ='".$this->ENTREGA_NOM."',ENTREGA_TRABAJO = '".$this->ENTREGA_TRABAJO."' WHERE ENTREGA_ID='".$ENTREGA_ID."'";
+        $sql = "UPDATE ENTREGA SET ENTREGA_NOMBRE ='".$this->ENTREGA_NOM."' WHERE ENTREGA_ID='".$ENTREGA_ID."'";
 
 
         if (!($resultado = $this->mysqli->query($sql))){
