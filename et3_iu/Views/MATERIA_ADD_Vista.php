@@ -1,12 +1,14 @@
 <?php
+
 class MATERIA_ADD
 {
-    //VISTA PARA INSERTAR MATERIAS
-    function __construct(){ 
-        $this->render();
-    }
-    function render(){
-    ?>
+	//VISTA PARA INSERTAR MATERIAS
+	function __construct(){	
+		$this->render();
+	}
+
+	function render(){
+	?>
 
         <div class="wrap">
 
@@ -20,8 +22,8 @@ class MATERIA_ADD
             include '../Functions/MATERIAShowAllDefForm.php';
             
             //Array con los nombres de los campos a insertar
-            $lista = array('MATERIA_NOM', 'MATERIA_CREDITOS', 'MATERIA_DEPARTAMENTO', 'MATERIA_TITULACION', 'MATERIA_DESCRIPCION');
-            ?>
+			$lista = array('MATERIA_NOM', 'MATERIA_CREDITOS', 'MATERIA_DEPARTAMENTO', 'MATERIA_TITULACION', 'MATERIA_RESPONSABLE', 'MATERIA_DESCRIPCION');
+			?>
 
 
             <form  id="form" name="form" action='MATERIA_Controller.php' method='post'   enctype="multipart/form-data">
@@ -46,4 +48,5 @@ class MATERIA_ADD
 
                         <?php
                     }
+
                 }

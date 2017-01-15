@@ -1,18 +1,24 @@
 <?php
+
 class MATERIA_DELETE{
 	//VISTA PARA BORRAR MATERIAS
+
 	private $valores;
 	private $volver;
+
 	function __construct($valores, $volver){
 		$this->valores=$valores;
 		$this->volver=$volver;
 		$this->render();
 	}
+
 	function render(){
+
 		include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
-		include '../Functions/MATERIAShowDefForm.php';
+		include '../Functions/MATERIADeleteDefForm.php';
+
 		//Array con los nombres de los campos a borrar
-		$lista = array('MATERIA_ID','MATERIA_NOM', 'MATERIA_CREDITOS', 'MATERIA_DEPARTAMENTO', 'MATERIA_TITULACION', 'MATERIA_DESCRIPCION');
+		$lista = array('MATERIA_ID','MATERIA_NOM', 'MATERIA_CREDITOS', 'MATERIA_DEPARTAMENTO', 'MATERIA_TITULACION', 'MATERIA_RESPONSABLE', 'MATERIA_DESCRIPCION');
 	?>
         <html>
             <head><link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
@@ -41,4 +47,6 @@ class MATERIA_DELETE{
         <?php
     }
 }
+
+
 ?>
