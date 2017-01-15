@@ -242,7 +242,7 @@ $strings = array(
 	'Descargar'=>'Descargar',
 	'Ver'=>'Ver',
 	'Añadir'=>'Engadir',
-',
+
     
     
         // ITEM
