@@ -47,7 +47,7 @@ function __construct($USUARIO_USER, $USUARIO_PASSWORD, $USUARIO_FECH_NAC, $USUAR
 //Función para conectarnos a la Base de datos
 function ConectarBD()
 {
-    $this->mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $this->mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
 	
 	if ($this->mysqli->connect_errno) {
 		echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
