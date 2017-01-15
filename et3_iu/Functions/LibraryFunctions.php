@@ -2136,5 +2136,23 @@ function añadirFuncionalidades($NOM) {
 
                 return $sum;
             }
+function ConsultarIDTrabajo($TRABAJO_NOM) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = "SELECT TRABAJO_ID FROM TRABAJO WHERE TRABAJO_NOM='" . $TRABAJO_NOM . "'";
+    $result = $mysqli->query($sql)->fetch_array();
+    return $result['TRABAJO_ID'];
+}
+function ConsultarLinkEntrega($ENTREGA){
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = "SELECT ENTREGA_DOCUMENTO FROM ALUMNO_ENTREGA WHERE USUARIO_USER='" . $_SESSION['login'] . "' AND ENTREGA_ID='".$ENTREGA."'";
+    $result = $mysqli->query($sql)->fetch_array();
+    return $result['ENTREGA_DOCUMENTO'];
+}
             ?>
 
