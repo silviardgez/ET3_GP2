@@ -33,12 +33,16 @@ function render(){
 
 <form id="form" name="form"  action = 'CORRECCIONES_Controller.php'  method = 'post' enctype="multipart/form-data"><br>
 	<ul class="form-style-1">
-	<input type = 'text' name= "CORRECCION_ENTREGA" value = "<?php echo $this->valores['CORRECCION_ENTREGA']?>" min= '1' max = '40' required = 'true' readonly='true'><br>
-	<input type = 'text' name = "CORRECCION_RUBRICA" value = '<?php echo $this->valores['CORRECCION_RUBRICA']?>'  min= '1' max = '40' required = 'true' readonly='true'><br>
-	<?php
-//Generación automática del formulario
-createForm($lista,$defForm,$strings,$this->valores,false,false);
-?>
+	<h3><?php echo $strings['ENTREGA_ID']?></h3>
+	<input type = 'text' name= "CORRECCION_ENTREGA" value = "<?php echo $this->valores['CORRECCION_ENTREGA']?>" min= '1' max = '40' required = 'true' readonly><br>
+	<h3><?php echo $strings['CORRECCION_RUBRICA']?></h3>
+	<input type = 'text' name = "CORRECCION_RUBRICA" value = '<?php echo $this->valores['CORRECCION_RUBRICA']?>'  min= '1' max = '40' required = 'true' readonly><br>
+	<h3><?php echo $strings['CORRECCION_NOM']?></h3>
+	<input type = 'text' name = "CORRECCION_NOM" value = '<?php echo $this->valores['CORRECCION_NOM']?>'  size= '40' required = 'true' readonly><br>
+	<h3><?php echo $strings['CORRECCION_NOTA']?></h3>
+	<input type = 'number' name = "CORRECCION_NOTA" value = '<?php echo $this->valores['CORRECCION_NOTA']?>'  min='0' max='10' required = 'true' ><br>
+<h3><?php echo $strings['CORRECCION_COMENTARIOS']?></h3>
+	<input type = 'textarea' name= "CORRECCION_COMENTARIOS" value = "<?php echo $this->valores['CORRECCION_COMENTARIOS']?>" size= "355" ><br>
 
 <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_USUARIO()" >
 </form>
