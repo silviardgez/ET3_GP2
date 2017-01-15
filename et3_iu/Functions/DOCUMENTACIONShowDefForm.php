@@ -1,6 +1,6 @@
 <?php
-//Formulario para la insercción y modificación de documentación
-$DefForm = array(
+//Formulario para el borrado de empleados
+$form = array(
 	0 => array(
 	'type' => 'text',
 	'name' => 'DOCUMENTACION_ID',
@@ -15,14 +15,34 @@ $DefForm = array(
 		'type' => 'text',
 		'name' => 'DOCUMENTACION_NOM',
 		'value' => '',
-		'size' => 50,
+		'size' => 30,
 		'required' => true,
 		'pattern' => '',
 		'validation' => '',
 		'readonly' => false
 	),
-	
-	2 => array(
+
+	4 => array(
+		'type' => 'date',
+		'name' => 'DOCUMENTACION_FECHA',
+		'value' => '',
+		'min' => '2015/01/01',
+		'max' => '2018/01/01',
+		'required' => true,
+		'pattern' => '',
+		'validation' => '',
+		'readonly' => false
+	),
+	5 => array(
+		'type' => 'url',
+		'name' => 'DOCUMENTACION_ENLACE',
+		'value' => '',
+		'required' => true,
+		'pattern' => '',
+		'validation' => '',
+		'readonly' => false
+	),
+	6 => array(
 		'type' => 'text',
 		'name' => 'DOCUMENTACION_CATEGORIA',
 		'value' => '',
@@ -32,18 +52,11 @@ $DefForm = array(
 		'validation' => '',
 		'readonly' => false
 
-	),
-
-	3 => array(
-		'type' => 'file',
-		'name' => 'DOCUMENTACION_ENLACE',
-		'value' => '',
-		'required' => true,
-		'pattern' => '',
-		'validation' => '',
-		'readonly' => false
 	)
 
 );
+
+$DefForm1 = AñadirMaterias($form);
+$DefForm = AñadirProfesores($DefForm1);
 
 ?>

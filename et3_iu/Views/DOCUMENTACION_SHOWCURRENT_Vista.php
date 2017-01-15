@@ -15,15 +15,15 @@ class DOCUMENTACION_SHOWCURRENT{
 			<div></div>
 			<?php
 
-			include '../Functions/DOCUMENTACIONDefForm.php';
+			include '../Functions/DOCUMENTACIONShowDefForm.php';
 			include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
 
-			$lista = array('DOCUMENTACION_ID', 'DOCUMENTACION_NOM', 'DOCUMENTACION_MATERIA', 'DOCUMENTACION_PROFESOR','DOCUMENTACION_CATEGORIA','DOCUMENTACION_ENLACE');
+			$lista = array('DOCUMENTACION_ID', 'DOCUMENTACION_NOM', 'DOCUMENTACION_MATERIA', 'DOCUMENTACION_PROFESOR', 'DOCUMENTACION_FECHA','DOCUMENTACION_CATEGORIA','DOCUMENTACION_ENLACE');
 
 			?>
 
 
-			<form action='DOCUMENTACION_Controller.php' method='post'>
+			<form action='DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=<?php echo $_REQUEST['DOCUMENTACION_MATERIA'] ?>' method='post'>
 				<div id="centrado"><span class="form-title">
 					<?php echo $strings['Consultar Documentación']?><br></span></div>
 					<ul class="form-style-1">

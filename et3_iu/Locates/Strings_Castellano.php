@@ -188,6 +188,7 @@ $strings = array(
 	'DOCUMENTACION_ENLACE' => 'Enlace',
 	'DOCUMENTACION_CATEGORIA' => 'Categoría',
 	'Borrar documentación' => 'Borrar documentación',
+	'Insertar documentación' => 'Insertar documentación',
 	'El documento ha sido borrado correctamente'=>'El documento ha sido borrado correctamente',
 	'Modificar Documentación' => 'Modificar Documentación',
 	'Se ha producido un error en la modificación del documento' => 'Se ha producido un error en la modificación del documento',
@@ -240,17 +241,7 @@ $strings = array(
     'Item modificado correctamente'=>'Item modificado correctamente',
     'Consultar Item'=>'Consultar Item',
     
-    'ITEM'=>'Item: ',
-    'RUBRICA'=>'Rúbrica:  ',
-    'NIVEL_ID'=>'ID',
-    'NIVEL_ITEM'=>'Item',
-    'NIVEL_DESCRIPCION'=>'Descripción',
-    'NIVEL_RUBRICA'=>'Rúbrica',
-    'NIVEL_ITEM'=>'Item',
-    'NIVEL_PORCENTAJE'=>'Valor (%)',
-    'Modificar Nivel'=>'Modificar Nivel',
-    'Nivel modificado correctamente'=>'Nivel modificado correctamente',
-    'Consultar Nivel'=>'Consultar Nivel',
+  
     
     
     
@@ -267,6 +258,57 @@ $strings = array(
     'Modificar Item' => 'Modificar Item',
     'Item modificado correctamente' => 'Item modificado correctamente',
     'Consultar Item' => 'Consultar Item',
+
+   
+
+    //TRABAJOS
+    'TRABAJO_ID' => 'ID',
+    'TRABAJO_NOM' => 'NOMBRE',
+    'TRABAJO_DESCRIPCION' => 'DESCRIPCION',
+    'TRABAJO_MATERIA' => 'MATERIA',
+    'TRABAJO_PROFESOR' => 'PROFESOR',
+    'TRABAJO_FECHA_INICIO' => 'INICIO',
+    'TRABAJO_FECHA_FIN' => 'FIN',
+    'TRABAJO_FECHA_CREACION' => 'CREACION',
+    'INSERTAR TRABAJO' => 'Insertar Trabajo',
+    'BORRAR TRABAJO' => 'Borrar Trabajo',
+    'MODIFICAR TRABAJO' => 'Editar Trabajo',
+    'CONSULTAR TRABAJO' => 'Consultar Trabajo',
+    'Trabajo creado correctamente' => 'Trabajo creado correctamente',
+    'El trabajo ha sido borrado correctamente'=>'Trabajo borrado correctamente',
+    'Trabajo modificado correctamente'=>'Trabajo modificado correctamente',
+    'Gestion de trabajos'=>'Gestión de Trabajos',
+
+
+    'MATERIA_ID' => 'ID',
+    'MATERIA_NOM' => 'Nombre',
+    'MATERIA_CREDITOS' => 'Créditos',
+    'MATERIA_DEPARTAMENTO' => 'Departamento',
+    'MATERIA_TITULACION' => 'Titulación',
+    'MATERIA_DESCRIPCION' => 'Descripción',
+    'Gestión de Materias' => 'Gestión de Materias',
+	
+	
+    //GESTIÓN DE CORRECCIONES
+    'CORRECCION_ID' => 'ID de la corrección',
+	'CORRECCION_NOM' => 'Nombre de la corrección',
+	'CORRECCION_ENTREGA' => 'ID de la entrega',
+	'CORRECCION_RUBRICA' => 'ID de la rubrica',
+	'CORRECCION_PROFESOR' => 'ID del profesor',
+	'CORRECCION_NOTA' => 'Nota',
+	'CORRECCION_COMENTARIOS' => 'Comentarios de la correccion',
+	'RUBRICA_ID' => 'ID de la rubrica',
+	'RUBRICA_AUTOR' => 'Autor de la rubrica',
+	'RUBRICA_NOMBRE' => 'Nombre de la rubrica',
+	
+	'Borrar correccion' => 'Borrar corrección',
+	'Consultar correccion' => 'Consultar corrección',
+	'Modificar correccion' => 'Modificar corrección',
+	'La correccion ha sido borrada correctamente' => 'La correccion ha sido borrada correctamente',
+	'inserción realizada con éxito ' => 'La corrección ha sido insertada correctamente',
+	'La correccion no existe' => 'La correccion no existe',
+	'Consultar correcciones' => 'Consultar correcciones',
+	'Gestión de correcciones' => 'Gestión de correcciones',
 
     'ITEM' => 'Item: ',
     'RUBRICA' => 'Rúbrica:  ',

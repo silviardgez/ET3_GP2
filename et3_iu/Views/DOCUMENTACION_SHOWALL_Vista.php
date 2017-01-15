@@ -38,13 +38,15 @@ class DOCUMENTACION_SHOWALL {
 						<nav>
 							<ul>
 								<li><?php echo '<a href=\'' . $this->volver . "' class='m5'>" . $strings['Volver'] . " </a>"; ?></li>
+								
 								<li><a
-									href='./DOCUMENTACION_Controller.php?accion=<?php echo $strings['Consultar']?>'
+									href='./DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=<?php echo  $this->datos[0]['DOCUMENTACION_MATERIA'] . '&DOCUMENTACION_CATEGORIA=' . $this->datos[0]['DOCUMENTACION_CATEGORIA'] . '&accion=' . $strings['Consultar'] ?>'
 									class="m4"><?php echo $strings['Consultar']?></a></li>
 									<li><a
-										href='./DOCUMENTACION_Controller.php?accion=<?php echo $strings['Insertar'] ?>'
+										href='./DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=<?php echo  $this->datos[0]['DOCUMENTACION_MATERIA'] . '&DOCUMENTACION_CATEGORIA=' . $this->datos[0]['DOCUMENTACION_CATEGORIA'] . '&accion=' . $strings['Insertar'] ?>'
 										class="m3"><?php echo $strings['Insertar']?></a></li>
 										<li><a href="../Functions/Desconectar.php" class="m2"><?php echo  $strings['Cerrar Sesión']?></a></li>
+										
 									</ul>
 								</nav>
 
@@ -54,12 +56,9 @@ class DOCUMENTACION_SHOWALL {
 						<div class="container">
 							<?php
 							$lista = array ('DOCUMENTACION_NOM', 'DOCUMENTACION_PROFESOR', 'DOCUMENTACION_FECHA', 'DOCUMENTACION_ENLACE');
-							for($i = 0; $i < count ( $this->datos ); $i++) {
 								?>
-								<h2 class="materia2"><?php echo ConsultarNomMateria($this->datos[$i]['DOCUMENTACION_MATERIA']) ?></h2>
-								<?php
-							}
-							?>
+								<h2 class="materia2"><?php echo ConsultarNomMateria($this->datos[0]['DOCUMENTACION_MATERIA']) ?></h2>
+						
 							<div class="separado">
 								<div id="centrado">
 									<table class="table" id="btable" border=1>
@@ -106,28 +105,28 @@ class DOCUMENTACION_SHOWALL {
 											<td><a href='DOCUMENTACION_Controller.php?DOCUMENTACION_NOM=<?php echo $this->datos[$j]['DOCUMENTACION_NOM'] . '&accion='.$strings['Borrar']; ?>'><?php echo $strings['Borrar']?></a></td>
 
 											<?php
-											}
-											echo "</tr>";
 										}
-										?>
+										echo "</tr>";
+									}
+									?>
 
-									</table>
-								</div>
+								</table>
 							</div>
 						</div>
 					</div>
-					<footer>
-						<div class="container">
-							<div class="inside">
-								<div class="wrapper">
-									<div class="aligncenter">Servizo de Teledocencia copyright © 2016</div>
-								</div>
+				</div>
+				<footer>
+					<div class="container">
+						<div class="inside">
+							<div class="wrapper">
+								<div class="aligncenter">Servizo de Teledocencia copyright © 2016</div>
 							</div>
 						</div>
-					</footer>
-					<script type="text/javascript"> Cufon.now(); </script>
-				</body>
-				<?php
+					</div>
+				</footer>
+				<script type="text/javascript"> Cufon.now(); </script>
+			</body>
+			<?php
 	} // fin metodo render
 }
 ?>

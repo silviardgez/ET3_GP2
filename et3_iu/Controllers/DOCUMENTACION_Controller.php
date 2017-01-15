@@ -31,11 +31,10 @@ function get_data_form(){
 	//Si no se ha introducido un nuevo archivo se deja el que había
 	if (isset($_FILES['DOCUMENTACION_ENLACE']['name']) && ($_FILES['DOCUMENTACION_ENLACE']['name']!=='')) {
 
-		$DOCUMENTACION_ENLACE = '../Documents/Documentos/' . str_replace(' ', '_', $_FILES['DOCUMENTACION_ENLACE']['name']);
-
+		$DOCUMENTACION_ENLACE = '../Documents/Documentacion/' . str_replace(' ', '_', $_FILES['DOCUMENTACION_ENLACE']['name']);
 	}
 	else {
-
+		
 		$DOCUMENTACION_ENLACE='';
 	}
 
@@ -55,33 +54,41 @@ if (!isset($_REQUEST['accion'])){
 Switch ($_REQUEST['accion']){
 
 	case  $strings['Insertar']:
-		if (!isset($_REQUEST['DOCUMENTACION_NOM'])){ //Si aún no se ha establecido el usuario
-			if(!tienePermisos('DOCUMENTACION_Insertar')){//Siempre que no tenga los permisos mostrará un mensaje de aviso
+		if (!isset($_REQUEST['DOCUMENTACION_NOM'])){ 
+			if(!tienePermisos('DOCUMENTACION_ADD')){//Siempre que no tenga los permisos mostrará un mensaje de aviso
 				new Mensaje('No tienes los permisos necesarios','DOCUMENTACION_Controller.php');
 			}
 			else {//Muestra el formulario para insertar
-				new DOCUMENTACION_Insertar();
+				new DOCUMENTACION_ADD();
 			}
 		}
 		else{
+			$materia = $_REQUEST['DOCUMENTACION_MATERIA'];
+			$_REQUEST['DOCUMENTACION_MATERIA'] = ConsultarNomMateria($_REQUEST['DOCUMENTACION_MATERIA']);
+			$_REQUEST['DOCUMENTACION_FECHA']='';
 
-			//$_REQUEST['USUARIO_ESTADO']='Activo'; //Siempre que se inserta estarÃ¡ activo en un principio
-			$usuario = get_data_form();
+
+			$_REQUEST['DOCUMENTACION_PROFESOR']=ConsultarUserDNI($_SESSION['login']);
+
+			$documentacion = get_data_form();
+
+		
 			//Creamos las carpetas para guardar los archivos
 			$carpeta='../Documents/Documentacion/';
 
 
-			/*if($_FILES['DOCUMENTACION_ENLACE']['name']!=='') {
+			if($_FILES['DOCUMENTACION_ENLACE']['name']!=='') {
 				if (!file_exists($carpeta)) {
 					mkdir($carpeta, 0777, true);
 				}
 
 				move_uploaded_file($_FILES['DOCUMENTACION_ENLACE']['tmp_name'], $carpeta . $_FILES['DOCUMENTACION_ENLACE']['name']);
-			}*/
+			}
+
 
 			//Insertamos el usuario
 			$respuesta = $documentacion->Insertar();
-			new Mensaje($respuesta, 'DOCUMENTACION_Controller.php');
+			new Mensaje($respuesta, 'DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . $materia);
 		}
 		break;
 
@@ -105,6 +112,7 @@ Switch ($_REQUEST['accion']){
 
 			$documento = get_data_form();
 			$respuesta = $documento->Borrar();
+
 			new Mensaje($respuesta, 'DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . ConsultarIDMateria($_REQUEST['DOCUMENTACION_MATERIA']));
 		}
 		break;
@@ -117,11 +125,11 @@ Switch ($_REQUEST['accion']){
 			$documentacion = new DOCUMENTACION_Model($_REQUEST['DOCUMENTACION_NOM'], '', '', '', '', '');
 			$valores = $documentacion->RellenaDatos();
 			if(!tienePermisos('DOCUMENTACION_EDIT')){
-				new Mensaje('No tienes los permisos necesarios','DOCUMENTACION_Controller.php');
+				new Mensaje('No tienes los permisos necesarios','DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . $valores['DOCUMENTACION_MATERIA']);
 			}
 			else {
 				//Muestra el formulario de modificación 
-				new DOCUMENTACION_EDIT($valores, 'DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . $valores['DOCUMENTACION_MATERIA']);
+				new DOCUMENTACION_EDIT($valores, $valores['DOCUMENTACION_MATERIA'], 'DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . $valores['DOCUMENTACION_MATERIA']);
 			}
 		}
 		else{
@@ -130,13 +138,11 @@ Switch ($_REQUEST['accion']){
 			$_REQUEST['DOCUMENTACION_FECHA']='';
 			
 			$_REQUEST['DOCUMENTACION_PROFESOR']='';
-			$_REQUEST['DOCUMENTACION_MATERIA']='';
 
 			
 			$documentacion = get_data_form();
 
-
-			$carpeta='../Documents/Documentos/';
+			$carpeta='../Documents/Documentacion/';
 
 
 			//Se realizan las modificaciones también en las carpetas de documentos
@@ -149,7 +155,7 @@ Switch ($_REQUEST['accion']){
 			}
 
 			$respuesta = $documentacion->Modificar($_REQUEST['DOCUMENTACION_ID']);
-			new Mensaje($respuesta, 'DOCUMENTACION_Controller.php');
+			new Mensaje($respuesta, 'DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . $_REQUEST['DOCUMENTACION_MATERIA']);
 		}
 		break;
 
@@ -165,6 +171,7 @@ Switch ($_REQUEST['accion']){
 		}
 		else{
 			$documentacion = get_data_form();
+
             $datos = $documentacion->Consultar();
             new DOCUMENTACION_SHOWALL($datos, '../Controllers/DOCUMENTACION_Controller.php');
         }

@@ -41,12 +41,14 @@ class DOCUMENTACION_SHOW_CATEGORIA {
 							<ul>
 								<li><?php echo '<a href=\'' . $this->volver . "' class='m5'>" . $strings['Volver'] . " </a>"; ?></li>
 								<li><a
-									href='./DOCUMENTACION_Controller.php?accion=<?php echo $strings['Consultar']?>'
+									href='./DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=<?php echo  $this->materia . '&accion=' . $strings['Consultar'] ?>'
 									class="m4"><?php echo $strings['Consultar']?></a></li>
 									<li><a
-										href='./DOCUMENTACION_Controller.php?accion=<?php echo $strings['Insertar'] ?>'
+										href='./DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=<?php echo  $this->materia . '&accion=' . $strings['Insertar'] ?>'
 										class="m3"><?php echo $strings['Insertar']?></a></li>
+										
 										<li><a href="../Functions/Desconectar.php" class="m2"><?php echo  $strings['Cerrar Sesión']?></a></li>
+										
 									</ul>
 								</nav>
 

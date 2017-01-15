@@ -6,8 +6,9 @@ class DOCUMENTACION_EDIT {
 	private $volver;
 
 //VISTA PARA LA MODIFICACIÓN DE UN DOCUMENTO
-	function __construct($valores, $volver) {
+	function __construct($valores, $materia, $volver) {
 		$this->valores = $valores;
+		$this->materia = $materia;
 		$this->volver = $volver;
 		$this->render();
 	}
@@ -29,14 +30,14 @@ class DOCUMENTACION_EDIT {
 		</head>
 		<div class="wrap">
 			<body>
-				<form  id="form" name="form" action='DOCUMENTACION_Controller.php' method='post' >
+				<form  id="form" name="form" action='DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=<?php echo $this->materia ?>' method='post' >
 					<div id="centrado"><span class="form-title">
 						<?php echo $strings['Modificar Documentación'] ?></span></div>
 						<ul class="form-style-1">
 
 							<?php
 
-							createForm($lista, $DefForm, $strings, $this->valores, '', array('DOCUMENTACION_ID' => true,'DOCUMENTACION_PROFESOR'=>true, 'DOCUMENTACION_FECHA'=>true, 'DOCUMENTACION_MATERIA' =>true));
+							createForm($lista, $DefForm, $strings, $this->valores, array('DOCUMENTACION_CATEGORIA' => false, 'DOCUMENTACION_ENLACE' => false), array('DOCUMENTACION_ID' => true));
 
 							?>
 
