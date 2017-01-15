@@ -1201,6 +1201,18 @@ function eliminarDir($carpeta) {
     }
     rmdir($carpeta);
 }
+function AñadirProfesoresTitulos($array) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = "SELECT USUARIO_USER from USUARIO WHERE USUARIO_TIPO='2' ";
+    $result = $mysqli->query($sql);
+    while ($tipo = $result->fetch_array()) {
+        array_push($array, $tipo['USUARIO_USER']);
+    }
+    return $array;
+}
 
 //Completa la lista de titulos con las funcionalidades disponibles
 function AñadirFuncionesTitulos($array) {
