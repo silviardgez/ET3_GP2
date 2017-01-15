@@ -41,8 +41,8 @@ function render(){
 	<input type = 'text' name = "CORRECCION_NOM" value = '<?php echo $this->valores['CORRECCION_NOM']?>'  size= '40' required = 'true' readonly><br>
 	<h3><?php echo $strings['CORRECCION_NOTA']?></h3>
 	<input type = 'number' name = "CORRECCION_NOTA" value = '<?php echo $this->valores['CORRECCION_NOTA']?>'  min='0' max='10' required = 'true' ><br>
-		<br><label><?php echo $strings['CORRECCION_COMENTARIOS']?></label>
-	<textarea name= "CORRECCION_COMENTARIOS" rows='20' cols='52' size= "355" ><?php echo $this->valores['CORRECCION_COMENTARIOS']?></textarea><br>
+<h3><?php echo $strings['CORRECCION_COMENTARIOS']?></h3>
+	<input type = 'textarea' name= "CORRECCION_COMENTARIOS" value = "<?php echo $this->valores['CORRECCION_COMENTARIOS']?>" size= "355" rows='20' cols='52' ><br>
 
 <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_USUARIO()" >
 </form>

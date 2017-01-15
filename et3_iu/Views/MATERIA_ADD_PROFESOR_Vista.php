@@ -1,9 +1,11 @@
 <?php
 
-class MATERIA_ADD
+class MATERIA_ADD_Profesor
 {
-	//VISTA PARA INSERTAR MATERIAS
-	function __construct(){	
+    var $valores;
+	//VISTA PARA AÑADIR PROFESORES A MATERIAS
+	function __construct($valores){
+	    $this->valores=$valores;
 		$this->render();
 	}
 
@@ -19,24 +21,26 @@ class MATERIA_ADD
 
             <?php
             include '../Locates/Strings_' . $_SESSION['IDIOMA'] . '.php';
-            include '../Functions/MATERIAShowAllDefForm.php';
+            include '../Functions/MATERIADefForm.php';
             
             //Array con los nombres de los campos a insertar
-			$lista = array('MATERIA_NOM', 'MATERIA_CREDITOS', 'MATERIA_DEPARTAMENTO', 'MATERIA_TITULACION', 'MATERIA_RESPONSABLE', 'MATERIA_DESCRIPCION');
+			$list = array('MATERIA_NOM','MATERIA_ID');
+            $lista=AñadirProfesoresTitulos($list);
+
 			?>
 
 
             <form  id="form" name="form" action='MATERIA_Controller.php' method='post'   enctype="multipart/form-data">
                 <div id="centrado"><span class="form-title">
-                        <?php echo $strings['Insertar materia'] ?><br></span></div>
+                        <?php echo $strings['Profesores'] ?><br></span></div>
 
                 <ul class="form-style-1">
                     <?php
                     
                     //Generación automática del formulario
-                    createForm($lista, $DefForm, $strings, '', array('MATERIA_DESCRIPCION' => false), false);
+                    createForm($lista, $DefForm, $strings, $this->valores, false, array('MATERIA_NOM'=>true, 'MATERIA_ID'=>true));
                     ?>
-                    <input type='submit' onclick="return valida_envia_MATERIA()" name='accion'  value=<?php echo $strings['Insertar'] ?>
+                    <input type='submit' onclick="return valida_envia_MATERIA()" name='accion'  value='<?php echo $strings['Profesores'] ?>'
                            <ul>
                         </form>
                         <?php

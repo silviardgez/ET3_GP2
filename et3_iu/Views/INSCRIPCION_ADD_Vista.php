@@ -1,8 +1,8 @@
 <?php
 
-class MATERIA_ADD
+class INSCRIPCION_ADD
 {
-	//VISTA PARA INSERTAR MATERIAS
+	//VISTA PARA INSERTAR INSCRIPCIONES
 	function __construct(){	
 		$this->render();
 	}
@@ -19,28 +19,28 @@ class MATERIA_ADD
 
             <?php
             include '../Locates/Strings_' . $_SESSION['IDIOMA'] . '.php';
-            include '../Functions/MATERIAShowAllDefForm.php';
+            include '../Functions/INSCRIPCIONShowAllDefForm.php';
             
             //Array con los nombres de los campos a insertar
-			$lista = array('MATERIA_NOM', 'MATERIA_CREDITOS', 'MATERIA_DEPARTAMENTO', 'MATERIA_TITULACION', 'MATERIA_RESPONSABLE', 'MATERIA_DESCRIPCION');
+			$lista = array('INSCRIPCION_ALUMNO', 'INSCRIPCION_MATERIA');
 			?>
 
 
-            <form  id="form" name="form" action='MATERIA_Controller.php' method='post'   enctype="multipart/form-data">
+            <form  id="form" name="form" action='INSCRIPCION_Controller.php' method='post'   enctype="multipart/form-data">
                 <div id="centrado"><span class="form-title">
-                        <?php echo $strings['Insertar materia'] ?><br></span></div>
+                        <?php echo $strings['Insertar inscripción'] ?><br></span></div>
 
                 <ul class="form-style-1">
                     <?php
                     
                     //Generación automática del formulario
-                    createForm($lista, $DefForm, $strings, '', array('MATERIA_DESCRIPCION' => false), false);
+                    createForm($lista, $DefForm, $strings, '', false, false);
                     ?>
-                    <input type='submit' onclick="return valida_envia_MATERIA()" name='accion'  value=<?php echo $strings['Insertar'] ?>
+                    <input type='submit' onclick="return valida_envia_INSCRIPCION()" name='accion'  value=<?php echo $strings['Insertar'] ?>
                            <ul>
                         </form>
                         <?php
-                        echo '<a class="form-link" href=\'MATERIA_Controller.php\'>' . $strings['Volver'] . " </a>";
+                        echo '<a class="form-link" href=\'INSCRIPCION_Controller.php\'>' . $strings['Volver'] . " </a>";
                         ?>
 
 

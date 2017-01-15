@@ -1,8 +1,8 @@
 <?php
 
-class MATERIA_EDIT{
+class INSCRIPCION_EDIT{
 	
-//VISTA PARA MODIFICAR MATERIAS
+//VISTA PARA MODIFICAR INSCRIPCIONES
 	private $valores;
 	private $volver;
 
@@ -15,10 +15,10 @@ class MATERIA_EDIT{
 	function render(){
 		
 		include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
-		include '../Functions/MATERIAShowDefForm.php';
+		include '../Functions/INSCRIPCIONShowDefForm.php';
 
 		//Array con los nombres de los campos a modificar
-		$lista = array('MATERIA_ID','MATERIA_NOM','MATERIA_CREDITOS','MATERIA_DEPARTAMENTO','MATERIA_TITULACION','MATERIA_RESPONSABLE','MATERIA_DESCRIPCION');
+		$lista = array('INSCRIPCION_ID','INSCRIPCION_ALUMNO','INSCRIPCION_MATERIA');
      
         ?>
         <html>
@@ -30,20 +30,20 @@ class MATERIA_EDIT{
             <div class="wrap">
                 <body>
                     <div id="centrado"><span class="form-title">
-                            <?php echo $strings['Modificar materia'] ?></span></div>
+                            <?php echo $strings['Modificar inscripción'] ?></span></div>
 
-                    <form id="form" name="form"  action = 'MATERIA_Controller.php'  method = 'post' enctype="multipart/form-data"><br>
+                    <form id="form" name="form"  action = 'INSCRIPCION_Controller.php'  method = 'post' enctype="multipart/form-data"><br>
                         <ul class="form-style-1">
                             <?php
 
-                            createForm($lista, $DefForm, $strings, $this->valores, array('MATERIA_NOM'=>true, 'MATERIA_CREDITOS'=>true, 'MATERIA_DEPARTAMENTO'=>true, 'MATERIA_TITULACION'=>true, 'MATERIA_RESPONSABLE'=>true,'MATERIA_DESCRIPCION'=>false), array('MATERIA_ID'=>true));
+                            createForm($lista, $DefForm, $strings, $this->valores, array('INSCRIPCION_MATERIA'=>true), array('INSCRIPCION_ID'=>true, 'INSCRIPCION_ALUMNO'=>true));
                             ?>
 
-                            <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_MATERIA()" >
+                            <input type = 'submit' name = 'accion' value = '<?php echo $strings['Modificar'] ?>'  onclick="return valida_envia_INSCRIPCION()" >
                             </form>
 
 							<?php
-                            echo '<a class="form-link" href=\'MATERIA_Controller.php\'>' . $strings['Volver'] . " </a>";
+                            echo '<a class="form-link" href=\'INSCRIPCION_Controller.php\'>' . $strings['Volver'] . " </a>";
 							?>
                             </p>
                             </body>

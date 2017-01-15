@@ -1,7 +1,7 @@
 <?php
 
-class MATERIA_SHOWALL{
-	//VISTA PARA LISTAR MATERIAS
+class INSCRIPCION_SHOWALL{
+	//VISTA PARA LISTAR INSCRIPCIONES
 	private $datos;
 	private $volver;
 
@@ -38,9 +38,8 @@ class MATERIA_SHOWALL{
                     <h1><a href="../Views/DEFAULT_Vista.php"></a></h1>
 						<nav>
 							<ul><li><?php echo '<a href=\'' . $this->volver . "' class='m5'>" . $strings['Volver'] . " </a>"; ?></li>
-								<li><a href='./MATERIA_Controller.php?accion=<?php echo $strings['Consultar']?>'class="m4"><?php echo $strings['Consultar']?></a></li>
-								<li><a href='./MATERIA_Controller.php?accion=<?php echo $strings['Insertar'] ?>' class="m3"><?php echo $strings['Insertar']?></a></li>
-								<li><a href="../Functions/Desconectar.php" class="m2"><?php echo  $strings['Cerrar Sesión']; ?></a></li>
+								<li><a href='./INSCRIPCION_Controller.php?accion=<?php echo $strings['Consultar']?>'class="m4"><?php echo $strings['Consultar']?></a></li>
+											<li><a href="../Functions/Desconectar.php" class="m2"><?php echo  $strings['Cerrar Sesión']; ?></a></li>
 							</ul>
 						</nav>
 
@@ -49,7 +48,7 @@ class MATERIA_SHOWALL{
             </header>
             <div class="container">
                 <?php       
-                $lista = array('MATERIA_ID','MATERIA_NOM', 'MATERIA_CREDITOS', 'MATERIA_DEPARTAMENTO', 'MATERIA_TITULACION', 'MATERIA_RESPONSABLE', 'MATERIA_DESCRIPCION');
+                $lista = array('INSCRIPCION_ID','INSCRIPCION_ALUMNO','INSCRIPCION_MATERIA');
 
                 ?>
                 <br><br>
@@ -76,38 +75,16 @@ class MATERIA_SHOWALL{
                                         }
                                         echo "</td>";
                                     }
-                                }
-                                if(consultarRol($_SESSION['login'])==4 ||consultarRol($_SESSION['login'])==1){?>
+                                }?>
+							<td>
+                                <a href='INSCRIPCION_Controller.php?INSCRIPCION_MATERIA=<?php echo $this->datos[$j]['INSCRIPCION_MATERIA'] .'&INSCRIPCION_ALUMNO='. $this->datos[$j]['INSCRIPCION_ALUMNO']. '&accion=' . $strings['Matricularse']; ?>'><?php echo $strings['Matricularse'] ?></a>
+                            </td>
 
                             <td>
-                                <a href='MATERIA_Controller.php?MATERIA_ID=<?php echo $this->datos[$j]['MATERIA_ID'] . '&accion=' . $strings['Modificar']; ?>'><?php echo $strings['Modificar'] ?></a>
+                                <a href='INSCRIPCION_Controller.php?INSCRIPCION_MATERIA=<?php echo $this->datos[$j]['INSCRIPCION_MATERIA'] .'&INSCRIPCION_ALUMNO='. $this->datos[$j]['INSCRIPCION_ALUMNO']. '&accion=' . $strings['Desmatricularse']; ?>'><?php echo $strings['Desmatricularse'] ?></a>
                             </td>
-                            <td>
-                                <a href='MATERIA_Controller.php?MATERIA_ID=<?php echo $this->datos[$j]['MATERIA_ID'] . '&accion=' . $strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a>
-                            </td>
-                                    <td>
-                                        <a href='MATERIA_Controller.php?MATERIA_ID=<?php echo $this->datos[$j]['MATERIA_ID'] . '&accion=' . $strings['Profesores']; ?>'><?php echo $strings['Profesores'] ?></a>
-                                    </td>
-                                    <td>
-                                        <a href='MATERIA_Controller.php?MATERIA_ID=<?php echo $this->datos[$j]['MATERIA_ID'] . '&accion=' . $strings['Profes']; ?>'><?php echo $strings['Profes'] ?></a>
-                                    </td>
-                                    <td>
-                                        <a href='MATERIA_Controller.php?MATERIA_ID=<?php echo $this->datos[$j]['MATERIA_ID'] . '&accion=' . $strings['Matriculados']; ?>'><?php echo $strings['Matriculados'] ?></a>
-                                    </td>
 						</tr>
                            <?php }
-                                if(consultarRol($_SESSION['login'])==3){?>
-
-
-                                    <td>
-                                        <a href='MATERIA_Controller.php?MATERIA_ID=<?php echo $this->datos[$j]['MATERIA_ID'] . '&accion=' . $strings['Inscribirse']; ?>'><?php echo $strings['Inscribirse'] ?></a>
-                                    </td>
-                                    <td>
-                                        <a href='MATERIA_Controller.php?MATERIA_ID=<?php echo $this->datos[$j]['MATERIA_ID'] . '&accion=' . $strings['Desinscribirse']; ?>'><?php echo $strings['Desinscribirse'] ?></a>
-                                    </td>
-                                    </tr>
-                                <?php }
-                            }
                             ?>
 
                             

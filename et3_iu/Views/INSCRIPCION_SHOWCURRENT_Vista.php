@@ -1,7 +1,7 @@
 <?php
 
-class MATERIA_SHOWCURRENT{
-//VISTA PARA MOSTRAR CONSULTA DE MATERIA
+class INSCRIPCION_SHOWCURRENT{
+//VISTA PARA MOSTRAR CONSULTA DE INSCRIPCIONES
 
 function __construct(){	
 	$this->render();
@@ -16,18 +16,18 @@ function render(){
 				<?php
 
 				include '../Locates/Strings_'.$_SESSION['IDIOMA'].'.php';
-				$lista = array('MATERIA_ID','MATERIA_NOM', 'MATERIA_CREDITOS', 'MATERIA_DEPARTAMENTO', 'MATERIA_TITULACION', 'MATERIA_RESPONSABLE', 'MATERIA_DESCRIPCION');
+				$lista = array('INSCRIPCION_ID','INSCRIPCION_ALUMNO','INSCRIPCION_MATERIA');
             ?>
 
 
 
-				<form action='MATERIA_Controller.php' method='post'>
+				<form action='INSCRIPCION_Controller.php' method='post'>
 					<div id="centrado"><span class="form-title">
-			<?php echo $strings['Consultar materia']?><br></span></div>
+			<?php echo $strings['Consultar inscripción']?><br></span></div>
 					<ul class="form-style-1">
 					<?php
 
-					include '../Functions/MATERIAShowDefForm.php';
+					include '../Functions/INSCRIPCIONShowDefForm.php';
 
 
 					createForm($lista,$DefForm,$strings,$values='',false,false);
@@ -36,7 +36,7 @@ function render(){
 					</ul>
 				</form>
 				<?php
-				echo '<a  class="form-link" href=\'MATERIA_Controller.php\'>' . $strings['Volver'] . '</a>';
+				echo '<a  class="form-link" href=\'INSCRIPCION_Controller.php\'>' . $strings['Volver'] . '</a>';
 				?>
 
 
