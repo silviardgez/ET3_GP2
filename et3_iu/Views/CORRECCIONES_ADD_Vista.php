@@ -54,7 +54,7 @@ class Correccion_Insertar
 					{
 						border: 2px solid black;
 						border-collapse: separate;
-                        border-spacing: 10px 5px;
+                        border-spacing: 5px 5px;
 					}
 					th,td
 					{
@@ -84,7 +84,7 @@ class Correccion_Insertar
 						for($j=0;$j<$this->numNiveles;$j++) {
 							echo '<td>';
 							echo $this->niveles[$desc_count];
-							echo '<br><input type= "radio" name ="Button'.$i.'" value="'.$j.'">'.$j;
+							echo '<br><input type= "radio" name ="Button'.$i.'" value="'.$j.'" required>'.$j;
 							echo '</td>';
 							$desc_count++;
 
