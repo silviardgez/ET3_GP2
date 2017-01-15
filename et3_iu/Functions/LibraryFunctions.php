@@ -1609,10 +1609,14 @@ function añadirFuncionalidades($NOM) {
                             case "GESTION TRABAJOS":
                                 ?><li><span><a style="font-size:20px;" href='../Controllers/TRABAJO_Controller.php'><?php echo $strings['Gestion de trabajos'] ?></a></span></li> <?php
                                 break;
+                            case "GESTION CORRECCIONES":
+				                    ?><li><span><a style="font-size:20px;" href='../Controllers/CORRECCIONES_Controller.php'><?php echo $strings['Gestión de correcciones'] ?></a></span></li><?php
+				                    break;
                             case "GESTION DOCUMENTACION":
                                 break;
                             case "GESTION DE ITEMS DE RUBRICAS":
                                 break;
+                
                             default:
                                 $link = str_replace(" ", "_", ConsultarNOMFuncionalidad($fila['FUNCIONALIDAD_ID'])) . "_Controller.php";
                                 echo "<a style='font-size:20px;'href='../Controllers/" . $link . "'>" . ConsultarNOMFuncionalidad($fila['FUNCIONALIDAD_ID']) . " </a><br><br>";
