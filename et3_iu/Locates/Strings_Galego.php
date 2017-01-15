@@ -295,7 +295,20 @@ $strings = array(
     'MATERIA_DEPARTAMENTO' => 'Departamento',
     'MATERIA_TITULACION' => 'Titulación',
     'MATERIA_DESCRIPCION' => 'Descripción',
-    'Gestión de Materias' => 'Xestión de Materias'
+    'Gestión de Materias' => 'Xestión de Materias',
+	
+	//GESTIÓN DE CORRECCIONES
+	'CORRECCION_ID' => 'ID da corrección',
+	'CORRECCION_NOM' => 'Nome da corrección',
+	'CORRECCION_ENTREGA' => 'ID da entrega',
+	'CORRECCION_RUBRICA' => 'ID da rubrica',
+	'CORRECCION_PROFESOR' => 'ID do profesor',
+	'CORRECCION_NOTA' => 'Nota',
+	'Borrar correccion' => 'Borrar corrección',
+	'Consultar correccion' => 'Consultar corrección',
+	'La correccion ha sido borrada correctamente' => 'A correccion foi borrada correctamente',
+	'La correccion no existe' => 'A correccion non existe',
+	'Consultar correcciones' => 'Consultar correcións'
 
 )
 ?>
