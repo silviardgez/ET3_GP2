@@ -320,6 +320,7 @@ $strings = array(
 	'La correccion ha sido borrada correctamente' => 'La correccion ha sido borrada correctamente',
 	'inserción realizada con éxito ' => 'La corrección ha sido insertada correctamente',
 	'La correccion no existe' => 'La correccion no existe',
-	'Consultar correcciones' => 'Consultar correcciones'
+	'Consultar correcciones' => 'Consultar correcciones',
+	'Gestión de correcciones' => 'Gestión de correcciones'
 )
 ?>
