@@ -49,11 +49,19 @@ class ENTREGAS_Show{
                 <div class="container">
                     <h1><a href="../Views/DEFAULT_Vista.php"></a></h1>
                     <nav>
-                        <ul><li><?php echo '<a href=\'' . $this->volver . "' class='m5'>" . $strings['Volver'] . " </a>"; ?></li>
-                            <li><a href='./ENTREGAS_Controller.php?accion=<?php echo $strings['Consultar']?>'class="m4"><?php echo $strings['Consultar']?></a></li>
-                            <li><a href='./ENTREGAS_Controller.php?accion=<?php echo $strings['Insertar'] ?>' class="m3"><?php echo $strings['Insertar']?></a></li>
-                            <li><a href="../Functions/Desconectar.php" class="m2"><?php echo  $strings['Cerrar Sesión']; ?></a></li>
-                        </ul>
+                            <ul><li><?php echo '<a href=\'' . $this->volver . "' class='m5'>" . $strings['Volver'] . " </a>"; ?></li>
+                                <?php
+                                require_once ('../Models/ENTREGAS_Model.php');
+                                $m = new ENTREGAS_Model('','','');
+                                $n = $m->user();
+                                    if($n['USUARIO_TIPO'] == 1 || $n['USUARIO_TIPO'] == 2){
+                                       echo " <li><a href='./ENTREGAS_Controller.php?accion=".$strings['Consultar']."'class='m4'>".$strings['Consultar']."</a></li>";
+                                       echo " <li><a href='./ENTREGAS_Controller.php?accion=".$strings['Insertar']."' class='m3'>". $strings['Insertar']."</a></li>";
+                                    }
+                                   ?>
+
+                                <li><a href="../Functions/Desconectar.php" class="m2"><?php echo  $strings['Cerrar Sesión']; ?></a></li>
+                            </ul>
                     </nav>
 
                 </div>
@@ -62,7 +70,7 @@ class ENTREGAS_Show{
             <div class="container">
                 <?php
                 //$gen_datos = new gen_form($arrayDefForm);
-                $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORA', 'ENTREGA_FECHA', 'ENTREGA_ALUMNO', 'ENTREGA_HORAS_DEDIC', 'ENTREGA_FOTO');
+                $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO');
 
 
                 ?>
@@ -94,26 +102,49 @@ class ENTREGAS_Show{
 
                                 for ($i = 0; $i < count($lista); $i++) {
                                     if ($clave === $lista[$i]) {
+                                        if($clave != 'ENTREGA_TRABAJO'){
+                                            echo "<td>";
 
-                                        echo "<td>";
+                                            echo $valor;
 
-                                        echo $valor;
+                                            echo "</td>";
+                                        }else{
+                                            $w = new ENTREGAS_Model('','','');
+                                            echo "<td>";
 
-                                        echo "</td>";
+                                            echo $w->nombreTrabajo($valor);
+
+                                            echo "</td>";
+                                        }
                                     }
                                 }
                             }
                             ?>
+                            <?php
+                            $m = new ENTREGAS_Model('','','');
+                            $n = $m->user();
+                            if($n['USUARIO_TIPO'] == 1 || $n['USUARIO_TIPO'] == 2 || $n['USUARIO_TIPO'] == 4) {
+                                echo '<td>';
+                                echo "<a href='ENTREGAS_Controller.php?ENTREGA_NOMBRE=" . $this->datos[$j]['ENTREGA_NOMBRE'] . "&accion=" . $strings['Modificar'] . "'>" . $strings['Modificar'] . "</a>";
+                                echo '</td>';
 
-                            <td>
-                                <a href='ENTREGAS_Controller.php?ENTREGA_NOMBRE=<?php echo $this->datos[$j]['ENTREGA_NOMBRE'] . '&accion='.$strings['Modificar']; ?>'><?php echo $strings['Modificar'] ?></a>
-                            </td>
-                            <td>
-                                <a href='ENTREGAS_Controller.php?ENTREGA_NOMBRE=<?php echo $this->datos[$j]['ENTREGA_NOMBRE'] . '&accion='.$strings['Borrar']; ?>'><?php echo $strings['Borrar'] ?></a>
-                            </td>
-                           <!-- <td>
-                                <a href='ENTREGAS_Controller.php?ENTREGA_NOM=<?php echo $this->datos[$j]['ENTREGA_NOMBRE'] . '&accion='.$strings['Funcionalidades']; ?>'><?php echo $strings['Funcionalidades'] ?></a>
-                            </td> --->
+                                echo '<td>';
+                                echo "<a href='ENTREGAS_Controller.php?ENTREGA_NOMBRE=" . $this->datos[$j]['ENTREGA_NOMBRE'] . "&accion=" . $strings['Borrar'] . "'>" . $strings['Borrar'] . "</a>";
+                                echo '</td>';
+                                echo '<td>';
+                                echo "<a href='../Documents/Entregas'>" . $strings['Descargar'] . "</a>";
+                                echo '</td>';
+                            }
+
+                            if($n['USUARIO_TIPO'] == 1 || $n['USUARIO_TIPO'] == 3){
+                                echo " <td><a href='./ALUMNO_ENTREGA_Controller.php?accion=".$strings['Añadir']."&ENTREGA_ID=".$this->datos[$j]['ENTREGA_ID']."'>". $strings['Añadir']."</a></td>";
+                              ?>
+                            <td><a   href='<?php echo ConsultarLinkEntrega($this->datos[$j]['ENTREGA_ID']) ?>' target="_blank"><?php echo $strings['Ver'] ?></a></td>
+
+<?php
+                            }
+
+                            ?>
 
                             <?php
 
