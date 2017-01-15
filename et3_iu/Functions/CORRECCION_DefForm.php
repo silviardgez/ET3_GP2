@@ -27,8 +27,10 @@ $defForm = array
 		),
     2 =>  array
     (
-    'type' => 'text',
+    'type' => 'textarea',
 	'name' => 'CORRECCION_COMENTARIOS',
+	'rows' => '20',
+	'cols'=>'52',
 	'value' => '',
 	'size' => 355,
 	'required' => true,
