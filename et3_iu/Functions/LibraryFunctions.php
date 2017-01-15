@@ -1382,6 +1382,18 @@ function ConsultarNomMateria($MATERIA_ID) {
     return $result['MATERIA_NOM'];
 }
 
+//Devuelve el dni de un usuario a partir de su user
+function ConsultarUserDNI($USUARIO_USER) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = "SELECT USUARIO_DNI FROM USUARIO WHERE USUARIO_USER='" . $USUARIO_USER . "'";
+    $result = $mysqli->query($sql)->fetch_array();
+    return $result['USUARIO_DNI'];
+}
+
 //Devuelve el nombre y apellidos de un profesor a partir de su DNI
 function ConsultarNomProfesor($USUARIO_DNI) {
     $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
@@ -1392,6 +1404,29 @@ function ConsultarNomProfesor($USUARIO_DNI) {
     $sql = "SELECT USUARIO_NOMBRE, USUARIO_APELLIDO FROM USUARIO WHERE USUARIO_DNI='" . $USUARIO_DNI . "'";
     $result = $mysqli->query($sql)->fetch_array();
     return $result['USUARIO_NOMBRE'] . " " . $result['USUARIO_APELLIDO'];
+}
+
+//Consulta si un alumno tiene una id de materia que se pasa como parámetro
+function ConsultarMateriaAlumno($MATERIA) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = "SELECT * FROM MATRICULA WHERE MATRICULA_ALUMNO='" . ConsultarUserDNI($_SESSION['login']) . "' AND MATRICULA_MATERIA='" . $MATERIA . "'";
+    $result = $mysqli->query($sql)->fetch_array();
+    return $result;
+}
+
+function ConsultarMateriaProfesor($MATERIA) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = "SELECT * FROM IMPARTE_MATERIA WHERE PROFESOR_USER='" . $_SESSION['login'] . "' AND MATERIA_ID='" . $MATERIA . "'";
+    $result = $mysqli->query($sql)->fetch_array();
+    return $result;
 }
 
 //Añade los roles al desplegable de tipos

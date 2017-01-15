@@ -195,6 +195,7 @@ $strings = array(
 	'El documento no existe' => 'El documento no existe',
 	'Consultar Documentación' => 'Consultar Documentación',
 	'Ver Documentación' => 'Ver Documentación',
+	'Aún no hay documentos disponibles para esta materia' => 'Aún no hay documentos disponibles para esta materia',
 //Entregas
 	'GESTION ENTREGAS'=>'GESTIÓN ENTREGAS',
     'Gestión de Entregas'=>'Gestión de Entregas',

@@ -74,11 +74,11 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTACION` (
 --
 
 INSERT INTO `DOCUMENTACION` (`DOCUMENTACION_ID`, `DOCUMENTACION_NOM`, `DOCUMENTACION_PROFESOR`, `DOCUMENTACION_MATERIA`, `DOCUMENTACION_FECHA`, `DOCUMENTACION_ENLACE`, `DOCUMENTACION_CATEGORIA`) VALUES
-(1, 'Definicion ET3', '65938568Y', 1, '2016-12-10', '../Documents/Documentacion/Definicion_ET3','Teoria'),
-(2, 'Proyecto', '70561875Z', 2, '2016-12-13', '../Documents/Documentacion/Proyecto','Practica'),
-(3, 'Entregable Enero', '65938568Y', 2, '2016-12-16', '../Documents/Documentacion/Entregable_Enero','Teoria'),
-(4, 'Guia Docente IU', '70561875Z', 1, '2016-12-16', '../Documents/Documentacion/Guia_Docente_IU',NULL),
-(5, 'Guia Docente CDA', '65938568Y', 2, '2016-12-21', '../Documents/Documentacion/Guia_Docente_CDA',NULL);
+(1, 'Definicion ET3', '65938568Y', 1, '2016-12-10', '../Documents/Documentacion/Definicion_ET3.doc','Teoria'),
+(2, 'Proyecto', '70561875Z', 2, '2016-12-13', '../Documents/Documentacion/Proyecto.txt','Practica'),
+(3, 'Entregable Enero', '65938568Y', 2, '2016-12-16', '../Documents/Documentacion/Entregable_Enero.doc','Teoria'),
+(4, 'Guia Docente IU', '70561875Z', 1, '2016-12-16', '../Documents/Documentacion/Guia_Docente_IU.pdf',NULL),
+(5, 'Guia Docente CDA', '65938568Y', 2, '2016-12-21', '../Documents/Documentacion/Guia_Docente_CDA.pdf',NULL);
 
 -- --------------------------------------------------------
 
@@ -286,7 +286,7 @@ CREATE TABLE IF NOT EXISTS `MATERIA` (
 --
 
 INSERT INTO `MATERIA` (`MATERIA_ID`, `MATERIA_NOM`, `MATERIA_CREDITOS`, `MATERIA_DEPARTAMENTO`, `MATERIA_TITULACION`, `MATERIA_DESCRIPCION`) VALUES
-(1, 'Interfaces de Usuario', 6, 'Informatica', 'Ingenieria Informatica',  'Diseño, construccion y evaluacion de interfaces'),
+(1, 'Interfaces de Usuario', 6, 'Informatica', 'Ingenieria Informatica',  'Creacion, construccion y evaluacion de interfaces'),
 (2, 'Centros de Datos', 6, 'Informatica', 'Ingenieria Informatica',  'Integracion de sistemas y redes');
 
 -- --------------------------------------------------------
@@ -300,7 +300,7 @@ INSERT INTO `IMPARTE_MATERIA` (`MATERIA_ID`,`PROFESOR_USER`)VALUES (1,'RESPONSAB
 --
 
 CREATE TABLE IF NOT EXISTS `MATRICULA` (
-  `MATRICULA_ALUMNO` int(10) NOT NULL,
+  `MATRICULA_ALUMNO` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `MATRICULA_MATERIA` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -309,8 +309,8 @@ CREATE TABLE IF NOT EXISTS `MATRICULA` (
 --
 
 INSERT INTO `MATRICULA` (`MATRICULA_ALUMNO`, `MATRICULA_MATERIA`) VALUES
-(1, 1),
-(2, 2);
+('44841787K', 1),
+('76583535K', 2);
 
 -- --------------------------------------------------------
 
@@ -517,6 +517,7 @@ INSERT INTO `ROL_FUNCIONALIDAD` (`ROL_ID`, `FUNCIONALIDAD_ID`) VALUES
 (4, 100),
 (1, 200),
 (2, 200),
+(3, 200),
 (4, 200),
 (4,5),
 (1,300),
@@ -528,7 +529,10 @@ INSERT INTO `ROL_FUNCIONALIDAD` (`ROL_ID`, `FUNCIONALIDAD_ID`) VALUES
 (1, 600),
 (2, 600),
 (4, 600),
-(1,900);
+(1,900),
+(2,900),
+(3,900),
+(4,900);
 
 -- --------------------------------------------------------
 
@@ -608,6 +612,7 @@ INSERT INTO `USUARIO` (`USUARIO_USER`, `USUARIO_PASSWORD`, `USUARIO_NOMBRE`, `US
 ('ADMIN', '73acd9a5972130b75066c82595a1fae3', 'Pedro', 'Rodriguez', '65938568Y', '1975-11-29', 'pedro.rodriguez@gmail.com', 676676676, '20770024003102575766', 'calle1', NULL, 1, 'Activo', NULL),
 ('PROFESOR', '0ee43a0e0e2b00017eb657f549eadbe9', 'Pepe', 'Perez', '70561875Z', '1957-10-31', 'pepe.perez@gmail.com', 666666666, '20770024003102575766','calle 3', NULL, 2, 'Activo', NULL),
 ('ALUMNO', '147b9f5076ae6340663353a96b87062e', 'Luis', 'Gomez', '44841787K', '1957-10-31', 'luis.gomez@gmail.com', 666656666,'20770024003102575766','calle 2', NULL, 3, 'Activo', NULL),
+('ALUMNO2', '147b9f5076ae6340663353a96b87062e', 'Maria', 'Alvarez', '76583535K', '1990-10-14', 'maria.alvarez@gmail.com', 663656666,'20770024003102575766','calle 6', NULL, 3, 'Activo', NULL),
 ('RESPONSABLE','6d53f6eeea6fb5325511b7408f259db7','Pablo', 'Fernandez', '86723680H','1965-10-29', 'pablo.fernandez@gmail.com',666666777,'20770024003102575766','calle falsa', NULL,4,'Activo',NULL);
 -- --------------------------------------------------------
 
@@ -673,11 +678,21 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('PROFESOR', 202),
 ('PROFESOR', 203),
 ('PROFESOR', 204),
+('PROFESOR', 900),
+('PROFESOR', 901),
+('PROFESOR', 902),
+('PROFESOR', 903),
+('PROFESOR', 904),
 ('RESPONSABLE', 100),
 ('RESPONSABLE', 101),
 ('RESPONSABLE', 102),
 ('RESPONSABLE', 103),
 ('RESPONSABLE', 104),
+('RESPONSABLE', 900),
+('RESPONSABLE', 901),
+('RESPONSABLE', 902),
+('RESPONSABLE', 903),
+('RESPONSABLE', 904),
 ('RESPONSABLE', 200),
 ('RESPONSABLE', 201),
 ('RESPONSABLE', 202),
@@ -711,6 +726,14 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('ALUMNO',304),
 ('ALUMNO',203),
 ('ALUMNO',204),
+('ALUMNO',903),
+('ALUMNO',904),
+('ALUMNO2',303),
+('ALUMNO2',304),
+('ALUMNO2',203),
+('ALUMNO2',204),
+('ALUMNO2',903),
+('ALUMNO2',904),
 ('PROFESOR',303),
 ('PRODESOR',304),
 ('ADMIN', 600),

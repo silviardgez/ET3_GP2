@@ -57,6 +57,12 @@ class DOCUMENTACION_SHOW_CATEGORIA {
 							<h2 class="materia"><?php echo ConsultarNomMateria($this->materia) ?></h2>
 							<?php
 
+							if(empty($this->datos)) { ?>
+							<strong class="carpeta" style="color:#FE2E2E"><?php echo $strings['Aún no hay documentos disponibles para esta materia'] ?></strong>
+							<?php }
+							?>
+							<?php
+
 							for($j = 0; $j < count ( $this->datos ); $j++) {
 								if($this->datos[$j]['DOCUMENTACION_CATEGORIA'] != NULL){
 									?>
@@ -99,7 +105,11 @@ class DOCUMENTACION_SHOW_CATEGORIA {
 															else{
 																echo ConsultarNomProfesor($valor);
 															}
-														} else {
+														}
+														elseif($clave==='DOCUMENTACION_ENLACE'){ ?>
+														<a href="<?php echo $valor ?>" target="_blank"><?php echo $strings['Ver'] ?></a>
+
+														<?php } else {
 															echo $valor;
 														}
 														echo "</td>";
@@ -108,32 +118,34 @@ class DOCUMENTACION_SHOW_CATEGORIA {
 											}
 											?>
 
+											<?php if(ConsultarRol($_SESSION['login']) != '3') {?>
+											<td><a href='DOCUMENTACION_Controller.php?DOCUMENTACION_NOM=<?php echo $this->datosMateria[$j]['DOCUMENTACION_NOM'] . '&accion='.$strings['Modificar']; ?>'><?php echo $strings['Modificar']?></a></td>
+											<td><a href='DOCUMENTACION_Controller.php?DOCUMENTACION_NOM=<?php echo $this->datosMateria[$j]['DOCUMENTACION_NOM'] . '&accion='.$strings['Borrar']; ?>'><?php echo $strings['Borrar']?></a></td>
 
-											<td><a href='DOCUMENTACION_Controller.php?DOCUMENTACION_NOM=<?php echo $this->datos[$j]['DOCUMENTACION_NOM'] . '&accion='.$strings['Modificar']; ?>'><?php echo $strings['Modificar']?></a></td>
-											<td><a href='DOCUMENTACION_Controller.php?DOCUMENTACION_NOM=<?php echo $this->datos[$j]['DOCUMENTACION_NOM'] . '&accion='.$strings['Borrar']; ?>'><?php echo $strings['Borrar']?></a></td>
 
 											<?php
-											echo "</tr>";
 										}
-										?>
+										echo "</tr>";
+									}
+									?>
 
-									</table>
-								</div>
+								</table>
 							</div>
 						</div>
 					</div>
-					<footer>
-						<div class="container">
-							<div class="inside">
-								<div class="wrapper">
-									<div class="aligncenter">Servizo de Teledocencia copyright © 2016</div>
-								</div>
+				</div>
+				<footer>
+					<div class="container">
+						<div class="inside">
+							<div class="wrapper">
+								<div class="aligncenter">Servizo de Teledocencia copyright © 2016</div>
 							</div>
 						</div>
-					</footer>
-					<script type="text/javascript"> Cufon.now(); </script>
-				</body>
-				<?php
+					</div>
+				</footer>
+				<script type="text/javascript"> Cufon.now(); </script>
+			</body>
+			<?php
 	} // fin metodo render
 }
 ?>

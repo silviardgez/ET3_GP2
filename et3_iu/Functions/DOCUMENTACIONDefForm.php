@@ -1,6 +1,6 @@
 <?php
 //Formulario para la insercción y modificación de documentación
-$form = array(
+$DefForm = array(
 	0 => array(
 	'type' => 'text',
 	'name' => 'DOCUMENTACION_ID',
@@ -22,27 +22,7 @@ $form = array(
 		'readonly' => false
 	),
 	
-	4 => array(
-		'type' => 'date',
-		'name' => 'DOCUMENTACION_FECHA',
-		'value' => '',
-		'min' => null,
-		'max' => '2019/01/01',
-		'required' => true,
-		'pattern' => '',
-		'validation' => '',
-		'readonly' => false
-	),
-	5 => array(
-		'type' => 'url',
-		'name' => 'DOCUMENTACION_ENLACE',
-		'value' => '',
-		'required' => true,
-		'pattern' => '',
-		'validation' => '',
-		'readonly' => false
-	),
-	6 => array(
+	2 => array(
 		'type' => 'text',
 		'name' => 'DOCUMENTACION_CATEGORIA',
 		'value' => '',
@@ -52,10 +32,19 @@ $form = array(
 		'validation' => '',
 		'readonly' => false
 
+	),
+
+	3 => array(
+		'type' => 'file',
+		'name' => 'DOCUMENTACION_ENLACE',
+
+		'value' => '',
+		'required' => false,
+		'pattern' => '',
+		'validation' => '',
+		'readonly' => false
 	)
 
 );
-$DefForm1=AñadirProfesores($form);
-$DefForm=AñadirMaterias($DefForm1);
 
 ?>

@@ -26,20 +26,18 @@ function get_data_form(){
 	$DOCUMENTACION_PROFESOR=$_REQUEST['DOCUMENTACION_PROFESOR'];
 	$DOCUMENTACION_MATERIA=ConsultarIDMateria($_REQUEST['DOCUMENTACION_MATERIA']);
 	$DOCUMENTACION_FECHA=$_REQUEST['DOCUMENTACION_FECHA'];
-	$DOCUMENTACION_ENLACE=$_REQUEST['DOCUMENTACION_ENLACE'];
 	$DOCUMENTACION_CATEGORIA=$_REQUEST['DOCUMENTACION_CATEGORIA'];
 
-	/*//Si no se ha introducido un nuevo archivo se deja el que habÃ­a
-	if (isset($_FILES['USUARIO_FOTO']['name']) && ($_FILES['USUARIO_FOTO']['name']!=='')) {
+	//Si no se ha introducido un nuevo archivo se deja el que había
+	if (isset($_FILES['DOCUMENTACION_ENLACE']['name']) && ($_FILES['DOCUMENTACION_ENLACE']['name']!=='')) {
 
-		$USUARIO_FOTO = '../Documents/Empleados/' . $_REQUEST['USUARIO_DNI'] . '/Foto/' . $_FILES['USUARIO_FOTO']['name'];
+		$DOCUMENTACION_ENLACE = '../Documents/Documentos/' . str_replace(' ', '_', $_FILES['DOCUMENTACION_ENLACE']['name']);
 
 	}
 	else {
 
-		$USUARIO_FOTO='';
-
-	}*/
+		$DOCUMENTACION_ENLACE='';
+	}
 
 	$accion = $_REQUEST['accion'];
 	
@@ -96,18 +94,18 @@ Switch ($_REQUEST['accion']){
 			$valores['DOCUMENTACION_PROFESOR'] = ConsultarNomProfesor($valores['DOCUMENTACION_PROFESOR']);
 			$valores['DOCUMENTACION_MATERIA'] = ConsultarNomMateria($valores['DOCUMENTACION_MATERIA']);
 			if(!tienePermisos('DOCUMENTACION_DELETE')){
-				new Mensaje('No tienes los permisos necesarios','DOCUMENTACION_Controller.php');
+				new Mensaje('No tienes los permisos necesarios','DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . ConsultarIDMateria($valores['DOCUMENTACION_MATERIA']));
 			}
 			else {
 				//muestra el formulario de borrado
-				new DOCUMENTACION_DELETE($valores, 'DOCUMENTACION_Controller.php');
+				new DOCUMENTACION_DELETE($valores, 'DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . ConsultarIDMateria($valores['DOCUMENTACION_MATERIA']));
 			}
 		}
 		else{ 
 
 			$documento = get_data_form();
 			$respuesta = $documento->Borrar();
-			new Mensaje($respuesta, 'DOCUMENTACION_Controller.php');
+			new Mensaje($respuesta, 'DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . ConsultarIDMateria($_REQUEST['DOCUMENTACION_MATERIA']));
 		}
 		break;
 
@@ -122,26 +120,33 @@ Switch ($_REQUEST['accion']){
 				new Mensaje('No tienes los permisos necesarios','DOCUMENTACION_Controller.php');
 			}
 			else {
-				//Muestra el formulario de modificación
-				new DOCUMENTACION_EDIT($valores, 'DOCUMENTACION_Controller.php');
+				//Muestra el formulario de modificación 
+				new DOCUMENTACION_EDIT($valores, 'DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . $valores['DOCUMENTACION_MATERIA']);
 			}
 		}
 		else{
-			//Estos campos no se muestran en el formulario de borrado por lo que se ponen vacíos
+			//Estos campos no se muestran en el formulario de modificar por lo que se ponen vacíos
 			$_REQUEST['DOCUMENTACION_ENLACE']='';
 			$_REQUEST['DOCUMENTACION_FECHA']='';
+			
+			$_REQUEST['DOCUMENTACION_PROFESOR']='';
+			$_REQUEST['DOCUMENTACION_MATERIA']='';
+
+			
 			$documentacion = get_data_form();
+
+
 			$carpeta='../Documents/Documentos/';
 
 
 			//Se realizan las modificaciones también en las carpetas de documentos
-			/*if($_FILES['DOCUMENTACION_ENLACE']['name']!=='') {
+			if($_FILES['DOCUMENTACION_ENLACE']['name']!=='') {
 				if (!file_exists($carpeta)) {
 					mkdir($carpeta, 0777, true);
 				}
 
 				move_uploaded_file($_FILES['DOCUMENTACION_ENLACE']['tmp_name'], $carpeta . $_FILES['DOCUMENTACION_ENLACE']['name']);
-			}*/
+			}
 
 			$respuesta = $documentacion->Modificar($_REQUEST['DOCUMENTACION_ID']);
 			new Mensaje($respuesta, 'DOCUMENTACION_Controller.php');

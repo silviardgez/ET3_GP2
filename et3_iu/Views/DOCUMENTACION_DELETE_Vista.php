@@ -41,7 +41,8 @@ function render(){
 //Generación automática del array
 	createForm($lista,$DefForm,$strings,$this->valores,true,true);
 ?>
-				<input type = 'submit' name = 'accion' value =<?php echo $strings['Borrar'] ?> ></form> <a class="form-link" href='<?php echo $this->volver; ?> '><?php echo $strings['Volver']; ?> </a>
+				<input type = 'submit' name = 'accion' value =<?php echo $strings['Borrar'] ?> ></form> 
+				<a class="form-link" href='<?php echo $this->volver; ?> '><?php echo $strings['Volver']; ?> </a>
 			</p>
 
 		</div>

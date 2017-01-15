@@ -18,7 +18,7 @@ class DOCUMENTACION_EDIT {
 		include '../Functions/DOCUMENTACIONDefForm.php';
 
         //Array con los nombres de los campos a modificar
-		$lista = array('DOCUMENTACION_ID','DOCUMENTACION_NOM', 'DOCUMENTACION_ENLACE', 'DOCUMENTACION_CATEGORIA', 'DOCUMENTACION_PROFESOR', 'DOCUMENTACION_FECHA', 'DOCUMENTACION_MATERIA');
+		$lista = array('DOCUMENTACION_ID','DOCUMENTACION_NOM', 'DOCUMENTACION_CATEGORIA', 'DOCUMENTACION_ENLACE', 'DOCUMENTACION_PROFESOR', 'DOCUMENTACION_FECHA', 'DOCUMENTACION_MATERIA');
 
 		?>
 		<html>
@@ -29,30 +29,31 @@ class DOCUMENTACION_EDIT {
 		</head>
 		<div class="wrap">
 			<body>
-			<form  id="form" name="form" action='DOCUMENTACION_Controller.php' method='post' >
-				<div id="centrado"><span class="form-title">
-					<?php echo $strings['Modificar Documentación'] ?></span></div>
-					<ul class="form-style-1">
-					
-					<?php
+				<form  id="form" name="form" action='DOCUMENTACION_Controller.php' method='post' >
+					<div id="centrado"><span class="form-title">
+						<?php echo $strings['Modificar Documentación'] ?></span></div>
+						<ul class="form-style-1">
 
-					createForm($lista, $DefForm, $strings, $this->valores, '', array('DOCUMENTACION_ID' => true,'DOCUMENTACION_PROFESOR'=>true, 'DOCUMENTACION_FECHA'=>true, 'DOCUMENTACION_MATERIA' =>true));
-					?>
+							<?php
 
-					<input type = 'submit' name = 'accion' value = <?php echo $strings['Modificar'] ?>  onclick="return valida_envia_DOCUMENTACION()" >
+							createForm($lista, $DefForm, $strings, $this->valores, '', array('DOCUMENTACION_ID' => true,'DOCUMENTACION_PROFESOR'=>true, 'DOCUMENTACION_FECHA'=>true, 'DOCUMENTACION_MATERIA' =>true));
 
-			</form>
+							?>
 
-			<a class="form-link" href='<?php echo $this->volver; ?> '><?php echo $strings['Volver']; ?> </a>
-				</ul>
-			</body>
-		</div>
+							<input type = 'submit' name = 'accion' value = <?php echo $strings['Modificar'] ?>  onclick="return valida_envia_DOCUMENTACION()" >
 
-		</html>
-		<?php
+						</form>
+
+						<a class="form-link" href='<?php echo $this->volver; ?> '><?php echo $strings['Volver']; ?> </a>
+					</ul>
+				</body>
+			</div>
+
+			</html>
+			<?php
+		}
+
+
 	}
 
-
-}
-
-?>
+	?>
