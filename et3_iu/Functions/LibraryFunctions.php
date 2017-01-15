@@ -2154,5 +2154,32 @@ function ConsultarLinkEntrega($ENTREGA){
     $result = $mysqli->query($sql)->fetch_array();
     return $result['ENTREGA_DOCUMENTO'];
 }
+//Añade los trabajos al desplegable
+function AñadirTrabajos($array) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = 'SELECT TRABAJO_NOM from TRABAJO';
+    $result = $mysqli->query($sql);
+    $str = array();
+    while ($trabajo = $result->fetch_array()) {
+        array_push($str, $trabajo['TRABAJO_NOM']);
+    }
+
+    $añadido = array(
+        'type' => 'select',
+        'name' => 'ENTREGA_TRABAJO',
+        'multiple' => 'false',
+        'value' => '',
+        'options' => $str,
+        'required' => 'true',
+        'readonly' => false
+    );
+    $array[count($array)] = $añadido;
+    return $array;
+}
+
             ?>
 
