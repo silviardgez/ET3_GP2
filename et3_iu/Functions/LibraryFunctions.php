@@ -1612,6 +1612,9 @@ function añadirFuncionalidades($NOM) {
                             case "GESTION CORRECCIONES":
 				                    ?><li><span><a style="font-size:20px;" href='../Controllers/CORRECCIONES_Controller.php'><?php echo $strings['Gestión de correcciones'] ?></a></span></li><?php
 				                    break;
+                            case "GESTION INSCRIPCIONES":
+                                    ?><li><span><a style="font-size:20px;" href='../Controllers/INSCRIPCION_Controller.php'><?php echo $strings['Gestión de Inscripciones'] ?></a></span></li><?php
+                                    break;
                             case "GESTION DOCUMENTACION":
                                 break;
                             case "GESTION DE ITEMS DE RUBRICAS":
