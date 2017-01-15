@@ -63,6 +63,25 @@ include '../Functions/LibraryFunctions.php';
 		}
 	}
 
+	//Nos permite actualizar la información de una determinada funcionalidad
+function modificar()
+{
+    $this->ConectarBD();
+    $sql = "select * from CORRECCION where CORRECCION_NOM = '".$this->CORRECCION_NOM."'";
+
+    $result = $this->mysqli->query($sql);
+    if ($result->num_rows == 1)
+    {
+	$sql = "UPDATE CORRECCION SET CORRECCION_NOTA = '" . $this->CORRECCION_NOTA . "', CORRECCION_COMENTARIOS ='" . $this->CORRECCION_COMENTARIOS ."' WHERE CORRECCION_NOM='".$this->CORRECCION_NOM."'";
+	if (!($resultado = $this->mysqli->query($sql))){
+		return "Se ha producido un error en la modificación de la correccion"; 
+	}    
+	else
+		return "La correccion se ha modificado con éxito";
+}
+}
+
+
 function ConsultarTodo()
 {
 	$this->ConectarBD();
