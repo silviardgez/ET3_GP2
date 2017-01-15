@@ -54,7 +54,7 @@ class ENTREGAS_Show{
                                 require_once ('../Models/ENTREGAS_Model.php');
                                 $m = new ENTREGAS_Model('','','');
                                 $n = $m->user();
-                                    if($n['USUARIO_TIPO'] == 1 || $n['USUARIO_TIPO'] == 2){
+                                    if($n['USUARIO_TIPO'] == 1 || $n['USUARIO_TIPO'] == 4){
                                        echo " <li><a href='./ENTREGAS_Controller.php?accion=".$strings['Consultar']."'class='m4'>".$strings['Consultar']."</a></li>";
                                        echo " <li><a href='./ENTREGAS_Controller.php?accion=".$strings['Insertar']."' class='m3'>". $strings['Insertar']."</a></li>";
                                     }

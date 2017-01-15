@@ -12,11 +12,10 @@ $form = array(
         'readonly' => false
     ),
     1 => array(
-        'type' => 'number',
+        'type' => 'text',
         'name' => 'ENTREGA_TRABAJO',
         'value' => '',
-        'min' => 0,
-        'max' => 4294967295,
+        'size' => 25,
         'required' => 'true',
         'pattern' => '',
         'validation' => '',

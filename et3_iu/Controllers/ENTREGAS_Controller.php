@@ -78,6 +78,8 @@
                 $entrega = new ENTREGAS_Model('', $_REQUEST['ENTREGA_NOMBRE'], '');
                 $valores = $entrega->RellenaDatos();
 
+                $valores['ENTREGA_TRABAJO']=$entrega->nombreTrabajo( $valores['ENTREGA_TRABAJO']);
+
 
                 if (!tienePermisos('Entrega_Edit')) {
                     new Mensaje('No tienes los permisos necesarios', 'ENTREGAS_Controller.php');
@@ -125,7 +127,7 @@
                 $entrega = get_data_form();
             }
             $datos = $entrega->ConsultarTodo();
-           
+
           if(!tienePermisos('ENTREGAS_Show')){
              new Mensaje('No tienes los permisos necesarios', '../Views/DEFAULT_Vista.php');
             }else {
