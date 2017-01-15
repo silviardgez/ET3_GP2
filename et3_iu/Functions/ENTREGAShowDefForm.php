@@ -36,17 +36,6 @@ $DefForm2 = array(
         'pattern' => '',
         'validation' => '',
         'readonly' => false
-    ),
-    3=> array(
-        'type' => 'text',
-        'name' => 'ENTREGA_ALUMNO',
-        'texto'=>'ENTREGA_ALUMNO2',
-        'value' => '',
-        'size' => '',
-        'required' => 'true',
-        'pattern' => '',
-        'validation' => '',
-        'readonly' => false
     )
 )
 
