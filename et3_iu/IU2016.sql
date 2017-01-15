@@ -143,7 +143,8 @@ INSERT INTO `FUNCIONALIDAD` (`FUNCIONALIDAD_ID`, `FUNCIONALIDAD_NOM`) VALUES
 (500,'GESTION CORRECCIONES'),
 (400,'GESTION TRABAJOS'),
 (600, 'GESTION DE ITEMS DE RUBRICAS'),
-(900, 'GESTION MATERIA');
+(900, 'GESTION MATERIA'),
+(920, 'GESTION INSCRIPCIONES');
 
 -- --------------------------------------------------------
 
@@ -230,10 +231,31 @@ INSERT INTO `FUNCIONALIDAD_PAGINA` (`FUNCIONALIDAD_ID`, `PAGINA_ID`) VALUES
 (900, 901),
 (900, 902),
 (900, 903),
-(900, 904);
+(900, 904),
+(900, 905),
+(900, 906),
+(900, 907),
+(920, 920),
+(920, 921),
+(920, 922),
+(920, 923),
+(920, 924),
+(920, 925);
 
 -- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `INSCRIPCION` (
+  `INSCRIPCION_ID` int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `INSCRIPCION_ALUMNO` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `INSCRIPCION_MATERIA` int(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `INSCRIPCION`
+--
+
+INSERT INTO `INSCRIPCION` (`INSCRIPCION_ID`, `INSCRIPCION_ALUMNO`, `INSCRIPCION_MATERIA`) VALUES
+(1,'44841787K', 1),
+(2,'44841787K', 2);
 --
 -- Estructura de tabla para la tabla `INSCRIPCION`
 --
@@ -286,6 +308,7 @@ INSERT INTO `ITEM` (`ITEM_ID`, `ITEM_NOMBRE`, `ITEM_RUBRICA`, `ITEM_PORCENTAJE`)
 (15, 'Estructura', 3, 20);
 
 -- --------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `MATERIA`
@@ -297,17 +320,17 @@ CREATE TABLE IF NOT EXISTS `MATERIA` (
   `MATERIA_CREDITOS` int(3) NOT NULL,
   `MATERIA_DEPARTAMENTO` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `MATERIA_TITULACION` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-
+  `MATERIA_RESPONSABLE` varchar(25) COLLATE latin1_spanish_ci NOT NULL,
   `MATERIA_DESCRIPCION` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `MATERIA`
 --
 
-INSERT INTO `MATERIA` (`MATERIA_ID`, `MATERIA_NOM`, `MATERIA_CREDITOS`, `MATERIA_DEPARTAMENTO`, `MATERIA_TITULACION`, `MATERIA_DESCRIPCION`) VALUES
-(1, 'Interfaces de Usuario', 6, 'Informatica', 'Ingenieria Informatica',  'Creacion, construccion y evaluacion de interfaces'),
-(2, 'Centros de Datos', 6, 'Informatica', 'Ingenieria Informatica',  'Integracion de sistemas y redes');
+INSERT INTO `MATERIA` (`MATERIA_ID`, `MATERIA_NOM`, `MATERIA_CREDITOS`, `MATERIA_DEPARTAMENTO`, `MATERIA_TITULACION`, `MATERIA_RESPONSABLE`,`MATERIA_DESCRIPCION`) VALUES
+(1, 'Interfaces de Usuario', 6, 'Informatica', 'Ingenieria Informatica', 'RESPONSABLE', 'Elaboracion, construccion y evaluacion de interfaces'),
+(2, 'Centros de Datos', 6, 'Informatica', 'Ingenieria Informatica', 'RESPONSABLE', 'Integracion de sistemas y redes');
 
 -- --------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `IMPARTE_MATERIA` (
@@ -320,20 +343,18 @@ INSERT INTO `IMPARTE_MATERIA` (`MATERIA_ID`,`PROFESOR_USER`)VALUES (1,'RESPONSAB
 --
 
 CREATE TABLE IF NOT EXISTS `MATRICULA` (
+  `MATRICULA_ID` int(10) NOT NULL,
   `MATRICULA_ALUMNO` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `MATRICULA_MATERIA` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `MATRICULA`
 --
 
-INSERT INTO `MATRICULA` (`MATRICULA_ALUMNO`, `MATRICULA_MATERIA`) VALUES
-('44841787K', 1),
-('76583535K', 2);
-
--- --------------------------------------------------------
-
+INSERT INTO `MATRICULA` (`MATRICULA_ID`, `MATRICULA_ALUMNO`, `MATRICULA_MATERIA`) VALUES
+(1,'34879350R', 1),
+(2,'34879350R', 2);
 --
 -- Estructura de tabla para la tabla `NIVEL`
 --
@@ -496,7 +517,17 @@ INSERT INTO `PAGINA` (`PAGINA_ID`, `PAGINA_LINK`, `PAGINA_NOM`) VALUES
 (901, '../Views/MATERIA_DELETE_Vista.php', 'MATERIA DELETE'),
 (902, '../Views/MATERIA_EDIT_Vista.php', 'MATERIA EDIT'),
 (903, '../Views/MATERIA_SHOWALL_Vista.php', 'MATERIA SHOWALL'),
-(904, '../Views/MATERIA_SHOWCURRENT_Vista.php', 'MATERIA SHOWCURRENT');
+(904, '../Views/MATERIA_SHOWCURRENT_Vista.php', 'MATERIA SHOWCURRENT'),
+(905, '../Views/MATERIA_ADD_PROFESOR_Vista.php', 'MATERIA ADD PROFESOR'),
+(906, '../Views/MATERIA_SHOW_PROFESORES_Vista.php', 'MATERIA SHOW PROFESORES'),
+(907, '../Views/MATERIA_SHOW_ALUMNOS_Vista.php', 'MATERIA SHOW ALUMNOS'),
+
+(920, '../Views/INSCRIPCION_ADD_Vista.php', 'INSCRIPCION ADD'),
+(921, '../Views/INSCRIPCION_DELETE_Vista.php', 'INSCRIPCION DELETE'),
+(922, '../Views/INSCRIPCION_EDIT_Vista.php', 'INSCRIPCION EDIT'),
+(923, '../Views/INSCRIPCION_SHOWALL_Vista.php', 'INSCRIPCION SHOWALL'),
+(924, '../Views/INSCRIPCION_SHOWCURRENT_Vista.php', 'INSCRIPCION SHOWCURRENT'),
+(925, '../Views/INSCRIPCION_ACCEPT_Vista.php', 'INSCRIPCION ACCEPT');
 
 
 -- --------------------------------------------------------
@@ -555,13 +586,18 @@ INSERT INTO `ROL_FUNCIONALIDAD` (`ROL_ID`, `FUNCIONALIDAD_ID`) VALUES
 (1,400),
 (4,400),
 (1, 500),
+(2, 500),
+(3, 500),
+(4, 500),
 (1, 600),
 (2, 600),
 (4, 600),
 (1,900),
+(4,900),
 (2,900),
 (3,900),
-(4,900);
+(1,920),
+(4,920);
 
 -- --------------------------------------------------------
 
@@ -706,21 +742,13 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('PROFESOR', 202),
 ('PROFESOR', 203),
 ('PROFESOR', 204),
-('PROFESOR', 900),
-('PROFESOR', 901),
-('PROFESOR', 902),
-('PROFESOR', 903),
-('PROFESOR', 904),
+
 ('RESPONSABLE', 100),
 ('RESPONSABLE', 101),
 ('RESPONSABLE', 102),
 ('RESPONSABLE', 103),
 ('RESPONSABLE', 104),
-('RESPONSABLE', 900),
-('RESPONSABLE', 901),
-('RESPONSABLE', 902),
-('RESPONSABLE', 903),
-('RESPONSABLE', 904),
+
 ('RESPONSABLE', 200),
 ('RESPONSABLE', 201),
 ('RESPONSABLE', 202),
@@ -751,6 +779,7 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('RESPONSABLE',403),
 ('RESPONSABLE',404),
 ('ADMIN',500),
+('ALUMNO',500),
 ('ADMIN',501),
 ('ADMIN',502),
 ('ADMIN',503),
@@ -758,6 +787,22 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('ADMIN',505),
 ('ADMIN',506),
 ('ADMIN',507),
+('PROFESOR',500),
+('PROFESOR',501),
+('PROFESOR',502),
+('PROFESOR',503),
+('PROFESOR',504),
+('PROFESOR',505),
+('PROFESOR',506),
+('PROFESOR',507),
+('RESPONSABLE',500),
+('RESPONSABLE',501),
+('RESPONSABLE',502),
+('RESPONSABLE',503),
+('RESPONSABLE',504),
+('RESPONSABLE',505),
+('RESPONSABLE',506),
+('RESPONSABLE',507),
 ('ALUMNO',303),
 ('ALUMNO',304),
 ('ALUMNO',203),
@@ -795,7 +840,38 @@ INSERT INTO `USUARIO_PAGINA` (`USUARIO_USER`, `PAGINA_ID`) VALUES
 ('PROFESOR', 609),
 ('RESPONSABLE', 607),
 ('RESPONSABLE', 608),
-('RESPONSABLE', 609);
+('RESPONSABLE', 609),
+('ADMIN', 905),
+('ADMIN', 906),
+('PROFESOR', 903),
+('RESPONSABLE', 900),
+('RESPONSABLE', 901),
+('RESPONSABLE', 902),
+('RESPONSABLE', 903),
+('RESPONSABLE', 904),
+('RESPONSABLE', 905),
+('RESPONSABLE', 906),
+('RESPONSABLE', 907),
+('ADMIN', 907),
+('ADMIN', 920),
+('ADMIN', 921),
+('ADMIN', 922),
+('ADMIN', 923),
+('ADMIN', 924),
+('ADMIN', 925),
+('PROFESOR', 923),
+('PROFESOR', 924),
+('ALUMNO', 920),
+('ALUMNO', 921),
+('ALUMNO', 922),
+('ALUMNO', 923),
+('ALUMNO', 924),
+('RESPONSABLE', 920),
+('RESPONSABLE', 921),
+('RESPONSABLE', 922),
+('RESPONSABLE', 923),
+('RESPONSABLE', 924),
+('RESPONSABLE', 925);
 
 
 --
