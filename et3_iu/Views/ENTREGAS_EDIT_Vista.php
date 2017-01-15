@@ -17,7 +17,7 @@ class Entrega_Edit{
         include '../Functions/ENTREGAEditDefForm.php';
         //include '../Functions/LibraryFunctions.php';
         //Array con los nombres de los campos a modificar
-        $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO', 'ENTREGA_HORAS_DEDIC', 'ENTREGA_FOTO');
+        $lista = array('ENTREGA_ID', 'ENTREGA_NOMBRE', 'ENTREGA_TRABAJO');
 
         ?>
         <html>
