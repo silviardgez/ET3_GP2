@@ -1204,7 +1204,7 @@ function eliminarDir($carpeta) {
 
 //Completa la lista de titulos con las funcionalidades disponibles
 function AñadirFuncionesTitulos($array) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1218,7 +1218,7 @@ function AñadirFuncionesTitulos($array) {
 
 //Añade al array de definición de formulario las entradas correspondientes a las funcionalidades añadidas
 function AñadirFunciones($array) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1240,7 +1240,7 @@ function AñadirFunciones($array) {
 
 //Devuelve el ID de rol a partir del nombre
 function ConsultarIDRol($ROL_NOM) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1251,7 +1251,7 @@ function ConsultarIDRol($ROL_NOM) {
 
 //Devuelve el nombre de rol a partir del id de rol
 function ConsultarNOMRol($ROL_ID) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1262,7 +1262,7 @@ function ConsultarNOMRol($ROL_ID) {
 
 //Devuelve el id de una funcionalidad a partir del nombre
 function ConsultarIDFuncionalidad($FUNCIONALIDAD_NOM) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1273,7 +1273,7 @@ function ConsultarIDFuncionalidad($FUNCIONALIDAD_NOM) {
 
 //Devuelve el nombre de una funcionalidad a partir de su id
 function ConsultarNOMFuncionalidad($FUNCIONALIDAD_ID) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1284,7 +1284,7 @@ function ConsultarNOMFuncionalidad($FUNCIONALIDAD_ID) {
 
 //Devuelve el id de una página a partir de su nombre
 function ConsultarIDPagina($PAGINA_NOM) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1295,7 +1295,7 @@ function ConsultarIDPagina($PAGINA_NOM) {
 
 //Devuelve el nombre de una pagina a partir de su id
 function ConsultarNOMPagina($PAGINA_ID) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1306,7 +1306,7 @@ function ConsultarNOMPagina($PAGINA_ID) {
 
 //Devuelve el nombre de la rubrica a partir del id de rubrica
 function ConsultarNOMRubrica($RUBRICA_ID) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1317,7 +1317,7 @@ function ConsultarNOMRubrica($RUBRICA_ID) {
 
 //Devuelve el nombre de la entrega a partir del id de entrega
 function ConsultarNOMEntrega($ENTREGA_ID) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1328,7 +1328,7 @@ function ConsultarNOMEntrega($ENTREGA_ID) {
 
 //Añade al array los nombre de las paginas disponibles
 function AñadirPaginasTitulos($array) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1342,7 +1342,7 @@ function AñadirPaginasTitulos($array) {
 
 //Añade al formulario de definicion las entradas correspondientes a las paginas disponibles
 function AñadirPaginas($array) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1382,7 +1382,7 @@ function GenerarLinkControlador($CON_NOM) {
 
 //Devuelve el ID de una materia a partir de su nombre
 function ConsultarIDMateria($MATERIA_NOM) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
 
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1394,7 +1394,7 @@ function ConsultarIDMateria($MATERIA_NOM) {
 
 //Devuelve el nombre de una materia a partir de su ID
 function ConsultarNomMateria($MATERIA_ID) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
 
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1406,7 +1406,7 @@ function ConsultarNomMateria($MATERIA_ID) {
 
 //Devuelve el dni de un usuario a partir de su user
 function ConsultarUserDNI($USUARIO_USER) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
 
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1418,7 +1418,7 @@ function ConsultarUserDNI($USUARIO_USER) {
 
 //Devuelve el nombre y apellidos de un profesor a partir de su DNI
 function ConsultarNomProfesor($USUARIO_DNI) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
 
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1430,7 +1430,7 @@ function ConsultarNomProfesor($USUARIO_DNI) {
 
 //Consulta si un alumno tiene una id de materia que se pasa como parámetro
 function ConsultarMateriaAlumno($MATERIA) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
 
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1441,7 +1441,7 @@ function ConsultarMateriaAlumno($MATERIA) {
 }
 
 function ConsultarMateriaProfesor($MATERIA) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
 
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1453,7 +1453,7 @@ function ConsultarMateriaProfesor($MATERIA) {
 
 //Añade los roles al desplegable de tipos
 function AñadirTipos($array) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if (consultarRol($_SESSION['login']) == '4') {
         $str = array('PROFESOR', 'PROFESOR RESPONSABLE');
     } else {
@@ -1480,9 +1480,31 @@ function AñadirTipos($array) {
     return $array;
 }
 
+function AñadirProfes($array) {
+    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $sql = 'SELECT USUARIO_USER from USUARIO WHERE USUARIO_TIPO=2';
+    $result = $mysqli->query($sql);
+    while ($tipo = $result->fetch_array()) {
+        $array[count($array)] = array(
+            'type' => 'checkbox',
+            'name' => 'materia_profesores[]',
+            'value' => $tipo['USUARIO_USER'],
+            'size' => 20,
+            'required' => true,
+            'pattern' => '',
+            'validation' => '',
+            'readonly' => false);
+    }
+
+    return $array;
+}
+
 //Añade los profesores al desplegable
 function AñadirProfesores($array) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if (consultarRol($_SESSION['login']) == '4') {
         $str = array('PROFESOR', 'PROFESOR RESPONSABLE');
     } else {
@@ -1515,7 +1537,7 @@ function AñadirProfesores($array) {
 
 //Añade las materias al desplegable
 function AñadirMaterias($array) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if (consultarRol($_SESSION['login']) == '4') {
         $str = array('PROFESOR', 'PROFESOR RESPONSABLE');
     } else {
@@ -1567,7 +1589,7 @@ function borrarArchivo($direccion) {
 //añade a la pagina default los enlaces correspondientes a las funcionalidades
 function añadirFuncionalidades($NOM) {
     include '../Locates/Strings_' . $NOM['IDIOMA'] . '.php';
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -1632,7 +1654,7 @@ function añadirFuncionalidades($NOM) {
 //Genera los includes correspondientes a las paginas a las que se tiene acceso
             function generarIncludes() {
                 $toret = array();
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                 }
@@ -1654,7 +1676,7 @@ function añadirFuncionalidades($NOM) {
 
 //Devuelve el rol de un usuario
             function consultarRol($USUARIO_USER) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                 }
@@ -1665,7 +1687,7 @@ function añadirFuncionalidades($NOM) {
 
 //Devuelve las funcionalidades asignadas a un rol
             function consultarFuncionalidadesRol($rol) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 $toret = array();
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1679,7 +1701,7 @@ function añadirFuncionalidades($NOM) {
             }
 //Devuelve las paginas asignadas a una funcionalidad
             function consultarPaginasFuncionalidad($funcionalidad) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 $toret = array();
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -1694,7 +1716,7 @@ function añadirFuncionalidades($NOM) {
 
 //Consulta las paginas asignadas a un usuario
             function consultarPaginasEmp($user) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 $sql = "select PAGINA_ID from USUARIO_PAGINA WHERE USUARIO_USER='" . $user . "'";
                 if (!($resultado = $mysqli->query($sql))) {
                     return 'Error en la consulta sobre la base de datos';
@@ -1710,7 +1732,7 @@ function añadirFuncionalidades($NOM) {
             }
 //Devuelve el nombre de una rubrica a partir de su id
             function ConsultarNombreRubrica($RUBRICA_ID) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                 }
@@ -1720,7 +1742,7 @@ function añadirFuncionalidades($NOM) {
             }
 //Devuelve el nombre de un item de rubrica a partir de su id
             function ConsultarNombreItem($ITEM_ID) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                 }
@@ -1730,7 +1752,7 @@ function añadirFuncionalidades($NOM) {
             }
 //Devuelve la rubrica a la que pertenece un item
             function ConsultarIDRubrica($ITEM_ID) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                 }
@@ -1740,7 +1762,7 @@ function añadirFuncionalidades($NOM) {
             }
 //Devuelve el numero de niveles de la rubrica
             function ConsultarNivelRubrica($ITEM_RUBRICA) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                 }
@@ -1750,7 +1772,7 @@ function añadirFuncionalidades($NOM) {
             }
 //Devuelve el item id a partir de su nombre, rubrica y porcentaje
             function ConsultarIDItem($ITEM_NOMBRE, $ITEM_RUBRICA, $ITEM_PORCENTAJE) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                 }
@@ -2114,7 +2136,7 @@ function añadirFuncionalidades($NOM) {
             }
 //Devuelve cierto si el usuario logeado imparte la misma materia que el que se le pasa como argumento
             function mismaMateria($USUARIO_USER) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                 }
@@ -2128,7 +2150,7 @@ function añadirFuncionalidades($NOM) {
             }
 //Devuelve la suma de porcentajes de un item
             function sumarValorItem($ITEM_RUBRICA) {
-                $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+                $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
                 if ($mysqli->connect_errno) {
                     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
                 }
@@ -2140,7 +2162,7 @@ function añadirFuncionalidades($NOM) {
                 return $sum;
             }
 function ConsultarIDTrabajo($TRABAJO_NOM) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -2149,7 +2171,7 @@ function ConsultarIDTrabajo($TRABAJO_NOM) {
     return $result['TRABAJO_ID'];
 }
 function ConsultarLinkEntrega($ENTREGA){
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -2159,7 +2181,7 @@ function ConsultarLinkEntrega($ENTREGA){
 }
 //Añade los trabajos al desplegable
 function AñadirTrabajos($array) {
-    $mysqli = new mysqli("localhost", "iu2016", "iu2016", "IU2016");
+    $mysqli = new mysqli("localhost", "ET3Grupo2", "ET3Grupo2", "ET3Grupo2");
 
     if ($mysqli->connect_errno) {
         echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
