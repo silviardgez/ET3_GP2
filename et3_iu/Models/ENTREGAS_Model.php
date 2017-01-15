@@ -1,5 +1,5 @@
 <?php
-include '../Functions/LibraryFunctions.php';
+require_once ('../Functions/LibraryFunctions.php');
 
 
 
@@ -9,16 +9,11 @@ class ENTREGAS_Model
 	var $ENTREGA_ID;
 	var $ENTREGA_NOM;
 	var $ENTREGA_TRABAJO;
-	var $ENTREGA_HORA;
-	var $ENTREGA_FECHA;
-	var $ENTREGA_ALUM;
-	var $ENTREGA_HORAS_DEDIC;
-    var $ENTREGA_FOTO;
 	var $mysqli;
 
 
 //Constructor al que se le pasa el nombre de la entrega y los atributos
-function __construct( $ENTREGA_ID,$ENTREGA_NOMBRE,$ENTREGA_TRABAJO,$ENTREGA_HORA,$ENTREGA_FECHA,$ENTREGA_ALUM,$ENTREGA_HORAS_DEDIC,$ENTREGA_FOTO)
+function __construct( $ENTREGA_ID,$ENTREGA_NOMBRE,$ENTREGA_TRABAJO)
 {
 
 	$this->ENTREGA_ID = $ENTREGA_ID;//id entrega
@@ -27,15 +22,6 @@ function __construct( $ENTREGA_ID,$ENTREGA_NOMBRE,$ENTREGA_TRABAJO,$ENTREGA_HORA
 
 	$this->ENTREGA_TRABAJO=$ENTREGA_TRABAJO;//id trabajo
 
-	$this->ENTREGA_HORA = $ENTREGA_HORA;//hora de la entrega
-
-	$this->ENTREGA_FECHA = $ENTREGA_FECHA;//fecha de la entrega
-
-	$this->ENTREGA_ALUM = $ENTREGA_ALUM;//id alumno realiza entrega
-
-	$this->ENTREGA_HORAS_DEDIC = $ENTREGA_HORAS_DEDIC;//horas dedicadas a la entrega por el alumno
-
-    $this->ENTREGA_FOTO = $ENTREGA_FOTO; //Archivo a subir
 }
 
 //Método para la conexión a la base de datos
@@ -51,9 +37,9 @@ function ConectarBD()
 function Insertar()
 {
     $this->ConectarBD();
-    $time = time();
-    $this->ENTREGA_HORA =  date("H:i:s", $time);
-    $this->ENTREGA_FECHA = date("Y-m-d");
+    //$time = time();
+    //$this->ENTREGA_HORA =  date("H:i:s", $time);
+    //$this->ENTREGA_FECHA = date("Y-m-d");
     if ($this->ENTREGA_NOM <> '' ){
 
         $sql = "select * from ENTREGA where ENTREGA_NOMBRE = '".$this->ENTREGA_NOM."'";
@@ -63,12 +49,10 @@ function Insertar()
         }
         else {
             if ($result->num_rows == 0){
-                $r = $this->getDniAlum();
-                $this->ENTREGA_ALUM = $r['USUARIO_DNI'];
                 //Insertamos en la tabla ENTREGA
-                $sql = "INSERT INTO ENTREGA (ENTREGA_ID, ENTREGA_NOMBRE, ENTREGA_TRABAJO, ENTREGA_HORA, ENTREGA_FECHA, ENTREGA_ALUMNO, ENTREGA_HORAS_DEDIC, ENTREGA_FOTO) VALUES ('";
+                $sql = "INSERT INTO ENTREGA (ENTREGA_ID, ENTREGA_NOMBRE, ENTREGA_TRABAJO) VALUES ('";
 
-                $sql = $sql . "$this->ENTREGA_ID', '$this->ENTREGA_NOM', '$this->ENTREGA_TRABAJO', '$this->ENTREGA_HORA', '$this->ENTREGA_FECHA', '$this->ENTREGA_ALUM', '$this->ENTREGA_HORAS_DEDIC', '$this->ENTREGA_FOTO')";
+                $sql = $sql . "$this->ENTREGA_ID', '$this->ENTREGA_NOM', '$this->ENTREGA_TRABAJO')";
 
                 $this->mysqli->query($sql);
 
@@ -90,17 +74,18 @@ function __destruct()
 
 }
 
+
 //Nos devuelve la información de una entrega
 function Consultar($ENTREGA_ID)
 {
     $this->ConectarBD();
-    $this->ENTREGA_ALUM = $_REQUEST['ENTREGA_ALUMNO'];
-    if($this->ENTREGA_NOM == '' && $this->ENTREGA_ALUM == ''){
-        $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO,ENTREGA_HORA,ENTREGA_FECHA,ENTREGA_ALUMNO,ENTREGA_HORAS_DEDIC,ENTREGA_FOTO	from ENTREGA where ((ENTREGA_ID ="."'$ENTREGA_ID'".") OR (ENTREGA_TRABAJO="."'$this->ENTREGA_TRABAJO'"."))";
-    }else if($this->ENTREGA_NOM == '' && $this->ENTREGA_ALUM != ''){
-        $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO,ENTREGA_HORA,ENTREGA_FECHA,ENTREGA_ALUMNO,ENTREGA_HORAS_DEDIC,ENTREGA_FOTO	from ENTREGA where ((ENTREGA_ID ="."'$ENTREGA_ID'".") OR (ENTREGA_TRABAJO="."'$this->ENTREGA_TRABAJO'".") AND (ENTREGA_ALUMNO LIKE "."'%$this->ENTREGA_ALUM%'"."))";
-    }else{
-        $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO,ENTREGA_HORA,ENTREGA_FECHA,ENTREGA_ALUMNO,ENTREGA_HORAS_DEDIC,ENTREGA_FOTO	from ENTREGA where ((ENTREGA_ID ="."'$ENTREGA_ID'".") OR (ENTREGA_TRABAJO="."'$this->ENTREGA_TRABAJO'".") AND (ENTREGA_NOMBRE LIKE "."'%$this->ENTREGA_NOM%'"."))";
+
+    if($this->ENTREGA_NOM == '' && $this->ENTREGA_ID == '' && $this->ENTREGA_TRABAJO != ''){
+        $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO from ENTREGA where (ENTREGA_TRABAJO="."'$this->ENTREGA_TRABAJO'"."))";
+    }else if($this->ENTREGA_NOM != '' && $this->ENTREGA_ID == '' && $this->ENTREGA_TRABAJO == ''){
+        $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO from ENTREGA where ((ENTREGA_NOMBRE ="."'$this->ENTREGA_NOM'"."))";
+    } else{
+        $sql = "select ENTREGA_ID,ENTREGA_NOMBRE,ENTREGA_TRABAJO from ENTREGA where ((ENTREGA_ID ="."'$ENTREGA_ID'"."))";
     }
 
     if (!($resultado = $this->mysqli->query($sql))){
@@ -187,16 +172,11 @@ function RellenaDatos()
 function Modificar($ENTREGA_ID)
 {
     $this->ConectarBD();
-    $time = time();
-    $this->ENTREGA_HORA =  date("H:i:s", $time);
-    $this->ENTREGA_FECHA = date("Y-m-d");
-    $r = $this->getDniAlum();
-    $this->ENTREGA_ALUM = $r['USUARIO_DNI'];
     $sql = "select * from ENTREGA where ENTREGA_ID = '".$ENTREGA_ID."'";
     $result = $this->mysqli->query($sql);
     if ($result->num_rows == 1)
     {
-        $sql = "UPDATE ENTREGA SET ENTREGA_ID = '".$ENTREGA_ID."',ENTREGA_NOMBRE ='".$this->ENTREGA_NOM."',ENTREGA_TRABAJO = '".$this->ENTREGA_TRABAJO."',ENTREGA_HORA= '".$this->ENTREGA_HORA."',ENTREGA_FECHA= '".$this->ENTREGA_FECHA."',ENTREGA_ALUMNO= '".$this->ENTREGA_ALUM."',ENTREGA_HORAS_DEDIC= '".$this->ENTREGA_HORAS_DEDIC."',ENTREGA_FOTO= '".$this->ENTREGA_FOTO."' WHERE ENTREGA_ID='".$ENTREGA_ID."'";
+        $sql = "UPDATE ENTREGA SET ENTREGA_ID = '".$ENTREGA_ID."',ENTREGA_NOMBRE ='".$this->ENTREGA_NOM."',ENTREGA_TRABAJO = '".$this->ENTREGA_TRABAJO."' WHERE ENTREGA_ID='".$ENTREGA_ID."'";
 
 
         if (!($resultado = $this->mysqli->query($sql))){
@@ -223,6 +203,39 @@ function getIDTrab(){
 
 }
 
+
+
+//Recoge los nombres de los trabajos
+    function getNomTrab(){
+        $this->ConectarBD();
+        $sql = "select TRABAJO_NOM from TRABAJO ";
+        $result = $this->mysqli->query($sql);
+
+        $toRet = array();
+        foreach ($result as $b){
+            array_push($toRet,$b['TRABAJO_NOM']);
+        }
+
+        return $toRet;
+
+    }
+
+
+//Devuelve el nombre del trabajo que se pasa como id
+    function nombreTrabajo($id){
+        $this->ConectarBD();
+        $sql = "select TRABAJO_NOM	from TRABAJO where ((TRABAJO_ID ='$id'))";
+        $resultado = $this->mysqli->query($sql);
+
+        $fila = $resultado->fetch_array();
+
+
+        $toret=$fila['TRABAJO_NOM'];
+
+
+        return $toret;
+    }
+
 //
 function getDniAlum(){
     $this->ConectarBD();
@@ -236,5 +249,19 @@ function getDniAlum(){
 
     return $toRet;
 }
+
+function user(){
+    $this->ConectarBD();
+    $sql = "select USUARIO_TIPO from USUARIO where USUARIO_USER = '".$_SESSION['login']."'";
+    $result = $this->mysqli->query($sql);
+    if ($result->num_rows == 1){
+        foreach ($result as $a=>$b){
+            $toRet = $b;
+        }
+    }else $toRet = '';
+
+    return $toRet;
+}
 }
 ?>
+
