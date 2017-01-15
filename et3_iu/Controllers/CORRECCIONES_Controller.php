@@ -167,7 +167,7 @@ Switch($_REQUEST['accion'])
 				$correccion = new CORRECCIONES_Model($_REQUEST['CORRECCION_NOM'],'', '', '', '');
 				$valores = $correccion->RellenaDatos($_REQUEST['CORRECCION_NOM']);
 				if(!tienePermisos('CORRECCION_Borrar')){
-					new Mensaje('No tienes los permisos necesarios','CORRECCION_Controller.php');
+					new Mensaje('No tienes los permisos necesarios','CORRECCIONES_Controller.php');
 				}
 				else {
 					//muestra el formulario de borrado
@@ -177,6 +177,25 @@ Switch($_REQUEST['accion'])
 			else{ //Estos campos no se muestran en el formulario de borrado por lo que se ponen vacíos
 				$correccion = get_data_form();
 				$respuesta = $correccion->Borrar();
+				new Mensaje($respuesta, 'CORRECCIONES_Controller.php');
+			}
+			break;
+			case  $strings['Modificar']:
+			if (!isset($_REQUEST['CORRECCION_NOTA'])){
+				//Crea una correccion solo con la ID para rellenar posteriormente sus datos y mostrarlos en el formulario
+				$correccion = new CORRECCIONES_Model($_REQUEST['CORRECCION_NOM'],'', '', '', '');
+				$valores = $correccion->RellenaDatos($_REQUEST['CORRECCION_NOM']);
+				if(!tienePermisos('CORRECCION_Modificar')){
+					new Mensaje('No tienes los permisos necesarios','CORRECCIONES_Controller.php');
+				}
+				else {
+					//muestra el formulario de borrado
+					new CORRECCION_Modificar($valores, 'CORRECCIONES_Controller.php');
+				}
+			}
+			else{ //Estos campos no se muestran en el formulario de borrado por lo que se ponen vacíos
+				$correccion = get_data_form();
+				$respuesta = $correccion->Modificar();
 				new Mensaje($respuesta, 'CORRECCIONES_Controller.php');
 			}
 			break;
