@@ -70,7 +70,7 @@ class CORRECCION_Entrega{
 			<div class="container">
 				<?php
 				//$gen_datos = new gen_form($arrayDefForm);
-				$lista = array('ENTREGA_ID','ENTREGA_NOMBRE','ENTREGA_FECHA');
+				$lista = array('ENTREGA_ID','ENTREGA_NOMBRE');
 
 				?>
 
