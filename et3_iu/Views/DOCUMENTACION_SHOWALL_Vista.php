@@ -56,57 +56,62 @@ class DOCUMENTACION_SHOWALL {
 						<div class="container">
 							<?php
 							$lista = array ('DOCUMENTACION_NOM', 'DOCUMENTACION_PROFESOR', 'DOCUMENTACION_FECHA', 'DOCUMENTACION_ENLACE');
-								?>
-								<h2 class="materia2"><?php echo ConsultarNomMateria($this->datos[0]['DOCUMENTACION_MATERIA']) ?></h2>
-						
+							?>
+							<h2 class="materia2"><?php echo ConsultarNomMateria($this->datos[0]['DOCUMENTACION_MATERIA']) ?></h2>
+
 							<div class="separado">
 								<div id="centrado">
 									<table class="table" id="btable" border=1>
 										<tr>
 											<?php
-											foreach ( $lista as $titulo ) {
-												echo "<th>";
-												echo $strings [$titulo];
-												?>
-											</th>
-											<?php
-										}
-										?>
-									</tr>
-									<?php
-
-									for($j = 0; $j < count ( $this->datos ); $j++) {
-										echo "<tr>";
-										foreach ( $this->datos [$j] as $clave => $valor ) {
-											for($i = 0; $i < count ( $lista ); $i++) {
-												if ($clave === $lista [$i]) {
-													echo "<td>";
-													if ($clave==='DOCUMENTACION_PROFESOR') {
-														if(isset($strings[ConsultarNomProfesor($valor)])){
-															echo $strings[ConsultarNomProfesor($valor)];}
-															else{
-																echo ConsultarNomProfesor($valor);
-															}
-														}
-														elseif($clave==='DOCUMENTACION_ENLACE'){ ?>
-														<a href="<?php echo $valor ?>" target="_blank"><?php echo $strings['Ver'] ?></a>
-
-														<?php } else {
-															echo $valor;
-														}
-														echo "</td>";
-													}
-												}
+											if(count($this->datos[0]) != 1  ){
+												foreach ( $lista as $titulo ) {
+													echo "<th>";
+													echo $strings [$titulo];
+													?>
+												</th>
+												<?php
 											}
 											?>
+										</tr>
+										<?php
 
-											<?php if(ConsultarRol($_SESSION['login']) != '3') {?>
-											<td><a href='DOCUMENTACION_Controller.php?DOCUMENTACION_NOM=<?php echo $this->datos[$j]['DOCUMENTACION_NOM'] .'&accion='.$strings['Modificar']; ?>'><?php echo $strings['Modificar']?></a></td>
-											<td><a href='DOCUMENTACION_Controller.php?DOCUMENTACION_NOM=<?php echo $this->datos[$j]['DOCUMENTACION_NOM'] . '&accion='.$strings['Borrar']; ?>'><?php echo $strings['Borrar']?></a></td>
+										for($j = 0; $j < count ( $this->datos ); $j++) {
+											echo "<tr>";
+											foreach ( $this->datos [$j] as $clave => $valor ) {
+												for($i = 0; $i < count ( $lista ); $i++) {
+													if ($clave === $lista [$i]) {
+														echo "<td>";
+														if ($clave==='DOCUMENTACION_PROFESOR') {
+															if(isset($strings[ConsultarNomProfesor($valor)])){
+																echo $strings[ConsultarNomProfesor($valor)];}
+																else{
+																	echo ConsultarNomProfesor($valor);
+																}
+															}
+															elseif($clave==='DOCUMENTACION_ENLACE'){ ?>
+															<a href="<?php echo $valor ?>" target="_blank"><?php echo $strings['Ver'] ?></a>
 
-											<?php
+															<?php } else {
+																echo $valor;
+															}
+															echo "</td>";
+														}
+													}
+												}
+												?>
+
+												<?php if(ConsultarRol($_SESSION['login']) != '3') {?>
+												<td><a href='DOCUMENTACION_Controller.php?DOCUMENTACION_NOM=<?php echo $this->datos[$j]['DOCUMENTACION_NOM'] .'&accion='.$strings['Modificar']; ?>'><?php echo $strings['Modificar']?></a></td>
+												<td><a href='DOCUMENTACION_Controller.php?DOCUMENTACION_NOM=<?php echo $this->datos[$j]['DOCUMENTACION_NOM'] . '&accion='.$strings['Borrar']; ?>'><?php echo $strings['Borrar']?></a></td>
+
+												<?php
+											}
+											echo "</tr>";
 										}
-										echo "</tr>";
+									} else { ?>
+										<strong class="coincidencias" style="color:#FE2E2E"><?php echo $strings['No existen coincidencias'] ?></strong>
+										<?php
 									}
 									?>
 

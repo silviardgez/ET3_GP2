@@ -35,7 +35,7 @@ class DOCUMENTACION_SHOWCURRENT{
 					</ul>
 				</form>
 				<?php
-				echo '<a  class="form-link" href=\'DOCUMENTACION_Controller.php\'>' . $strings['Volver'] . '</a>';
+				echo '<a class="form-link" href=\'DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . $_REQUEST['DOCUMENTACION_MATERIA'] . '\'>' . $strings['Volver'] . " </a>";
 				?>
 
 			</div>

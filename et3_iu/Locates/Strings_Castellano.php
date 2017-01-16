@@ -197,6 +197,9 @@ $strings = array(
 	'Consultar Documentación' => 'Consultar Documentación',
 	'Ver Documentación' => 'Ver Documentación',
 	'Aún no hay documentos disponibles para esta materia' => 'Aún no hay documentos disponibles para esta materia',
+	'El documento ya existe en la base de datos' => 'El documento ya existe en la base de datos',
+	'Introduzca un valor para el nombre' => 'Introduzca un valor para el nombre',
+	'No existen coincidencias' => 'No existen coincidencias',
 //Entregas
 	'GESTION ENTREGAS'=>'GESTIÓN ENTREGAS',
 	'Gestión de Entregas'=>'Gestión de Entregas',

@@ -111,8 +111,14 @@ class MATERIA_SHOWALL{
         <td>
             <a href='MATERIA_Controller.php?MATERIA_ID=<?php echo $this->datos[$j]['MATERIA_ID'] . '&accion=' . $strings['Desinscribirse']; ?>'><?php echo $strings['Desinscribirse'] ?></a>
         </td>
-    </tr>
-    <?php }
+    </td>
+    <?php if(ConsultarMateriaAlumno($this->datos[$j]['MATERIA_ID']) || ConsultarMateriaProfesor($this->datos[$j]['MATERIA_ID']) || consultarRol($_SESSION['login']) == '1'){ ?>
+    <td>
+        <a href='DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=<?php echo $this->datos[$j]['MATERIA_ID']; ?>'><?php echo $strings['Ver Documentación'] ?></a>
+    </td>
+</tr>
+<?php }
+}
 }
 ?>
 

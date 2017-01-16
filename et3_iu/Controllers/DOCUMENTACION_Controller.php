@@ -30,7 +30,6 @@ function get_data_form(){
 
 	//Si no se ha introducido un nuevo archivo se deja el que había
 	if (isset($_FILES['DOCUMENTACION_ENLACE']['name']) && ($_FILES['DOCUMENTACION_ENLACE']['name']!=='')) {
-
 		$DOCUMENTACION_ENLACE = '../Documents/Documentacion/' . str_replace(' ', '_', $_FILES['DOCUMENTACION_ENLACE']['name']);
 	}
 	else {
@@ -54,7 +53,7 @@ if (!isset($_REQUEST['accion'])){
 Switch ($_REQUEST['accion']){
 
 	case  $strings['Insertar']:
-		if (!isset($_REQUEST['DOCUMENTACION_NOM'])){ 
+	if (!isset($_REQUEST['DOCUMENTACION_NOM'])){ 
 			if(!tienePermisos('DOCUMENTACION_ADD')){//Siempre que no tenga los permisos mostrará un mensaje de aviso
 				new Mensaje('No tienes los permisos necesarios','DOCUMENTACION_Controller.php');
 			}
@@ -72,7 +71,7 @@ Switch ($_REQUEST['accion']){
 
 			$documentacion = get_data_form();
 
-		
+
 			//Creamos las carpetas para guardar los archivos
 			$carpeta='../Documents/Documentacion/';
 
@@ -93,7 +92,7 @@ Switch ($_REQUEST['accion']){
 		break;
 
 
-	case  $strings['Borrar']:
+		case  $strings['Borrar']:
 		if (!isset($_REQUEST['DOCUMENTACION_ID'])){
 			//Crea un documento solo con el id para rellenar posteriormente sus datos y mostrarlos en el formulario
 			$documento = new DOCUMENTACION_Model($_REQUEST['DOCUMENTACION_NOM'], '', '', '', '', '');
@@ -118,7 +117,7 @@ Switch ($_REQUEST['accion']){
 		break;
 
 
-	case  $strings['Modificar']:
+		case  $strings['Modificar']:
 
 		if (!isset($_REQUEST['DOCUMENTACION_ID'])){
 			//Crea un documento solo con el nombre para posteriormente rellenar el formulario con sus datos
@@ -134,10 +133,9 @@ Switch ($_REQUEST['accion']){
 		}
 		else{
 			//Estos campos no se muestran en el formulario de modificar por lo que se ponen vacíos
-			$_REQUEST['DOCUMENTACION_ENLACE']='';
 			$_REQUEST['DOCUMENTACION_FECHA']='';
 			
-			$_REQUEST['DOCUMENTACION_PROFESOR']='';
+			$_REQUEST['DOCUMENTACION_PROFESOR']=ConsultarUserDNI($_SESSION['login']);
 
 			
 			$documentacion = get_data_form();
@@ -146,7 +144,7 @@ Switch ($_REQUEST['accion']){
 
 
 			//Se realizan las modificaciones también en las carpetas de documentos
-			if($_FILES['DOCUMENTACION_ENLACE']['name']!=='') {
+			if(isset($_FILES['DOCUMENTACION_ENLACE']['name']) && $_FILES['DOCUMENTACION_ENLACE']['name']!=='') {
 				if (!file_exists($carpeta)) {
 					mkdir($carpeta, 0777, true);
 				}
@@ -160,7 +158,7 @@ Switch ($_REQUEST['accion']){
 		break;
 
 
-	case  $strings['Consultar']:
+		case  $strings['Consultar']:
 		if (!isset($_REQUEST['DOCUMENTACION_NOM'])){
 			if(!tienePermisos('DOCUMENTACION_SHOWCURRENT')){
 				new Mensaje('No tienes los permisos necesarios','DOCUMENTACION_Controller.php');
@@ -172,13 +170,16 @@ Switch ($_REQUEST['accion']){
 		else{
 			$documentacion = get_data_form();
 
-            $datos = $documentacion->Consultar();
-            new DOCUMENTACION_SHOWALL($datos, '../Controllers/DOCUMENTACION_Controller.php');
-        }
+			$materia = $_REQUEST['DOCUMENTACION_MATERIA'];
+
+			$datos = $documentacion->Consultar($materia);
+			$datos[0]['DOCUMENTACION_MATERIA']= $materia;
+			new DOCUMENTACION_SHOWALL($datos, '../Controllers/DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=' . $materia);
+		}
 		
 		break;
 
-	case $strings['Ver']:
+		case $strings['Ver']:
 		//Por defecto se realiza el show all
 
 		if (!isset($_REQUEST['DOCUMENTACION_NOM'])){
@@ -200,7 +201,7 @@ Switch ($_REQUEST['accion']){
 
 		break;
 
-	default:
+		default:
 		//Por defecto se ven las categorías y los documentos que no tienen categoría
 
 		if (!isset($_REQUEST['DOCUMENTACION_NOM'])){
@@ -221,7 +222,7 @@ Switch ($_REQUEST['accion']){
 			new DOCUMENTACION_SHOW_CATEGORIA($datos, $datosMateria, $nombre, '../Controllers/MATERIA_Controller.php');
 		}
 
-}
+	}
 
 
-?>
+	?>

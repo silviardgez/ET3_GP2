@@ -1,17 +1,8 @@
 <?php
 //Formulario para el borrado de empleados
 $form = array(
+	
 	0 => array(
-	'type' => 'text',
-	'name' => 'DOCUMENTACION_ID',
-	'value' => '',
-	'size' => 5,
-	'required' => true,
-	'pattern' => '',
-	'validation' => '',
-	'readonly' => false
-	),
-	1 => array(
 		'type' => 'text',
 		'name' => 'DOCUMENTACION_NOM',
 		'value' => '',
@@ -22,18 +13,18 @@ $form = array(
 		'readonly' => false
 	),
 
-	4 => array(
-		'type' => 'date',
+	1 => array(
+		'type' => 'datetime-local',
 		'name' => 'DOCUMENTACION_FECHA',
 		'value' => '',
-		'min' => '2015/01/01',
-		'max' => '2018/01/01',
+		'min' => '',
+		'max' => '',
 		'required' => true,
 		'pattern' => '',
 		'validation' => '',
 		'readonly' => false
 	),
-	5 => array(
+	3 => array(
 		'type' => 'url',
 		'name' => 'DOCUMENTACION_ENLACE',
 		'value' => '',
@@ -42,7 +33,7 @@ $form = array(
 		'validation' => '',
 		'readonly' => false
 	),
-	6 => array(
+	4 => array(
 		'type' => 'text',
 		'name' => 'DOCUMENTACION_CATEGORIA',
 		'value' => '',
@@ -56,7 +47,6 @@ $form = array(
 
 );
 
-$DefForm1 = AñadirMaterias($form);
-$DefForm = AñadirProfesores($DefForm1);
+$DefForm = AñadirProfesores($form);
 
 ?>

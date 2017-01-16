@@ -202,6 +202,9 @@ $strings = array(
     'Ver Documentación' => 'See Documentation',
     'Insertar documentación' => 'Add documentation',
     'Aún no hay documentos disponibles para esta materia' => 'There are no available documents for this subject yet',
+    'El documento ya existe en la base de datos' => 'Document exists in database',
+    'Introduzca un valor para el nombre' => 'Enter a value for name',
+    'No existen coincidencias' => 'No matches found',
 
     //Entregas
    'GESTION ENTREGAS'=>'DELIVERY MANAGEMENT',

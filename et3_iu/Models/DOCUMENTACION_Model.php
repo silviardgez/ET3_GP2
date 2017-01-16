@@ -56,29 +56,6 @@ class DOCUMENTACION_Model
 	}
 	
 	
-	/*//Devuelve la información de todos los documentos de unha materia
-	function ConsultarTodo()
-	{
-		$this->ConectarBD();
-		$sql = "select * from DOCUMENTACION WHERE DOCUMENTACION_MATERIA='" . $this->DOCUMENTACION_MATERIA . "'";
-		if (!($resultado = $this->mysqli->query($sql))){
-			return 'Error en la consulta sobre la base de datos';
-		}
-		else{
-	
-			$toret=array();
-			$i=0;
-	
-			while ($fila= $resultado->fetch_array()) {
-
-				$toret[$i]=$fila;
-				$i++;
-			}
-	
-			return $toret;
-		}
-	}*/
-	
 	
 	//Devuelve la información de todos los documentos de una materia
 	function ConsultarTodo()
@@ -146,13 +123,13 @@ class DOCUMENTACION_Model
 					$this->mysqli->query($sql);
                 return 'Inserción realizada con éxito'; //Corregir String
             } else {
-            	return 'La entrega ya existe en la base de datos';
+            	return 'El documento ya existe en la base de datos';
             }
         }
     }
     else{
 
-    	return 'Introduzca un valor para nombre entrega de la entrega';
+    	return 'Introduzca un valor para el nombre';
     }
 
 
@@ -161,10 +138,10 @@ class DOCUMENTACION_Model
 
 
 	//Consulta por nombre y apellido, o por dni o por nombre de usuario devolviendo todos los usuarios que cumplan la condiciÃ³n
-function Consultar()
+function Consultar($var)
 {
 	$this->ConectarBD();
-	$sql = "SELECT * FROM DOCUMENTACION WHERE DOCUMENTACION_ID ='" . $this->DOCUMENTACION_ID . "' OR DOCUMENTACION_NOM LIKE '%" . $this->DOCUMENTACION_NOM . "' OR DOCUMENTACION_PROFESOR = '". $this->DOCUMENTACION_PROFESOR . "' OR DOCUMENTACION_MATERIA = '". $this->DOCUMENTACION_MATERIA ."' OR DOCUMENTACION_FECHA = '". $this->DOCUMENTACION_FECHA ."' OR DOCUMENTACION_CATEGORIA = '". $this->DOCUMENTACION_CATEGORIA ."'";
+	$sql = "SELECT * FROM DOCUMENTACION WHERE (DOCUMENTACION_NOM ='".$this->DOCUMENTACION_NOM."' OR DOCUMENTACION_PROFESOR = '". $this->DOCUMENTACION_PROFESOR . "' OR DOCUMENTACION_FECHA = '". $this->DOCUMENTACION_FECHA ."' OR DOCUMENTACION_CATEGORIA = '". $this->DOCUMENTACION_CATEGORIA ."') AND DOCUMENTACION_MATERIA = '". $var ."'";
 
 	if (!($resultado = $this->mysqli->query($sql))){
 		return 'Error en la consulta sobre la base de datos';
@@ -214,13 +191,12 @@ function RellenaDatos()
 	//Actualiza en la base de datos la información de un determinado documento
 function Modificar($datos)
 {
-	printf($datos);
 	$this->ConectarBD();
 	$sql = "select * from DOCUMENTACION where DOCUMENTACION_ID = '".$datos."'";
 	$result = $this->mysqli->query($sql);
 	if ($result->num_rows == 1)
 	{
-		$sql = "UPDATE DOCUMENTACION SET DOCUMENTACION_NOM = '".$this->DOCUMENTACION_NOM."', DOCUMENTACION_CATEGORIA= '".$this->DOCUMENTACION_CATEGORIA."'" ;
+		$sql = "UPDATE DOCUMENTACION SET DOCUMENTACION_NOM = '".$this->DOCUMENTACION_NOM."', DOCUMENTACION_FECHA = NOW(), DOCUMENTACION_PROFESOR = '".$this->DOCUMENTACION_PROFESOR."', DOCUMENTACION_CATEGORIA= '".$this->DOCUMENTACION_CATEGORIA."'" ;
 
 		// Para documento
 		if($this->DOCUMENTACION_ENLACE!=''){

@@ -214,6 +214,9 @@ $strings = array(
     'Insertar documentación' => 'Insertar documentación',
     'Ver Documentación' => 'Ver Documentación',
     'Aún no hay documentos disponibles para esta materia' => 'Aínda non hai documentos dispoñibles para esta materia',
+    'El documento ya existe en la base de datos' => 'O documento xa existe na base de datos',
+    'Introduzca un valor para el nombre' => 'Introduza un valor para o nome',
+    'No existen coincidencias' => 'Non existen coincidencias',
 
 	//Entregas
 	'GESTION ENTREGAS'=>'XESTIÓN ENTREGAS',

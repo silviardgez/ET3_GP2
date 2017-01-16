@@ -30,7 +30,7 @@ class DOCUMENTACION_EDIT {
 		</head>
 		<div class="wrap">
 			<body>
-				<form  id="form" name="form" action='DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=<?php echo $this->materia ?>' method='post' >
+				<form  id="form" name="form" action='DOCUMENTACION_Controller.php?DOCUMENTACION_MATERIA=<?php echo $this->materia ?>' method='post' enctype="multipart/form-data">
 					<div id="centrado"><span class="form-title">
 						<?php echo $strings['Modificar Documentación'] ?></span></div>
 						<ul class="form-style-1">

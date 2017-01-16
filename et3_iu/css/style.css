@@ -261,22 +261,30 @@ fieldset {
 .carpeta { 
 	margin-top: -5px;
 	margin-right: 10px;
-	margin-left: 150px;
+	margin-left: 110px;
 	margin-bottom: 20px;
 	line-height: 1.429em;
 }
 
+.coincidencias {
+    margin-top: -5px;
+    margin-right: 10px;
+    margin-left: -800;
+    margin-bottom: 20px;
+    line-height: 1.429em;
+}
+
 .materia { 
 	margin-top: 10px;
-	margin-left: 140px;
-	margin-bottom: 30px;
+	margin-left: 80px;
+	margin-bottom: 25px;
 	line-height: 1.429em;
 }
 
 .materia2 {
     margin-bottom: 30px;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-left: 38px;
 }
 
 .separado {
